@@ -84,19 +84,35 @@ export const ReportScreen: React.FC<ReportScreenProps> = ({
   }, []);
 
   useEffect(() => {
-    hybridStore.getBounties().then((list) => {
+    let isMounted = true;
+    const loadBounties = async () => {
+      const list = await hybridStore.getBounties();
+      if (!isMounted) return;
       setBountiesList(list);
-      const target = list.find((b) => b.id === (bountyId || selectedBountyId)) || list[0];
+      const target =
+        list.find((b) => b.id === (bountyId || selectedBountyId) || (b as any).query_id_hex === (bountyId || selectedBountyId)) ||
+        list[0];
       if (target) {
         setBounty(target);
         setSelectedBountyId(target.id);
+      } else {
+        setBounty(null);
       }
+    };
+
+    loadBounties();
+    const unsub = hybridStore.subscribeBountiesRealtime(() => {
+      loadBounties();
     });
+    return () => {
+      isMounted = false;
+      unsub();
+    };
   }, [bountyId]);
 
   const handleSelectBounty = (id: string) => {
     setSelectedBountyId(id);
-    const target = bountiesList.find((b) => b.id === id);
+    const target = bountiesList.find((b) => b.id === id || (b as any).query_id_hex === id);
     if (target) {
       setBounty(target);
       setPhotoDataUrl(null);
@@ -415,8 +431,22 @@ export const ReportScreen: React.FC<ReportScreenProps> = ({
 
   if (!bounty) {
     return (
-      <div className="text-center py-12 text-[#6B7F72]">
-        Loading bounty details...
+      <div className="bg-[#0B0B0B] border border-white/[0.07] rounded-[20px] p-8 text-center max-w-lg mx-auto space-y-4 my-8">
+        <div className="w-12 h-12 rounded-full bg-[#A8FF00]/10 border border-[#A8FF00]/20 flex items-center justify-center mx-auto text-[#A8FF00]">
+          <Camera className="w-6 h-6" />
+        </div>
+        <h3 className="text-base font-bold text-white tracking-tight">No Active Physical Bounties</h3>
+        <p className="text-xs text-zinc-400 leading-relaxed">
+          There are currently no open ground truth tasks awaiting hardware evidence in this area. Check back shortly as makers fund new escrow vaults or view the 200m verification radar.
+        </p>
+        <div className="flex items-center justify-center gap-3 pt-2">
+          <button
+            onClick={onBackToNearby}
+            className="px-4 py-2 rounded-full bg-[#A8FF00] hover:bg-[#b8ff24] text-black text-xs font-bold transition-all shadow-none cursor-pointer"
+          >
+            Open 200m Radar HUD
+          </button>
+        </div>
       </div>
     );
   }
