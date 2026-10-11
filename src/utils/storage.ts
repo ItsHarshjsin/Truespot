@@ -304,6 +304,7 @@ class HybridStore {
         if (!error && data && data.length > 0) {
           const validRows = data.filter(
             (d: any) =>
+              d.status !== 'EXPIRED' &&
               d.id !== '1f24e92f-6bde-4fe5-87d9-0e47ad1ac949' &&
               !d.question?.toLowerCase().includes('coffee line') &&
               !d.place_name?.toLowerCase().includes('coffee & beverage counter')
@@ -340,6 +341,7 @@ class HybridStore {
       const key = q.id || q.query_id_hex;
       if (
         key &&
+        q.status !== 'EXPIRED' &&
         key !== '1f24e92f-6bde-4fe5-87d9-0e47ad1ac949' &&
         !q.question?.toLowerCase().includes('coffee line') &&
         !q.place_name?.toLowerCase().includes('coffee & beverage counter')
@@ -353,6 +355,7 @@ class HybridStore {
       const key = rq.id || rq.query_id_hex;
       if (
         key &&
+        rq.status !== 'EXPIRED' &&
         key !== '1f24e92f-6bde-4fe5-87d9-0e47ad1ac949' &&
         !rq.question?.toLowerCase().includes('coffee line') &&
         !rq.place_name?.toLowerCase().includes('coffee & beverage counter')
@@ -463,7 +466,8 @@ class HybridStore {
           }
           const repRes = await reportBuilder;
           if (!repRes.error && repRes.data && repRes.data.length > 0) {
-            data = repRes.data.map((r: any) => ({
+            const valid = repRes.data.filter((r: any) => r.answer_text !== 'EXPIRED');
+            data = valid.map((r: any) => ({
               ...r,
               id: r.id,
               query_id_hex: r.bounty_id || r.query_id_hex,
@@ -947,7 +951,12 @@ class HybridStore {
           .order('observed_at', { ascending: false });
 
         if (!error && data && data.length > 0) {
-          remoteReports = data.map((d: any) => ({
+          const validReports = data.filter(
+            (d: any) =>
+              d.answer_text !== 'EXPIRED' &&
+              d.id !== '00000000-0000-0000-0000-000000000000'
+          );
+          remoteReports = validReports.map((d: any) => ({
             id: d.id,
             bounty_id: d.bounty_id,
             query_id_hex: d.bounty_id,
@@ -982,14 +991,32 @@ class HybridStore {
       }
     }
 
+    const validBounties = await this.getQueries();
+    const validBountyIds = new Set(
+      validBounties
+        .filter((b) => b.status !== 'EXPIRED')
+        .map((b) => b.id)
+        .concat(validBounties.filter((b) => b.status !== 'EXPIRED').map((b) => b.query_id_hex))
+    );
+
     const reportMap = new Map<string, Report>();
     this.reports.forEach((r) => {
       const key = r.id || r.fingerprint;
-      if (key) reportMap.set(key, r);
+      if (
+        key &&
+        r.answer_text !== 'EXPIRED' &&
+        (!r.bounty_id || validBountyIds.has(r.bounty_id) || validBountyIds.has((r as any).query_id_hex))
+      ) {
+        reportMap.set(key, r);
+      }
     });
     remoteReports.forEach((rr) => {
       const key = rr.id || rr.fingerprint;
-      if (key) {
+      if (
+        key &&
+        rr.answer_text !== 'EXPIRED' &&
+        (!rr.bounty_id || validBountyIds.has(rr.bounty_id) || validBountyIds.has((rr as any).query_id_hex))
+      ) {
         const existing = reportMap.get(key);
         reportMap.set(key, { ...existing, ...rr });
       }
@@ -1256,24 +1283,51 @@ class HybridStore {
     this.reports = [];
     this.verifications = [];
     if (typeof window !== 'undefined') {
-      localStorage.removeItem('truespot_queries_v2');
-      localStorage.removeItem('truespot_observations_v2');
-      localStorage.removeItem('truespot_published_answers_v2');
-      localStorage.removeItem('truespot_bounties');
-      localStorage.removeItem('truespot_reports');
-      localStorage.removeItem('truespot_verifications');
-      localStorage.removeItem('truespot_escrow_events');
-      localStorage.removeItem('truespot_demo_accounts');
+      try {
+        localStorage.removeItem('truespot_queries_v2');
+        localStorage.removeItem('truespot_observations_v2');
+        localStorage.removeItem('truespot_published_answers_v2');
+        localStorage.removeItem('truespot_bounties');
+        localStorage.removeItem('truespot_reports');
+        localStorage.removeItem('truespot_verifications');
+        localStorage.removeItem('truespot_escrow_events');
+        localStorage.removeItem('truespot_demo_accounts');
+      } catch (e) {
+        console.warn('LocalStorage cleanup error:', e);
+      }
     }
     if (this.supabase) {
       try {
-        await this.supabase.from('observations').delete().neq('id', 'placeholder_never_match');
-        await this.supabase.from('published_answers').delete().neq('id', 'placeholder_never_match');
-        await this.supabase.from('queries').delete().neq('id', 'placeholder_never_match');
-        await this.supabase.from('reports').delete().neq('id', 'placeholder_never_match');
-        await this.supabase.from('bounties').delete().neq('id', 'placeholder_never_match');
+        await this.supabase
+          .from('verifications')
+          .delete()
+          .neq('id', '00000000-0000-0000-0000-000000000000');
       } catch (e) {
-        console.warn('Supabase cleanup error:', e);
+        console.warn('Supabase verifications cleanup error:', e);
+      }
+      try {
+        await this.supabase
+          .from('reports')
+          .update({ answer_text: 'EXPIRED' })
+          .neq('id', '00000000-0000-0000-0000-000000000000');
+        await this.supabase
+          .from('reports')
+          .delete()
+          .neq('id', '00000000-0000-0000-0000-000000000000');
+      } catch (e) {
+        console.warn('Supabase reports cleanup error:', e);
+      }
+      try {
+        await this.supabase
+          .from('bounties')
+          .update({ status: 'EXPIRED' })
+          .neq('id', '00000000-0000-0000-0000-000000000000');
+        await this.supabase
+          .from('bounties')
+          .delete()
+          .neq('id', '00000000-0000-0000-0000-000000000000');
+      } catch (e) {
+        console.warn('Supabase bounties cleanup error:', e);
       }
     }
     this.persist();

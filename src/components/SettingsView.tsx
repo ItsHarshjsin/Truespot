@@ -31,6 +31,9 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
 }) => {
   const [selectedCluster, setSelectedCluster] = useState<string>('devnet');
   const [defaultRole, setDefaultRole] = useState<'maker' | 'spotter'>(userMode);
+  const [isWiping, setIsWiping] = useState<boolean>(false);
+  const [confirmWipe, setConfirmWipe] = useState<boolean>(false);
+  const [wipedSuccess, setWipedSuccess] = useState<boolean>(false);
 
   const handleSaveCluster = (cluster: string) => {
     setSelectedCluster(cluster);
@@ -42,6 +45,31 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
     localStorage.setItem('truespot_default_mode', mode);
     onSwitchMode(mode);
     onShowToast('Default Mode Saved', `Initial launch workspace set to ${mode} mode`, 'success');
+  };
+
+  const handleWipeAllDataToZero = async () => {
+    if (!confirmWipe) {
+      setConfirmWipe(true);
+      return;
+    }
+    setIsWiping(true);
+    setConfirmWipe(false);
+    try {
+      await hybridStore.wipeAllData();
+      onResetDemoState();
+      setWipedSuccess(true);
+      onShowToast(
+        'Protocol Data Reset to 0',
+        'All bounties, reports, and escrow settlements purged in Supabase & local cache. Real-time sync active across all sessions.',
+        'reward'
+      );
+      setTimeout(() => setWipedSuccess(false), 6000);
+    } catch (err: any) {
+      console.error('Wipe data error:', err);
+      onShowToast('Reset Failed', err?.message || 'Failed to wipe protocol data', 'warning');
+    } finally {
+      setIsWiping(false);
+    }
   };
 
   return (
@@ -178,29 +206,104 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
         </div>
       </div>
 
-      {/* Setting 4: Reset Demo State & Reset Cache */}
-      <div className="bg-[#0B0B0B] border border-red-500/20 rounded-[24px] p-6 space-y-4 shadow-xl">
-        <div className="flex items-center justify-between border-b border-white/[0.06] pb-3">
-          <div>
-            <h2 className="text-sm font-bold text-red-300">Reset State & Demo Ledger</h2>
-            <p className="text-xs text-zinc-400 mt-0.5">
-              Restore sample bounties, reset wallet balances to defaults, and clear local state.
-            </p>
+      {/* Setting 4: Reset All Protocol Data to 0 (Supabase Real-Time Purge) */}
+      <div className="bg-[#0B0B0B] border border-red-500/30 rounded-[24px] p-6 space-y-5 shadow-2xl relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-red-500/5 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/[0.06] pb-4">
+          <div className="flex items-center space-x-3">
+            <div className="w-9 h-9 rounded-xl bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 shrink-0">
+              <Trash2 className="w-4 h-4" />
+            </div>
+            <div>
+              <h2 className="text-base font-bold text-white flex items-center gap-2">
+                Reset All Protocol Data to 0
+                <span className="text-[10px] uppercase font-mono px-2 py-0.5 rounded-full bg-red-500/20 text-red-300 border border-red-500/30">
+                  Supabase Live Purge
+                </span>
+              </h2>
+              <p className="text-xs text-zinc-400 mt-0.5">
+                Zero out all bounties, reports, and escrow settlements in Supabase and local cache in real time.
+              </p>
+            </div>
           </div>
+          <span className="text-xs font-mono text-zinc-400 shrink-0">
+            {hybridStore.isConnectedToSupabase ? '🟢 Supabase Synced' : '🟡 Local Mode'}
+          </span>
         </div>
 
-        <div className="flex items-center justify-between pt-1">
-          <p className="text-xs text-zinc-400 max-w-md">
-            This will restore the 3 default demo accounts (Receiver, Maker, Escrow) and reload baseline location queries.
-          </p>
-          <button
-            type="button"
-            onClick={onResetDemoState}
-            className="py-2.5 px-4 rounded-full bg-red-950/40 hover:bg-red-900/60 border border-red-500/40 text-red-300 text-xs font-bold transition-all cursor-pointer flex items-center space-x-1.5 shrink-0"
-          >
-            <Trash2 className="w-3.5 h-3.5" />
-            <span>Reset Demo Ledger</span>
-          </button>
+        <div className="bg-[#121212]/90 border border-white/[0.06] rounded-xl p-4 text-xs space-y-2 text-zinc-300">
+          <div className="font-semibold text-white flex items-center gap-2">
+            <Shield className="w-4 h-4 text-red-400" />
+            What happens when you reset data to 0:
+          </div>
+          <ul className="list-disc list-inside space-y-1 text-zinc-400 text-[11px] pl-1">
+            <li><strong className="text-zinc-200">Supabase Bounties & Reports:</strong> Purged and cleared in the PostgreSQL database in real time.</li>
+            <li><strong className="text-zinc-200">Real-Time Sync:</strong> Broadcasts immediately across all active browser tabs and Vercel visitors.</li>
+            <li><strong className="text-zinc-200">Demo Wallets:</strong> Maker & Spotter balances reset to baseline 1.00 SOL; escrow balance set to 0.00 SOL.</li>
+            <li><strong className="text-zinc-200">Radar & Explorer:</strong> Active nearby bounties, submissions, and review queues immediately drop to 0.</li>
+          </ul>
+        </div>
+
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-1">
+          {confirmWipe ? (
+            <div className="flex flex-col sm:flex-row items-center gap-2 w-full justify-between">
+              <span className="text-xs text-red-400 font-medium text-center sm:text-left">
+                Are you sure? This will permanently wipe all Supabase bounties & reports to 0.
+              </span>
+              <div className="flex items-center gap-2 w-full sm:w-auto">
+                <button
+                  type="button"
+                  onClick={() => setConfirmWipe(false)}
+                  className="flex-1 sm:flex-none py-2.5 px-4 rounded-full bg-zinc-800 hover:bg-zinc-700 text-xs font-semibold text-zinc-300 transition-all cursor-pointer"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  onClick={handleWipeAllDataToZero}
+                  disabled={isWiping}
+                  className="flex-1 sm:flex-none py-2.5 px-5 rounded-full bg-red-600 hover:bg-red-500 text-white text-xs font-bold transition-all shadow-lg shadow-red-900/40 cursor-pointer flex items-center justify-center space-x-1.5"
+                >
+                  {isWiping ? (
+                    <>
+                      <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                      <span>Purging Supabase to 0...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Trash2 className="w-3.5 h-3.5" />
+                      <span>Confirm Reset to 0</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="flex items-center justify-between w-full">
+              <span className="text-xs text-zinc-400">
+                {wipedSuccess ? '✅ All protocol data wiped to 0 in Supabase' : 'Clean slate protocol operation'}
+              </span>
+              <button
+                type="button"
+                onClick={handleWipeAllDataToZero}
+                disabled={isWiping}
+                className="py-2.5 px-5 rounded-full bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 text-red-300 hover:text-red-200 text-xs font-bold transition-all cursor-pointer flex items-center space-x-2 shrink-0 shadow-lg"
+              >
+                {isWiping ? (
+                  <>
+                    <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                    <span>Purging Supabase to 0...</span>
+                  </>
+                ) : (
+                  <>
+                    <Trash2 className="w-3.5 h-3.5 text-red-400" />
+                    <span>Reset All Data to 0 (Clean Slate)</span>
+                  </>
+                )}
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

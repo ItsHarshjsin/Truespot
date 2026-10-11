@@ -246,6 +246,10 @@ const AppContent: React.FC = () => {
     setActiveDemoAccount(DEMO_ACCOUNTS[0]);
     setIsAdmin(false);
     await hybridStore.wipeAllData();
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new Event('storage'));
+      window.dispatchEvent(new CustomEvent('truespot_state_reset'));
+    }
     showToast('Clean Slate Initialized', 'Wiped all protocol state, initialized 1.00 SOL wallets and zeroed metrics', 'info');
   };
 
