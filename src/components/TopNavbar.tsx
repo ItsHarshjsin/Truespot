@@ -130,14 +130,9 @@ export const TopNavbar: React.FC<TopNavbarProps> = ({
             <div className="w-8 h-8 rounded-xl bg-[#A8FF00] text-black flex items-center justify-center font-bold group-hover:scale-105 transition-transform">
               <Shield className="w-4.5 h-4.5 text-black stroke-[2.5]" />
             </div>
-            <div className="flex flex-col">
-              <span className="text-base font-extrabold text-white tracking-tight leading-tight">
-                TrueSpot
-              </span>
-              <span className="text-[10px] text-zinc-500 font-mono tracking-wider uppercase leading-none hidden sm:block">
-                DePIN Oracle
-              </span>
-            </div>
+            <span className="text-base font-extrabold text-white tracking-tight leading-tight">
+              TrueSpot
+            </span>
           </div>
 
           {/* Role Switcher Toggle (Maker <-> Spotter) - Refined Flat Dark Style */}
