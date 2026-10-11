@@ -30,12 +30,12 @@ export const AnalogProximityDial: React.FC<AnalogProximityDialProps> = ({
     <div className="flex flex-col items-center justify-center py-2 select-none">
       {/* Tactile Skeuomorphic Scale Dial (CoinVex Radar Style) */}
       <div className="relative w-56 h-32 flex items-center justify-center">
-        {/* Outer Mint Curved Bezel */}
-        <div className="absolute inset-0 rounded-t-[50px] rounded-b-[30px] bg-slate-900/90 border-2 border-emerald-500/30 shadow-2xl flex items-center justify-center overflow-hidden">
+        {/* Outer Mint/Lime Curved Bezel */}
+        <div className="absolute inset-0 rounded-t-[50px] rounded-b-[30px] bg-slate-900/90 border-2 border-[#A8FF00]/40 shadow-2xl shadow-[#A8FF00]/10 flex items-center justify-center overflow-hidden">
           {/* Inner Cream Face */}
           <div className="w-[86%] h-[84%] rounded-t-[40px] rounded-b-[20px] bg-black/60 border border-white/10 relative flex flex-col items-center justify-start pt-2">
             {/* Scale Tick Marks */}
-            <div className="w-full flex justify-between px-5 text-[10px] font-mono text-emerald-400/80 font-semibold">
+            <div className="w-full flex justify-between px-5 text-[10px] font-mono text-[#A8FF00] font-bold">
               <span>0m</span>
               <span>50m</span>
               <span>100m</span>
@@ -49,7 +49,7 @@ export const AnalogProximityDial: React.FC<AnalogProximityDialProps> = ({
                 <div
                   key={val}
                   className={`w-[1.5px] rounded-full ${
-                    idx % 2 === 0 ? 'h-3 bg-emerald-400/80' : 'h-1.5 bg-white/20'
+                    idx % 2 === 0 ? 'h-3 bg-[#A8FF00]' : 'h-1.5 bg-white/20'
                   }`}
                 />
               ))}
@@ -62,14 +62,14 @@ export const AnalogProximityDial: React.FC<AnalogProximityDialProps> = ({
                 transform: `translateX(-50%) rotate(${needleRotation}deg)`,
               }}
             >
-              <div className="w-1 h-full bg-gradient-to-t from-emerald-500 to-teal-300 rounded-t-full shadow-lg shadow-emerald-500/50" />
+              <div className="w-1.5 h-full bg-gradient-to-t from-[#A8FF00] to-[#E5FF80] rounded-t-full shadow-lg shadow-[#A8FF00]/60" />
             </div>
 
             {/* Center Pivot Cap */}
-            <div className="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-emerald-500 border-2 border-black shadow-lg z-10" />
+            <div className="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-[#A8FF00] border-2 border-black shadow-lg shadow-[#A8FF00]/40 z-10" />
 
             {/* Metric Unit Selector Pill */}
-            <div className="absolute bottom-3 bg-white/10 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/15 text-[10px] font-semibold text-emerald-300 shadow-sm flex items-center space-x-1 font-mono">
+            <div className="absolute bottom-3 bg-white/10 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-[#A8FF00]/30 text-[10px] font-bold text-[#A8FF00] shadow-sm flex items-center space-x-1 font-mono">
               <span>200m RADIUS</span>
             </div>
           </div>
@@ -85,18 +85,18 @@ export const AnalogProximityDial: React.FC<AnalogProximityDialProps> = ({
           <span className="text-lg sm:text-xl font-bold text-gray-400">{unitLabel}</span>
         </div>
 
-        {/* Status Pill */}
+        {/* Status Pill / Geofence Bar */}
         <div className="mt-1 flex items-center justify-center">
           <span
-            className={`text-xs px-3 py-1 rounded-full font-semibold inline-flex items-center space-x-1.5 ${
+            className={`text-xs px-3 py-1 rounded-full font-bold inline-flex items-center space-x-1.5 transition-all ${
               isWithinGeofence
-                ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 shadow-sm'
+                ? 'bg-[#A8FF00]/15 text-[#A8FF00] border border-[#A8FF00]/40 shadow-sm shadow-[#A8FF00]/20'
                 : 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
             }`}
           >
             <span
               className={`w-1.5 h-1.5 rounded-full ${
-                isWithinGeofence ? 'bg-emerald-400 animate-pulse' : 'bg-amber-400'
+                isWithinGeofence ? 'bg-[#A8FF00] animate-pulse shadow-[0_0_8px_#A8FF00]' : 'bg-amber-400'
               }`}
             />
             <span>

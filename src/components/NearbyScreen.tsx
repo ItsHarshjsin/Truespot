@@ -84,7 +84,7 @@ export const NearbyScreen: React.FC<NearbyScreenProps> = ({
 
   const filteredBounties = bounties.filter((b) => {
     if (filter === 'in_range') return b.is_within_range;
-    if (filter === 'open') return b.status === 'OPEN';
+    if (filter === 'open') return b.status === 'OPEN' || b.status === 'ANSWERED' || b.max_spotters === 0;
     return true;
   });
 
