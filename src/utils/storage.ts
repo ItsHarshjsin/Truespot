@@ -142,7 +142,12 @@ class HybridStore {
 
       const savedQueries = localStorage.getItem('truespot_queries_v2');
       if (savedQueries) {
-        this.queries = JSON.parse(savedQueries);
+        this.queries = JSON.parse(savedQueries).filter(
+          (q: any) =>
+            q.id !== '1f24e92f-6bde-4fe5-87d9-0e47ad1ac949' &&
+            !q.question?.toLowerCase().includes('coffee line') &&
+            !q.place_name?.toLowerCase().includes('coffee & beverage counter')
+        );
       } else {
         this.queries = [];
       }
@@ -259,8 +264,14 @@ class HybridStore {
         }
 
         if (!error && data && data.length > 0) {
-          // Normalize PostGIS or JSON fields
-          return data.map((d: any) => ({
+          // Normalize PostGIS or JSON fields and exclude any legacy coffee placeholder entry
+          const validRows = data.filter(
+            (d: any) =>
+              d.id !== '1f24e92f-6bde-4fe5-87d9-0e47ad1ac949' &&
+              !d.question?.toLowerCase().includes('coffee line') &&
+              !d.place_name?.toLowerCase().includes('coffee & beverage counter')
+          );
+          return validRows.map((d: any) => ({
             ...d,
             id: d.id,
             query_id_hex: d.query_id_hex || d.id,
@@ -279,7 +290,12 @@ class HybridStore {
         console.warn('Supabase getQueries error:', err);
       }
     }
-    return [...this.queries];
+    return this.queries.filter(
+      (q) =>
+        q.id !== '1f24e92f-6bde-4fe5-87d9-0e47ad1ac949' &&
+        !q.question?.toLowerCase().includes('coffee line') &&
+        !q.place_name?.toLowerCase().includes('coffee & beverage counter')
+    );
   }
 
   public async getQuery(idOrHex: string): Promise<Query | undefined> {
