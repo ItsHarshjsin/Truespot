@@ -16,6 +16,7 @@ export const SupabaseModal: React.FC<SupabaseModalProps> = ({
   const currentConfig = hybridStore.getSupabaseConfig();
   const [url, setUrl] = useState(currentConfig.url);
   const [key, setKey] = useState(currentConfig.anonKey);
+  const [isConnected, setIsConnected] = useState(currentConfig.isConnected);
   const [testing, setTesting] = useState(false);
   const [statusMessage, setStatusMessage] = useState<{
     text: string;
@@ -32,6 +33,7 @@ export const SupabaseModal: React.FC<SupabaseModalProps> = ({
 
     try {
       const isOnline = await hybridStore.setSupabaseCredentials(url.trim(), key.trim());
+      setIsConnected(isOnline);
       if (isOnline) {
         setStatusMessage({
           text: 'Successfully connected to live Supabase PostGIS Database',
@@ -87,16 +89,16 @@ export const SupabaseModal: React.FC<SupabaseModalProps> = ({
           <div className="flex items-center space-x-2">
             <span
               className={`w-2 h-2 rounded-full ${
-                currentConfig.isConnected ? 'bg-[#A8FF00] animate-pulse' : 'bg-amber-400'
+                isConnected ? 'bg-[#A8FF00] animate-pulse' : 'bg-amber-400'
               }`}
             />
             <span className="font-semibold text-[#F5F5F5]">
-              Status: {currentConfig.isConnected ? 'Live Cloud Connected' : 'Hybrid Local Storage (Active)'}
+              Status: {isConnected ? 'Live Cloud Connected' : 'Hybrid Local Storage (Active)'}
             </span>
           </div>
 
           <span className="text-[10px] font-mono font-bold text-[#A8FF00]">
-            {currentConfig.isConnected ? 'PostgreSQL PostGIS' : 'LocalStorage Cache'}
+            {isConnected ? 'PostgreSQL PostGIS' : 'LocalStorage Cache'}
           </span>
         </div>
 

@@ -69,9 +69,18 @@ class HybridStore {
       return false;
     }
     try {
-      const { error } = await this.supabase.from('queries').select('id').limit(1);
-      this.isConnectedToSupabase = !error;
-      return !error;
+      const resQueries = await this.supabase.from('queries').select('id').limit(1);
+      if (!resQueries.error) {
+        this.isConnectedToSupabase = true;
+        return true;
+      }
+      const resBounties = await this.supabase.from('bounties').select('id').limit(1);
+      if (!resBounties.error) {
+        this.isConnectedToSupabase = true;
+        return true;
+      }
+      this.isConnectedToSupabase = false;
+      return false;
     } catch (e) {
       this.isConnectedToSupabase = false;
       return false;
@@ -227,17 +236,37 @@ class HybridStore {
   public async getQueries(): Promise<Query[]> {
     if (this.supabase && this.isConnectedToSupabase) {
       try {
-        const { data, error } = await this.supabase
+        let { data, error } = await this.supabase
           .from('queries')
           .select('*')
           .order('created_at', { ascending: false });
+
+        if (error || !data || data.length === 0) {
+          const res = await this.supabase
+            .from('bounties')
+            .select('*')
+            .order('created_at', { ascending: false });
+          if (!res.error && res.data && res.data.length > 0) {
+            data = res.data;
+            error = null;
+          }
+        }
+
         if (!error && data && data.length > 0) {
           // Normalize PostGIS or JSON fields
           return data.map((d: any) => ({
             ...d,
+            id: d.id,
+            query_id_hex: d.query_id_hex || d.id,
+            creator_wallet: d.creator_wallet || d.asker_wallet || 'Ask3r...4Wqz',
+            question: d.question,
+            place_name: d.place_name,
             lat: d.lat || d.location?.coordinates?.[1] || 37.7785,
             lng: d.lng || d.location?.coordinates?.[0] || -122.3999,
-            amount_sol: d.amount_sol || d.escrow_lamports / 1e9,
+            amount_sol: d.amount_sol || (d.escrow_lamports ? d.escrow_lamports / 1e9 : 0.20),
+            escrow_lamports: d.escrow_lamports || Math.round((d.amount_sol || 0.20) * 1e9),
+            status: d.status || 'OPEN',
+            created_at: d.created_at,
           }));
         }
       } catch (err) {
@@ -276,7 +305,7 @@ class HybridStore {
 
     if (this.supabase && this.isConnectedToSupabase) {
       try {
-        await this.supabase.from('queries').insert([
+        const resQueries = await this.supabase.from('queries').insert([
           {
             query_id_hex: newQuery.query_id_hex,
             creator_wallet: newQuery.creator_wallet,
@@ -291,6 +320,21 @@ class HybridStore {
             status: 'OPEN',
           },
         ]);
+
+        if (resQueries.error) {
+          await this.supabase.from('bounties').insert([
+            {
+              question: newQuery.question,
+              place_name: newQuery.place_name,
+              lat: newQuery.lat,
+              lng: newQuery.lng,
+              location: `POINT(${newQuery.lng} ${newQuery.lat})`,
+              amount_sol: newQuery.amount_sol,
+              asker_wallet: newQuery.creator_wallet,
+              status: 'OPEN',
+            },
+          ]);
+        }
       } catch (err) {
         console.warn('Supabase query insertion warning:', err);
       }
@@ -314,7 +358,33 @@ class HybridStore {
           queryBuilder = queryBuilder.eq('query_id_hex', queryIdHex);
         }
 
-        const { data, error } = await queryBuilder;
+        let { data, error } = await queryBuilder;
+        if (error || !data || data.length === 0) {
+          let reportBuilder = this.supabase
+            .from('reports')
+            .select('*')
+            .order('created_at', { ascending: false });
+          if (queryIdHex) {
+            reportBuilder = reportBuilder.eq('bounty_id', queryIdHex);
+          }
+          const repRes = await reportBuilder;
+          if (!repRes.error && repRes.data && repRes.data.length > 0) {
+            data = repRes.data.map((r: any) => ({
+              ...r,
+              id: r.id,
+              query_id_hex: r.bounty_id || r.query_id_hex,
+              contributor_wallet: r.reporter_wallet || r.contributor_wallet,
+              media_url: r.photo_url || r.media_url,
+              sha256_hash: r.fingerprint || r.sha256_hash,
+              observed_lat: r.gps_lat || r.observed_lat,
+              observed_lng: r.gps_lng || r.observed_lng,
+              status: r.status || 'PENDING',
+              client_timestamp: r.observed_at || r.created_at,
+            }));
+            error = null;
+          }
+        }
+
         if (!error && data && data.length > 0) {
           return data;
         }
@@ -352,7 +422,7 @@ class HybridStore {
 
     if (this.supabase && this.isConnectedToSupabase) {
       try {
-        await this.supabase.from('observations').insert([
+        const resObs = await this.supabase.from('observations').insert([
           {
             query_id_hex: newObs.query_id_hex,
             contributor_wallet: newObs.contributor_wallet,
@@ -367,11 +437,32 @@ class HybridStore {
           },
         ]);
 
+        if (resObs.error) {
+          await this.supabase.from('reports').insert([
+            {
+              bounty_id: newObs.query_id_hex,
+              photo_url: newObs.media_url,
+              fingerprint: newObs.sha256_hash,
+              reporter_wallet: newObs.contributor_wallet,
+              answer_text: newObs.ai_evaluation?.summary || 'Observed Ground Truth',
+              observed_at: newObs.client_timestamp,
+              gps_lat: newObs.observed_lat,
+              gps_lng: newObs.observed_lng,
+              gps_accuracy: 5.0,
+              media_type: 'image',
+            },
+          ]);
+        }
+
         if (parentQuery) {
           await this.supabase
             .from('queries')
             .update({ status: 'IN_REVIEW' })
             .eq('query_id_hex', parentQuery.query_id_hex);
+          await this.supabase
+            .from('bounties')
+            .update({ status: 'IN_REVIEW' })
+            .eq('id', parentQuery.id);
         }
       } catch (err) {
         console.warn('Supabase observation save warning:', err);
