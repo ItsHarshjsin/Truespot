@@ -13,8 +13,12 @@ import { computeHaversineDistance, buildQualityReport, evaluateEvidenceWithAI } 
 import { buildOpenAnswerPayload } from '../services/openApi';
 import { getQueryPDA, PROTOCOL_TREASURY } from '../solana/truespotProgram';
 
-const DEFAULT_SUPABASE_URL = (typeof import.meta !== 'undefined' && (import.meta as any).env?.VITE_SUPABASE_URL) || '';
-const DEFAULT_SUPABASE_ANON_KEY = (typeof import.meta !== 'undefined' && (import.meta as any).env?.VITE_SUPABASE_ANON_KEY) || '';
+const DEFAULT_SUPABASE_URL =
+  (typeof import.meta !== 'undefined' && (import.meta as any).env?.VITE_SUPABASE_URL) ||
+  'https://tiaaposvqjeukiclugmd.supabase.co';
+const DEFAULT_SUPABASE_ANON_KEY =
+  (typeof import.meta !== 'undefined' && (import.meta as any).env?.VITE_SUPABASE_ANON_KEY) ||
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRpYWFwb3N2cWpldWtpY2x1Z21kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTExODE3MjAsImV4cCI6MjEwNjc1NzcyMH0.0_kjoEI-oofHnevcVz82zbm4qPaVpL6vgsL6nVtPUwE';
 
 // Clean slate: Zero initial mock data across the protocol
 const DEFAULT_SEED_QUERIES: Query[] = [];
@@ -72,11 +76,13 @@ class HybridStore {
       const resQueries = await this.supabase.from('queries').select('id').limit(1);
       if (!resQueries.error) {
         this.isConnectedToSupabase = true;
+        this.notifyListeners();
         return true;
       }
       const resBounties = await this.supabase.from('bounties').select('id').limit(1);
       if (!resBounties.error) {
         this.isConnectedToSupabase = true;
+        this.notifyListeners();
         return true;
       }
       this.isConnectedToSupabase = false;
