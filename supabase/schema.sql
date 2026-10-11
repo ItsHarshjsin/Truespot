@@ -5,6 +5,11 @@
 
 CREATE EXTENSION IF NOT EXISTS postgis;
 
+-- PostGIS spatial reference system security hardening (resolves Supabase Security Advisor alert)
+ALTER TABLE IF EXISTS public.spatial_ref_sys ENABLE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "Allow public read on spatial_ref_sys" ON public.spatial_ref_sys;
+CREATE POLICY "Allow public read on spatial_ref_sys" ON public.spatial_ref_sys FOR SELECT USING (true);
+
 -- 1. QUERIES: Time-bounded, economically funded requests for physical ground truth (Maker Role)
 CREATE TABLE IF NOT EXISTS queries (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
