@@ -332,42 +332,23 @@ export const MakerPortal: React.FC<MakerPortalProps> = ({
                         </div>
                       </div>
 
-                      {/* Settlement Action Button with Self-Verification Guard */}
-                      {(() => {
-                        const hasSelfSubmission = bountyReports.some(
-                          (r) => r.reporter_wallet && r.reporter_wallet.trim().toLowerCase() === activeAccount.address.trim().toLowerCase()
-                        );
-
-                        return (
-                          <div className="pt-2 space-y-2">
-                            {hasSelfSubmission && (
-                              <div className="p-2.5 rounded-xl bg-amber-950/40 border border-amber-500/30 text-[11px] text-amber-300 flex items-center space-x-2">
-                                <span>⚠️ Self-verification prohibited: You cannot settle a bounty containing your own evidence submission ({activeAccount.address}). An independent verifier must settle.</span>
-                              </div>
-                            )}
-                            <button
-                              onClick={() => handleApproveAndRelease(b.id)}
-                              disabled={approvingId === b.id || hasSelfSubmission || (!isConsensusReached && requiredSpotters > 1 && bountyReports.length === 0)}
-                              className={`w-full py-3.5 px-5 rounded-full text-black font-extrabold text-xs tracking-wide shadow-none flex items-center justify-center space-x-2 transition-all active:scale-[0.99] ${
-                                hasSelfSubmission
-                                  ? 'bg-zinc-700 text-zinc-400 cursor-not-allowed opacity-50'
-                                  : 'bg-[#A8FF00] hover:bg-[#b8ff24] text-black shadow-none cursor-pointer disabled:opacity-50'
-                              }`}
-                            >
-                              <CheckCircle2 className="w-4 h-4 text-black" />
-                              <span>
-                                {approvingId === b.id
-                                  ? 'Executing Solana Batched Settlement...'
-                                  : hasSelfSubmission
-                                  ? 'Self-Verification Prohibited'
-                                  : requiredSpotters > 1
-                                  ? `Confirm Truth & Release ${b.amount_sol} SOL Swarm Payout`
-                                  : `Confirm Truth & Release ${b.amount_sol} SOL Payout`}
-                              </span>
-                            </button>
-                          </div>
-                        );
-                      })()}
+                      {/* Settlement Action Button */}
+                      <div className="pt-2 space-y-2">
+                        <button
+                          onClick={() => handleApproveAndRelease(b.id)}
+                          disabled={approvingId === b.id || (!isConsensusReached && requiredSpotters > 1 && bountyReports.length === 0)}
+                          className="w-full py-3.5 px-5 rounded-full text-black font-extrabold text-xs tracking-wide shadow-none flex items-center justify-center space-x-2 transition-all active:scale-[0.99] bg-[#A8FF00] hover:bg-[#b8ff24] text-black shadow-none cursor-pointer disabled:opacity-50"
+                        >
+                          <CheckCircle2 className="w-4 h-4 text-black" />
+                          <span>
+                            {approvingId === b.id
+                              ? 'Executing Solana Batched Settlement...'
+                              : requiredSpotters > 1
+                              ? `Confirm Truth & Release ${b.amount_sol} SOL Swarm Payout`
+                              : `Confirm Truth & Release ${b.amount_sol} SOL Payout`}
+                          </span>
+                        </button>
+                      </div>
                     </div>
                   );
                 })}

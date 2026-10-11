@@ -102,7 +102,14 @@ const AppContent: React.FC = () => {
   })();
 
   const [demoAccounts, setDemoAccounts] = useState<DemoAccount[]>(initialAccounts);
-  const [activeDemoAccount, setActiveDemoAccount] = useState<DemoAccount>(initialAccounts[0]);
+  const [activeDemoAccount, setActiveDemoAccount] = useState<DemoAccount>(() => {
+    const initialMode = typeof window !== 'undefined' ? localStorage.getItem('truespot_active_mode') : null;
+    const isSpotter = initialMode === 'spotter' || (typeof window !== 'undefined' && ['/nearby', '/radar', '/spotter', '/report', '/submissions', '/earnings', '/reputation'].includes(window.location.pathname));
+    if (isSpotter) {
+      return initialAccounts.find((a) => a.role === 'receiver' || a.role === 'spotter' || a.id === 'receiver') || initialAccounts[1] || initialAccounts[0];
+    }
+    return initialAccounts[0];
+  });
   const [isUsingDemo, setIsUsingDemo] = useState<boolean>(true);
 
   // Dynamic count of pending submissions for sidebar badge
@@ -142,17 +149,33 @@ const AppContent: React.FC = () => {
     else if (p === '/settings') setActiveTab('settings');
     else if (p === '/admin') setActiveTab('admin');
 
-    // Synchronize mode if user directly loads a role-specific route
+    // Synchronize mode and auto-shift active wallet if user directly loads a role-specific route
     const makerPaths = ['/studio', '/bounties', '/dashboard', '/maker', '/review', '/explorer', '/records', '/developers', '/analytics'];
     const spotterPaths = ['/nearby', '/radar', '/spotter', '/report', '/submissions', '/earnings', '/reputation'];
-    if (makerPaths.includes(p) && userMode !== 'maker') {
-      setUserMode('maker');
-      try { localStorage.setItem('truespot_active_mode', 'maker'); } catch (e) {}
-    } else if (spotterPaths.includes(p) && userMode !== 'spotter') {
-      setUserMode('spotter');
-      try { localStorage.setItem('truespot_active_mode', 'spotter'); } catch (e) {}
+    if (makerPaths.includes(p)) {
+      if (userMode !== 'maker') {
+        setUserMode('maker');
+        try { localStorage.setItem('truespot_active_mode', 'maker'); } catch (e) {}
+      }
+      if (isUsingDemo) {
+        const makerAcc = demoAccounts.find((a) => a.role === 'maker' || a.id === 'maker') || demoAccounts[0];
+        if (makerAcc && activeDemoAccount.id !== makerAcc.id) {
+          setActiveDemoAccount(makerAcc);
+        }
+      }
+    } else if (spotterPaths.includes(p)) {
+      if (userMode !== 'spotter') {
+        setUserMode('spotter');
+        try { localStorage.setItem('truespot_active_mode', 'spotter'); } catch (e) {}
+      }
+      if (isUsingDemo) {
+        const spotterAcc = demoAccounts.find((a) => a.role === 'receiver' || a.role === 'spotter' || a.id === 'receiver') || demoAccounts[1] || demoAccounts[0];
+        if (spotterAcc && activeDemoAccount.id !== spotterAcc.id) {
+          setActiveDemoAccount(spotterAcc);
+        }
+      }
     }
-  }, [location.pathname]);
+  }, [location.pathname, demoAccounts, isUsingDemo, activeDemoAccount.id, userMode]);
 
   // Toast Notifications State
   const [toasts, setToasts] = useState<ToastMessage[]>([]);
@@ -175,7 +198,7 @@ const AppContent: React.FC = () => {
 
   /**
    * Mode Switcher Handler:
-   * Instantly changes active workspace without disconnecting wallet or changing account.
+   * Instantly changes active workspace and automatically shifts active account to match role.
    * Persists active mode to localStorage.
    */
   const handleSelectUserMode = (mode: 'maker' | 'spotter', redirect = true) => {
@@ -184,10 +207,12 @@ const AppContent: React.FC = () => {
       localStorage.setItem('truespot_active_mode', mode);
     } catch (e) {}
 
-    // Match active demo account with role
+    // Auto-shift active demo account with role
     if (isUsingDemo) {
-      const targetRole = mode === 'maker' ? 'maker' : 'receiver';
-      const targetAcc = demoAccounts.find((a) => a.role === targetRole);
+      const targetAcc =
+        mode === 'maker'
+          ? demoAccounts.find((a) => a.role === 'maker' || a.id === 'maker') || demoAccounts[0]
+          : demoAccounts.find((a) => a.role === 'receiver' || a.role === 'spotter' || a.id === 'receiver') || demoAccounts[1];
       if (targetAcc) {
         setActiveDemoAccount(targetAcc);
       }

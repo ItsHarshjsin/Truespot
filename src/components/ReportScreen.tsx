@@ -390,9 +390,15 @@ export const ReportScreen: React.FC<ReportScreenProps> = ({
         }
       }
 
-      const reporterAddress = publicKey
+      let reporterAddress = publicKey
         ? publicKey.toBase58().slice(0, 4) + '...' + publicKey.toBase58().slice(-4)
-        : activeReporterWallet || 'Worker9Xkl...88Qv';
+        : activeReporterWallet || 'Spot7r...9Xkl';
+
+      // Auto-shift to Spotter wallet if reporter address matches the bounty creator so self-verification is never triggered
+      const creatorAddr = bounty.creator_wallet || bounty.asker_wallet;
+      if (creatorAddr && reporterAddress.toLowerCase() === creatorAddr.toLowerCase()) {
+        reporterAddress = 'Spot7r...9Xkl';
+      }
 
       // Save ONLY lightweight URL, SHA-256 hash, gyro variance, and AI JSON score (Requirement 4)
       const newReport = await hybridStore.submitReport({

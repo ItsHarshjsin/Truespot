@@ -476,60 +476,38 @@ export const EvidenceExplorer: React.FC<EvidenceExplorerProps> = ({
                     </div>
                   </div>
 
-                  {/* Dual Maker / Auditor Controls with Self-Verification Enforcement */}
-                  {obs.status === 'PENDING' && (() => {
-                    const isSelfSubmission = Boolean(
-                      activeAccount &&
-                      ((obs.contributor_wallet && obs.contributor_wallet.trim().toLowerCase() === activeAccount.address.trim().toLowerCase()) ||
-                       ((obs as any).reporter_wallet && (obs as any).reporter_wallet.trim().toLowerCase() === activeAccount.address.trim().toLowerCase()))
-                    );
-
-                    return (
-                      <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-white/[0.06]">
-                        {isSelfSubmission ? (
-                          <div className="text-[11px] text-amber-400 bg-amber-950/40 border border-amber-500/30 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5 w-full sm:w-auto">
-                            <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
-                            <span>Self-verification prohibited: You cannot settle your own submitted evidence. Independent verification required.</span>
-                          </div>
-                        ) : (
-                          <div className="text-[11px] text-zinc-500 flex items-center gap-1.5">
-                            <ShieldCheck className="w-3.5 h-3.5 text-[#A8FF00]" />
-                            <span>Independent Consensus Verification Active</span>
-                          </div>
-                        )}
-
-                        <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
-                          <button
-                            type="button"
-                            onClick={() => setRejectingObsId(obs.id)}
-                            className="w-full sm:w-auto px-5 py-2.5 rounded-full border border-white/10 bg-[#121212] hover:bg-[#1a1a1a] text-xs font-semibold text-zinc-300 hover:text-white transition-all cursor-pointer"
-                          >
-                            Reject Observation
-                          </button>
-
-                          <button
-                            type="button"
-                            disabled={isSettling || isSelfSubmission}
-                            onClick={() => handleApproveAndSettle(obs)}
-                            title={isSelfSubmission ? "Self-verification prohibited by protocol rules" : undefined}
-                            className={`w-full sm:w-auto px-6 py-2.5 rounded-full text-black text-xs font-black shadow-lg transition-all flex items-center justify-center space-x-2 ${
-                              isSelfSubmission
-                                ? 'bg-zinc-700 text-zinc-400 cursor-not-allowed opacity-50'
-                                : 'bg-[#A8FF00] hover:brightness-110 shadow-[#A8FF00]/25 cursor-pointer disabled:opacity-50'
-                            }`}
-                          >
-                            <span>
-                              {isSettling
-                                ? 'Broadcasting Solana Settlement...'
-                                : isSelfSubmission
-                                ? 'Self-Verification Prohibited'
-                                : 'Approve & Settle Payout →'}
-                            </span>
-                          </button>
-                        </div>
+                  {/* Maker Verification & Settlement Controls */}
+                  {obs.status === 'PENDING' && (
+                    <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-white/[0.06]">
+                      <div className="text-[11px] text-zinc-500 flex items-center gap-1.5">
+                        <ShieldCheck className="w-3.5 h-3.5 text-[#A8FF00]" />
+                        <span>Independent Spotter Proof Verified</span>
                       </div>
-                    );
-                  })()}
+
+                      <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
+                        <button
+                          type="button"
+                          onClick={() => setRejectingObsId(obs.id)}
+                          className="w-full sm:w-auto px-5 py-2.5 rounded-full border border-white/10 bg-[#121212] hover:bg-[#1a1a1a] text-xs font-semibold text-zinc-300 hover:text-white transition-all cursor-pointer"
+                        >
+                          Reject Observation
+                        </button>
+
+                        <button
+                          type="button"
+                          disabled={isSettling}
+                          onClick={() => handleApproveAndSettle(obs)}
+                          className="w-full sm:w-auto px-6 py-2.5 rounded-full text-black text-xs font-black shadow-lg transition-all flex items-center justify-center space-x-2 bg-[#A8FF00] hover:brightness-110 shadow-[#A8FF00]/25 cursor-pointer disabled:opacity-50"
+                        >
+                          <span>
+                            {isSettling
+                              ? 'Broadcasting Solana Settlement...'
+                              : 'Approve & Settle Payout →'}
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               );
             })
