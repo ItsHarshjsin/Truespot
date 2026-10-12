@@ -169,7 +169,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
 
   return (
     <div className="min-h-screen bg-[#050505] text-[#F5F5F5] font-sans selection:bg-[#A8FF00]/20 selection:text-[#A8FF00] overflow-x-hidden relative">
-      {/* Background Ambient Lighting (Obsidian + Neon Lime Precision) */}
+      {/* Background Ambient Glows */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[500px] bg-[#A8FF00]/[0.025] blur-[150px] rounded-full" />
         <div className="absolute top-[1600px] left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-[#A8FF00]/[0.015] blur-[160px] rounded-full" />
@@ -225,7 +225,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
           {/* Primary Action Button */}
           <button
             onClick={onLaunchProtocol}
-            className="px-5 py-2 rounded-full bg-[#A8FF00] hover:bg-[#b8ff24] text-black font-extrabold text-xs transition-all flex items-center space-x-1.5 shadow-[0_0_20px_rgba(168,255,0,0.25)] hover:shadow-[0_0_30px_rgba(168,255,0,0.4)] cursor-pointer"
+            className="h-9 px-5 rounded-full bg-[#A8FF00] hover:bg-[#b8ff24] text-black font-extrabold text-xs transition-all flex items-center space-x-1.5 shadow-[0_0_20px_rgba(168,255,0,0.25)] hover:shadow-[0_0_30px_rgba(168,255,0,0.4)] cursor-pointer"
           >
             <span>Launch App</span>
             <ArrowRight className="w-3.5 h-3.5 text-black" />
@@ -233,12 +233,12 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
         </div>
       </header>
 
-      {/* Main Container */}
-      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-14 pb-24 space-y-20 sm:space-y-28">
+      {/* Main Container with Structured Section Padding */}
+      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 pb-16">
         {/* ========================================================================= */}
-        {/* 1. THE HERO SECTION (Obsidian + Electric Lime Precision)                  */}
+        {/* 1. THE HERO SECTION                                                       */}
         {/* ========================================================================= */}
-        <section className="relative rounded-3xl overflow-hidden border border-white/[0.08] bg-gradient-to-b from-[#0B0B0B] via-[#080808] to-[#050505] p-8 sm:p-14 lg:p-20 shadow-2xl">
+        <section className="mb-10 sm:mb-12 relative rounded-3xl overflow-hidden border border-white/[0.08] bg-gradient-to-b from-[#0B0B0B] via-[#080808] to-[#050505] p-6 sm:p-10 lg:p-12 shadow-2xl text-center">
           {/* Subtle Grid Blueprint in Background */}
           <div className="absolute inset-0 pointer-events-none opacity-20">
             <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -251,15 +251,15 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
             </svg>
           </div>
 
-          <div className="relative z-10 max-w-4xl space-y-7">
+          <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
             {/* Eyebrow Badge */}
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#111111] border border-white/[0.08] text-[11px] font-mono text-zinc-300">
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#111111] border border-white/[0.08] text-[11px] font-mono text-zinc-300 mb-5">
               <span className="w-2 h-2 rounded-full bg-[#A8FF00] animate-pulse" />
               <span>Solana Devnet Cluster • Slot #{telemetrySlot.toLocaleString()}</span>
             </div>
 
             {/* Headline */}
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.05]">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.08] mb-5">
               Physical Ground Truth, <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-[#A8FF00]">
                 Attested On-Chain.
@@ -267,15 +267,15 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
             </h1>
 
             {/* Subtitle */}
-            <p className="text-base sm:text-lg text-zinc-400 max-w-2xl leading-relaxed">
+            <p className="text-base sm:text-lg text-zinc-400 max-w-2xl leading-relaxed mb-7">
               The decentralized physical oracle bringing hardware-attested sensor validation and multimodal AI consensus to smart contracts, prediction markets, and autonomous agents.
             </p>
 
             {/* Action Buttons */}
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 mb-8 w-full sm:w-auto">
               <button
                 onClick={onLaunchProtocol}
-                className="px-7 py-3 rounded-full bg-[#A8FF00] hover:bg-[#b8ff24] text-black font-extrabold text-xs flex items-center justify-center space-x-2 shadow-[0_0_25px_rgba(168,255,0,0.35)] transition-all cursor-pointer"
+                className="h-11 px-7 rounded-full bg-[#A8FF00] hover:bg-[#b8ff24] text-black font-extrabold text-xs flex items-center justify-center space-x-2 shadow-[0_0_25px_rgba(168,255,0,0.35)] transition-all cursor-pointer w-full sm:w-auto"
               >
                 <span>Launch Protocol</span>
                 <ArrowRight className="w-4 h-4 text-black" />
@@ -283,7 +283,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
 
               <button
                 onClick={onOpenDocs}
-                className="px-6 py-3 rounded-full bg-transparent hover:bg-white/[0.04] text-zinc-300 hover:text-white border border-white/[0.1] hover:border-white/20 text-xs font-semibold transition-all cursor-pointer flex items-center justify-center space-x-2"
+                className="h-11 px-6 rounded-full bg-transparent hover:bg-white/[0.04] text-zinc-300 hover:text-white border border-white/[0.1] hover:border-white/20 text-xs font-semibold transition-all cursor-pointer flex items-center justify-center space-x-2 w-full sm:w-auto"
               >
                 <span>Read Documentation</span>
                 <ArrowUpRight className="w-4 h-4 text-zinc-500" />
@@ -291,22 +291,22 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
             </div>
 
             {/* 4 Protocol Benchmark Parameters */}
-            <div className="pt-6 border-t border-white/[0.06] grid grid-cols-2 sm:grid-cols-4 gap-4 font-mono text-xs">
-              <div>
-                <span className="text-[10px] text-zinc-500 uppercase block font-bold">Devnet Finality</span>
-                <strong className="text-white text-sm mt-0.5 block">&lt; 400ms RPC</strong>
+            <div className="w-full pt-6 border-t border-white/[0.08] grid grid-cols-2 sm:grid-cols-4 gap-6 font-mono text-xs">
+              <div className="text-center">
+                <span className="text-[10px] text-zinc-500 uppercase block font-bold mb-1">Devnet Finality</span>
+                <strong className="text-white text-sm font-semibold">&lt; 400ms RPC</strong>
               </div>
-              <div>
-                <span className="text-[10px] text-zinc-500 uppercase block font-bold">Geofence Radius</span>
-                <strong className="text-white text-sm mt-0.5 block">200 Meters</strong>
+              <div className="text-center">
+                <span className="text-[10px] text-zinc-500 uppercase block font-bold mb-1">Geofence Radius</span>
+                <strong className="text-white text-sm font-semibold">200 Meters</strong>
               </div>
-              <div>
-                <span className="text-[10px] text-zinc-500 uppercase block font-bold">Vision Consensus</span>
-                <strong className="text-[#A8FF00] text-sm mt-0.5 block">Gemini 2.5</strong>
+              <div className="text-center">
+                <span className="text-[10px] text-zinc-500 uppercase block font-bold mb-1">Vision Consensus</span>
+                <strong className="text-[#A8FF00] text-sm font-semibold">Gemini 2.5</strong>
               </div>
-              <div>
-                <span className="text-[10px] text-zinc-500 uppercase block font-bold">Escrow Split</span>
-                <strong className="text-[#A8FF00] text-sm mt-0.5 block">97.5% / 2.5%</strong>
+              <div className="text-center">
+                <span className="text-[10px] text-zinc-500 uppercase block font-bold mb-1">Escrow Split</span>
+                <strong className="text-[#A8FF00] text-sm font-semibold">97.5% / 2.5%</strong>
               </div>
             </div>
           </div>
@@ -315,12 +315,25 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
         {/* ========================================================================= */}
         {/* 2. 4 ARCHITECTURAL PILLARS (Clean, Balanced Minimalist Grid)              */}
         {/* ========================================================================= */}
-        <section id="platform" className="border-t border-b border-white/[0.08] py-14">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-white/[0.08]">
+        <section id="platform" className="py-10 sm:py-12 border-t border-white/[0.08]">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-9">
+            <div className="inline-flex items-center space-x-2 text-[10px] font-mono font-bold text-[#A8FF00] uppercase tracking-wider mb-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#A8FF00]" />
+              <span>Core Architecture</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+              Engineered for Physical Certainty
+            </h2>
+            <p className="text-xs text-zinc-400 mt-2">
+              Four cryptographic pillars bridging off-chain reality with Solana smart contracts.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* 1. Speed */}
-            <div className="px-6 py-6 sm:py-0 space-y-3.5">
-              <div className="h-14 flex items-center">
-                <svg viewBox="0 0 100 100" className="w-12 h-12 stroke-white/80 fill-none" strokeWidth="1.5">
+            <div className="space-y-2.5 text-center flex flex-col items-center p-5 rounded-2xl bg-[#090909] border border-white/[0.06] hover:border-white/[0.12] transition-colors">
+              <div className="h-12 flex items-center justify-center">
+                <svg viewBox="0 0 100 100" className="w-11 h-11 stroke-white/80 fill-none" strokeWidth="1.5">
                   <circle cx="20" cy="50" r="3" fill="white" />
                   <line x1="20" y1="50" x2="80" y2="20" strokeDasharray="3 3" />
                   <line x1="20" y1="50" x2="85" y2="40" />
@@ -333,20 +346,20 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                 </svg>
               </div>
               <div>
-                <h3 className="text-lg font-bold text-white tracking-tight">Speed</h3>
+                <h3 className="text-base font-bold text-white tracking-tight">Speed</h3>
                 <span className="text-xs font-mono font-semibold text-[#A8FF00] block mt-0.5">
                   &lt;400ms RPC Finality
                 </span>
               </div>
-              <p className="text-xs text-zinc-400 leading-relaxed">
+              <p className="text-xs text-zinc-400 leading-relaxed max-w-xs">
                 Deploy physical verification queries in seconds with immediate decentralized dispatch to nearby spotters.
               </p>
             </div>
 
             {/* 2. Scale */}
-            <div className="px-6 py-6 sm:py-0 space-y-3.5">
-              <div className="h-14 flex items-center">
-                <svg viewBox="0 0 100 100" className="w-12 h-12 stroke-white/80 fill-none" strokeWidth="1.5">
+            <div className="space-y-2.5 text-center flex flex-col items-center p-5 rounded-2xl bg-[#090909] border border-white/[0.06] hover:border-white/[0.12] transition-colors">
+              <div className="h-12 flex items-center justify-center">
+                <svg viewBox="0 0 100 100" className="w-11 h-11 stroke-white/80 fill-none" strokeWidth="1.5">
                   <ellipse cx="50" cy="30" rx="35" ry="12" />
                   <ellipse cx="50" cy="50" rx="24" ry="8" strokeDasharray="3 3" />
                   <ellipse cx="50" cy="70" rx="14" ry="5" />
@@ -356,20 +369,20 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                 </svg>
               </div>
               <div>
-                <h3 className="text-lg font-bold text-white tracking-tight">Scale</h3>
+                <h3 className="text-base font-bold text-white tracking-tight">Scale</h3>
                 <span className="text-xs font-mono font-semibold text-[#A8FF00] block mt-0.5">
                   200m Micro-Perimeter
                 </span>
               </div>
-              <p className="text-xs text-zinc-400 leading-relaxed">
+              <p className="text-xs text-zinc-400 leading-relaxed max-w-xs">
                 Mathematical Haversine boundary filtering coordinates anywhere on the globe with sub-meter precision.
               </p>
             </div>
 
             {/* 3. Trust */}
-            <div className="px-6 py-6 sm:py-0 space-y-3.5">
-              <div className="h-14 flex items-center">
-                <svg viewBox="0 0 100 100" className="w-12 h-12 stroke-white/80 fill-none" strokeWidth="1.5">
+            <div className="space-y-2.5 text-center flex flex-col items-center p-5 rounded-2xl bg-[#090909] border border-white/[0.06] hover:border-white/[0.12] transition-colors">
+              <div className="h-12 flex items-center justify-center">
+                <svg viewBox="0 0 100 100" className="w-11 h-11 stroke-white/80 fill-none" strokeWidth="1.5">
                   <polygon points="50,15 85,35 85,75 50,95 15,75 15,35" />
                   <line x1="50" y1="55" x2="50" y2="95" />
                   <line x1="50" y1="55" x2="15" y2="35" />
@@ -378,33 +391,33 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                 </svg>
               </div>
               <div>
-                <h3 className="text-lg font-bold text-white tracking-tight">Trust</h3>
+                <h3 className="text-base font-bold text-white tracking-tight">Trust</h3>
                 <span className="text-xs font-mono font-semibold text-[#A8FF00] block mt-0.5">
                   98.4% AI Consensus
                 </span>
               </div>
-              <p className="text-xs text-zinc-400 leading-relaxed">
-                Multimodal Gemini vision pipeline validating photographic evidence against query semantics and eliminating hallucinations.
+              <p className="text-xs text-zinc-400 leading-relaxed max-w-xs">
+                Multimodal Gemini vision pipeline validating photographic evidence against query semantics.
               </p>
             </div>
 
             {/* 4. Outcomes */}
-            <div className="px-6 py-6 sm:py-0 space-y-3.5">
-              <div className="h-14 flex items-center">
-                <svg viewBox="0 0 100 100" className="w-12 h-12 stroke-white/80 fill-none" strokeWidth="1.5">
+            <div className="space-y-2.5 text-center flex flex-col items-center p-5 rounded-2xl bg-[#090909] border border-white/[0.06] hover:border-white/[0.12] transition-colors">
+              <div className="h-12 flex items-center justify-center">
+                <svg viewBox="0 0 100 100" className="w-11 h-11 stroke-white/80 fill-none" strokeWidth="1.5">
                   <circle cx="50" cy="50" r="18" />
                   <ellipse cx="50" cy="50" rx="38" ry="14" transform="rotate(-30 50 50)" strokeDasharray="3 3" />
                   <ellipse cx="50" cy="50" rx="38" ry="14" transform="rotate(30 50 50)" />
                 </svg>
               </div>
               <div>
-                <h3 className="text-lg font-bold text-white tracking-tight">Outcomes</h3>
+                <h3 className="text-base font-bold text-white tracking-tight">Outcomes</h3>
                 <span className="text-xs font-mono font-semibold text-[#A8FF00] block mt-0.5">
                   Instant Settlement
                 </span>
               </div>
-              <p className="text-xs text-zinc-400 leading-relaxed">
-                Autonomous Anchor PDA vaults releasing 97.5% SOL bounties instantly upon consensus without escrow friction.
+              <p className="text-xs text-zinc-400 leading-relaxed max-w-xs">
+                Autonomous Anchor PDA vaults releasing 97.5% SOL bounties instantly upon consensus without friction.
               </p>
             </div>
           </div>
@@ -413,40 +426,42 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
         {/* ========================================================================= */}
         {/* 3. ICONIC TRANSITION STATEMENT BANNER                                     */}
         {/* ========================================================================= */}
-        <section className="relative rounded-3xl bg-[#090909] border border-white/[0.08] py-14 sm:py-20 px-6 sm:px-12 text-center overflow-hidden shadow-xl">
-          <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-15">
-            <svg width="600" height="300" viewBox="0 0 600 300" fill="none">
-              <circle cx="300" cy="150" r="140" stroke="#A8FF00" strokeWidth="1" strokeDasharray="4 4" />
-              <circle cx="300" cy="150" r="90" stroke="white" strokeWidth="1" />
-              <path d="M 120 150 Q 300 40 480 150" stroke="white" strokeWidth="1" fill="none" />
-              <path d="M 120 150 Q 300 260 480 150" stroke="white" strokeWidth="1" fill="none" />
-            </svg>
-          </div>
+        <section className="py-10 sm:py-12 border-t border-white/[0.08]">
+          <div className="relative rounded-2xl bg-[#090909] border border-white/[0.08] py-8 sm:py-10 px-6 sm:px-10 text-center overflow-hidden shadow-xl">
+            <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-15">
+              <svg width="600" height="300" viewBox="0 0 600 300" fill="none">
+                <circle cx="300" cy="150" r="140" stroke="#A8FF00" strokeWidth="1" strokeDasharray="4 4" />
+                <circle cx="300" cy="150" r="90" stroke="white" strokeWidth="1" />
+                <path d="M 120 150 Q 300 40 480 150" stroke="white" strokeWidth="1" fill="none" />
+                <path d="M 120 150 Q 300 260 480 150" stroke="white" strokeWidth="1" fill="none" />
+              </svg>
+            </div>
 
-          <div className="relative z-10 max-w-3xl mx-auto space-y-3">
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
-              Smart contracts break at the physical edge.
-            </h2>
-            <p className="text-xl sm:text-3xl font-extrabold text-[#A8FF00] leading-tight">
-              Physical reality requires hardware-attested truth.
-            </p>
+            <div className="relative z-10 max-w-3xl mx-auto space-y-2">
+              <h2 className="text-xl sm:text-3xl font-black text-white tracking-tight leading-tight">
+                Smart contracts break at the physical edge.
+              </h2>
+              <p className="text-lg sm:text-2xl font-extrabold text-[#A8FF00] leading-tight">
+                Physical reality requires hardware-attested truth.
+              </p>
+            </div>
           </div>
         </section>
 
         {/* ========================================================================= */}
-        {/* 4. THE INTERACTIVE REALITY SIMULATOR (Polished, Balanced, No Bulk)        */}
+        {/* 4. THE INTERACTIVE REALITY SIMULATOR                                      */}
         {/* ========================================================================= */}
-        <section id="simulator" className="space-y-6">
-          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
-            <div>
-              <span className="text-[10px] font-mono font-bold text-[#A8FF00] uppercase tracking-widest block">
-                INTERACTIVE ATTESTATION ENGINE
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight mt-1">
-                Reality Verification Simulator
-              </h2>
+        <section id="simulator" className="py-10 sm:py-12 border-t border-white/[0.08]">
+          {/* Centered Section Header */}
+          <div className="text-center max-w-2xl mx-auto mb-7 sm:mb-8">
+            <div className="inline-flex items-center space-x-2 text-[10px] font-mono font-bold text-[#A8FF00] uppercase tracking-wider mb-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#A8FF00]" />
+              <span>Interactive Attestation Engine</span>
             </div>
-            <p className="text-xs text-zinc-400 max-w-md font-mono">
+            <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+              Reality Verification Simulator
+            </h2>
+            <p className="text-xs text-zinc-400 mt-2 font-mono">
               Click any verification pillar on the right to inspect real-time cryptographic attestation telemetry.
             </p>
           </div>
@@ -454,7 +469,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
           {/* Simulator Container */}
           <div className="rounded-2xl bg-[#090909] border border-white/[0.08] p-6 sm:p-8 shadow-2xl relative overflow-hidden">
             {/* Top Multi-Stage Indicator */}
-            <div className="w-full bg-[#141414] h-1.5 rounded-full overflow-hidden mb-7">
+            <div className="w-full bg-[#141414] h-1.5 rounded-full overflow-hidden mb-8">
               <div
                 className="h-full bg-gradient-to-r from-white via-[#A8FF00] to-emerald-400 transition-all duration-500 rounded-full"
                 style={{
@@ -476,7 +491,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
               {/* Left Column: Visual Holographic Wireframe Engine */}
               <div className="lg:col-span-6 bg-[#050505] border border-white/[0.06] rounded-xl p-6 flex flex-col items-center justify-between min-h-[340px]">
                 {/* 3D Wireframe Cube with Radar Attestation */}
-                <div className="relative w-48 h-48 flex items-center justify-center my-auto">
+                <div className="relative w-44 h-44 flex items-center justify-center my-auto">
                   <svg viewBox="0 0 200 200" className="w-full h-full stroke-white/40 fill-none" strokeWidth="1.2">
                     {/* Isometric Cube Edges */}
                     <polygon points="100,30 165,65 165,135 100,170 35,135 35,65" />
@@ -501,22 +516,19 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                   {/* Dynamic Glowing Accent Inside Cube */}
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <svg viewBox="0 0 200 200" className="w-full h-full">
-                      {/* Sensor Polygon 1 */}
                       <polygon
                         points="95,85 110,80 115,115 100,120"
                         fill="#A8FF00"
                         className="animate-pulse opacity-85"
                       />
-                      {/* Sensor Polygon 2 */}
                       <polygon points="65,95 78,90 73,110 60,115" fill="#ffffff" className="opacity-75" />
-                      {/* Sensor Polygon 3 */}
                       <polygon points="130,85 145,95 138,115 125,105" fill="#A8FF00" className="opacity-80" />
                     </svg>
                   </div>
                 </div>
 
                 {/* Telemetry Output Bar */}
-                <div className="w-full bg-[#0E0E0E] border border-white/[0.05] rounded-lg p-3 font-mono text-xs space-y-1">
+                <div className="w-full bg-[#0E0E0E] border border-white/[0.05] rounded-lg p-3 font-mono text-xs space-y-1 mt-4">
                   {activeSimulatorTab === 'truth' && (
                     <div className="flex items-center justify-between">
                       <span className="text-zinc-400">Observed Reality:</span>
@@ -567,7 +579,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                 >
                   <div className="flex items-center space-x-3">
                     <CheckCircle2
-                      className={`w-4 h-4 ${
+                      className={`w-4 h-4 shrink-0 ${
                         activeSimulatorTab === 'truth' ? 'text-[#A8FF00]' : 'text-zinc-500'
                       }`}
                     />
@@ -589,7 +601,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                 >
                   <div className="flex items-center space-x-3">
                     <Shield
-                      className={`w-4 h-4 ${
+                      className={`w-4 h-4 shrink-0 ${
                         activeSimulatorTab === 'hardware' ? 'text-[#A8FF00]' : 'text-zinc-500'
                       }`}
                     />
@@ -611,7 +623,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                 >
                   <div className="flex items-center space-x-3">
                     <Flag
-                      className={`w-4 h-4 ${
+                      className={`w-4 h-4 shrink-0 ${
                         activeSimulatorTab === 'risk' ? 'text-[#A8FF00]' : 'text-zinc-500'
                       }`}
                     />
@@ -633,7 +645,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                 >
                   <div className="flex items-center space-x-3">
                     <Coins
-                      className={`w-4 h-4 ${
+                      className={`w-4 h-4 shrink-0 ${
                         activeSimulatorTab === 'escrow' ? 'text-[#A8FF00]' : 'text-zinc-500'
                       }`}
                     />
@@ -655,7 +667,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                 >
                   <div className="flex items-center space-x-3">
                     <Sparkles
-                      className={`w-4 h-4 ${
+                      className={`w-4 h-4 shrink-0 ${
                         activeSimulatorTab === 'agent' ? 'text-[#A8FF00]' : 'text-zinc-500'
                       }`}
                     />
@@ -672,28 +684,28 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
         </section>
 
         {/* ========================================================================= */}
-        {/* 5. BLUEPRINT AUTOMATION & GUARDRAILS (Fixing Screenshot 2!)               */}
+        {/* 5. BLUEPRINT AUTOMATION & GUARDRAILS                                      */}
         {/* ========================================================================= */}
-        <section id="automation" className="space-y-6">
-          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
-            <div>
-              <span className="text-[10px] font-mono font-bold text-[#A8FF00] uppercase tracking-widest block">
-                PROTOCOL ACTIONS &amp; GUARDRAILS
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight mt-1">
-                Deterministic Execution Blueprint
-              </h2>
+        <section id="automation" className="py-10 sm:py-12 border-t border-white/[0.08]">
+          {/* Centered Section Header */}
+          <div className="text-center max-w-2xl mx-auto mb-7 sm:mb-8">
+            <div className="inline-flex items-center space-x-2 text-[10px] font-mono font-bold text-[#A8FF00] uppercase tracking-wider mb-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#A8FF00]" />
+              <span>Protocol Actions &amp; Guardrails</span>
             </div>
-            <p className="text-xs text-zinc-400 max-w-md font-mono">
+            <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+              Deterministic Execution Blueprint
+            </h2>
+            <p className="text-xs text-zinc-400 mt-2 font-mono">
               Predefined smart contract rules that release non-custodial SOL bounties upon verified consensus.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
             {/* Card Left: Automation Table */}
-            <div className="rounded-2xl bg-[#090909] border border-white/[0.08] p-6 flex flex-col justify-between space-y-5">
-              <div className="space-y-4">
-                <div className="flex items-center justify-between border-b border-white/[0.06] pb-3">
+            <div className="rounded-2xl bg-[#090909] border border-white/[0.08] p-6 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between border-b border-white/[0.06] pb-3 mb-4">
                   <div className="flex items-center space-x-2 font-mono text-xs text-white font-bold">
                     <Activity className="w-4 h-4 text-[#A8FF00]" />
                     <span>Active Consensus Rules</span>
@@ -733,16 +745,16 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-white/[0.05] flex items-center justify-between font-mono text-[11px]">
+              <div className="pt-4 border-t border-white/[0.06] mt-4 flex items-center justify-between font-mono text-[11px]">
                 <span className="text-zinc-500">Settlement Vaults: Anchor Program PDA</span>
-                <span className="text-[#A8FF00]">97.5% Contributor Release</span>
+                <span className="text-[#A8FF00] font-semibold">97.5% Contributor Release</span>
               </div>
             </div>
 
             {/* Card Right: Action Stack */}
-            <div className="rounded-2xl bg-[#090909] border border-white/[0.08] p-6 flex flex-col justify-between space-y-5">
-              <div className="space-y-4">
-                <div className="flex items-center justify-between border-b border-white/[0.06] pb-3">
+            <div className="rounded-2xl bg-[#090909] border border-white/[0.08] p-6 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between border-b border-white/[0.06] pb-3 mb-4">
                   <div className="flex items-center space-x-2 font-mono text-xs text-white font-bold">
                     <Shield className="w-4 h-4 text-[#A8FF00]" />
                     <span>Cryptographic Guardrails</span>
@@ -770,7 +782,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-white/[0.05] flex items-center justify-between font-mono text-[11px]">
+              <div className="pt-4 border-t border-white/[0.06] mt-4 flex items-center justify-between font-mono text-[11px]">
                 <span className="text-zinc-500">Pipeline State:</span>
                 <span className="text-[#A8FF00] font-bold">
                   {actionStatus ? `✓ ${actionStatus}` : 'Consensus Pipeline Ready'}
@@ -783,19 +795,19 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
         {/* ========================================================================= */}
         {/* 6. SIDE-BY-SIDE REALITY COMPARISON                                        */}
         {/* ========================================================================= */}
-        <section id="comparison" className="space-y-6">
-          <div className="text-center max-w-2xl mx-auto">
-            <span className="text-[10px] font-mono font-bold text-[#A8FF00] uppercase tracking-widest block">
+        <section id="comparison" className="py-10 sm:py-12 border-t border-white/[0.08]">
+          <div className="text-center max-w-2xl mx-auto mb-7 sm:mb-8">
+            <span className="text-[10px] font-mono font-bold text-[#A8FF00] uppercase tracking-widest block mb-1">
               SECURITY AUDIT
             </span>
-            <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight mt-1">
+            <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
               Smart Contracts Are Blind to Reality
             </h2>
             <p className="text-xs text-zinc-400 mt-2">
               Toggle below to inspect the difference between blind execution and TrueSpot attestation.
             </p>
 
-            <div className="mt-5 inline-flex items-center p-1 rounded-full bg-[#0E0E0E] border border-white/[0.08]">
+            <div className="mt-4 inline-flex items-center p-1 rounded-full bg-[#0E0E0E] border border-white/[0.08]">
               <button
                 onClick={() => setIsVerified(false)}
                 className={`px-4 py-1.5 rounded-full text-xs font-mono font-bold transition-all cursor-pointer ${
@@ -826,7 +838,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                 : 'bg-[#070707] border-red-500/20'
             }`}
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
               {/* Left Column: Settlement Outcome */}
               <div className="bg-[#050505] p-5 rounded-xl border border-white/[0.06] space-y-3">
                 <div className="flex items-center justify-between text-xs font-mono">
@@ -866,7 +878,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                       </div>
                       <div className="flex items-center space-x-2 text-zinc-400">
                         <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0" />
-                        <span>Vulnerable to spoofed GPS, synthetic deepfakes, and dishonest claims</span>
+                        <span>Vulnerable to spoofed GPS, synthetic deepfakes, and claims</span>
                       </div>
                       <div className="flex items-center space-x-2 text-zinc-400">
                         <AlertTriangle className="w-4 h-4 text-red-400 shrink-0" />
@@ -943,31 +955,31 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
         </section>
 
         {/* ========================================================================= */}
-        {/* 7. DEVELOPER QUICKSTART HUB (Complete, Compact & Clean)                    */}
+        {/* 7. DEVELOPER QUICKSTART HUB                                               */}
         {/* ========================================================================= */}
-        <section id="developers" className="space-y-6">
+        <section id="developers" className="py-10 sm:py-12 border-t border-white/[0.08]">
+          <div className="text-center max-w-2xl mx-auto mb-7 sm:mb-8">
+            <span className="text-[10px] font-mono font-bold text-[#A8FF00] uppercase tracking-widest block mb-1">
+              DEVELOPER INTEGRATION
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+              Integrate Physical Ground Truth in 3 Lines
+            </h2>
+            <p className="text-xs text-zinc-400 mt-2">
+              Connect your AI agents or Solana programs to physical reality with our lightweight TypeScript SDK or composable Anchor CPI instructions.
+            </p>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Left Column: SDK Pitch */}
+            {/* Left Column: SDK Pitch & Setup */}
             <div className="lg:col-span-5 space-y-4">
-              <span className="text-[10px] font-mono font-bold text-[#A8FF00] uppercase tracking-widest block">
-                DEVELOPER INTEGRATION
-              </span>
-
-              <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-                Integrate Physical Ground Truth in 3 Lines
-              </h2>
-
-              <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed">
-                Connect your AI agents or Solana programs to physical reality with our lightweight TypeScript SDK or composable Anchor CPI instructions.
-              </p>
-
               {/* Install Bar */}
-              <div className="bg-[#090909] border border-white/[0.08] rounded-xl p-2.5 flex items-center justify-between font-mono text-xs text-zinc-300">
-                <span className="text-[#A8FF00]">$ npm i @truespot/sdk</span>
+              <div className="bg-[#090909] border border-white/[0.08] rounded-xl p-3 flex items-center justify-between font-mono text-xs text-zinc-300">
+                <span className="text-[#A8FF00] font-semibold">$ npm i @truespot/sdk</span>
                 <span className="text-[10px] text-zinc-500">v2.1.0</span>
               </div>
 
-              <div className="space-y-2 font-mono text-xs text-zinc-300 pt-1">
+              <div className="space-y-2.5 font-mono text-xs text-zinc-300 pt-1">
                 <div className="flex items-center space-x-2">
                   <CheckCheck className="w-3.5 h-3.5 text-[#A8FF00]" />
                   <span>Lightweight TypeScript SDK (`@truespot/sdk`)</span>
@@ -1063,7 +1075,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
         {/* ========================================================================= */}
         {/* 8. MINIMALIST FOOTER                                                      */}
         {/* ========================================================================= */}
-        <footer className="pt-12 border-t border-white/[0.08]">
+        <footer className="pt-8 sm:pt-10 border-t border-white/[0.08]">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
             <div
               className="flex items-center space-x-3 cursor-pointer group"
