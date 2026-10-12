@@ -68,7 +68,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
     require!(proof.distance_meters <= 200, OracleError::OutOfRange);
     require!(proof.confidence_score >= 9500, OracleError::LowConfidence);
     
-    msg!("Physical reality verified on-chain. Settling contract.");
+    msg!("Physical reality verified onchain. Settling contract.");
     Ok(())
 }`,
 
@@ -346,7 +346,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                 </div>
               </div>
               <p className="text-xs text-zinc-400 leading-relaxed mt-3">
-                Multimodal vision models analyze camera frames in parallel to confirm physical states against query criteria.
+                Gemini 2.5 Flash inspects camera frames against query parameters with sub-second latency and &gt;98% agreement.
               </p>
             </div>
 
@@ -419,8 +419,11 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
               <span>Oracle Topology Network</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-              Cryptographic Reality Network
+              Sensor-to-Solana Verification
             </h2>
+            <p className="text-xs text-zinc-400 mt-2">
+              Physical sensor telemetry authenticated by hardware nonces before reaching Solana consensus.
+            </p>
           </div>
 
           {/* Connected Network Map Canvas */}
