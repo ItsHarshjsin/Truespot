@@ -332,7 +332,7 @@ export const ReputationScreen: React.FC<ReputationScreenProps> = ({
               className="py-2 px-3.5 rounded-full bg-[#161616] hover:bg-[#202020] border border-white/10 text-xs font-semibold text-zinc-300 hover:text-white transition-all cursor-pointer flex items-center space-x-1.5"
             >
               <Compass className="w-3.5 h-3.5 text-[#A8FF00]" />
-              <span>Explore 200m Radar</span>
+              <span>Explore Nearby Radar</span>
             </button>
             <button
               onClick={() => {
