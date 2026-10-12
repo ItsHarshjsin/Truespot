@@ -77,7 +77,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({
       icon: ShieldCheck,
       activePaths: ['/review', '/explorer'],
       hasBadge: unverifiedCount > 0,
-      badgeText: unverifiedCount > 0 ? '1 PENDING' : undefined,
+      badgeText: unverifiedCount > 0 ? `${unverifiedCount} PENDING` : undefined,
     },
     {
       id: 'records',

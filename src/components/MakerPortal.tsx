@@ -69,10 +69,24 @@ export const MakerPortal: React.FC<MakerPortalProps> = ({
     return () => unsub();
   }, []);
 
-  // Bounties awaiting approval: either marked ANSWERED, or has incoming reports and status is OPEN
-  const pendingApprovalBounties = bounties.filter(
-    (b) => b.status === 'ANSWERED' || (b.status === 'OPEN' && reports.some((r) => r.bounty_id === b.id))
-  );
+  const isReportRejected = (r: Report) => {
+    const txt = (r.answer_text || '').toUpperCase();
+    return (
+      r.status === 'REJECTED' ||
+      txt.includes('REJECTED') ||
+      txt.includes('BLUR') ||
+      txt.includes('SPOOF') ||
+      txt.includes('IRRELEVANT') ||
+      Boolean(r.photo_url && (r.photo_url.includes('spoof') || r.photo_url.includes('blurry')))
+    );
+  };
+
+  // Bounties awaiting approval: only bounties with valid, non-rejected incoming reports
+  const pendingApprovalBounties = bounties.filter((b) => {
+    if (b.status === 'PAID' || b.status === 'RESOLVED' || b.status === 'CANCELLED') return false;
+    const bReports = reports.filter((r) => r.bounty_id === b.id && !isReportRejected(r) && r.status !== 'ACCEPTED');
+    return bReports.length > 0;
+  });
 
   const totalEscrowLocked = bounties
     .filter((b) => b.status === 'OPEN' || b.status === 'ANSWERED')
@@ -178,7 +192,7 @@ export const MakerPortal: React.FC<MakerPortalProps> = ({
                 </h2>
               </div>
               <span className="text-[11px] text-[#A8FF00] font-semibold bg-[#101010] px-3 py-1 rounded-full border border-white/[0.07]">
-                Multi-Agent Solana Settlement
+                {pendingApprovalBounties.length} ready for payout
               </span>
             </div>
 
@@ -191,8 +205,8 @@ export const MakerPortal: React.FC<MakerPortalProps> = ({
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {pendingApprovalBounties.map((b) => {
-                  // Group incoming attestations by Bounty ID (Requirement 5)
-                  const bountyReports = reports.filter((r) => r.bounty_id === b.id);
+                  // Group incoming non-rejected attestations by Bounty ID (Requirement 5)
+                  const bountyReports = reports.filter((r) => r.bounty_id === b.id && !isReportRejected(r));
                   const requiredSpotters = b.max_spotters || 1;
                   const isConsensusReached = bountyReports.length >= requiredSpotters;
                   const progressRatio = Math.min(bountyReports.length / requiredSpotters, 1);
@@ -321,7 +335,7 @@ export const MakerPortal: React.FC<MakerPortalProps> = ({
                               )}
 
                               <div className="text-[10px] font-mono text-zinc-400 space-y-0.5">
-                                <div>Answer: <strong className="text-[#A8FF00] font-sans">{report.answer_text}</strong></div>
+                                <div>Answer: <strong className={isReportRejected(report) ? 'text-[#FF0055] font-sans' : 'text-[#A8FF00] font-sans'}>{report.answer_text}</strong></div>
                                 <div>GPS: {report.gps_lat.toFixed(4)}, {report.gps_lng.toFixed(4)} (±{report.gps_accuracy || 3}m)</div>
                                 <div>Tremor: {report.gyro_variance || 0.046}g • Nonce: {report.blockhash_stamp?.slice(0, 10) || 'Devnet'}</div>
                                 <div className="truncate text-zinc-500">SHA-256: {report.fingerprint}</div>

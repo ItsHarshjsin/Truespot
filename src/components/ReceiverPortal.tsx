@@ -10,6 +10,7 @@ import {
   Camera,
   Coins,
   CheckCircle2,
+  XCircle,
   ShieldCheck,
   FileCheck2,
   Clock,
@@ -35,7 +36,7 @@ export const ReceiverPortal: React.FC<ReceiverPortalProps> = ({
 }) => {
   const navigate = useNavigate();
   const [subTab, setSubTab] = useState<'radar' | 'report' | 'earnings' | 'submissions'>(initialSubTab || 'radar');
-  const [submissionsFilter, setSubmissionsFilter] = useState<'all' | 'pending' | 'paid'>('all');
+  const [submissionsFilter, setSubmissionsFilter] = useState<'all' | 'pending' | 'paid' | 'rejected'>('all');
 
   useEffect(() => {
     if (initialSubTab) {
@@ -46,6 +47,18 @@ export const ReceiverPortal: React.FC<ReceiverPortalProps> = ({
   const [selectedBountyId, setSelectedBountyId] = useState<string | undefined>(undefined);
   const [reports, setReports] = useState<Report[]>([]);
   const [bounties, setBounties] = useState<Bounty[]>([]);
+
+  const isReportRejected = (r: Report) => {
+    const txt = (r.answer_text || '').toUpperCase();
+    return (
+      r.status === 'REJECTED' ||
+      txt.includes('REJECTED') ||
+      txt.includes('BLUR') ||
+      txt.includes('SPOOF') ||
+      txt.includes('IRRELEVANT') ||
+      Boolean(r.photo_url && (r.photo_url.includes('spoof') || r.photo_url.includes('blurry')))
+    );
+  };
 
   const loadData = async () => {
     try {
@@ -72,8 +85,11 @@ export const ReceiverPortal: React.FC<ReceiverPortalProps> = ({
 
   const filteredReports = reports.filter((r) => {
     const targetBounty = bounties.find((b) => b.id === r.bounty_id);
-    if (submissionsFilter === 'paid') return targetBounty?.status === 'PAID' || r.status === 'ACCEPTED';
-    if (submissionsFilter === 'pending') return targetBounty?.status !== 'PAID' && r.status !== 'ACCEPTED';
+    const isRej = isReportRejected(r);
+    const isPaid = !isRej && (targetBounty?.status === 'PAID' || r.status === 'ACCEPTED');
+    if (submissionsFilter === 'paid') return isPaid;
+    if (submissionsFilter === 'pending') return !isPaid && !isRej;
+    if (submissionsFilter === 'rejected') return isRej;
     return true;
   });
 
@@ -133,11 +149,11 @@ export const ReceiverPortal: React.FC<ReceiverPortalProps> = ({
               </div>
 
               {/* Filter Tabs */}
-              <div className="flex items-center bg-[#121212] p-1 rounded-full border border-white/[0.06] space-x-1 text-xs">
+              <div className="flex items-center bg-[#121212] p-1 rounded-full border border-white/[0.06] space-x-1 text-xs overflow-x-auto">
                 <button
                   type="button"
                   onClick={() => setSubmissionsFilter('all')}
-                  className={`px-3 py-1 rounded-full font-semibold transition-colors cursor-pointer ${submissionsFilter === 'all' ? 'bg-[#A8FF00] text-black font-bold' : 'text-zinc-400 hover:text-white'
+                  className={`px-3 py-1 rounded-full font-semibold transition-colors cursor-pointer whitespace-nowrap ${submissionsFilter === 'all' ? 'bg-[#A8FF00] text-black font-bold' : 'text-zinc-400 hover:text-white'
                     }`}
                 >
                   All ({reports.length})
@@ -145,18 +161,26 @@ export const ReceiverPortal: React.FC<ReceiverPortalProps> = ({
                 <button
                   type="button"
                   onClick={() => setSubmissionsFilter('pending')}
-                  className={`px-3 py-1 rounded-full font-semibold transition-colors cursor-pointer ${submissionsFilter === 'pending' ? 'bg-[#A8FF00] text-black font-bold' : 'text-zinc-400 hover:text-white'
+                  className={`px-3 py-1 rounded-full font-semibold transition-colors cursor-pointer whitespace-nowrap ${submissionsFilter === 'pending' ? 'bg-[#A8FF00] text-black font-bold' : 'text-zinc-400 hover:text-white'
                     }`}
                 >
-                  Pending ({reports.filter((r) => bounties.find((b) => b.id === r.bounty_id)?.status !== 'PAID').length})
+                  Pending ({reports.filter((r) => !isReportRejected(r) && r.status !== 'ACCEPTED' && bounties.find((b) => b.id === r.bounty_id)?.status !== 'PAID').length})
                 </button>
                 <button
                   type="button"
                   onClick={() => setSubmissionsFilter('paid')}
-                  className={`px-3 py-1 rounded-full font-semibold transition-colors cursor-pointer ${submissionsFilter === 'paid' ? 'bg-[#A8FF00] text-black font-bold' : 'text-zinc-400 hover:text-white'
+                  className={`px-3 py-1 rounded-full font-semibold transition-colors cursor-pointer whitespace-nowrap ${submissionsFilter === 'paid' ? 'bg-[#A8FF00] text-black font-bold' : 'text-zinc-400 hover:text-white'
                     }`}
                 >
-                  Paid & Settled ({reports.filter((r) => bounties.find((b) => b.id === r.bounty_id)?.status === 'PAID').length})
+                  Paid & Settled ({reports.filter((r) => !isReportRejected(r) && (r.status === 'ACCEPTED' || bounties.find((b) => b.id === r.bounty_id)?.status === 'PAID')).length})
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSubmissionsFilter('rejected')}
+                  className={`px-3 py-1 rounded-full font-semibold transition-colors cursor-pointer whitespace-nowrap ${submissionsFilter === 'rejected' ? 'bg-[#FF0055] text-white font-bold' : 'text-zinc-400 hover:text-white'
+                    }`}
+                >
+                  Rejected ({reports.filter((r) => isReportRejected(r)).length})
                 </button>
               </div>
             </div>
@@ -182,7 +206,8 @@ export const ReceiverPortal: React.FC<ReceiverPortalProps> = ({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {filteredReports.map((report) => {
                   const targetBounty = bounties.find((b) => b.id === report.bounty_id);
-                  const isPaid = targetBounty?.status === 'PAID' || report.status === 'ACCEPTED';
+                  const isRej = isReportRejected(report);
+                  const isPaid = !isRej && (targetBounty?.status === 'PAID' || report.status === 'ACCEPTED');
 
                   return (
                     <div
@@ -213,7 +238,7 @@ export const ReceiverPortal: React.FC<ReceiverPortalProps> = ({
                         )}
 
                         <div className="text-[11px] font-mono space-y-1 bg-[#050505] p-2.5 rounded-xl border border-white/[0.05] text-[#858585]">
-                          <div>Answer: <strong className="text-[#A8FF00]">{report.answer_text}</strong></div>
+                          <div>Answer: <strong className={isRej ? "text-[#FF0055]" : "text-[#A8FF00]"}>{report.answer_text}</strong></div>
                           <div className="truncate">SHA-256: {report.fingerprint}</div>
                           <div>GPS Fix: {report.gps_lat.toFixed(4)}, {report.gps_lng.toFixed(4)} (±{report.gps_accuracy || 3}m)</div>
                           <div>Biometric Tremor: {report.gyro_variance || 0.046}g</div>
@@ -225,19 +250,22 @@ export const ReceiverPortal: React.FC<ReceiverPortalProps> = ({
                         <span className="text-[#858585]">
                           {new Date(report.observed_at).toLocaleString([], { dateStyle: 'short', timeStyle: 'short' })}
                         </span>
-                        <span className={`font-bold flex items-center space-x-1 ${isPaid ? 'text-[#A8FF00]' : 'text-amber-400'}`}>
-                          {isPaid ? (
-                            <>
-                              <CheckCircle2 className="w-3.5 h-3.5 text-[#A8FF00]" />
-                              <span>Paid & Settled ✓</span>
-                            </>
-                          ) : (
-                            <>
-                              <Clock className="w-3.5 h-3.5 text-amber-400" />
-                              <span>Pending Independent Review</span>
-                            </>
-                          )}
-                        </span>
+                        {isRej ? (
+                          <span className="font-bold flex items-center space-x-1 text-[#FF0055]">
+                            <XCircle className="w-3.5 h-3.5 text-[#FF0055]" />
+                            <span>Rejected by Oracle</span>
+                          </span>
+                        ) : isPaid ? (
+                          <span className="font-bold flex items-center space-x-1 text-[#A8FF00]">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-[#A8FF00]" />
+                            <span>Paid & Settled ✓</span>
+                          </span>
+                        ) : (
+                          <span className="font-bold flex items-center space-x-1 text-amber-400">
+                            <Clock className="w-3.5 h-3.5 text-amber-400" />
+                            <span>Pending Independent Review</span>
+                          </span>
+                        )}
                       </div>
                     </div>
                   );
@@ -268,7 +296,7 @@ export const ReceiverPortal: React.FC<ReceiverPortalProps> = ({
             <div className="bg-[#0B0B0B] border border-white/[0.07] rounded-[18px] p-4 text-center shadow-lg">
               <span className="text-[10px] font-semibold text-[#858585] uppercase tracking-wider block">Pending Review</span>
               <span className="text-xl sm:text-2xl font-extrabold text-amber-400 font-mono">
-                {reports.filter((r) => bounties.find((b) => b.id === r.bounty_id)?.status !== 'PAID').length}
+                {reports.filter((r) => !isReportRejected(r) && r.status !== 'ACCEPTED' && bounties.find((b) => b.id === r.bounty_id)?.status !== 'PAID').length}
               </span>
             </div>
           </div>

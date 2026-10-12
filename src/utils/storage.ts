@@ -944,7 +944,12 @@ class HybridStore {
           const valid = repRes.data.filter((r: any) => r.answer_text !== 'EXPIRED');
           data = valid.map((r: any) => {
             const answerUpper = (r.answer_text || '').toUpperCase();
+            const rejectedIdsStr = typeof window !== 'undefined' ? localStorage.getItem('truespot_rejected_ids') : null;
+            const rejectedIds: string[] = rejectedIdsStr ? JSON.parse(rejectedIdsStr) : [];
+            const isPersistedRejected = rejectedIds.includes(r.id) || rejectedIds.includes(r.bounty_id) || rejectedIds.includes(r.query_id_hex);
+
             const isRejected =
+              isPersistedRejected ||
               r.status === 'REJECTED' ||
               answerUpper.includes('REJECTED') ||
               answerUpper.includes('BLUR') ||
@@ -1261,25 +1266,55 @@ class HybridStore {
    * Sets observation to REJECTED with reason, resets query to OPEN if no other pending observations
    */
   public async rejectObservation(observationId: string, reason: string): Promise<void> {
-    const obs = this.observations.find((o) => o.id === observationId);
-    if (!obs) throw new Error('Observation not found');
+    const obs = this.observations.find((o) => o.id === observationId || o.query_id_hex === observationId);
+    if (obs) {
+      obs.status = 'REJECTED';
+      obs.rejection_reason = reason;
+      if (obs.ai_evaluation) {
+        obs.ai_evaluation.verified = false;
+        obs.ai_evaluation.summary = `Rejected: ${reason}`;
+      }
+    }
 
-    obs.status = 'REJECTED';
-    obs.rejection_reason = reason;
+    // Also update matching reports in this.reports
+    this.reports.forEach((r) => {
+      if (
+        r.id === observationId ||
+        r.bounty_id === observationId ||
+        (obs && (r.bounty_id === obs.query_id_hex || (r as any).query_id_hex === obs.query_id_hex || r.id === obs.id))
+      ) {
+        r.status = 'REJECTED';
+        r.answer_text = `REJECTED: ${reason}`;
+      }
+    });
+
+    // Save locally rejected ID so it NEVER reverts to PENDING
+    try {
+      const rejectedIdsStr = typeof window !== 'undefined' ? localStorage.getItem('truespot_rejected_ids') || '[]' : '[]';
+      const rejectedIds: string[] = JSON.parse(rejectedIdsStr);
+      if (!rejectedIds.includes(observationId)) rejectedIds.push(observationId);
+      if (obs && !rejectedIds.includes(obs.id)) rejectedIds.push(obs.id);
+      if (obs && !rejectedIds.includes(obs.query_id_hex)) rejectedIds.push(obs.query_id_hex);
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('truespot_rejected_ids', JSON.stringify(rejectedIds));
+      }
+    } catch (e) {}
 
     const remainingPending = this.observations.filter(
       (o) =>
+        obs &&
         (o.query_id_hex === obs.query_id_hex || (o as any).bounty_id === (obs as any).bounty_id) &&
-        o.id !== observationId &&
+        o.id !== (obs ? obs.id : observationId) &&
         o.status === 'PENDING'
     );
 
     const query = this.queries.find(
       (q) =>
-        q.query_id_hex === obs.query_id_hex ||
-        q.id === obs.query_id_hex ||
-        q.id === (obs as any).bounty_id ||
-        q.query_id_hex === (obs as any).bounty_id
+        obs &&
+        (q.query_id_hex === obs.query_id_hex ||
+          q.id === obs.query_id_hex ||
+          q.id === (obs as any).bounty_id ||
+          q.query_id_hex === (obs as any).bounty_id)
     );
     if (query && remainingPending.length === 0 && (query.status === 'IN_REVIEW' || (query as any).status === 'ANSWERED')) {
       query.status = 'OPEN';
@@ -1289,12 +1324,16 @@ class HybridStore {
     this.persist();
     this.notifyListeners();
 
-    if (this.supabase && this.isConnectedToSupabase) {
+    if (this.supabase && this.isConnectedToSupabase && obs) {
       try {
         await this.supabase
           .from('observations')
           .update({ status: 'REJECTED' })
           .eq('id', obs.id);
+        await this.supabase
+          .from('reports')
+          .update({ status: 'REJECTED', answer_text: `REJECTED: ${reason}` })
+          .or(`id.eq.${obs.id},bounty_id.eq.${obs.query_id_hex}`);
         if (query && remainingPending.length === 0) {
           await this.supabase
             .from('queries')
@@ -1500,7 +1539,12 @@ class HybridStore {
           );
           remoteReports = validReports.map((d: any) => {
             const answerUpper = (d.answer_text || '').toUpperCase();
+            const rejectedIdsStr = typeof window !== 'undefined' ? localStorage.getItem('truespot_rejected_ids') : null;
+            const rejectedIds: string[] = rejectedIdsStr ? JSON.parse(rejectedIdsStr) : [];
+            const isPersistedRejected = rejectedIds.includes(d.id) || rejectedIds.includes(d.bounty_id) || rejectedIds.includes(d.query_id_hex);
+
             const isRejected =
+              isPersistedRejected ||
               d.status === 'REJECTED' ||
               answerUpper.includes('REJECTED') ||
               answerUpper.includes('BLUR') ||
