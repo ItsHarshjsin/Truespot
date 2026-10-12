@@ -231,4 +231,19 @@
   animation: dash-stream 1.5s linear infinite;
 }
 
+/* Rotating Radar Sweep Pulse */
+@keyframes radar-sweep {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-radar-sweep {
+  transform-origin: 400px 230px;
+  animation: radar-sweep 10s linear infinite;
+}
+
 

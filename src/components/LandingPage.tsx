@@ -507,56 +507,56 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                   <path d="M 517 230 h 6 M 520 227 v 6" />
                 </g>
 
-                {/* Low-Opacity Ghost Satellite & Telemetry Nodes */}
-                {/* Ghost Satellite 1: GNSS */}
-                <circle cx="105" cy="215" r="2.5" fill="#A8FF00" fillOpacity="0.4" />
-                <circle cx="105" cy="215" r="5" stroke="#A8FF00" strokeOpacity="0.2" fill="none" />
-                <text x="115" y="218" fill="rgba(255,255,255,0.22)" fontSize="7.5" fontFamily="monospace">GNSS_SAT #32 (L1/L5) // 0.8m ACC</text>
+                {/* Rotating Geodetic Radar Sweep Arc */}
+                <circle cx="400" cy="230" r="195" fill="none" stroke="#A8FF00" strokeWidth="1.2" strokeOpacity="0.35" strokeDasharray="35 420" className="animate-radar-sweep" />
 
-                {/* Ghost Node 2: Solana RPC Devnet */}
-                <circle cx="690" cy="215" r="2.5" fill="#38bdf8" fillOpacity="0.4" />
-                <circle cx="690" cy="215" r="5" stroke="#38bdf8" strokeOpacity="0.2" fill="none" />
-                <text x="590" y="218" fill="rgba(255,255,255,0.22)" fontSize="7.5" fontFamily="monospace">SOLANA_RPC // 394ms</text>
-
-                {/* Ghost Node 3: SGX Enclave */}
-                <circle cx="310" cy="65" r="2" fill="#c084fc" fillOpacity="0.35" />
-                <text x="320" y="68" fill="rgba(255,255,255,0.2)" fontSize="7.5" fontFamily="monospace">SGX_ENCLAVE // NONCE #9102</text>
-
-                {/* Ghost Node 4: Escrow Vault PDA */}
-                <circle cx="490" cy="395" r="2" fill="#34d399" fillOpacity="0.35" />
-                <text x="500" y="398" fill="rgba(255,255,255,0.2)" fontSize="7.5" fontFamily="monospace">ESCROW_PDA // V2_ANCHOR</text>
-
-                {/* Active Connection Streams (Base static line + Animated pulse flow) */}
-                {/* Path 1: Top-Left (210, 95) -> Center (400, 230) */}
-                <line x1="210" y1="95" x2="400" y2="230" stroke="rgba(168,255,0,0.15)" strokeWidth="1" />
-                <line x1="210" y1="95" x2="400" y2="230" stroke="#A8FF00" strokeWidth="1.5" strokeOpacity="0.65" className="animate-dash-stream" />
-
-                {/* Path 2: Top-Right (590, 95) -> Center (400, 230) */}
-                <line x1="590" y1="95" x2="400" y2="230" stroke="rgba(168,255,0,0.15)" strokeWidth="1" />
-                <line x1="590" y1="95" x2="400" y2="230" stroke="#A8FF00" strokeWidth="1.5" strokeOpacity="0.65" className="animate-dash-stream" />
-
-                {/* Path 3: Bottom-Left (210, 365) -> Center (400, 230) */}
-                <line x1="210" y1="365" x2="400" y2="230" stroke="rgba(168,255,0,0.15)" strokeWidth="1" />
-                <line x1="210" y1="365" x2="400" y2="230" stroke="#A8FF00" strokeWidth="1.5" strokeOpacity="0.65" className="animate-dash-stream" />
-
-                {/* Path 4: Bottom-Right (590, 365) -> Center (400, 230) */}
-                <line x1="590" y1="365" x2="400" y2="230" stroke="rgba(168,255,0,0.15)" strokeWidth="1" />
-                <line x1="590" y1="365" x2="400" y2="230" stroke="#A8FF00" strokeWidth="1.5" strokeOpacity="0.65" className="animate-dash-stream" />
-
-                {/* Glowing Node Anchors */}
-                <g fill="#A8FF00">
-                  <circle cx="210" cy="95" r="3.5" fillOpacity="0.9" />
-                  <circle cx="210" cy="95" r="7" stroke="#A8FF00" strokeOpacity="0.3" fill="none" />
-
-                  <circle cx="590" cy="95" r="3.5" fillOpacity="0.9" />
-                  <circle cx="590" cy="95" r="7" stroke="#A8FF00" strokeOpacity="0.3" fill="none" />
-
-                  <circle cx="210" cy="365" r="3.5" fillOpacity="0.9" />
-                  <circle cx="210" cy="365" r="7" stroke="#A8FF00" strokeOpacity="0.3" fill="none" />
-
-                  <circle cx="590" cy="365" r="3.5" fillOpacity="0.9" />
-                  <circle cx="590" cy="365" r="7" stroke="#A8FF00" strokeOpacity="0.3" fill="none" />
+                {/* Micro Coordinate Dots on Radar Rings */}
+                <g fill="rgba(255,255,255,0.22)">
+                  <circle cx="400" cy="35" r="1.5" />
+                  <circle cx="400" cy="425" r="1.5" />
+                  <circle cx="205" cy="230" r="1.5" />
+                  <circle cx="595" cy="230" r="1.5" />
+                  <circle cx="262" cy="92" r="1.5" />
+                  <circle cx="538" cy="92" r="1.5" />
+                  <circle cx="262" cy="368" r="1.5" />
+                  <circle cx="538" cy="368" r="1.5" />
                 </g>
+
+                {/* Low-Opacity Ghost Satellite & Telemetry Nodes (Positioned with clear negative space) */}
+                {/* Ghost Satellite 1: GNSS (Above center-left) */}
+                <circle cx="115" cy="185" r="2.5" fill="#A8FF00" fillOpacity="0.4" />
+                <circle cx="115" cy="185" r="5" stroke="#A8FF00" strokeOpacity="0.2" fill="none" />
+                <text x="125" y="188" fill="rgba(255,255,255,0.22)" fontSize="7.5" fontFamily="monospace">GNSS_L1/L5 // SAT_32 [0.8m ACC]</text>
+
+                {/* Ghost Node 2: Solana RPC Devnet (Above center-right) */}
+                <circle cx="685" cy="185" r="2.5" fill="#38bdf8" fillOpacity="0.4" />
+                <circle cx="685" cy="185" r="5" stroke="#38bdf8" strokeOpacity="0.2" fill="none" />
+                <text x="600" y="188" fill="rgba(255,255,255,0.22)" fontSize="7.5" fontFamily="monospace">SOLANA_DEVNET // 394ms</text>
+
+                {/* Ghost Node 3: SGX Enclave (Top-center) */}
+                <circle cx="275" cy="50" r="2" fill="#c084fc" fillOpacity="0.35" />
+                <text x="285" y="53" fill="rgba(255,255,255,0.2)" fontSize="7.5" fontFamily="monospace">SGX_ENCLAVE // NONCE #9102</text>
+
+                {/* Ghost Node 4: Escrow Vault PDA (Bottom-center) */}
+                <circle cx="535" cy="425" r="2" fill="#34d399" fillOpacity="0.35" />
+                <text x="440" y="428" fill="rgba(255,255,255,0.2)" fontSize="7.5" fontFamily="monospace">ESCROW_PDA // V2_ANCHOR</text>
+
+                {/* Active Connection Streams (Seamlessly emerge from behind corner cards into center hub) */}
+                {/* Path 1: Top-Left Card -> Center */}
+                <line x1="140" y1="80" x2="400" y2="230" stroke="rgba(168,255,0,0.15)" strokeWidth="1" />
+                <line x1="140" y1="80" x2="400" y2="230" stroke="#A8FF00" strokeWidth="1.5" strokeOpacity="0.65" className="animate-dash-stream" />
+
+                {/* Path 2: Top-Right Card -> Center */}
+                <line x1="660" y1="80" x2="400" y2="230" stroke="rgba(168,255,0,0.15)" strokeWidth="1" />
+                <line x1="660" y1="80" x2="400" y2="230" stroke="#A8FF00" strokeWidth="1.5" strokeOpacity="0.65" className="animate-dash-stream" />
+
+                {/* Path 3: Bottom-Left Card -> Center */}
+                <line x1="140" y1="380" x2="400" y2="230" stroke="rgba(168,255,0,0.15)" strokeWidth="1" />
+                <line x1="140" y1="380" x2="400" y2="230" stroke="#A8FF00" strokeWidth="1.5" strokeOpacity="0.65" className="animate-dash-stream" />
+
+                {/* Path 4: Bottom-Right Card -> Center */}
+                <line x1="660" y1="380" x2="400" y2="230" stroke="rgba(168,255,0,0.15)" strokeWidth="1" />
+                <line x1="660" y1="380" x2="400" y2="230" stroke="#A8FF00" strokeWidth="1.5" strokeOpacity="0.65" className="animate-dash-stream" />
               </svg>
 
               {/* Central Physical POI Headline Pill (Oracle Center) */}
