@@ -89,15 +89,15 @@ const AppContent: React.FC = () => {
   // Dynamic Demo Accounts & Wallet State (persisted to localStorage)
   const initialAccounts: DemoAccount[] = (() => {
     if (typeof window !== 'undefined') {
-      const version = localStorage.getItem('truespot_version');
-      if (version === 'v2.1.0') {
+      try {
         const saved = localStorage.getItem('truespot_demo_accounts');
         if (saved) {
-          try {
-            return JSON.parse(saved);
-          } catch (e) {}
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length > 0 && parsed[0]?.address) {
+            return parsed;
+          }
         }
-      }
+      } catch (e) {}
     }
     return DEMO_ACCOUNTS;
   })();
@@ -107,9 +107,9 @@ const AppContent: React.FC = () => {
     const initialMode = typeof window !== 'undefined' ? localStorage.getItem('truespot_active_mode') : null;
     const isSpotter = initialMode === 'spotter' || (typeof window !== 'undefined' && ['/nearby', '/radar', '/spotter', '/report', '/submissions', '/earnings', '/reputation'].includes(window.location.pathname));
     if (isSpotter) {
-      return initialAccounts.find((a) => a.role === 'receiver' || a.role === 'spotter' || a.id === 'receiver') || initialAccounts[1] || initialAccounts[0];
+      return initialAccounts.find((a) => a.role === 'receiver' || a.role === 'spotter' || a.id === 'receiver') || initialAccounts[1] || initialAccounts[0] || DEMO_ACCOUNTS[0];
     }
-    return initialAccounts[0];
+    return initialAccounts[0] || DEMO_ACCOUNTS[0];
   });
   const [isUsingDemo, setIsUsingDemo] = useState<boolean>(true);
 
@@ -308,9 +308,17 @@ const AppContent: React.FC = () => {
   // Geolocation state
   const savedCoordsStr =
     typeof window !== 'undefined' ? localStorage.getItem('truespot_locked_coords') : null;
-  const initialCoords: Coordinates = savedCoordsStr
-    ? JSON.parse(savedCoordsStr)
-    : { lat: 37.7785, lng: -122.3999, accuracy: 5.0 };
+  const initialCoords: Coordinates = (() => {
+    if (savedCoordsStr) {
+      try {
+        const parsed = JSON.parse(savedCoordsStr);
+        if (parsed && typeof parsed.lat === 'number' && typeof parsed.lng === 'number') {
+          return parsed;
+        }
+      } catch (e) {}
+    }
+    return { lat: 37.7785, lng: -122.3999, accuracy: 5.0 };
+  })();
 
   const [currentCoords, setCurrentCoords] = useState<Coordinates>(initialCoords);
   const [locationName, setLocationName] = useState<string>(

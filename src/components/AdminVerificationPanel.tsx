@@ -291,7 +291,13 @@ export const AdminVerificationPanel: React.FC = () => {
           } else {
             // Check active demo persona
             const saved = localStorage.getItem('truespot_demo_accounts');
-            const parsed = saved ? JSON.parse(saved) : [];
+            let parsed: any[] = [];
+            if (saved) {
+              try {
+                const res = JSON.parse(saved);
+                if (Array.isArray(res)) parsed = res;
+              } catch (e) {}
+            }
             const active = parsed[0] || { name: 'Demo Spotter', balanceSol: 3.45 };
             updateDiag('sol_balance', {
               status: 'PASS',

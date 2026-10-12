@@ -25,6 +25,18 @@ const _now = Date.now();
 const _oneHour = 3600 * 1000;
 const _oneDay = 24 * _oneHour;
 
+function safeGetRejectedIds(): string[] {
+  if (typeof window === 'undefined') return [];
+  try {
+    const raw = localStorage.getItem('truespot_rejected_ids');
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (e) {
+    return [];
+  }
+}
+
 const DEFAULT_SEED_QUERIES: Query[] = [
   {
     id: 'b1111111-0001-4000-8000-000000000001',
@@ -641,14 +653,23 @@ class HybridStore {
         return;
       }
 
-      const savedQueries = localStorage.getItem('truespot_queries_v2');
+      const savedQueries = typeof window !== 'undefined' ? localStorage.getItem('truespot_queries_v2') : null;
       if (savedQueries) {
-        this.queries = JSON.parse(savedQueries).filter(
-          (q: any) =>
-            q.id !== '1f24e92f-6bde-4fe5-87d9-0e47ad1ac949' &&
-            !q.question?.toLowerCase().includes('coffee line') &&
-            !q.place_name?.toLowerCase().includes('coffee & beverage counter')
-        );
+        try {
+          const parsed = JSON.parse(savedQueries);
+          if (Array.isArray(parsed)) {
+            this.queries = parsed.filter(
+              (q: any) =>
+                q.id !== '1f24e92f-6bde-4fe5-87d9-0e47ad1ac949' &&
+                !q.question?.toLowerCase().includes('coffee line') &&
+                !q.place_name?.toLowerCase().includes('coffee & beverage counter')
+            );
+          } else {
+            this.queries = [];
+          }
+        } catch (e) {
+          this.queries = [];
+        }
       } else {
         this.queries = [];
       }
@@ -657,16 +678,26 @@ class HybridStore {
         this.queries = [...DEFAULT_SEED_QUERIES];
       }
 
-      const savedObs = localStorage.getItem('truespot_observations_v2');
+      const savedObs = typeof window !== 'undefined' ? localStorage.getItem('truespot_observations_v2') : null;
       if (savedObs) {
-        this.observations = JSON.parse(savedObs);
+        try {
+          const parsed = JSON.parse(savedObs);
+          this.observations = Array.isArray(parsed) ? parsed : [];
+        } catch (e) {
+          this.observations = [];
+        }
       } else {
         this.observations = [];
       }
 
-      const savedAnswers = localStorage.getItem('truespot_published_answers_v2');
+      const savedAnswers = typeof window !== 'undefined' ? localStorage.getItem('truespot_published_answers_v2') : null;
       if (savedAnswers) {
-        this.publishedAnswers = JSON.parse(savedAnswers);
+        try {
+          const parsed = JSON.parse(savedAnswers);
+          this.publishedAnswers = Array.isArray(parsed) ? parsed : [];
+        } catch (e) {
+          this.publishedAnswers = [];
+        }
       } else {
         this.publishedAnswers = [];
       }
@@ -944,8 +975,7 @@ class HybridStore {
           const valid = repRes.data.filter((r: any) => r.answer_text !== 'EXPIRED');
           data = valid.map((r: any) => {
             const answerUpper = (r.answer_text || '').toUpperCase();
-            const rejectedIdsStr = typeof window !== 'undefined' ? localStorage.getItem('truespot_rejected_ids') : null;
-            const rejectedIds: string[] = rejectedIdsStr ? JSON.parse(rejectedIdsStr) : [];
+            const rejectedIds = safeGetRejectedIds();
             const isPersistedRejected = rejectedIds.includes(r.id) || rejectedIds.includes(r.bounty_id) || rejectedIds.includes(r.query_id_hex);
 
             const isRejected =
@@ -1290,8 +1320,7 @@ class HybridStore {
 
     // Save locally rejected ID so it NEVER reverts to PENDING
     try {
-      const rejectedIdsStr = typeof window !== 'undefined' ? localStorage.getItem('truespot_rejected_ids') || '[]' : '[]';
-      const rejectedIds: string[] = JSON.parse(rejectedIdsStr);
+      const rejectedIds = safeGetRejectedIds();
       if (!rejectedIds.includes(observationId)) rejectedIds.push(observationId);
       if (obs && !rejectedIds.includes(obs.id)) rejectedIds.push(obs.id);
       if (obs && !rejectedIds.includes(obs.query_id_hex)) rejectedIds.push(obs.query_id_hex);
@@ -1539,8 +1568,7 @@ class HybridStore {
           );
           remoteReports = validReports.map((d: any) => {
             const answerUpper = (d.answer_text || '').toUpperCase();
-            const rejectedIdsStr = typeof window !== 'undefined' ? localStorage.getItem('truespot_rejected_ids') : null;
-            const rejectedIds: string[] = rejectedIdsStr ? JSON.parse(rejectedIdsStr) : [];
+            const rejectedIds = safeGetRejectedIds();
             const isPersistedRejected = rejectedIds.includes(d.id) || rejectedIds.includes(d.bounty_id) || rejectedIds.includes(d.query_id_hex);
 
             const isRejected =
