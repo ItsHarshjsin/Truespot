@@ -119,7 +119,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
       </div>
 
       {/* Floating Sticky Header Capsule (Cyera-Inspired) */}
-      <header className="fixed top-3.5 sm:top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-1.5rem)] sm:w-[calc(100%-3rem)] max-w-7xl h-14 rounded-full bg-[#0A0A0A]/90 backdrop-blur-2xl border border-white/[0.12] shadow-[0_12px_40px_rgba(0,0,0,0.75)] px-4 sm:px-6 flex items-center justify-between transition-all">
+      <header className="fixed top-3.5 sm:top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2.5rem)] sm:w-[calc(100%-4rem)] lg:w-[calc(100%-5rem)] max-w-5xl h-14 rounded-full bg-[#0A0A0A]/90 backdrop-blur-2xl border border-white/[0.12] shadow-[0_12px_40px_rgba(0,0,0,0.75)] px-4 sm:px-7 flex items-center justify-between transition-all">
         {/* Brand Logo */}
         <div
           className="flex items-center space-x-2.5 cursor-pointer group shrink-0"
@@ -176,7 +176,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
       </header>
 
       {/* Main Container with Structured Section Padding (Offset for Floating Header) */}
-      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-0">
+      <main className="relative z-10 max-w-5xl mx-auto px-5 sm:px-8 lg:px-10 pt-20 sm:pt-24 pb-0">
         {/* ========================================================================= */}
         {/* 1. THE HERO SECTION                                                       */}
         {/* ========================================================================= */}
@@ -926,31 +926,28 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                 <div className="flex items-center space-x-1.5 pl-2">
                   <button
                     onClick={() => setActiveCodeTab('sdk')}
-                    className={`px-3 py-1 rounded-md text-xs font-mono transition-colors cursor-pointer ${
-                      activeCodeTab === 'sdk'
+                    className={`px-3 py-1 rounded-md text-xs font-mono transition-colors cursor-pointer ${activeCodeTab === 'sdk'
                         ? 'bg-[#1C1C1C] text-white font-bold border border-white/10'
                         : 'text-zinc-400 hover:text-white'
-                    }`}
+                      }`}
                   >
                     TypeScript SDK
                   </button>
                   <button
                     onClick={() => setActiveCodeTab('rust')}
-                    className={`px-3 py-1 rounded-md text-xs font-mono transition-colors cursor-pointer ${
-                      activeCodeTab === 'rust'
+                    className={`px-3 py-1 rounded-md text-xs font-mono transition-colors cursor-pointer ${activeCodeTab === 'rust'
                         ? 'bg-[#1C1C1C] text-white font-bold border border-white/10'
                         : 'text-zinc-400 hover:text-white'
-                    }`}
+                      }`}
                   >
                     Anchor CPI (Rust)
                   </button>
                   <button
                     onClick={() => setActiveCodeTab('rest')}
-                    className={`px-3 py-1 rounded-md text-xs font-mono transition-colors cursor-pointer ${
-                      activeCodeTab === 'rest'
+                    className={`px-3 py-1 rounded-md text-xs font-mono transition-colors cursor-pointer ${activeCodeTab === 'rest'
                         ? 'bg-[#1C1C1C] text-white font-bold border border-white/10'
                         : 'text-zinc-400 hover:text-white'
-                    }`}
+                      }`}
                   >
                     REST API v2
                   </button>
@@ -1021,7 +1018,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
       {/* ========================================================================= */}
       {/* 8 & 9. CONNECTED LIVE TELEMETRY & ENTERPRISE FOOTER                       */}
       {/* ========================================================================= */}
-      <footer className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 mt-10 sm:mt-12 pt-8 sm:pt-9 pb-5 sm:pb-6 border-t border-white/[0.08]">
+      <footer className="relative z-10 max-w-5xl mx-auto px-5 sm:px-8 lg:px-10 mt-10 sm:mt-12 pt-8 sm:pt-9 pb-5 sm:pb-6 border-t border-white/[0.08]">
         {/* Integrated Live Telemetry Card (Seamless Connection) */}
         <div className="mb-7 sm:mb-8 rounded-2xl bg-[#090909] border border-white/[0.08] p-3.5 sm:p-5 overflow-hidden shadow-xl">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-3 px-1">
