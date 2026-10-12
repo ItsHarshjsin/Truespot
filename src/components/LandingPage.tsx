@@ -41,82 +41,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({
   onOpenDocs,
 }) => {
   // -------------------------------------------------------------
-  // SIMULATOR INTERACTIVE STATE (Map / Dynamic Sensor Visualizer)
-  // -------------------------------------------------------------
-  const [activeSimulatorTab, setActiveSimulatorTab] = useState<
-    'truth' | 'hardware' | 'risk' | 'escrow' | 'agent'
-  >('truth');
-
-  // -------------------------------------------------------------
-  // BLUEPRINT PIPELINE EXECUTION STATE
-  // -------------------------------------------------------------
-  const [selectedBountyId, setSelectedBountyId] = useState<number>(1);
-  const [pipelineStep, setPipelineStep] = useState<number>(0);
-  const [isSimulatingPipeline, setIsSimulatingPipeline] = useState<boolean>(false);
-
-  const bountiesList = [
-    {
-      id: 1,
-      title: 'EV Supercharger Stall Clearance',
-      category: 'Smart Mobility',
-      coords: '37.7792° N, -122.4184° W',
-      perimeter: '12.4m / 200m',
-      consensus: '98.4%',
-      bountySol: '0.35 SOL',
-      status: 'VERIFIED_ON_CHAIN',
-      statusBadge: 'bg-[#A8FF00]/10 text-[#A8FF00] border-[#A8FF00]/30',
-    },
-    {
-      id: 2,
-      title: 'Infrastructure Hazard Detour',
-      category: 'Public Works',
-      coords: '37.7833° N, -122.4167° W',
-      perimeter: '18.1m / 200m',
-      consensus: '99.1%',
-      bountySol: '0.45 SOL',
-      status: 'ESCROW_LOCKED',
-      statusBadge: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30',
-    },
-    {
-      id: 3,
-      title: 'Parcel Locker Bay Operational',
-      category: 'Autonomous Logistics',
-      coords: '37.7750° N, -122.4201° W',
-      perimeter: '8.6m / 200m',
-      consensus: '97.8%',
-      bountySol: '0.30 SOL',
-      status: 'CONSENSUS_PENDING',
-      statusBadge: 'bg-amber-500/10 text-amber-400 border-amber-500/30',
-    },
-    {
-      id: 4,
-      title: 'Autonomous Bikeshare Dock Availability',
-      category: 'Micromobility',
-      coords: '37.7810° N, -122.4150° W',
-      perimeter: '15.2m / 200m',
-      consensus: '98.9%',
-      bountySol: '0.50 SOL',
-      status: 'DISPATCHED_ACTIVE',
-      statusBadge: 'bg-sky-500/10 text-sky-400 border-sky-500/30',
-    },
-  ];
-
-  const handleRunPipelineSimulation = () => {
-    if (isSimulatingPipeline) return;
-    setIsSimulatingPipeline(true);
-    setPipelineStep(1);
-    setTimeout(() => {
-      setPipelineStep(2);
-      setTimeout(() => {
-        setPipelineStep(3);
-        setTimeout(() => {
-          setIsSimulatingPipeline(false);
-        }, 1500);
-      }, 900);
-    }, 900);
-  };
-
-  // -------------------------------------------------------------
   // DEVELOPER QUICKSTART TABS
   // -------------------------------------------------------------
   const [activeCodeTab, setActiveCodeTab] = useState<'sdk' | 'rust' | 'rest'>('sdk');
@@ -211,10 +135,10 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
               Pillars
             </a>
             <a href="#simulator" className="hover:text-white transition-colors">
-              Simulator
+              Verification
             </a>
             <a href="#automation" className="hover:text-white transition-colors">
-              Automation
+              Deployments
             </a>
             <a href="#comparison" className="hover:text-white transition-colors">
               Comparison
@@ -457,494 +381,430 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
         </section>
 
         {/* ========================================================================= */}
-        {/* 4. THE INTERACTIVE REALITY SIMULATOR (Tactical Map & Sensor Attestation)  */}
+        {/* 4. FOUR PILLARS OF PHYSICAL PROOF (Dense Architectural Grid, Zero Toy Animations) */}
         {/* ========================================================================= */}
         <section id="simulator" className="py-10 sm:py-12 border-t border-white/[0.08]">
           {/* Centered Section Header */}
-          <div className="text-center max-w-2xl mx-auto mb-7 sm:mb-8">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-9">
             <div className="inline-flex items-center space-x-2 text-[10px] font-mono font-bold text-[#A8FF00] uppercase tracking-wider mb-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#A8FF00]" />
-              <span>Interactive Attestation Engine</span>
+              <span>Multi-Vector Physical Proof Engine</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-              Reality Verification Simulator
+              Cryptographic Reality Verification
             </h2>
             <p className="text-xs text-zinc-400 mt-2 font-mono">
-              Toggle between verification vectors to inspect live tactical radar mapping, sensor waveforms, and Anchor PDA settlements.
+              Four concurrent hardware and algorithmic checkpoints guaranteeing zero-hallucination ground truth on Solana.
             </p>
           </div>
 
-          {/* Simulator Container */}
-          <div className="rounded-2xl bg-[#090909] border border-white/[0.08] p-6 sm:p-8 shadow-2xl relative overflow-hidden">
-            {/* Top Multi-Stage Indicator */}
-            <div className="w-full bg-[#141414] h-1.5 rounded-full overflow-hidden mb-6">
-              <div
-                className="h-full bg-gradient-to-r from-white via-[#A8FF00] to-emerald-400 transition-all duration-500 rounded-full"
-                style={{
-                  width:
-                    activeSimulatorTab === 'truth'
-                      ? '20%'
-                      : activeSimulatorTab === 'hardware'
-                      ? '45%'
-                      : activeSimulatorTab === 'risk'
-                      ? '70%'
-                      : activeSimulatorTab === 'escrow'
-                      ? '85%'
-                      : '100%',
-                }}
-              />
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              {/* Left Column: Dynamic Visual Engine (Map, Oscilloscope, Hash Shield, PDA Flow, Agent Pipeline) */}
-              <div className="lg:col-span-6 bg-[#050505] border border-white/[0.08] rounded-xl p-5 flex flex-col justify-between min-h-[360px] relative overflow-hidden">
-                {/* Visualizer Top Bar */}
-                <div className="flex items-center justify-between font-mono text-[11px] pb-3 border-b border-white/[0.06] z-10">
-                  <div className="flex items-center space-x-2">
-                    <span className="w-2 h-2 rounded-full bg-[#A8FF00] animate-pulse" />
-                    <span className="text-white font-bold uppercase tracking-wider">
-                      {activeSimulatorTab === 'truth' && 'Tactical Radar & Geofence Map'}
-                      {activeSimulatorTab === 'hardware' && 'Biometric Oscilloscope Tremor'}
-                      {activeSimulatorTab === 'risk' && 'Cryptographic Anti-Spoof Enclave'}
-                      {activeSimulatorTab === 'escrow' && 'Anchor Program PDA Vault Flow'}
-                      {activeSimulatorTab === 'agent' && 'Autonomous Agent Ground Feed'}
-                    </span>
+          {/* Dense 2x2 Bento Architectural Grid - No animations, pure high-impact engineering specs */}
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+            {/* Pillar 01: Spatial Haversine Geofencing */}
+            <div className="rounded-2xl bg-[#090909] border border-white/[0.08] p-5 sm:p-6 flex flex-col justify-between hover:border-[#A8FF00]/40 transition-colors">
+              <div>
+                <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/[0.06]">
+                  <div className="flex items-center space-x-2.5">
+                    <span className="font-mono text-xs font-bold text-[#A8FF00]">01</span>
+                    <div className="w-7 h-7 rounded-lg bg-[#A8FF00]/10 border border-[#A8FF00]/30 flex items-center justify-center text-[#A8FF00]">
+                      <MapPin className="w-3.5 h-3.5" />
+                    </div>
+                    <span className="text-xs font-bold text-white uppercase tracking-wider">Spatial Geofence Lock</span>
                   </div>
-                  <span className="text-zinc-500">Live Telemetry</span>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/[0.04] text-zinc-300 border border-white/[0.08]">
+                    Haversine ≤ 200m
+                  </span>
                 </div>
 
-                {/* Dynamic Screen Content */}
-                <div className="relative my-4 flex-1 flex items-center justify-center min-h-[220px]">
-                  {/* TAB 1: TACTICAL RADAR GEOFENCE MAP */}
-                  {activeSimulatorTab === 'truth' && (
-                    <div className="relative w-full h-full flex items-center justify-center">
-                      <svg viewBox="0 0 320 220" className="w-full h-full">
-                        <defs>
-                          <radialGradient id="radarSweep" cx="50%" cy="50%" r="50%">
-                            <stop offset="0%" stopColor="#A8FF00" stopOpacity="0.25" />
-                            <stop offset="100%" stopColor="#A8FF00" stopOpacity="0" />
-                          </radialGradient>
-                          <pattern id="tacticalGrid" width="20" height="20" patternUnits="userSpaceOnUse">
-                            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="0.5" />
-                          </pattern>
-                        </defs>
-
-                        {/* Grid Background */}
-                        <rect width="100%" height="100%" fill="url(#tacticalGrid)" />
-
-                        {/* Simulated Map Streets / Sector Lines */}
-                        <path d="M 20 60 L 300 60 M 20 160 L 300 160 M 80 10 L 80 210 M 240 10 L 240 210" stroke="rgba(255,255,255,0.08)" strokeWidth="1" strokeDasharray="2 4" />
-
-                        {/* Concentric Radar Rings */}
-                        <circle cx="160" cy="110" r="30" stroke="rgba(255,255,255,0.15)" strokeWidth="1" fill="none" />
-                        <circle cx="160" cy="110" r="60" stroke="rgba(255,255,255,0.2)" strokeWidth="1" fill="none" strokeDasharray="3 3" />
-                        
-                        {/* 200m GEOFENCE RING */}
-                        <circle cx="160" cy="110" r="90" stroke="#A8FF00" strokeWidth="1.5" fill="none" className="animate-pulse" strokeDasharray="5 3" />
-                        <text x="165" y="28" fill="#A8FF00" fontSize="8" fontFamily="monospace" fontWeight="bold">
-                          200M GEOFENCE PERIMETER
-                        </text>
-
-                        {/* Rotating Radar Sweep Cone */}
-                        <g transform="rotate(45 160 110)">
-                          <path d="M 160 110 L 250 110 A 90 90 0 0 0 223 46 Z" fill="url(#radarSweep)" />
-                          <line x1="160" y1="110" x2="250" y2="110" stroke="#A8FF00" strokeWidth="1.2" strokeOpacity="0.8" />
-                        </g>
-
-                        {/* Target EV Charger Pin */}
-                        <circle cx="160" cy="110" r="5" fill="#A8FF00" />
-                        <circle cx="160" cy="110" r="10" stroke="#A8FF00" strokeWidth="1" fill="none" opacity="0.6" />
-                        <text x="160" y="128" fill="#FFFFFF" fontSize="8" fontFamily="monospace" textAnchor="middle" fontWeight="bold">
-                          EV STALL 4 [37.7792° N, -122.4184° W]
-                        </text>
-
-                        {/* Physical Spotter Node */}
-                        <g transform="translate(178, 98)">
-                          <circle cx="0" cy="0" r="3.5" fill="#38BDF8" className="animate-ping opacity-75" />
-                          <circle cx="0" cy="0" r="3.5" fill="#38BDF8" />
-                          <text x="6" y="-3" fill="#38BDF8" fontSize="7" fontFamily="monospace" fontWeight="bold">
-                            SPOTTER (12.4m)
-                          </text>
-                        </g>
-
-                        {/* Haversine Distance Line */}
-                        <line x1="160" y1="110" x2="178" y2="98" stroke="#38BDF8" strokeWidth="1" strokeDasharray="2 2" />
-                      </svg>
-                    </div>
-                  )}
-
-                  {/* TAB 2: HARDWARE ACCELEROMETER OSCILLOSCOPE */}
-                  {activeSimulatorTab === 'hardware' && (
-                    <div className="w-full h-full flex flex-col justify-center">
-                      <div className="relative w-full h-32 bg-[#090909] rounded-lg border border-white/[0.08] p-3 overflow-hidden">
-                        {/* Oscilloscope Grid */}
-                        <div className="absolute inset-0 opacity-15" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)', backgroundSize: '16px 16px' }} />
-
-                        {/* Sine Wave Curve */}
-                        <svg viewBox="0 0 300 100" className="w-full h-full relative z-10">
-                          <path
-                            d="M 0 50 Q 25 20, 50 50 T 100 50 T 150 50 T 200 50 T 250 50 T 300 50"
-                            fill="none"
-                            stroke="#A8FF00"
-                            strokeWidth="2.5"
-                          />
-                          <path
-                            d="M 0 50 Q 20 35, 40 50 T 80 50 T 120 50 T 160 50 T 200 50 T 240 50 T 280 50 T 300 50"
-                            fill="none"
-                            stroke="#38BDF8"
-                            strokeWidth="1.2"
-                            strokeOpacity="0.7"
-                          />
-                          <circle cx="200" cy="50" r="4" fill="#A8FF00" className="animate-ping" />
-                        </svg>
-
-                        <div className="absolute bottom-2 left-3 font-mono text-[9px] text-[#A8FF00] z-20 flex items-center space-x-3">
-                          <span>8.4 Hz Micro-Tremor</span>
-                          <span className="text-zinc-400">0.042g RMS</span>
-                          <span className="text-white">Human Biometric Nonce Verified</span>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* TAB 3: CRYPTOGRAPHIC ANTI-SPOOF ENCLAVE */}
-                  {activeSimulatorTab === 'risk' && (
-                    <div className="w-full h-full flex flex-col justify-center space-y-2">
-                      <div className="bg-[#090909] border border-white/[0.08] rounded-lg p-3 font-mono text-[11px] space-y-2">
-                        <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.05]">
-                          <span className="text-zinc-400">EXIF SHA-256 Seal:</span>
-                          <span className="text-[#A8FF00] font-bold truncate max-w-[180px]">e3b0c44298fc1c149afb...</span>
-                        </div>
-                        <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.05]">
-                          <span className="text-zinc-400">GPS Mock Provider Check:</span>
-                          <span className="text-emerald-400 font-bold">PASSED (Hardware GPS Only)</span>
-                        </div>
-                        <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.05]">
-                          <span className="text-zinc-400">Synthetic Deepfake Score:</span>
-                          <span className="text-emerald-400 font-bold">0.00% (Raw Sensor Match)</span>
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <span className="text-zinc-400">Security Enclave Status:</span>
-                          <span className="text-[#A8FF00] font-bold">Hardware Keystore Signed</span>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* TAB 4: ANCHOR PDA ESCROW VAULT FLOW */}
-                  {activeSimulatorTab === 'escrow' && (
-                    <div className="w-full h-full flex flex-col justify-center">
-                      <div className="bg-[#090909] border border-[#A8FF00]/30 rounded-lg p-4 font-mono text-xs space-y-3">
-                        <div className="flex items-center justify-between text-[11px]">
-                          <span className="text-zinc-400">Solana Program PDA:</span>
-                          <span className="text-white font-bold">TrueSpotEscrow1111111111111</span>
-                        </div>
-                        <div className="grid grid-cols-2 gap-3 pt-2 border-t border-white/[0.06]">
-                          <div className="bg-[#050505] p-2.5 rounded border border-[#A8FF00]/40">
-                            <span className="text-[10px] text-zinc-400 block">Worker Settlement (97.5%)</span>
-                            <span className="text-[#A8FF00] text-sm font-black">0.34125 SOL</span>
-                            <span className="text-[9px] text-emerald-400 block mt-0.5">✓ Released Instantly</span>
-                          </div>
-                          <div className="bg-[#050505] p-2.5 rounded border border-white/[0.06]">
-                            <span className="text-[10px] text-zinc-400 block">Protocol Reserve (2.5%)</span>
-                            <span className="text-zinc-300 text-sm font-black">0.00875 SOL</span>
-                            <span className="text-[9px] text-zinc-500 block mt-0.5">Treasury Pool</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* TAB 5: AUTONOMOUS AGENT INTEGRATION */}
-                  {activeSimulatorTab === 'agent' && (
-                    <div className="w-full h-full flex flex-col justify-center">
-                      <div className="bg-[#090909] border border-white/[0.08] rounded-lg p-3 font-mono text-[11px] space-y-2">
-                        <div className="flex items-center justify-between text-zinc-400 pb-1.5 border-b border-white/[0.05]">
-                          <span>Agent Bus: ElizaOS / LangChain</span>
-                          <span className="text-[#A8FF00]">FEED_ACTIVE</span>
-                        </div>
-                        <pre className="text-zinc-300 text-[10px] bg-[#050505] p-2 rounded overflow-x-auto">
-{`{
-  "reality_event": "STALL_UNOCCUPIED",
-  "confidence": 0.984,
-  "geofence_meters": 12.4,
-  "decision": "DISPATCH_AUTONOMOUS_VEHICLE"
-}`}
-                        </pre>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                {/* Telemetry Output Bar */}
-                <div className="w-full bg-[#0E0E0E] border border-white/[0.05] rounded-lg p-2.5 font-mono text-[11px] space-y-1 z-10">
-                  <div className="flex items-center justify-between">
-                    <span className="text-zinc-400">Oracle Attestation:</span>
-                    <strong className="text-[#A8FF00]">
-                      {activeSimulatorTab === 'truth' && 'Haversine 12.4m < 200m • Gemini 98.4% Match'}
-                      {activeSimulatorTab === 'hardware' && 'Physiological Hand Tremor Confirmed'}
-                      {activeSimulatorTab === 'risk' && 'Zero Emulation • Cryptographic Nonce Sealed'}
-                      {activeSimulatorTab === 'escrow' && 'Anchor CPI Vault Released (0.35 SOL)'}
-                      {activeSimulatorTab === 'agent' && 'Physical Ground Truth Injected into Agent'}
-                    </strong>
-                  </div>
-                  <div className="flex items-center justify-between text-[10px] text-zinc-500 pt-1 border-t border-white/[0.05]">
-                    <span>Slot: #{telemetrySlot.toLocaleString()}</span>
-                    <span>Devnet Finality: &lt;400ms</span>
-                  </div>
-                </div>
+                <h3 className="text-sm font-bold text-white mb-1.5">
+                  Mathematical Perimeter Enforcement
+                </h3>
+                <p className="text-xs text-zinc-400 leading-relaxed mb-4">
+                  Computes great-circle trajectory distance using native dual-frequency GNSS. Rejects virtual mock locations, simulated coordinates, and developer-mode telemetry injection.
+                </p>
               </div>
 
-              {/* Right Column: Sleek Interactive Selector Stack */}
-              <div className="lg:col-span-6 space-y-2.5">
-                {[
-                  {
-                    id: 'truth',
-                    num: '01',
-                    title: 'Tactical Radar & Geofence Map',
-                    subtitle: '200m circular Haversine perimeter & live spotter location',
-                    icon: MapPin,
-                    tag: '200m Radius',
-                  },
-                  {
-                    id: 'hardware',
-                    num: '02',
-                    title: 'Hardware Sensor Tremor Proof',
-                    subtitle: 'Accelerometer micro-tremor biometric proof of physical human',
-                    icon: Activity,
-                    tag: '0.042g Nonce',
-                  },
-                  {
-                    id: 'risk',
-                    num: '03',
-                    title: 'Anti-Spoofing & EXIF Enclave',
-                    subtitle: 'Cryptographic hash sealing against synthetic media & GPS fakes',
-                    icon: Shield,
-                    tag: 'SHA-256',
-                  },
-                  {
-                    id: 'escrow',
-                    num: '04',
-                    title: 'Anchor PDA Escrow Settlement',
-                    subtitle: 'Autonomous CPI split: 97.5% contributor payout / 2.5% protocol',
-                    icon: Coins,
-                    tag: '97.5% SOL',
-                  },
-                  {
-                    id: 'agent',
-                    num: '05',
-                    title: 'Autonomous Agent Integration',
-                    subtitle: 'Direct ground truth ingestion for ElizaOS & LangChain agents',
-                    icon: Sparkles,
-                    tag: 'Zero-Hallucination',
-                  },
-                ].map((item) => {
-                  const Icon = item.icon;
-                  const isActive = activeSimulatorTab === item.id;
-                  return (
-                    <button
-                      key={item.id}
-                      onClick={() => setActiveSimulatorTab(item.id as any)}
-                      className={`w-full p-3.5 rounded-xl flex items-center justify-between text-left transition-all cursor-pointer ${
-                        isActive
-                          ? 'bg-[#151515] border border-[#A8FF00]/60 text-white shadow-[0_0_15px_rgba(168,255,0,0.12)]'
-                          : 'bg-[#0E0E0E] text-zinc-400 hover:bg-[#121212] hover:text-white border border-white/[0.05]'
-                      }`}
-                    >
-                      <div className="flex items-center space-x-3 min-w-0">
-                        <span
-                          className={`font-mono text-xs font-bold shrink-0 ${
-                            isActive ? 'text-[#A8FF00]' : 'text-zinc-600'
-                          }`}
-                        >
-                          {item.num}
-                        </span>
-                        <div
-                          className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${
-                            isActive
-                              ? 'bg-[#A8FF00]/10 text-[#A8FF00] border border-[#A8FF00]/30'
-                              : 'bg-white/[0.04] text-zinc-400 border border-white/[0.06]'
-                          }`}
-                        >
-                          <Icon className="w-4 h-4" />
-                        </div>
-                        <div className="min-w-0">
-                          <span className="text-xs font-bold block text-white truncate">
-                            {item.title}
-                          </span>
-                          <span className="text-[10px] text-zinc-500 font-mono truncate block">
-                            {item.subtitle}
-                          </span>
-                        </div>
-                      </div>
-                      <span
-                        className={`text-[10px] font-mono px-2 py-0.5 rounded shrink-0 ml-2 font-bold ${
-                          isActive
-                            ? 'bg-[#A8FF00] text-black'
-                            : 'bg-white/[0.04] text-zinc-400 border border-white/[0.06]'
-                        }`}
-                      >
-                        {item.tag}
-                      </span>
-                    </button>
-                  );
-                })}
+              {/* Technical Specifications Panel */}
+              <div className="bg-[#050505] rounded-xl border border-white/[0.06] p-3 font-mono text-[11px] space-y-2">
+                <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.04]">
+                  <span className="text-zinc-500">Distance Formulation:</span>
+                  <span className="text-zinc-200">2R · arcsin(√[sin²(Δφ/2) + ...])</span>
+                </div>
+                <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.04]">
+                  <span className="text-zinc-500">Perimeter Tolerance:</span>
+                  <span className="text-[#A8FF00] font-bold">12.4m Actual (200m Max Barrier)</span>
+                </div>
+                <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.04]">
+                  <span className="text-zinc-500">Mock Location Guard:</span>
+                  <span className="text-emerald-400 font-bold">HARDWARE_L1_L5_ONLY</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-zinc-500">Anchor CPI Check:</span>
+                  <span className="text-white font-bold">require!(distance &lt;= 200, OutOfRange)</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Pillar 02: Hardware Accelerometer Tremor */}
+            <div className="rounded-2xl bg-[#090909] border border-white/[0.08] p-5 sm:p-6 flex flex-col justify-between hover:border-[#A8FF00]/40 transition-colors">
+              <div>
+                <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/[0.06]">
+                  <div className="flex items-center space-x-2.5">
+                    <span className="font-mono text-xs font-bold text-[#A8FF00]">02</span>
+                    <div className="w-7 h-7 rounded-lg bg-[#A8FF00]/10 border border-[#A8FF00]/30 flex items-center justify-center text-[#A8FF00]">
+                      <Activity className="w-3.5 h-3.5" />
+                    </div>
+                    <span className="text-xs font-bold text-white uppercase tracking-wider">Sensor Tremor Proof</span>
+                  </div>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/[0.04] text-zinc-300 border border-white/[0.08]">
+                    8.4 Hz Micro-Nonce
+                  </span>
+                </div>
+
+                <h3 className="text-sm font-bold text-white mb-1.5">
+                  Biometric Physical Human Validation
+                </h3>
+                <p className="text-xs text-zinc-400 leading-relaxed mb-4">
+                  Analyzes 3-axis accelerometer and gyroscope vibrations at 100 Hz. Physiological human micro-tremors (8–12 Hz) cannot be spoofed by server racks, bot farms, or synthetic emulators.
+                </p>
+              </div>
+
+              {/* Technical Specifications Panel */}
+              <div className="bg-[#050505] rounded-xl border border-white/[0.06] p-3 font-mono text-[11px] space-y-2">
+                <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.04]">
+                  <span className="text-zinc-500">Fourier Sampling Rate:</span>
+                  <span className="text-zinc-200">100 Hz 3-Axis IMU Stream</span>
+                </div>
+                <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.04]">
+                  <span className="text-zinc-500">Tremor Oscillation:</span>
+                  <span className="text-[#A8FF00] font-bold">8.4 Hz Peak (0.042g RMS)</span>
+                </div>
+                <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.04]">
+                  <span className="text-zinc-500">Secure Enclave Seal:</span>
+                  <span className="text-emerald-400 font-bold">ED25519_HARDWARE_KEYSTORE</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-zinc-500">Bot Emulation Test:</span>
+                  <span className="text-white font-bold">ZERO_VIRTUAL_SENSOR_DETECTED</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Pillar 03: Multimodal AI Consensus */}
+            <div className="rounded-2xl bg-[#090909] border border-white/[0.08] p-5 sm:p-6 flex flex-col justify-between hover:border-[#A8FF00]/40 transition-colors">
+              <div>
+                <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/[0.06]">
+                  <div className="flex items-center space-x-2.5">
+                    <span className="font-mono text-xs font-bold text-[#A8FF00]">03</span>
+                    <div className="w-7 h-7 rounded-lg bg-[#A8FF00]/10 border border-[#A8FF00]/30 flex items-center justify-center text-[#A8FF00]">
+                      <Eye className="w-3.5 h-3.5" />
+                    </div>
+                    <span className="text-xs font-bold text-white uppercase tracking-wider">Multimodal Consensus</span>
+                  </div>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/[0.04] text-zinc-300 border border-white/[0.08]">
+                    ≥ 95.0% Agreement
+                  </span>
+                </div>
+
+                <h3 className="text-sm font-bold text-white mb-1.5">
+                  Gemini 2.5 Vision &amp; EXIF Hash Enclave
+                </h3>
+                <p className="text-xs text-zinc-400 leading-relaxed mb-4">
+                  High-speed multimodal AI parses physical visual evidence against bounty conditions. Concurrently verifies lens focal depth, lighting coherence, and SHA-256 raw sensor headers.
+                </p>
+              </div>
+
+              {/* Technical Specifications Panel */}
+              <div className="bg-[#050505] rounded-xl border border-white/[0.06] p-3 font-mono text-[11px] space-y-2">
+                <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.04]">
+                  <span className="text-zinc-500">Inference Engine:</span>
+                  <span className="text-zinc-200">Gemini 2.5 Flash Vision (&lt;500ms)</span>
+                </div>
+                <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.04]">
+                  <span className="text-zinc-500">Consensus Threshold:</span>
+                  <span className="text-[#A8FF00] font-bold">98.4% Match (Floor: 95.0%)</span>
+                </div>
+                <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.04]">
+                  <span className="text-zinc-500">EXIF Integrity Digest:</span>
+                  <span className="text-emerald-400 font-bold">SHA-256 RAW_PAYLOAD_SEALED</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-zinc-500">Deepfake Probability:</span>
+                  <span className="text-white font-bold">0.00% (Optical Liveness Verified)</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Pillar 04: Autonomous Anchor PDA Settlement */}
+            <div className="rounded-2xl bg-[#090909] border border-white/[0.08] p-5 sm:p-6 flex flex-col justify-between hover:border-[#A8FF00]/40 transition-colors">
+              <div>
+                <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/[0.06]">
+                  <div className="flex items-center space-x-2.5">
+                    <span className="font-mono text-xs font-bold text-[#A8FF00]">04</span>
+                    <div className="w-7 h-7 rounded-lg bg-[#A8FF00]/10 border border-[#A8FF00]/30 flex items-center justify-center text-[#A8FF00]">
+                      <Coins className="w-3.5 h-3.5" />
+                    </div>
+                    <span className="text-xs font-bold text-white uppercase tracking-wider">Anchor PDA Escrow</span>
+                  </div>
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/[0.04] text-zinc-300 border border-white/[0.08]">
+                    97.5% SOL Payout
+                  </span>
+                </div>
+
+                <h3 className="text-sm font-bold text-white mb-1.5">
+                  Autonomous Zero-Custody Settlement
+                </h3>
+                <p className="text-xs text-zinc-400 leading-relaxed mb-4">
+                  Non-custodial Solana smart contracts hold deposits until physical truth is attested. Cross-Program Invocations (CPI) release funds instantly to workers with no human intermediaries.
+                </p>
+              </div>
+
+              {/* Technical Specifications Panel */}
+              <div className="bg-[#050505] rounded-xl border border-white/[0.06] p-3 font-mono text-[11px] space-y-2">
+                <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.04]">
+                  <span className="text-zinc-500">Program PDA Account:</span>
+                  <span className="text-zinc-200">TrueSpotEscrow1111111111111</span>
+                </div>
+                <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.04]">
+                  <span className="text-zinc-500">Fee Distribution:</span>
+                  <span className="text-[#A8FF00] font-bold">97.5% Worker / 2.5% Protocol</span>
+                </div>
+                <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.04]">
+                  <span className="text-zinc-500">Settlement Speed:</span>
+                  <span className="text-emerald-400 font-bold">&lt; 400ms Sub-Second Finality</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-zinc-500">Execution Mechanism:</span>
+                  <span className="text-white font-bold">CPI Vault Release (Zero Custody)</span>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
         {/* ========================================================================= */}
-        {/* 5. BLUEPRINT AUTOMATION & REAL-TIME PROTOCOL ATTESTATION MATRIX          */}
+        {/* 5. PROTOCOL BLUEPRINT & DEPIN INDUSTRY DEPLOYMENTS (No Toy Simulator)     */}
         {/* ========================================================================= */}
         <section id="automation" className="py-10 sm:py-12 border-t border-white/[0.08]">
           {/* Centered Section Header */}
-          <div className="text-center max-w-2xl mx-auto mb-7 sm:mb-8">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-9">
             <div className="inline-flex items-center space-x-2 text-[10px] font-mono font-bold text-[#A8FF00] uppercase tracking-wider mb-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#A8FF00]" />
-              <span>Protocol Automation Engine</span>
+              <span>Production Integration Blueprint</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-              Deterministic Execution Blueprint
+              Deterministic Real-World Deployments
             </h2>
             <p className="text-xs text-zinc-400 mt-2 font-mono">
-              Autonomous smart contract rules that ingest physical ground truth and release non-custodial SOL bounties upon cryptographic consensus.
+              How decentralized physical networks, autonomous mobility fleets, and smart contracts consume TrueSpot ground truth.
             </p>
           </div>
 
-          <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-            {/* Left Card: Active Attestation Stream */}
-            <div className="lg:col-span-5 rounded-2xl bg-[#090909] border border-white/[0.08] p-5 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between border-b border-white/[0.06] pb-3 mb-3 font-mono text-xs">
-                  <div className="flex items-center space-x-2 text-white font-bold">
-                    <Activity className="w-4 h-4 text-[#A8FF00]" />
-                    <span>Live Attestation Bounties</span>
-                  </div>
-                  <span className="text-[10px] text-zinc-500">Auto-Dispatched</span>
+          <div className="max-w-5xl mx-auto space-y-6">
+            {/* 3-Stage Architectural Pipeline Flow (Crisp horizontal progression card) */}
+            <div className="rounded-2xl bg-[#090909] border border-white/[0.08] p-5 sm:p-6">
+              <div className="flex items-center justify-between pb-4 border-b border-white/[0.06] mb-5 font-mono text-xs">
+                <div className="flex items-center space-x-2 text-white font-bold">
+                  <Shield className="w-4 h-4 text-[#A8FF00]" />
+                  <span>3-Stage Attestation Execution Flow</span>
                 </div>
-
-                <div className="space-y-2.5">
-                  {bountiesList.map((bounty) => {
-                    const isSelected = selectedBountyId === bounty.id;
-                    return (
-                      <div
-                        key={bounty.id}
-                        onClick={() => setSelectedBountyId(bounty.id)}
-                        className={`p-3 rounded-xl border transition-all cursor-pointer ${
-                          isSelected
-                            ? 'bg-[#121212] border-[#A8FF00]/50 shadow-[0_0_15px_rgba(168,255,0,0.08)]'
-                            : 'bg-[#050505] border-white/[0.05] hover:border-white/10'
-                        }`}
-                      >
-                        <div className="flex items-center justify-between mb-1.5">
-                          <span className="text-[10px] font-mono text-zinc-400">{bounty.category}</span>
-                          <span className={`text-[10px] font-mono font-bold px-1.5 py-0.5 rounded border ${bounty.statusBadge}`}>
-                            {bounty.status}
-                          </span>
-                        </div>
-                        <h4 className="text-xs font-bold text-white mb-2">{bounty.title}</h4>
-                        <div className="flex items-center justify-between font-mono text-[11px] pt-1.5 border-t border-white/[0.04]">
-                          <span className="text-zinc-400">{bounty.perimeter}</span>
-                          <span className="text-[#A8FF00] font-bold">{bounty.bountySol}</span>
-                          <span className="text-white font-semibold">{bounty.consensus}</span>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
+                <span className="text-[10px] text-[#A8FF00] font-semibold bg-[#A8FF00]/10 px-2.5 py-0.5 rounded-full border border-[#A8FF00]/30">
+                  Devnet Cluster Active • Slot #{telemetrySlot.toLocaleString()}
+                </span>
               </div>
 
-              <div className="pt-3 border-t border-white/[0.06] mt-3 flex items-center justify-between font-mono text-[10px] text-zinc-500">
-                <span>Cluster: Solana Devnet</span>
-                <span className="text-[#A8FF00] font-bold">Autonomous Settlement</span>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {/* Step 1 */}
+                <div className="bg-[#050505] rounded-xl border border-white/[0.06] p-4 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-mono text-xs font-bold text-[#A8FF00]">STAGE 01</span>
+                      <span className="text-[10px] font-mono text-zinc-400">Anchor PDA</span>
+                    </div>
+                    <h4 className="text-xs font-bold text-white mb-1.5">On-Chain Escrow Lock</h4>
+                    <p className="text-[11px] text-zinc-400 leading-relaxed mb-3">
+                      Contract or AI agent specifies coordinates, bounty SOL, and radius. Funds lock in non-custodial PDA vault.
+                    </p>
+                  </div>
+                  <div className="pt-2 border-t border-white/[0.04] font-mono text-[10px] text-zinc-400 flex items-center justify-between">
+                    <span>Deposit: 0.35 SOL</span>
+                    <span className="text-emerald-400 font-bold">VAULT_LOCKED</span>
+                  </div>
+                </div>
+
+                {/* Step 2 */}
+                <div className="bg-[#050505] rounded-xl border border-white/[0.06] p-4 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-mono text-xs font-bold text-[#A8FF00]">STAGE 02</span>
+                      <span className="text-[10px] font-mono text-zinc-400">Telemetry Proof</span>
+                    </div>
+                    <h4 className="text-xs font-bold text-white mb-1.5">Multi-Vector Attestation</h4>
+                    <p className="text-[11px] text-zinc-400 leading-relaxed mb-3">
+                      Field spotter submits signed payload. Hardware validates 200m Haversine, 8.4 Hz tremor, and multimodal AI consensus.
+                    </p>
+                  </div>
+                  <div className="pt-2 border-t border-white/[0.04] font-mono text-[10px] text-zinc-400 flex items-center justify-between">
+                    <span>Consensus: 98.4%</span>
+                    <span className="text-[#A8FF00] font-bold">VERIFIED_HARDWARE</span>
+                  </div>
+                </div>
+
+                {/* Step 3 */}
+                <div className="bg-[#050505] rounded-xl border border-white/[0.06] p-4 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-mono text-xs font-bold text-[#A8FF00]">STAGE 03</span>
+                      <span className="text-[10px] font-mono text-zinc-400">CPI Execution</span>
+                    </div>
+                    <h4 className="text-xs font-bold text-white mb-1.5">Instant Non-Custodial Payout</h4>
+                    <p className="text-[11px] text-zinc-400 leading-relaxed mb-3">
+                      Solana runtime verifies state and executes CPI release. 97.5% delivered to spotter in &lt;400ms finality.
+                    </p>
+                  </div>
+                  <div className="pt-2 border-t border-white/[0.04] font-mono text-[10px] text-zinc-400 flex items-center justify-between">
+                    <span>Payout: 0.34125 SOL</span>
+                    <span className="text-emerald-400 font-bold">RELEASED_ON_CHAIN</span>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Right Card: 3-Stage Deterministic Verification Engine */}
-            <div className="lg:col-span-7 rounded-2xl bg-[#090909] border border-white/[0.08] p-5 sm:p-6 flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between border-b border-white/[0.06] pb-3 mb-4 font-mono text-xs">
-                  <div className="flex items-center space-x-2 text-white font-bold">
-                    <Shield className="w-4 h-4 text-[#A8FF00]" />
-                    <span>3-Stage Attestation Pipeline</span>
+            {/* 4 Real-World DePIN Industry Deployment Use Cases */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* Use Case 1: EV Charging */}
+              <div className="rounded-2xl bg-[#090909] border border-white/[0.08] p-5 flex flex-col justify-between hover:border-white/20 transition-colors">
+                <div>
+                  <div className="flex items-center justify-between mb-2.5">
+                    <span className="text-[10px] font-mono text-[#A8FF00] font-bold uppercase tracking-wider">
+                      Smart Mobility • DePIN
+                    </span>
+                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                      VERIFIED_ON_CHAIN
+                    </span>
                   </div>
-                  <span className="text-[10px] text-[#A8FF00] font-semibold">
-                    {isSimulatingPipeline ? `Executing Stage ${pipelineStep}/3...` : 'Ready to Attest'}
-                  </span>
+                  <h4 className="text-sm font-bold text-white mb-1.5">
+                    EV Supercharger Stall Clearance &amp; Plaque Status
+                  </h4>
+                  <p className="text-xs text-zinc-400 leading-relaxed mb-4">
+                    Autonomous navigation algorithms ingest physical stall availability to prevent electric vehicles from routing to ICE-blocked or inoperable charging bays.
+                  </p>
                 </div>
-
-                {/* 3 Pipeline Stages */}
-                <div className="space-y-3">
-                  {/* Stage 1: Geofence Lock */}
-                  <div className={`p-3.5 rounded-xl border transition-all ${
-                    pipelineStep >= 1 ? 'bg-[#121212] border-[#A8FF00]/50' : 'bg-[#050505] border-white/[0.05]'
-                  }`}>
-                    <div className="flex items-center justify-between font-mono text-xs mb-1">
-                      <div className="flex items-center space-x-2 font-bold text-white">
-                        <span className="w-5 h-5 rounded-full bg-[#181818] border border-white/10 flex items-center justify-center text-[10px] text-[#A8FF00]">1</span>
-                        <span>Perimeter Geofence Lock</span>
-                      </div>
-                      <span className="text-[10px] text-zinc-400 font-mono">Haversine 200m</span>
-                    </div>
-                    <p className="text-[11px] text-zinc-400 pl-7 leading-relaxed">
-                      Mathematical validation ensuring the spotter’s GPS sensor is within the 200m perimeter barrier.
-                    </p>
+                <div className="bg-[#050505] rounded-xl border border-white/[0.06] p-3 font-mono text-[11px] grid grid-cols-3 gap-2 text-center">
+                  <div>
+                    <span className="text-[10px] text-zinc-500 block">Proximity</span>
+                    <span className="text-white font-bold">12.4m / 200m</span>
                   </div>
-
-                  {/* Stage 2: Hardware Sensor & Gemini Consensus */}
-                  <div className={`p-3.5 rounded-xl border transition-all ${
-                    pipelineStep >= 2 ? 'bg-[#121212] border-[#A8FF00]/50' : 'bg-[#050505] border-white/[0.05]'
-                  }`}>
-                    <div className="flex items-center justify-between font-mono text-xs mb-1">
-                      <div className="flex items-center space-x-2 font-bold text-white">
-                        <span className="w-5 h-5 rounded-full bg-[#181818] border border-white/10 flex items-center justify-center text-[10px] text-[#A8FF00]">2</span>
-                        <span>Sensor Proof &amp; Gemini 2.5 Consensus</span>
-                      </div>
-                      <span className="text-[10px] text-zinc-400 font-mono">0.042g + Multimodal</span>
-                    </div>
-                    <p className="text-[11px] text-zinc-400 pl-7 leading-relaxed">
-                      Biometric accelerometer tremor confirms live human presence while Gemini vision AI confirms visual match.
-                    </p>
+                  <div>
+                    <span className="text-[10px] text-zinc-500 block">Bounty</span>
+                    <span className="text-[#A8FF00] font-bold">0.35 SOL</span>
                   </div>
-
-                  {/* Stage 3: Anchor PDA Escrow Settlement */}
-                  <div className={`p-3.5 rounded-xl border transition-all ${
-                    pipelineStep >= 3 ? 'bg-[#121212] border-[#A8FF00]/50' : 'bg-[#050505] border-white/[0.05]'
-                  }`}>
-                    <div className="flex items-center justify-between font-mono text-xs mb-1">
-                      <div className="flex items-center space-x-2 font-bold text-white">
-                        <span className="w-5 h-5 rounded-full bg-[#181818] border border-white/10 flex items-center justify-center text-[10px] text-[#A8FF00]">3</span>
-                        <span>Anchor PDA Bounty Settlement</span>
-                      </div>
-                      <span className="text-[10px] text-[#A8FF00] font-mono font-bold">97.5% Payout</span>
-                    </div>
-                    <p className="text-[11px] text-zinc-400 pl-7 leading-relaxed">
-                      Non-custodial smart contract CPI unseals escrow and delivers bounty directly to authenticated worker wallet.
-                    </p>
+                  <div>
+                    <span className="text-[10px] text-zinc-500 block">Agreement</span>
+                    <span className="text-emerald-400 font-bold">98.4% Match</span>
                   </div>
                 </div>
               </div>
 
-              {/* Action Button & Live Status */}
-              <div className="pt-4 border-t border-white/[0.06] mt-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-                <button
-                  onClick={handleRunPipelineSimulation}
-                  disabled={isSimulatingPipeline}
-                  className="w-full sm:w-auto h-10 px-5 rounded-full bg-[#A8FF00] hover:bg-[#b8ff24] text-black font-extrabold text-xs flex items-center justify-center space-x-2 shadow-[0_0_20px_rgba(168,255,0,0.25)] transition-all cursor-pointer disabled:opacity-60"
-                >
-                  <Zap className="w-3.5 h-3.5 fill-black" />
-                  <span>{isSimulatingPipeline ? 'Verifying Attestation...' : 'Simulate Protocol Attestation'}</span>
-                </button>
+              {/* Use Case 2: Public Works */}
+              <div className="rounded-2xl bg-[#090909] border border-white/[0.08] p-5 flex flex-col justify-between hover:border-white/20 transition-colors">
+                <div>
+                  <div className="flex items-center justify-between mb-2.5">
+                    <span className="text-[10px] font-mono text-[#A8FF00] font-bold uppercase tracking-wider">
+                      Civic Infrastructure • DAO
+                    </span>
+                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-[#A8FF00]/10 text-[#A8FF00] border border-[#A8FF00]/30">
+                      ESCROW_SETTLED
+                    </span>
+                  </div>
+                  <h4 className="text-sm font-bold text-white mb-1.5">
+                    Roadway Hazard Detour &amp; Lane Clearance Verification
+                  </h4>
+                  <p className="text-xs text-zinc-400 leading-relaxed mb-4">
+                    Municipal infrastructure DAOs automatically disburse maintenance treasury payouts upon cryptographic proof that road obstructions have been cleared.
+                  </p>
+                </div>
+                <div className="bg-[#050505] rounded-xl border border-white/[0.06] p-3 font-mono text-[11px] grid grid-cols-3 gap-2 text-center">
+                  <div>
+                    <span className="text-[10px] text-zinc-500 block">Proximity</span>
+                    <span className="text-white font-bold">18.1m / 200m</span>
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-zinc-500 block">Bounty</span>
+                    <span className="text-[#A8FF00] font-bold">0.45 SOL</span>
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-zinc-500 block">Agreement</span>
+                    <span className="text-emerald-400 font-bold">99.1% Match</span>
+                  </div>
+                </div>
+              </div>
 
-                <div className="font-mono text-[11px] text-zinc-400 text-right">
-                  {pipelineStep === 3 ? (
-                    <span className="text-[#A8FF00] font-bold">✓ Attestation Sealed on Devnet</span>
-                  ) : isSimulatingPipeline ? (
-                    <span className="text-white font-semibold">Validating Stage {pipelineStep}...</span>
-                  ) : (
-                    <span>Ready for Attestation Dispatch</span>
-                  )}
+              {/* Use Case 3: Autonomous Logistics */}
+              <div className="rounded-2xl bg-[#090909] border border-white/[0.08] p-5 flex flex-col justify-between hover:border-white/20 transition-colors">
+                <div>
+                  <div className="flex items-center justify-between mb-2.5">
+                    <span className="text-[10px] font-mono text-[#A8FF00] font-bold uppercase tracking-wider">
+                      Autonomous Logistics • Retail
+                    </span>
+                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                      SEALED_PROOF
+                    </span>
+                  </div>
+                  <h4 className="text-sm font-bold text-white mb-1.5">
+                    Parcel Locker Bay Physical Integrity &amp; Drop-Off
+                  </h4>
+                  <p className="text-xs text-zinc-400 leading-relaxed mb-4">
+                    Autonomous delivery networks confirm smart locker compartment seals and physical handoffs, triggering supply chain insurance release without manual audits.
+                  </p>
+                </div>
+                <div className="bg-[#050505] rounded-xl border border-white/[0.06] p-3 font-mono text-[11px] grid grid-cols-3 gap-2 text-center">
+                  <div>
+                    <span className="text-[10px] text-zinc-500 block">Proximity</span>
+                    <span className="text-white font-bold">8.6m / 200m</span>
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-zinc-500 block">Bounty</span>
+                    <span className="text-[#A8FF00] font-bold">0.30 SOL</span>
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-zinc-500 block">Agreement</span>
+                    <span className="text-emerald-400 font-bold">97.8% Match</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Use Case 4: Micromobility */}
+              <div className="rounded-2xl bg-[#090909] border border-white/[0.08] p-5 flex flex-col justify-between hover:border-white/20 transition-colors">
+                <div>
+                  <div className="flex items-center justify-between mb-2.5">
+                    <span className="text-[10px] font-mono text-[#A8FF00] font-bold uppercase tracking-wider">
+                      Micromobility • Fleet
+                    </span>
+                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/30">
+                      DISPATCH_ACTIVE
+                    </span>
+                  </div>
+                  <h4 className="text-sm font-bold text-white mb-1.5">
+                    Autonomous Bikeshare Hub Dock Availability
+                  </h4>
+                  <p className="text-xs text-zinc-400 leading-relaxed mb-4">
+                    Decentralized transit protocols verify real-world bike rack capacity and mechanical locks, dynamically incentivizing commuter rebalancing bounties in real time.
+                  </p>
+                </div>
+                <div className="bg-[#050505] rounded-xl border border-white/[0.06] p-3 font-mono text-[11px] grid grid-cols-3 gap-2 text-center">
+                  <div>
+                    <span className="text-[10px] text-zinc-500 block">Proximity</span>
+                    <span className="text-white font-bold">15.2m / 200m</span>
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-zinc-500 block">Bounty</span>
+                    <span className="text-[#A8FF00] font-bold">0.50 SOL</span>
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-zinc-500 block">Agreement</span>
+                    <span className="text-emerald-400 font-bold">98.9% Match</span>
+                  </div>
                 </div>
               </div>
             </div>
