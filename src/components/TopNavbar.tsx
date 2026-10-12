@@ -170,8 +170,22 @@ export const TopNavbar: React.FC<TopNavbarProps> = ({
       {/* Right: Shared Nav Links (Map & Vault) + Wallet Button + Utilities Dropdown */}
       <div className="flex items-center space-x-2 sm:space-x-3">
         
-        {/* Shared Primary Views Capsule: Reality Map & Escrow Vault */}
+        {/* Shared Primary Views Capsule: Protocol Landing, Reality Map & Escrow Vault */}
         <div className="hidden md:flex items-center bg-[#111111] p-1 rounded-full border border-white/[0.08] shadow-inner space-x-0.5 h-9">
+          <button
+            type="button"
+            onClick={() => navigate('/landing')}
+            className={`flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-medium transition-all cursor-pointer h-7 ${
+              isRouteActive(['/landing'])
+                ? 'bg-[#181818] text-[#A8FF00] font-semibold border border-[#A8FF00]/40'
+                : 'text-zinc-400 hover:text-white hover:bg-white/[0.04]'
+            }`}
+            title="TrueSpot Protocol Overview Landing Page"
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Protocol</span>
+          </button>
+
           <button
             type="button"
             onClick={() => navigate('/map')}

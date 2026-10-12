@@ -38,6 +38,7 @@ import { WalletModal, DEMO_ACCOUNTS, DemoAccount } from './components/WalletModa
 import { HowItWorksModal } from './components/HowItWorksModal';
 import { SupabaseModal } from './components/SupabaseModal';
 import { ToastContainer, ToastMessage } from './components/Toast';
+import { LandingPage } from './components/LandingPage';
 
 import {
   PlusCircle,
@@ -411,6 +412,24 @@ const AppContent: React.FC = () => {
   };
 
   const isLocationView = ['studio', 'nearby', 'radar', 'map'].includes(activeTab);
+
+  if (location.pathname === '/landing') {
+    return (
+      <div className="min-h-screen bg-[#050505] text-[#F5F5F5] font-sans relative selection:bg-[#A8FF00] selection:text-black">
+        <ToastContainer toasts={toasts} onDismiss={dismissToast} />
+        <LandingPage
+          onLaunchProtocol={() => {
+            handleSelectUserMode('maker', false);
+            navigate('/bounties');
+          }}
+          onOpenDocs={() => {
+            handleSelectUserMode('maker', false);
+            navigate('/records');
+          }}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#050505] text-[#F5F5F5] font-sans flex flex-col relative selection:bg-[#A8FF00] selection:text-black">
