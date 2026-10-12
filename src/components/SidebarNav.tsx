@@ -12,6 +12,7 @@ import {
   Award,
   Radio,
   X,
+  ArrowUpRight,
 } from 'lucide-react';
 
 interface SidebarNavProps {
@@ -242,6 +243,14 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({
             <span>Truth Engine</span>
             <span className="text-zinc-300">v2.0.0</span>
           </div>
+
+          <button
+            onClick={() => handleNavigate('/landing')}
+            className="w-full mt-2 pt-2 border-t border-white/[0.05] text-[10px] font-mono text-zinc-400 hover:text-[#A8FF00] flex items-center justify-between transition-colors group cursor-pointer"
+          >
+            <span>Protocol Landing</span>
+            <ArrowUpRight className="w-3 h-3 text-zinc-500 group-hover:text-[#A8FF00] transition-colors" />
+          </button>
         </div>
       </div>
     </>
