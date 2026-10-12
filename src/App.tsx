@@ -222,7 +222,7 @@ const AppContent: React.FC = () => {
       `${mode === 'maker' ? 'Maker' : 'Spotter'} Mode Activated`,
       mode === 'maker'
         ? 'Switched to Maker workspace: Query Studio, Escrow Bounties & Review.'
-        : 'Switched to Spotter workspace: 200m Radar, Submissions & Earnings.',
+        : 'Switched to Spotter workspace: Local Radar, Submissions & Earnings.',
       'info'
     );
 

@@ -73,7 +73,7 @@ export const SupabaseModal: React.FC<SupabaseModalProps> = ({
             </div>
             <div>
               <h2 className="text-base font-bold text-[#F5F5F5]">Supabase Cloud Database</h2>
-              <p className="text-xs text-[#858585]">PostgreSQL + PostGIS 200m Spatial Engine</p>
+              <p className="text-xs text-[#858585]">PostgreSQL + PostGIS Spatial Engine</p>
             </div>
           </div>
           <button

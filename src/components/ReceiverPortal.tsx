@@ -79,13 +79,6 @@ export const ReceiverPortal: React.FC<ReceiverPortalProps> = ({
 
   return (
     <div className="space-y-5 w-full">
-      {/* Clean Radar Status Indicator Header */}
-      <div className="flex items-center justify-end pb-3 border-b border-white/[0.06]">
-        <div className="flex items-center space-x-2 text-xs text-zinc-400">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#A8FF00]" />
-          <span className="font-medium text-zinc-300">200m Verification Radar Active</span>
-        </div>
-      </div>
 
       {/* Sub-tab 1: Available Tasks Radar */}
       {subTab === 'radar' && (
@@ -185,7 +178,7 @@ export const ReceiverPortal: React.FC<ReceiverPortalProps> = ({
                   }}
                   className="px-4 py-2 rounded-full bg-[#A8FF00] hover:bg-[#b8ff24] text-black font-black text-xs shadow-md shadow-[#A8FF00]/25 transition-all cursor-pointer"
                 >
-                  Open 200m Radar →
+                  Explore Nearby Tasks →
                 </button>
               </div>
             ) : (

@@ -100,15 +100,31 @@ export const ReputationScreen: React.FC<ReputationScreenProps> = ({
     return Number((5.8 + walletSeed * 4.2).toFixed(1));
   }, [walletSeed]);
 
-  // 4. Algorithmic Honesty & Sentinel Tier Engine:
-  // Honesty = 45% Corroboration Consensus + 30% Gyroscopic Tremor Entropy + 25% Spatial Precision
+  // 4. Algorithmic Multi-Factor Honesty & Sentinel Tier Engine:
+  // Honesty = 35% Consensus Validation + 35% Quality Assessment + 15% Tremor Entropy + 15% Spatial Accuracy
   const { honestyScore, tierLevel, tierName, statusLabel, payoutMultiplier, badgeColor } = useMemo(() => {
-    const consensusRatio = totalSubmissions > 0 ? acceptedCount / totalSubmissions : 0.94 + walletSeed * 0.05;
-    const tremorScore = Math.max(0.85, 1 - Math.abs(computedTremor - 0.046) * 3.5);
-    const spatialScore = Math.max(0.88, 1 - (computedGpsDelta / 50));
+    // A. Consensus Ratio
+    const consensusRatio = totalSubmissions > 0
+      ? (acceptedCount + pendingCount * 0.9) / Math.max(totalSubmissions, 1)
+      : 0.965;
 
-    const rawHonesty = (consensusRatio * 0.45 + tremorScore * 0.30 + spatialScore * 0.25) * 100;
-    const score = Number(Math.min(99.9, Math.max(76.0, rawHonesty)).toFixed(1));
+    // B. Quality AI Assessment Score
+    const confidenceScores = observations
+      .map((o) => o.quality_report?.relevance_assessment?.confidence_score)
+      .filter(Boolean) as number[];
+    const qualityRatio = confidenceScores.length > 0
+      ? (confidenceScores.reduce((a, b) => a + b, 0) / confidenceScores.length) / 100
+      : 0.978;
+
+    // C. Gyroscopic Micro-Tremor Entropy
+    const tremorScore = Math.max(0.88, 1 - Math.abs(computedTremor - 0.042) * 2.2);
+
+    // D. Spatial Precision
+    const spatialScore = Math.max(0.90, 1 - (computedGpsDelta / 100) * 0.4);
+
+    // Final Weighted Multi-Factor Score
+    const rawHonesty = (consensusRatio * 0.35 + qualityRatio * 0.35 + tremorScore * 0.15 + spatialScore * 0.15) * 100;
+    const score = Number(Math.min(99.8, Math.max(78.0, rawHonesty)).toFixed(1));
 
     if (score >= 98.0) {
       return {
@@ -156,7 +172,7 @@ export const ReputationScreen: React.FC<ReputationScreenProps> = ({
         badgeColor: '#9CA3AF',
       };
     }
-  }, [totalSubmissions, acceptedCount, walletSeed, computedTremor, computedGpsDelta]);
+  }, [totalSubmissions, acceptedCount, pendingCount, observations, computedTremor, computedGpsDelta]);
 
   const handleRunAudit = () => {
     setIsAuditing(true);
@@ -187,13 +203,20 @@ export const ReputationScreen: React.FC<ReputationScreenProps> = ({
             </p>
           </div>
 
-          {/* Large Trust Gauge Bento */}
+          {/* Large Trust Gauge Bento with Generous Padding & Crisp Spacing */}
           <div className="bg-[#121212] border border-white/[0.08] rounded-[20px] p-5 shrink-0 flex items-center space-x-4 shadow-xl">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-[#A8FF00]/20 to-[#34D399]/20 border border-[#A8FF00]/40 flex flex-col items-center justify-center text-center">
-              <span className="text-xl font-black text-[#A8FF00] font-mono leading-none">
-                {honestyScore.toFixed(1)}%
+            <div className="min-w-[92px] px-3.5 py-3 rounded-2xl bg-[#0F1603] border border-[#A8FF00]/40 flex flex-col items-center justify-center text-center shadow-inner">
+              <div className="flex items-baseline justify-center">
+                <span className="text-2xl font-black text-[#A8FF00] font-mono tracking-tight leading-none">
+                  {honestyScore.toFixed(1)}
+                </span>
+                <span className="text-xs font-black text-[#A8FF00] font-mono ml-1">
+                  %
+                </span>
+              </div>
+              <span className="text-[9px] text-zinc-400 font-bold font-mono tracking-wider uppercase mt-1.5">
+                HONESTY
               </span>
-              <span className="text-[9px] text-zinc-400 font-bold uppercase mt-1">Honesty</span>
             </div>
             <div>
               <div className="flex items-center gap-2">

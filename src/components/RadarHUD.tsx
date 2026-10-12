@@ -90,7 +90,7 @@ export const RadarHUD: React.FC<RadarHUDProps> = ({ bounties, onSelectBounty }) 
               <div className="bg-[#050505] border border-[#A8FF00]/40 text-[10px] px-2 py-1 rounded-lg shadow-xl">
                 <span className="font-bold text-white">{b.place_name}</span>
                 <span className={`block font-mono text-[9px] ${isEligible ? 'text-[#A8FF00]' : 'text-zinc-400'}`}>
-                  {b.distance_meters}m • {isEligible ? 'IN 200M RANGE' : 'OUT OF RANGE'}
+                  {b.distance_meters}m • {isEligible ? 'IN RANGE' : 'OUT OF RANGE'}
                 </span>
               </div>
             </div>
@@ -101,7 +101,7 @@ export const RadarHUD: React.FC<RadarHUDProps> = ({ bounties, onSelectBounty }) 
       {/* Bottom Range Legend */}
       <div className="absolute bottom-2 left-0 right-0 text-center pointer-events-none">
         <span className="text-[10px] font-mono font-bold text-[#A8FF00] bg-black/80 px-2.5 py-0.5 rounded-full border border-[#A8FF00]/30 shadow-sm">
-          200M GEOFENCE ACTIVE
+          RADAR ACTIVE
         </span>
       </div>
     </div>

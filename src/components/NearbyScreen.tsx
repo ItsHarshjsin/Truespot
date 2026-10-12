@@ -140,7 +140,7 @@ export const NearbyScreen: React.FC<NearbyScreenProps> = ({
                     : 'text-[#858585] hover:text-white'
                 }`}
               >
-                In 200m ({inRangeCount})
+                In Range ({inRangeCount})
               </button>
               <button
                 onClick={() => setFilter('open')}
@@ -245,7 +245,7 @@ export const NearbyScreen: React.FC<NearbyScreenProps> = ({
                       }`}
                     >
                       <span>
-                        {isEligible ? 'Snap Photo & Earn SOL' : 'View Details (Out of 200m)'}
+                        {isEligible ? 'Snap Photo & Earn SOL' : 'View Details'}
                       </span>
                       <span className="font-mono">↗</span>
                     </button>
@@ -274,10 +274,10 @@ export const NearbyScreen: React.FC<NearbyScreenProps> = ({
             <div className="flex items-center justify-between px-1 pb-3">
               <div className="flex items-center space-x-2 text-sm font-bold text-[#F5F5F5]">
                 <Navigation className="w-4 h-4 text-[#A8FF00]" />
-                <span>200m Proximity Radar</span>
+                <span>Physical Radar Map</span>
               </div>
               <span className="text-[11px] font-semibold text-[#A8FF00] bg-[#101010] border border-white/[0.07] px-3 py-1 rounded-full">
-                {inRangeCount} bounties inside 200m range
+                {inRangeCount} {inRangeCount === 1 ? 'task' : 'tasks'} in range
               </span>
             </div>
 
@@ -345,7 +345,7 @@ export const NearbyScreen: React.FC<NearbyScreenProps> = ({
               <span className="text-xl font-extrabold text-[#F5F5F5]">{bounties.length}</span>
             </div>
             <div className="bg-[#0B0B0B] border border-white/[0.07] rounded-[18px] p-4 text-center shadow-lg">
-              <span className="text-[10px] font-semibold text-[#858585] uppercase tracking-wider block">In 200m Range</span>
+              <span className="text-[10px] font-semibold text-[#858585] uppercase tracking-wider block">In Range</span>
               <span className="text-xl font-extrabold text-[#A8FF00]">{inRangeCount}</span>
             </div>
             <div className="bg-[#0B0B0B] border border-white/[0.07] rounded-[18px] p-4 text-center shadow-lg">

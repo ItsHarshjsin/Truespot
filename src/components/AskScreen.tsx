@@ -312,7 +312,7 @@ export const AskScreen: React.FC<AskScreenProps> = ({
                 <div className="w-11 h-11 rounded-full bg-[#161616] border border-white/10 text-white flex items-center justify-center font-extrabold group-hover:border-[#A8FF00]/40 transition-colors">
                   <MapPin className="w-4 h-4 text-white" />
                 </div>
-                <span className="text-[11px] font-semibold text-[#858585] group-hover:text-white transition-colors">200m Range</span>
+                <span className="text-[11px] font-semibold text-[#858585] group-hover:text-white transition-colors">Geofence</span>
               </div>
 
               <div className="flex flex-col items-center space-y-1.5 group cursor-pointer">
@@ -683,7 +683,7 @@ export const AskScreen: React.FC<AskScreenProps> = ({
                 <div>
                   <div className="text-xs font-bold text-[#F5F5F5] leading-tight">Field Network</div>
                   <div className="text-[10px] text-[#858585]">
-                    {activeNodesCount > 0 ? `${activeNodesCount} active in 200m range` : '0 active in range'}
+                    {activeNodesCount > 0 ? `${activeNodesCount} active in range` : '0 active in range'}
                   </div>
                 </div>
               </div>
@@ -737,7 +737,7 @@ export const AskScreen: React.FC<AskScreenProps> = ({
               {/* Target Location Configuration */}
               <div>
                 <label className="block text-[10px] font-bold text-[#858585] uppercase tracking-wider mb-1.5">
-                  Target Spot (200m Geofence)
+                  Target Location & Geofence
                 </label>
 
                 {/* Location Search Bar */}

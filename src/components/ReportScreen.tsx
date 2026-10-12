@@ -443,14 +443,14 @@ export const ReportScreen: React.FC<ReportScreenProps> = ({
         </div>
         <h3 className="text-base font-bold text-white tracking-tight">No Active Physical Bounties</h3>
         <p className="text-xs text-zinc-400 leading-relaxed">
-          There are currently no open ground truth tasks awaiting hardware evidence in this area. Check back shortly as makers fund new escrow vaults or view the 200m verification radar.
+          There are currently no open ground truth tasks awaiting hardware evidence in this area. Check back shortly as makers fund new escrow vaults or explore the live radar map.
         </p>
         <div className="flex items-center justify-center gap-3 pt-2">
           <button
             onClick={onBackToNearby}
             className="px-4 py-2 rounded-full bg-[#A8FF00] hover:bg-[#b8ff24] text-black text-xs font-bold transition-all shadow-none cursor-pointer"
           >
-            Open 200m Radar HUD
+            Explore Nearby Tasks
           </button>
         </div>
       </div>

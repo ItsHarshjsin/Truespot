@@ -303,7 +303,7 @@ export const ThreeWalletsHub: React.FC<ThreeWalletsHubProps> = ({
             </div>
             <h3 className="text-sm font-bold text-[#F5F5F5]">2. Task Receiver Portal</h3>
             <p className="text-[11px] text-[#858585] mt-0.5 leading-snug">
-              Field worker: walks into 200m geofence, captures hardware-verified photo proof.
+              Field worker: walks into target geofence, captures hardware-verified photo proof.
             </p>
           </div>
           <div className="mt-3 pt-2.5 border-t border-white/[0.06] flex items-center justify-between text-[10px] text-[#858585] font-mono">

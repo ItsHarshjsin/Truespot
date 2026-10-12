@@ -101,7 +101,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({
       id: 'nearby',
       path: '/nearby',
       label: 'Nearby Bounties',
-      subtitle: '200m physical radar HUD',
+      subtitle: 'Physical radar HUD',
       icon: Compass,
       activePaths: ['/nearby', '/radar', '/spotter', '/'],
       hasPulse: true,
@@ -235,7 +235,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({
           <p className="text-[11px] text-zinc-400 leading-snug">
             {userMode === 'maker'
               ? 'Escrow contracts locked under 2.5% protocol fee.'
-              : '200m geofence active with gyroscopic verification.'}
+              : 'Geofence active with gyroscopic verification.'}
           </p>
 
           <div className="pt-1 flex items-center justify-between text-[10px] text-zinc-500 font-mono">
