@@ -1160,7 +1160,7 @@ export const AskScreen: React.FC<AskScreenProps> = ({
 
                           <td className="py-3.5 px-3 font-mono text-[10px]">
                             {q.max_spotters === 0 ? (
-                              <span className="text-[#00F0FF] font-bold">∞ Open Swarm</span>
+                              <span className="text-[#A8FF00] font-bold">∞ Open Swarm</span>
                             ) : q.max_spotters > 1 ? (
                               <span className="text-purple-300 font-bold">{q.max_spotters}x Quorum</span>
                             ) : (

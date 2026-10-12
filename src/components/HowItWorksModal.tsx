@@ -60,7 +60,7 @@ export const HowItWorksModal: React.FC<HowItWorksModalProps> = ({
           </div>
 
           <div className="p-3.5 bg-[#101010] border border-white/[0.06] rounded-[16px] space-y-1">
-            <div className="flex items-center space-x-1.5 text-[#00F0FF] font-bold">
+            <div className="flex items-center space-x-1.5 text-[#A8FF00] font-bold">
               <Globe className="w-3.5 h-3.5" />
               <span>2. Cryptographic Proof</span>
             </div>

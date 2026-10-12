@@ -8,25 +8,25 @@ interface RadarHUDProps {
 
 export const RadarHUD: React.FC<RadarHUDProps> = ({ bounties, onSelectBounty }) => {
   return (
-    <div className="relative w-full max-w-[340px] aspect-square mx-auto rounded-full bg-[#080D15] border-2 border-cyan-500/30 overflow-hidden shadow-[0_0_50px_rgba(0,245,255,0.08)] flex items-center justify-center p-3 select-none">
+    <div className="relative w-full max-w-[340px] aspect-square mx-auto rounded-full bg-black border-2 border-[#A8FF00]/30 overflow-hidden shadow-[0_0_50px_rgba(168,255,0,0.1)] flex items-center justify-center p-3 select-none">
       {/* Concentric Range Rings */}
-      <div className="absolute inset-0 rounded-full border border-cyan-500/10 pointer-events-none" />
-      <div className="absolute w-3/4 h-3/4 rounded-full border border-cyan-500/15 pointer-events-none flex items-start justify-center">
-        <span className="text-[9px] font-mono text-cyan-500/40 -mt-2.5 bg-[#080D15] px-1">150m</span>
+      <div className="absolute inset-0 rounded-full border border-[#A8FF00]/10 pointer-events-none" />
+      <div className="absolute w-3/4 h-3/4 rounded-full border border-[#A8FF00]/15 pointer-events-none flex items-start justify-center">
+        <span className="text-[9px] font-mono text-[#A8FF00]/50 -mt-2.5 bg-black px-1 font-bold">150m</span>
       </div>
-      <div className="absolute w-1/2 h-1/2 rounded-full border border-cyan-500/20 pointer-events-none flex items-start justify-center">
-        <span className="text-[9px] font-mono text-cyan-500/50 -mt-2.5 bg-[#080D15] px-1">100m</span>
+      <div className="absolute w-1/2 h-1/2 rounded-full border border-[#A8FF00]/20 pointer-events-none flex items-start justify-center">
+        <span className="text-[9px] font-mono text-[#A8FF00]/60 -mt-2.5 bg-black px-1 font-bold">100m</span>
       </div>
-      <div className="absolute w-1/4 h-1/4 rounded-full border border-cyan-500/30 pointer-events-none flex items-start justify-center">
-        <span className="text-[9px] font-mono text-cyan-500/60 -mt-2.5 bg-[#080D15] px-1">50m</span>
+      <div className="absolute w-1/4 h-1/4 rounded-full border border-[#A8FF00]/30 pointer-events-none flex items-start justify-center">
+        <span className="text-[9px] font-mono text-[#A8FF00]/80 -mt-2.5 bg-black px-1 font-bold">50m</span>
       </div>
 
       {/* Axis Crosshairs */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="w-full h-[1px] bg-cyan-500/15" />
+        <div className="w-full h-[1px] bg-[#A8FF00]/15" />
       </div>
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="h-full w-[1px] bg-cyan-500/15" />
+        <div className="h-full w-[1px] bg-[#A8FF00]/15" />
       </div>
 
       {/* Rotating Radar Sweep Cone */}
@@ -34,7 +34,7 @@ export const RadarHUD: React.FC<RadarHUDProps> = ({ bounties, onSelectBounty }) 
         <div 
           className="w-1/2 h-1/2 absolute top-0 right-0 origin-bottom-left"
           style={{
-            background: 'conic-gradient(from 180deg at 0% 100%, rgba(0, 245, 255, 0.25) 0deg, rgba(0, 245, 255, 0) 90deg)',
+            background: 'conic-gradient(from 180deg at 0% 100%, rgba(168, 255, 0, 0.22) 0deg, rgba(168, 255, 0, 0) 90deg)',
           }}
         />
       </div>
@@ -42,10 +42,10 @@ export const RadarHUD: React.FC<RadarHUDProps> = ({ bounties, onSelectBounty }) 
       {/* Center User Dot */}
       <div className="relative z-10 flex flex-col items-center">
         <div className="relative flex items-center justify-center">
-          <span className="absolute w-6 h-6 rounded-full bg-cyan-400/30 animate-ping" />
-          <span className="w-3.5 h-3.5 rounded-full bg-cyan-400 border-2 border-white shadow-[0_0_12px_#00F5FF]" />
+          <span className="absolute w-6 h-6 rounded-full bg-[#A8FF00]/30 animate-ping" />
+          <span className="w-3.5 h-3.5 rounded-full bg-[#A8FF00] border-2 border-white shadow-[0_0_12px_#A8FF00]" />
         </div>
-        <span className="text-[9px] font-mono font-bold text-cyan-300 mt-1 uppercase">YOU (GPS)</span>
+        <span className="text-[9px] font-mono font-bold text-[#A8FF00] mt-1 uppercase tracking-wider">YOU (GPS)</span>
       </div>
 
       {/* Bounty Radar Blips */}
@@ -74,22 +74,22 @@ export const RadarHUD: React.FC<RadarHUDProps> = ({ bounties, onSelectBounty }) 
           >
             <div className="relative flex items-center justify-center">
               {isEligible && (
-                <span className="absolute w-4 h-4 rounded-full bg-emerald-400/40 animate-ping" />
+                <span className="absolute w-4 h-4 rounded-full bg-[#A8FF00]/40 animate-ping" />
               )}
               <span
                 className={`w-3 h-3 rounded-full border ${
                   isEligible
-                    ? 'bg-emerald-400 border-white shadow-[0_0_10px_#00FF66]'
-                    : 'bg-slate-600 border-slate-400 opacity-60'
+                    ? 'bg-[#A8FF00] border-white shadow-[0_0_10px_#A8FF00]'
+                    : 'bg-zinc-700 border-zinc-500 opacity-60'
                 }`}
               />
             </div>
 
             {/* Hover Tooltip Card */}
             <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1.5 hidden group-hover:flex flex-col items-center pointer-events-none whitespace-nowrap z-30">
-              <div className="bg-[#0E1522] border border-cyan-500/40 text-[10px] px-2 py-1 rounded shadow-lg">
+              <div className="bg-[#050505] border border-[#A8FF00]/40 text-[10px] px-2 py-1 rounded-lg shadow-xl">
                 <span className="font-bold text-white">{b.place_name}</span>
-                <span className={`block font-mono text-[9px] ${isEligible ? 'text-emerald-400' : 'text-slate-400'}`}>
+                <span className={`block font-mono text-[9px] ${isEligible ? 'text-[#A8FF00]' : 'text-zinc-400'}`}>
                   {b.distance_meters}m • {isEligible ? 'IN 200M RANGE' : 'OUT OF RANGE'}
                 </span>
               </div>
@@ -100,7 +100,7 @@ export const RadarHUD: React.FC<RadarHUDProps> = ({ bounties, onSelectBounty }) 
 
       {/* Bottom Range Legend */}
       <div className="absolute bottom-2 left-0 right-0 text-center pointer-events-none">
-        <span className="text-[10px] font-mono font-bold text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/20">
+        <span className="text-[10px] font-mono font-bold text-[#A8FF00] bg-black/80 px-2.5 py-0.5 rounded-full border border-[#A8FF00]/30 shadow-sm">
           200M GEOFENCE ACTIVE
         </span>
       </div>

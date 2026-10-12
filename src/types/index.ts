@@ -31,9 +31,9 @@ export const TRUTH_BADGES: Record<TruthBadgeType, TruthBadgeConfig> = {
   EVIDENCE_CORROBORATED: {
     type: 'EVIDENCE_CORROBORATED',
     label: 'EVIDENCE CORROBORATED',
-    color: '#00F0FF',
-    bgColor: 'rgba(0, 240, 255, 0.12)',
-    borderColor: 'rgba(0, 240, 255, 0.35)',
+    color: '#C2FF33',
+    bgColor: 'rgba(194, 255, 51, 0.12)',
+    borderColor: 'rgba(194, 255, 51, 0.35)',
     description: 'Multiple independent observations confirm consensus ground truth.',
   },
   CONFLICTING_EVIDENCE: {
