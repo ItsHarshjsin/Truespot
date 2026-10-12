@@ -176,7 +176,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
       </header>
 
       {/* Main Container with Structured Section Padding (Offset for Floating Header) */}
-      <main className="relative z-10 max-w-5xl mx-auto px-6 sm:px-12 lg:px-20 pt-20 sm:pt-24 pb-0">
+      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-0">
         {/* ========================================================================= */}
         {/* 1. THE HERO SECTION                                                       */}
         {/* ========================================================================= */}
@@ -271,7 +271,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
             </p>
           </div>
 
-          <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {/* 1. Speed */}
             <div className="text-center flex flex-col items-center justify-between p-5 rounded-2xl bg-[#090909] border border-white/[0.06] hover:border-white/[0.12] transition-colors h-full">
               <div className="flex flex-col items-center space-y-2.5">
@@ -377,7 +377,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
         {/* 3. ICONIC TRANSITION STATEMENT BANNER                                     */}
         {/* ========================================================================= */}
         <section className="py-10 sm:py-12 border-t border-white/[0.08]">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-7xl mx-auto">
             <div className="relative rounded-2xl bg-[#090909] border border-white/[0.08] py-8 sm:py-10 px-6 sm:px-10 text-center overflow-hidden shadow-xl">
               <div className="absolute inset-0 pointer-events-none opacity-20 flex items-center justify-center">
                 <svg width="600" height="240" viewBox="0 0 600 240" fill="none">
@@ -426,7 +426,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
           </div>
 
           {/* Connected Network Map Canvas */}
-          <div className="max-w-5xl mx-auto rounded-2xl bg-[#090909] border border-white/[0.08] relative overflow-hidden p-6 sm:p-10 shadow-2xl">
+          <div className="max-w-7xl mx-auto rounded-2xl bg-[#090909] border border-white/[0.08] relative overflow-hidden p-6 sm:p-10 shadow-2xl">
             {/* Desktop & Tablet: Connected Oracle Eye Constellation Diagram */}
             <div className="relative min-h-[460px] hidden md:flex items-center justify-center">
               {/* Background Coordinate Grid, Oracle Eye Iris & Radiating Dashed Connectors */}
@@ -563,7 +563,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
             </h2>
           </div>
 
-          <div className="max-w-5xl mx-auto space-y-6">
+          <div className="max-w-7xl mx-auto space-y-6">
             {/* Streamlined 3-Stage Progress Strip (Compact, High-Signal) */}
             <div className="rounded-xl bg-[#090909] border border-white/[0.08] p-3 sm:p-4">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3 font-mono text-xs">
@@ -815,8 +815,8 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
             </p>
           </div>
 
-          {/* Balanced Side-by-Side Dual Card Grid - max-w-5xl aligns with full page grid */}
-          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">
+          {/* Balanced Side-by-Side Dual Card Grid - max-w-7xl aligns with full page grid */}
+          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">
             {/* Left Card: Blind Contract (Legacy) */}
             <div className="rounded-2xl bg-[#080808] border border-red-500/20 p-5 sm:p-6 flex flex-col justify-between shadow-xl">
               <div>
@@ -910,8 +910,8 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
             </p>
           </div>
 
-          {/* Unified Terminal Console - max-w-5xl aligns with full page grid */}
-          <div className="max-w-5xl mx-auto bg-[#090909] border border-white/[0.08] rounded-2xl overflow-hidden shadow-2xl">
+          {/* Unified Terminal Console - max-w-7xl aligns with full page grid */}
+          <div className="max-w-7xl mx-auto bg-[#090909] border border-white/[0.08] rounded-2xl overflow-hidden shadow-2xl">
             {/* Terminal Top Bar */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between bg-[#111111] border-b border-white/[0.06] px-4 py-2.5 gap-2.5">
               <div className="flex items-center space-x-3">
@@ -1018,7 +1018,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
       {/* ========================================================================= */}
       {/* 8 & 9. CONNECTED LIVE TELEMETRY & ENTERPRISE FOOTER                       */}
       {/* ========================================================================= */}
-      <footer className="relative z-10 max-w-5xl mx-auto px-6 sm:px-12 lg:px-20 mt-10 sm:mt-12 pt-8 sm:pt-9 pb-5 sm:pb-6 border-t border-white/[0.08]">
+      <footer className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 sm:mt-12 pt-8 sm:pt-9 pb-5 sm:pb-6 border-t border-white/[0.08]">
         {/* Integrated Live Telemetry Card (Seamless Connection) */}
         <div className="mb-7 sm:mb-8 rounded-2xl bg-[#090909] border border-white/[0.08] p-3.5 sm:p-5 overflow-hidden shadow-xl">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-3 px-1">
