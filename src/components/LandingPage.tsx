@@ -119,7 +119,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
       </div>
 
       {/* Floating Sticky Header Capsule (Cyera-Inspired) */}
-      <header className="fixed top-3.5 sm:top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-1.5rem)] sm:w-[calc(100%-3rem)] max-w-5xl h-14 rounded-full bg-[#0A0A0A]/90 backdrop-blur-2xl border border-white/[0.12] shadow-[0_12px_40px_rgba(0,0,0,0.75)] px-4 sm:px-6 flex items-center justify-between transition-all">
+      <header className="fixed top-3.5 sm:top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-1.5rem)] sm:w-[calc(100%-3rem)] max-w-7xl h-14 rounded-full bg-[#0A0A0A]/90 backdrop-blur-2xl border border-white/[0.12] shadow-[0_12px_40px_rgba(0,0,0,0.75)] px-4 sm:px-6 flex items-center justify-between transition-all">
         {/* Brand Logo */}
         <div
           className="flex items-center space-x-2.5 cursor-pointer group shrink-0"
