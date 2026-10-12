@@ -272,94 +272,102 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {/* 1. Speed */}
-            <div className="space-y-2.5 text-center flex flex-col items-center p-5 rounded-2xl bg-[#090909] border border-white/[0.06] hover:border-white/[0.12] transition-colors">
-              <div className="h-12 flex items-center justify-center">
-                <svg viewBox="0 0 100 100" className="w-11 h-11 stroke-white/80 fill-none" strokeWidth="1.5">
-                  <circle cx="20" cy="50" r="3" fill="white" />
-                  <line x1="20" y1="50" x2="80" y2="20" strokeDasharray="3 3" />
-                  <line x1="20" y1="50" x2="85" y2="40" />
-                  <line x1="20" y1="50" x2="85" y2="60" />
-                  <line x1="20" y1="50" x2="80" y2="80" strokeDasharray="3 3" />
-                  <circle cx="80" cy="20" r="2" fill="white" />
-                  <circle cx="85" cy="40" r="2" fill="white" />
-                  <circle cx="85" cy="60" r="2" fill="white" />
-                  <circle cx="80" cy="80" r="2" fill="white" />
-                </svg>
+            <div className="text-center flex flex-col items-center justify-between p-5 rounded-2xl bg-[#090909] border border-white/[0.06] hover:border-white/[0.12] transition-colors h-full">
+              <div className="flex flex-col items-center space-y-2.5">
+                <div className="h-12 flex items-center justify-center">
+                  <svg viewBox="0 0 100 100" className="w-11 h-11 stroke-white/80 fill-none" strokeWidth="1.5">
+                    <circle cx="20" cy="50" r="3" fill="white" />
+                    <line x1="20" y1="50" x2="80" y2="20" strokeDasharray="3 3" />
+                    <line x1="20" y1="50" x2="85" y2="40" />
+                    <line x1="20" y1="50" x2="85" y2="60" />
+                    <line x1="20" y1="50" x2="80" y2="80" strokeDasharray="3 3" />
+                    <circle cx="80" cy="20" r="2" fill="white" />
+                    <circle cx="85" cy="40" r="2" fill="white" />
+                    <circle cx="85" cy="60" r="2" fill="white" />
+                    <circle cx="80" cy="80" r="2" fill="white" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-white tracking-tight">Speed</h3>
+                  <span className="text-xs font-mono font-semibold text-[#A8FF00] block mt-0.5">
+                    &lt;400ms RPC Finality
+                  </span>
+                </div>
               </div>
-              <div>
-                <h3 className="text-base font-bold text-white tracking-tight">Speed</h3>
-                <span className="text-xs font-mono font-semibold text-[#A8FF00] block mt-0.5">
-                  &lt;400ms RPC Finality
-                </span>
-              </div>
-              <p className="text-xs text-zinc-400 leading-relaxed max-w-xs">
+              <p className="text-xs text-zinc-400 leading-relaxed mt-3">
                 Deploy physical verification queries in seconds with immediate decentralized dispatch to nearby spotters.
               </p>
             </div>
 
             {/* 2. Scale */}
-            <div className="space-y-2.5 text-center flex flex-col items-center p-5 rounded-2xl bg-[#090909] border border-white/[0.06] hover:border-white/[0.12] transition-colors">
-              <div className="h-12 flex items-center justify-center">
-                <svg viewBox="0 0 100 100" className="w-11 h-11 stroke-white/80 fill-none" strokeWidth="1.5">
-                  <ellipse cx="50" cy="30" rx="35" ry="12" />
-                  <ellipse cx="50" cy="50" rx="24" ry="8" strokeDasharray="3 3" />
-                  <ellipse cx="50" cy="70" rx="14" ry="5" />
-                  <line x1="15" y1="30" x2="50" y2="85" />
-                  <line x1="85" y1="30" x2="50" y2="85" />
-                  <circle cx="50" cy="85" r="2" fill="white" />
-                </svg>
+            <div className="text-center flex flex-col items-center justify-between p-5 rounded-2xl bg-[#090909] border border-white/[0.06] hover:border-white/[0.12] transition-colors h-full">
+              <div className="flex flex-col items-center space-y-2.5">
+                <div className="h-12 flex items-center justify-center">
+                  <svg viewBox="0 0 100 100" className="w-11 h-11 stroke-white/80 fill-none" strokeWidth="1.5">
+                    <ellipse cx="50" cy="30" rx="35" ry="12" />
+                    <ellipse cx="50" cy="50" rx="24" ry="8" strokeDasharray="3 3" />
+                    <ellipse cx="50" cy="70" rx="14" ry="5" />
+                    <line x1="15" y1="30" x2="50" y2="85" />
+                    <line x1="85" y1="30" x2="50" y2="85" />
+                    <circle cx="50" cy="85" r="2" fill="white" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-white tracking-tight">Scale</h3>
+                  <span className="text-xs font-mono font-semibold text-[#A8FF00] block mt-0.5">
+                    200m Micro-Perimeter
+                  </span>
+                </div>
               </div>
-              <div>
-                <h3 className="text-base font-bold text-white tracking-tight">Scale</h3>
-                <span className="text-xs font-mono font-semibold text-[#A8FF00] block mt-0.5">
-                  200m Micro-Perimeter
-                </span>
-              </div>
-              <p className="text-xs text-zinc-400 leading-relaxed max-w-xs">
+              <p className="text-xs text-zinc-400 leading-relaxed mt-3">
                 Mathematical Haversine boundary filtering coordinates anywhere on the globe with sub-meter precision.
               </p>
             </div>
 
             {/* 3. Trust */}
-            <div className="space-y-2.5 text-center flex flex-col items-center p-5 rounded-2xl bg-[#090909] border border-white/[0.06] hover:border-white/[0.12] transition-colors">
-              <div className="h-12 flex items-center justify-center">
-                <svg viewBox="0 0 100 100" className="w-11 h-11 stroke-white/80 fill-none" strokeWidth="1.5">
-                  <polygon points="50,15 85,35 85,75 50,95 15,75 15,35" />
-                  <line x1="50" y1="55" x2="50" y2="95" />
-                  <line x1="50" y1="55" x2="15" y2="35" />
-                  <line x1="50" y1="55" x2="85" y2="35" />
-                  <line x1="50" y1="15" x2="50" y2="55" strokeDasharray="3 3" />
-                </svg>
+            <div className="text-center flex flex-col items-center justify-between p-5 rounded-2xl bg-[#090909] border border-white/[0.06] hover:border-white/[0.12] transition-colors h-full">
+              <div className="flex flex-col items-center space-y-2.5">
+                <div className="h-12 flex items-center justify-center">
+                  <svg viewBox="0 0 100 100" className="w-11 h-11 stroke-white/80 fill-none" strokeWidth="1.5">
+                    <polygon points="50,15 85,35 85,75 50,95 15,75 15,35" />
+                    <line x1="50" y1="55" x2="50" y2="95" />
+                    <line x1="50" y1="55" x2="15" y2="35" />
+                    <line x1="50" y1="55" x2="85" y2="35" />
+                    <line x1="50" y1="15" x2="50" y2="55" strokeDasharray="3 3" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-white tracking-tight">Trust</h3>
+                  <span className="text-xs font-mono font-semibold text-[#A8FF00] block mt-0.5">
+                    98.4% AI Consensus
+                  </span>
+                </div>
               </div>
-              <div>
-                <h3 className="text-base font-bold text-white tracking-tight">Trust</h3>
-                <span className="text-xs font-mono font-semibold text-[#A8FF00] block mt-0.5">
-                  98.4% AI Consensus
-                </span>
-              </div>
-              <p className="text-xs text-zinc-400 leading-relaxed max-w-xs">
+              <p className="text-xs text-zinc-400 leading-relaxed mt-3">
                 Multimodal Gemini vision pipeline validating photographic evidence against query semantics.
               </p>
             </div>
 
             {/* 4. Outcomes */}
-            <div className="space-y-2.5 text-center flex flex-col items-center p-5 rounded-2xl bg-[#090909] border border-white/[0.06] hover:border-white/[0.12] transition-colors">
-              <div className="h-12 flex items-center justify-center">
-                <svg viewBox="0 0 100 100" className="w-11 h-11 stroke-white/80 fill-none" strokeWidth="1.5">
-                  <circle cx="50" cy="50" r="18" />
-                  <ellipse cx="50" cy="50" rx="38" ry="14" transform="rotate(-30 50 50)" strokeDasharray="3 3" />
-                  <ellipse cx="50" cy="50" rx="38" ry="14" transform="rotate(30 50 50)" />
-                </svg>
+            <div className="text-center flex flex-col items-center justify-between p-5 rounded-2xl bg-[#090909] border border-white/[0.06] hover:border-white/[0.12] transition-colors h-full">
+              <div className="flex flex-col items-center space-y-2.5">
+                <div className="h-12 flex items-center justify-center">
+                  <svg viewBox="0 0 100 100" className="w-11 h-11 stroke-white/80 fill-none" strokeWidth="1.5">
+                    <circle cx="50" cy="50" r="18" />
+                    <ellipse cx="50" cy="50" rx="38" ry="14" transform="rotate(-30 50 50)" strokeDasharray="3 3" />
+                    <ellipse cx="50" cy="50" rx="38" ry="14" transform="rotate(30 50 50)" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-white tracking-tight">Outcomes</h3>
+                  <span className="text-xs font-mono font-semibold text-[#A8FF00] block mt-0.5">
+                    Instant Settlement
+                  </span>
+                </div>
               </div>
-              <div>
-                <h3 className="text-base font-bold text-white tracking-tight">Outcomes</h3>
-                <span className="text-xs font-mono font-semibold text-[#A8FF00] block mt-0.5">
-                  Instant Settlement
-                </span>
-              </div>
-              <p className="text-xs text-zinc-400 leading-relaxed max-w-xs">
+              <p className="text-xs text-zinc-400 leading-relaxed mt-3">
                 Autonomous Anchor PDA vaults releasing 97.5% SOL bounties instantly upon consensus without friction.
               </p>
             </div>
@@ -370,23 +378,30 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
         {/* 3. ICONIC TRANSITION STATEMENT BANNER                                     */}
         {/* ========================================================================= */}
         <section className="py-10 sm:py-12 border-t border-white/[0.08]">
-          <div className="relative rounded-2xl bg-[#090909] border border-white/[0.08] py-8 sm:py-10 px-6 sm:px-10 text-center overflow-hidden shadow-xl">
-            <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-15">
-              <svg width="600" height="300" viewBox="0 0 600 300" fill="none">
-                <circle cx="300" cy="150" r="140" stroke="#A8FF00" strokeWidth="1" strokeDasharray="4 4" />
-                <circle cx="300" cy="150" r="90" stroke="white" strokeWidth="1" />
-                <path d="M 120 150 Q 300 40 480 150" stroke="white" strokeWidth="1" fill="none" />
-                <path d="M 120 150 Q 300 260 480 150" stroke="white" strokeWidth="1" fill="none" />
-              </svg>
-            </div>
+          <div className="max-w-5xl mx-auto">
+            <div className="relative rounded-2xl bg-[#090909] border border-white/[0.08] py-8 sm:py-10 px-6 sm:px-10 text-center overflow-hidden shadow-xl">
+              <div className="absolute inset-0 pointer-events-none opacity-20 flex items-center justify-center">
+                <svg width="600" height="240" viewBox="0 0 600 240" fill="none">
+                  <defs>
+                    <radialGradient id="bannerGlow" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stopColor="#A8FF00" stopOpacity="0.12" />
+                      <stop offset="100%" stopColor="#A8FF00" stopOpacity="0" />
+                    </radialGradient>
+                  </defs>
+                  <rect width="100%" height="100%" fill="url(#bannerGlow)" />
+                  <circle cx="300" cy="120" r="100" stroke="#A8FF00" strokeWidth="1" strokeDasharray="4 4" strokeOpacity="0.35" />
+                  <circle cx="300" cy="120" r="60" stroke="white" strokeWidth="0.8" strokeOpacity="0.1" />
+                </svg>
+              </div>
 
-            <div className="relative z-10 max-w-3xl mx-auto space-y-2">
-              <h2 className="text-xl sm:text-3xl font-black text-white tracking-tight leading-tight">
-                Smart contracts break at the physical edge.
-              </h2>
-              <p className="text-lg sm:text-2xl font-extrabold text-[#A8FF00] leading-tight">
-                Physical reality requires hardware-attested truth.
-              </p>
+              <div className="relative z-10 max-w-3xl mx-auto space-y-2">
+                <h2 className="text-xl sm:text-3xl font-black text-white tracking-tight leading-tight">
+                  Smart contracts break at the physical edge.
+                </h2>
+                <p className="text-lg sm:text-2xl font-extrabold text-[#A8FF00] leading-tight">
+                  Physical reality requires hardware-attested truth.
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -782,13 +797,14 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
         </section>
 
         {/* ========================================================================= */}
-        {/* 6. SIDE-BY-SIDE REALITY COMPARISON (Constrained Breadth & Balanced)       */}
+        {/* 6. SIDE-BY-SIDE REALITY COMPARISON (Aligned to Max-W-5xl)                 */}
         {/* ========================================================================= */}
         <section id="comparison" className="py-10 sm:py-12 border-t border-white/[0.08]">
           <div className="text-center max-w-2xl mx-auto mb-7 sm:mb-8">
-            <span className="text-[10px] font-mono font-bold text-[#A8FF00] uppercase tracking-widest block mb-1">
-              SECURITY AUDIT
-            </span>
+            <div className="inline-flex items-center space-x-2 text-[10px] font-mono font-bold text-[#A8FF00] uppercase tracking-wider mb-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#A8FF00]" />
+              <span>Security Audit</span>
+            </div>
             <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
               Smart Contracts Are Blind to Reality
             </h2>
@@ -797,8 +813,8 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
             </p>
           </div>
 
-          {/* Balanced Side-by-Side Dual Card Grid - max-w-4xl eliminates awkward lengthy gaps */}
-          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">
+          {/* Balanced Side-by-Side Dual Card Grid - max-w-5xl aligns with full page grid */}
+          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">
             {/* Left Card: Blind Contract (Legacy) */}
             <div className="rounded-2xl bg-[#080808] border border-red-500/20 p-5 sm:p-6 flex flex-col justify-between shadow-xl">
               <div>
@@ -876,13 +892,14 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
         </section>
 
         {/* ========================================================================= */}
-        {/* 7. DEVELOPER QUICKSTART HUB (Balanced Terminal Console)                  */}
+        {/* 7. DEVELOPER QUICKSTART HUB (Aligned to Max-W-5xl)                       */}
         {/* ========================================================================= */}
         <section id="developers" className="py-10 sm:py-12 border-t border-white/[0.08]">
           <div className="text-center max-w-2xl mx-auto mb-7 sm:mb-8">
-            <span className="text-[10px] font-mono font-bold text-[#A8FF00] uppercase tracking-widest block mb-1">
-              DEVELOPER INTEGRATION
-            </span>
+            <div className="inline-flex items-center space-x-2 text-[10px] font-mono font-bold text-[#A8FF00] uppercase tracking-wider mb-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#A8FF00]" />
+              <span>Developer Integration</span>
+            </div>
             <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
               Integrate Physical Ground Truth in 3 Lines
             </h2>
@@ -891,8 +908,8 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
             </p>
           </div>
 
-          {/* Unified Terminal Console - max-w-4xl eliminates awkward lengthy gaps */}
-          <div className="max-w-4xl mx-auto bg-[#090909] border border-white/[0.08] rounded-2xl overflow-hidden shadow-2xl">
+          {/* Unified Terminal Console - max-w-5xl aligns with full page grid */}
+          <div className="max-w-5xl mx-auto bg-[#090909] border border-white/[0.08] rounded-2xl overflow-hidden shadow-2xl">
             {/* Terminal Top Bar */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between bg-[#111111] border-b border-white/[0.06] px-4 py-2.5 gap-2.5">
               <div className="flex items-center space-x-3">
