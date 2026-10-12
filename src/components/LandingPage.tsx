@@ -205,13 +205,13 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white leading-[1.08] mb-5">
               Physical Ground Truth, <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-[#A8FF00]">
-                Attested On-Chain.
+                Attested Onchain.
               </span>
             </h1>
 
             {/* Subtitle */}
             <p className="text-base sm:text-lg text-zinc-400 max-w-2xl leading-relaxed mb-7">
-              The decentralized physical oracle bringing hardware-attested sensor validation and multimodal AI consensus to smart contracts, prediction markets, and autonomous agents.
+              Smart contracts cannot see physical reality. TrueSpot connects GPS coordinates, camera feeds, and hardware sensors directly to Solana programs with cryptographic proof.
             </p>
 
             {/* Action Buttons */}
@@ -236,20 +236,20 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
             {/* 4 Protocol Benchmark Parameters */}
             <div className="w-full pt-6 border-t border-white/[0.08] grid grid-cols-2 sm:grid-cols-4 gap-6 font-mono text-xs">
               <div className="text-center">
-                <span className="text-[10px] text-zinc-500 uppercase block font-bold mb-1">Devnet Finality</span>
-                <strong className="text-white text-sm font-semibold">&lt; 400ms RPC</strong>
+                <span className="text-[10px] text-zinc-500 uppercase block font-bold mb-1">Consensus Speed</span>
+                <strong className="text-white text-sm font-semibold">&lt; 400ms Finality</strong>
               </div>
               <div className="text-center">
-                <span className="text-[10px] text-zinc-500 uppercase block font-bold mb-1">Geofence Radius</span>
-                <strong className="text-white text-sm font-semibold">200 Meters</strong>
+                <span className="text-[10px] text-zinc-500 uppercase block font-bold mb-1">Spatial Geofence</span>
+                <strong className="text-white text-sm font-semibold">Sub-Meter GPS</strong>
               </div>
               <div className="text-center">
-                <span className="text-[10px] text-zinc-500 uppercase block font-bold mb-1">Vision Consensus</span>
-                <strong className="text-[#A8FF00] text-sm font-semibold">Gemini 2.5</strong>
+                <span className="text-[10px] text-zinc-500 uppercase block font-bold mb-1">Vision Engine</span>
+                <strong className="text-[#A8FF00] text-sm font-semibold">Gemini 2.5 Flash</strong>
               </div>
               <div className="text-center">
-                <span className="text-[10px] text-zinc-500 uppercase block font-bold mb-1">Escrow Split</span>
-                <strong className="text-[#A8FF00] text-sm font-semibold">97.5% / 2.5%</strong>
+                <span className="text-[10px] text-zinc-500 uppercase block font-bold mb-1">Smart Escrow</span>
+                <strong className="text-[#A8FF00] text-sm font-semibold">97.5% Bounty Split</strong>
               </div>
             </div>
           </div>
@@ -262,13 +262,13 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
           <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-9">
             <div className="inline-flex items-center space-x-2 text-[10px] font-mono font-bold text-[#A8FF00] uppercase tracking-wider mb-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#A8FF00]" />
-              <span>Core Architecture</span>
+              <span>Protocol Pillars</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-              Engineered for Physical Certainty
+              How Physical Verification Works
             </h2>
             <p className="text-xs text-zinc-400 mt-2">
-              Four cryptographic pillars bridging off-chain reality with Solana smart contracts.
+              Hardware sensor nonces, vision intelligence, and instant Solana escrow settlement.
             </p>
           </div>
 
@@ -292,16 +292,16 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                 <div>
                   <h3 className="text-base font-bold text-white tracking-tight">Speed</h3>
                   <span className="text-xs font-mono font-semibold text-[#A8FF00] block mt-0.5">
-                    &lt;400ms RPC Finality
+                    &lt; 400ms Finality
                   </span>
                 </div>
               </div>
               <p className="text-xs text-zinc-400 leading-relaxed mt-3">
-                Deploy physical verification queries in seconds with immediate decentralized dispatch to nearby spotters.
+                Dispatch tasks to nearby hardware nodes in seconds and settle with sub-second Solana RPC confirmation.
               </p>
             </div>
 
-            {/* 2. Scale */}
+            {/* 2. Precision */}
             <div className="text-center flex flex-col items-center justify-between p-5 rounded-2xl bg-[#090909] border border-white/[0.06] hover:border-white/[0.12] transition-colors h-full">
               <div className="flex flex-col items-center space-y-2.5">
                 <div className="h-12 flex items-center justify-center">
@@ -315,18 +315,18 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-white tracking-tight">Scale</h3>
+                  <h3 className="text-base font-bold text-white tracking-tight">Precision</h3>
                   <span className="text-xs font-mono font-semibold text-[#A8FF00] block mt-0.5">
-                    200m Micro-Perimeter
+                    Haversine Geofence
                   </span>
                 </div>
               </div>
               <p className="text-xs text-zinc-400 leading-relaxed mt-3">
-                Mathematical Haversine boundary filtering coordinates anywhere on the globe with sub-meter precision.
+                Sub-meter boundary validation. Accelerometer nonces reject spoofed GPS coordinates and virtual machine emulators.
               </p>
             </div>
 
-            {/* 3. Trust */}
+            {/* 3. Intelligence */}
             <div className="text-center flex flex-col items-center justify-between p-5 rounded-2xl bg-[#090909] border border-white/[0.06] hover:border-white/[0.12] transition-colors h-full">
               <div className="flex flex-col items-center space-y-2.5">
                 <div className="h-12 flex items-center justify-center">
@@ -339,18 +339,18 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-white tracking-tight">Trust</h3>
+                  <h3 className="text-base font-bold text-white tracking-tight">Intelligence</h3>
                   <span className="text-xs font-mono font-semibold text-[#A8FF00] block mt-0.5">
-                    98.4% AI Consensus
+                    Gemini 2.5 Flash
                   </span>
                 </div>
               </div>
               <p className="text-xs text-zinc-400 leading-relaxed mt-3">
-                Multimodal Gemini vision pipeline validating photographic evidence against query semantics.
+                Multimodal vision models analyze camera frames in parallel to confirm physical states against query criteria.
               </p>
             </div>
 
-            {/* 4. Outcomes */}
+            {/* 4. Settlement */}
             <div className="text-center flex flex-col items-center justify-between p-5 rounded-2xl bg-[#090909] border border-white/[0.06] hover:border-white/[0.12] transition-colors h-full">
               <div className="flex flex-col items-center space-y-2.5">
                 <div className="h-12 flex items-center justify-center">
@@ -361,14 +361,14 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-white tracking-tight">Outcomes</h3>
+                  <h3 className="text-base font-bold text-white tracking-tight">Settlement</h3>
                   <span className="text-xs font-mono font-semibold text-[#A8FF00] block mt-0.5">
-                    Instant Settlement
+                    Instant Anchor Escrow
                   </span>
                 </div>
               </div>
               <p className="text-xs text-zinc-400 leading-relaxed mt-3">
-                Autonomous Anchor PDA vaults releasing 97.5% SOL bounties instantly upon consensus without friction.
+                Anchor PDA vaults release 97.5% SOL bounties autonomously the instant cryptographic consensus finalizes.
               </p>
             </div>
           </div>
@@ -554,10 +554,10 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
           <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-9">
             <div className="inline-flex items-center space-x-2 text-[10px] font-mono font-bold text-[#A8FF00] uppercase tracking-wider mb-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#A8FF00]" />
-              <span>Production Use Cases</span>
+              <span>Production Deployments</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-              Deterministic Real-World Deployments
+              Where TrueSpot Operates Today
             </h2>
           </div>
 
@@ -576,7 +576,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                 <div className="flex items-center space-x-2.5 px-3 py-2 rounded-lg bg-[#050505] border border-white/[0.04]">
                   <span className="w-5 h-5 rounded-full bg-[#181818] border border-white/10 flex items-center justify-center text-[10px] text-[#A8FF00] font-bold">2</span>
                   <div className="min-w-0">
-                    <span className="text-white font-bold block text-[11px] truncate">Telemetry Consensus</span>
+                    <span className="text-white font-bold block text-[11px] truncate">Sensor + Vision Proof</span>
                     <span className="text-[10px] text-[#A8FF00]">98.4% AI + 8.4 Hz Tremor</span>
                   </div>
                 </div>
@@ -584,7 +584,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                 <div className="flex items-center space-x-2.5 px-3 py-2 rounded-lg bg-[#050505] border border-white/[0.04]">
                   <span className="w-5 h-5 rounded-full bg-[#181818] border border-white/10 flex items-center justify-center text-[10px] text-[#A8FF00] font-bold">3</span>
                   <div className="min-w-0">
-                    <span className="text-white font-bold block text-[11px] truncate">Instant CPI Payout</span>
+                    <span className="text-white font-bold block text-[11px] truncate">Instant CPI Settlement</span>
                     <span className="text-[10px] text-emerald-400 font-bold">0.341 SOL Delivered</span>
                   </div>
                 </div>
@@ -604,7 +604,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                     <Zap className="w-4 h-4 text-[#A8FF00]" />
                   </div>
                   <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
-                    ● VERIFIED_ON_CHAIN
+                    ● VERIFIED_ONCHAIN
                   </span>
                 </div>
 
@@ -621,7 +621,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                       EV Supercharger Stall Clearance
                     </h3>
                     <p className="text-xs text-zinc-400 leading-relaxed mb-4">
-                      Physical stall occupancy and charger operational status verified before vehicle dispatch.
+                      Autonomous vehicles confirm charger stall availability and cable state before routing to park and charge.
                     </p>
                   </div>
 
@@ -809,7 +809,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
               Smart Contracts Are Blind to Reality
             </h2>
             <p className="text-xs text-zinc-400 mt-2">
-              Without physical attestations, on-chain execution relies on vulnerable off-chain trust assumptions.
+              Without physical verification, onchain execution relies on vulnerable offchain trust assumptions.
             </p>
           </div>
 
@@ -861,7 +861,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                     <span>Verified by TrueSpot</span>
                   </div>
                   <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#A8FF00]/10 text-[#A8FF00] border border-[#A8FF00]/30">
-                    ATTESTED ON-CHAIN
+                    ATTESTED ONCHAIN
                   </span>
                 </div>
 
@@ -884,7 +884,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
               <div className="mt-5 pt-3 border-t border-[#A8FF00]/15">
                 <div className="bg-[#A8FF00]/[0.05] border border-[#A8FF00]/25 rounded-lg p-2.5 font-mono text-[11px] text-zinc-200">
                   <span className="font-bold block text-[#A8FF00] mb-0.5">Autonomous AI Agent Verified:</span>
-                  Task executed with confirmed physical telemetry. Zero hallucination risk.
+                  Task executed onchain with confirmed physical telemetry. Zero hallucination risk.
                 </div>
               </div>
             </div>
@@ -1000,7 +1000,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                 </div>
                 <div className="flex items-center space-x-1.5">
                   <CheckCheck className="w-3.5 h-3.5 text-[#A8FF00]" />
-                  <span>Zero-Hallucination Feed</span>
+                  <span>Cryptographic Hardware Proof</span>
                 </div>
               </div>
 
@@ -1069,7 +1069,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                 </div>
 
                 <p className="text-xs text-zinc-400 leading-relaxed max-w-sm">
-                  Cryptographic verification bridging physical ground truth and autonomous on-chain execution on Solana.
+                  Cryptographic verification bridging physical ground truth and autonomous onchain execution on Solana.
                 </p>
 
                 {/* Live Cluster Pill */}
