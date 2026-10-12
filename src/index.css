@@ -193,3 +193,30 @@
   filter: brightness(0.65) invert(1) contrast(2.4) hue-rotate(190deg) saturate(0.25) brightness(0.75);
 }
 
+/* Smooth Marquee Swiping Ticker */
+@keyframes marquee-swipe {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee-swipe {
+  display: flex;
+  width: max-content;
+  animation: marquee-swipe 28s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-swipe:hover {
+  animation-play-state: paused;
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+

@@ -99,6 +99,17 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
     return () => clearInterval(interval);
   }, []);
 
+  const tickerItems = [
+    { label: 'Spatial Geofence', val: '200m Radius Locked', status: 'VERIFIED', color: 'text-[#A8FF00]' },
+    { label: 'Hardware Enclave', val: '8.4 Hz Tremor Attested', status: 'SEALED', color: 'text-emerald-400' },
+    { label: 'Gemini 2.5 Vision', val: '98.4% Spatial Consensus', status: 'CONFIRMED', color: 'text-[#A8FF00]' },
+    { label: 'Anchor Escrow PDA', val: '0.35 SOL Settled', status: 'FINALIZED', color: 'text-cyan-400' },
+    { label: 'Autonomous Fleet', val: 'EV Charger #402 Verified', status: 'ACTIVE', color: 'text-[#A8FF00]' },
+    { label: 'Solana Devnet', val: '<400ms Sub-Second Slot', status: 'ONLINE', color: 'text-emerald-400' },
+    { label: 'Drone Waypoint', val: 'Anti-Spoofing Variance 0.00%', status: 'AUTHENTIC', color: 'text-cyan-400' },
+    { label: 'ElizaOS Agent', val: 'Autonomous Physical CPI', status: 'EXECUTED', color: 'text-[#A8FF00]' },
+  ];
+
   return (
     <div className="min-h-screen bg-[#050505] text-[#F5F5F5] font-sans selection:bg-[#A8FF00]/20 selection:text-[#A8FF00] overflow-x-hidden relative">
       {/* Background Ambient Glows */}
@@ -395,9 +406,6 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
             <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
               Cryptographic Reality Network
             </h2>
-            <p className="text-xs text-zinc-400 mt-2 font-mono">
-              Four hardware &amp; algorithmic proof vectors anchored directly to physical ground truth on Solana.
-            </p>
           </div>
 
           {/* Connected Network Map Canvas */}
@@ -541,18 +549,6 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                 </div>
               </div>
             </div>
-
-            {/* Bottom Real-Time Telemetry Bar */}
-            <div className="mt-5 pt-3.5 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-2 font-mono text-[11px] text-zinc-500">
-              <div className="flex items-center space-x-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#A8FF00]" />
-                <span className="text-zinc-400">Cluster: Solana Devnet • Slot #{telemetrySlot.toLocaleString()}</span>
-              </div>
-              <div className="text-zinc-400">
-                PDA Vault: <span className="text-white">TrueSpotEscrow1111111111111</span>
-              </div>
-              <span className="text-emerald-400 font-bold">● CRYPTOGRAPHICALLY_SEALED</span>
-            </div>
           </div>
         </section>
 
@@ -569,9 +565,6 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
             <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
               Deterministic Real-World Deployments
             </h2>
-            <p className="text-xs text-zinc-400 mt-2 font-mono">
-              Autonomous mobility, logistics, and infrastructure networks consuming verified physical truth.
-            </p>
           </div>
 
           <div className="max-w-5xl mx-auto space-y-6">
@@ -1027,56 +1020,233 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
         </section>
 
         {/* ========================================================================= */}
-        {/* 8. MINIMALIST FOOTER                                                      */}
+        {/* 8. LIVE ATTESTATION MARQUEE SWIPE (Continuous Smooth Stream)              */}
         {/* ========================================================================= */}
-        <footer className="pt-8 sm:pt-10 border-t border-white/[0.08]">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-            <div
-              className="flex items-center space-x-3 cursor-pointer group"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            >
-              <div className="w-8 h-8 rounded-xl bg-[#A8FF00] text-black flex items-center justify-center font-bold">
-                <Shield className="w-4.5 h-4.5 text-black stroke-[2.5]" />
-              </div>
-              <span className="font-extrabold text-base tracking-tight text-white">
-                TrueSpot
-              </span>
-            </div>
-
-            <div className="flex items-center space-x-8 text-xs font-semibold text-zinc-400">
-              <a
-                href="https://x.com"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-white transition-colors"
-              >
-                X (Twitter)
-              </a>
-              <a
-                href="https://github.com/ItsHarshjsin/Truespot"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-white transition-colors"
-              >
-                GitHub
-              </a>
-              <button
-                onClick={onOpenDocs}
-                className="hover:text-white transition-colors cursor-pointer"
-              >
-                Docs
-              </button>
-              <button
-                onClick={onLaunchProtocol}
-                className="text-[#A8FF00] hover:underline font-bold cursor-pointer"
-              >
-                Launch App →
-              </button>
+        <section className="pt-10 pb-4 overflow-hidden border-t border-white/[0.08]">
+          <div className="marquee-mask overflow-hidden py-2">
+            <div className="animate-marquee-swipe flex items-center gap-3">
+              {[...tickerItems, ...tickerItems].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#0C0C0C] border border-white/[0.08] hover:border-[#A8FF00]/40 transition-colors shrink-0 group cursor-default"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#A8FF00] animate-pulse" />
+                  <span className="text-[11px] font-mono text-zinc-400 group-hover:text-zinc-300 transition-colors">
+                    {item.label}:
+                  </span>
+                  <span className="text-[11px] font-mono font-bold text-white">
+                    {item.val}
+                  </span>
+                  <span className={`text-[9px] font-mono font-extrabold px-1.5 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] ${item.color}`}>
+                    {item.status}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
+        </section>
 
-          <div className="mt-8 text-center text-xs font-mono text-zinc-600">
-            © 2026 TrueSpot. Decentralized Ground Truth Architecture.
+        {/* ========================================================================= */}
+        {/* 9. DEFINED ENTERPRISE FOOTER                                              */}
+        {/* ========================================================================= */}
+        <footer className="pt-10 pb-8 border-t border-white/[0.08]">
+          <div className="max-w-7xl mx-auto">
+            {/* Top Multi-Column Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 pb-10 border-b border-white/[0.06]">
+              {/* Brand & Devnet Status Column (Spans 2 columns on lg) */}
+              <div className="lg:col-span-2 space-y-4">
+                <div
+                  className="flex items-center space-x-3 cursor-pointer group w-fit"
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                >
+                  <div className="w-9 h-9 rounded-xl bg-[#A8FF00] text-black flex items-center justify-center font-bold shadow-[0_0_15px_rgba(168,255,0,0.3)] transition-transform group-hover:scale-105">
+                    <Shield className="w-5 h-5 text-black stroke-[2.5]" />
+                  </div>
+                  <div>
+                    <span className="font-black text-lg tracking-tight text-white block leading-none">
+                      TrueSpot
+                    </span>
+                    <span className="text-[10px] font-mono text-[#A8FF00] uppercase tracking-wider font-semibold">
+                      Physical DePIN Oracle
+                    </span>
+                  </div>
+                </div>
+
+                <p className="text-xs text-zinc-400 leading-relaxed max-w-sm">
+                  Cryptographic verification bridging physical ground truth and autonomous on-chain execution on Solana.
+                </p>
+
+                {/* Live Cluster Pill */}
+                <div className="inline-flex items-center space-x-2.5 px-3 py-1.5 rounded-lg bg-[#0C0C0C] border border-white/[0.08] text-[11px] font-mono">
+                  <span className="w-2 h-2 rounded-full bg-[#A8FF00] animate-pulse" />
+                  <span className="text-zinc-400">Solana Devnet:</span>
+                  <span className="text-white font-bold">Slot #{telemetrySlot.toLocaleString()}</span>
+                </div>
+              </div>
+
+              {/* Column 1: Verification Core */}
+              <div className="space-y-3">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-white font-mono">
+                  Verification Core
+                </h4>
+                <ul className="space-y-2 text-xs text-zinc-400">
+                  <li>
+                    <a href="#simulator" className="hover:text-white transition-colors block">
+                      Spatial Geofence
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#simulator" className="hover:text-white transition-colors block">
+                      Biometric Tremor
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#simulator" className="hover:text-white transition-colors block">
+                      Gemini 2.5 Vision
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#simulator" className="hover:text-white transition-colors block">
+                      Anchor Escrow PDA
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#simulator" className="hover:text-white transition-colors block">
+                      Oracle Eye Topology
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Column 2: Developers */}
+              <div className="space-y-3">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-white font-mono">
+                  Developers
+                </h4>
+                <ul className="space-y-2 text-xs text-zinc-400">
+                  <li>
+                    <button onClick={onOpenDocs} className="hover:text-white transition-colors text-left cursor-pointer block">
+                      Anchor CPI Program
+                    </button>
+                  </li>
+                  <li>
+                    <button onClick={onOpenDocs} className="hover:text-white transition-colors text-left cursor-pointer block">
+                      TypeScript SDK
+                    </button>
+                  </li>
+                  <li>
+                    <button onClick={onOpenDocs} className="hover:text-white transition-colors text-left cursor-pointer block">
+                      ElizaOS DePIN Action
+                    </button>
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/ItsHarshjsin/Truespot"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:text-white transition-colors flex items-center space-x-1"
+                    >
+                      <span>GitHub Repository</span>
+                      <ArrowUpRight className="w-3 h-3 text-zinc-500" />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://explorer.solana.com/?cluster=devnet"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:text-white transition-colors flex items-center space-x-1"
+                    >
+                      <span>Devnet Explorer</span>
+                      <ArrowUpRight className="w-3 h-3 text-zinc-500" />
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Column 3: Deployments */}
+              <div className="space-y-3">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-white font-mono">
+                  Deployments
+                </h4>
+                <ul className="space-y-2 text-xs text-zinc-400">
+                  <li>
+                    <a href="#automation" className="hover:text-white transition-colors block">
+                      Autonomous EV Fleet
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#automation" className="hover:text-white transition-colors block">
+                      Cold-Chain Logistics
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#automation" className="hover:text-white transition-colors block">
+                      Drone Waypoints
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#automation" className="hover:text-white transition-colors block">
+                      Decentralized Compute
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Column 4: Ecosystem & Quick Action */}
+              <div className="space-y-3">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-white font-mono">
+                  Ecosystem
+                </h4>
+                <ul className="space-y-2 text-xs text-zinc-400">
+                  <li>
+                    <a
+                      href="https://x.com"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:text-white transition-colors flex items-center space-x-1"
+                    >
+                      <span>X (Twitter)</span>
+                      <ArrowUpRight className="w-3 h-3 text-zinc-500" />
+                    </a>
+                  </li>
+                  <li>
+                    <button onClick={onOpenDocs} className="hover:text-white transition-colors text-left cursor-pointer block">
+                      Documentation
+                    </button>
+                  </li>
+                  <li className="pt-2">
+                    <button
+                      onClick={onLaunchProtocol}
+                      className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-lg bg-[#A8FF00] text-black font-bold text-xs hover:bg-[#b8ff24] transition-all cursor-pointer shadow-[0_0_12px_rgba(168,255,0,0.25)]"
+                    >
+                      <span>Launch App</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Bottom Bar: Copyright & Back-to-Top */}
+            <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-[11px] text-zinc-500">
+              <div className="flex items-center space-x-2">
+                <span>© 2026 TrueSpot Protocol.</span>
+                <span className="text-zinc-600">•</span>
+                <span className="text-zinc-400">Decentralized Physical Ground Truth Architecture.</span>
+              </div>
+
+              <div className="flex items-center space-x-6 text-zinc-400">
+                <span className="text-emerald-400 font-medium">● Devnet Operational</span>
+                <button
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className="hover:text-white transition-colors cursor-pointer flex items-center space-x-1 group"
+                >
+                  <span>Back to top</span>
+                  <span className="group-hover:-translate-y-0.5 transition-transform">↑</span>
+                </button>
+              </div>
+            </div>
           </div>
         </footer>
       </main>
