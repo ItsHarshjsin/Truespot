@@ -122,10 +122,11 @@ export const TopNavbar: React.FC<TopNavbarProps> = ({
             <Menu className="w-4 h-4" />
           </button>
 
-          {/* Brand Logo */}
+          {/* Brand Logo - Navigates to Landing Page */}
           <div
-            onClick={() => navigate(userMode === 'maker' ? '/bounties' : '/nearby')}
+            onClick={() => navigate('/landing')}
             className="flex items-center space-x-2.5 cursor-pointer group shrink-0"
+            title="TrueSpot Protocol Overview"
           >
             <div className="w-8 h-8 rounded-xl bg-[#A8FF00] text-black flex items-center justify-center font-bold group-hover:scale-105 transition-transform">
               <Shield className="w-4.5 h-4.5 text-black stroke-[2.5]" />

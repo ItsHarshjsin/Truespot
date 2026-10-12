@@ -413,7 +413,7 @@ const AppContent: React.FC = () => {
 
   const isLocationView = ['studio', 'nearby', 'radar', 'map'].includes(activeTab);
 
-  if (location.pathname === '/landing') {
+  if (location.pathname === '/landing' || location.pathname === '/') {
     return (
       <div className="min-h-screen bg-[#050505] text-[#F5F5F5] font-sans relative selection:bg-[#A8FF00] selection:text-black">
         <ToastContainer toasts={toasts} onDismiss={dismissToast} />
@@ -790,8 +790,8 @@ const AppContent: React.FC = () => {
           />
 
           {/* Root Fallback */}
-          <Route path="/" element={<Navigate to={userMode === 'maker' ? '/bounties' : '/nearby'} replace />} />
-          <Route path="*" element={<Navigate to={userMode === 'maker' ? '/bounties' : '/nearby'} replace />} />
+          <Route path="/" element={<Navigate to="/landing" replace />} />
+          <Route path="*" element={<Navigate to="/landing" replace />} />
         </Routes>
               </main>
             </div>
