@@ -455,6 +455,11 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                     <path d="M 28 0 L 0 0 0 28" fill="none" stroke="rgba(255,255,255,0.035)" strokeWidth="0.8" />
                   </pattern>
 
+                  {/* Dot Matrix Fill Pattern for Space Filling */}
+                  <pattern id="dotGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <circle cx="10" cy="10" r="0.75" fill="rgba(255,255,255,0.06)" />
+                  </pattern>
+
                   {/* Atmospheric Radar Glow Behind Center */}
                   <radialGradient id="centerRadarGlow" cx="50%" cy="50%" r="50%">
                     <stop offset="0%" stopColor="#A8FF00" stopOpacity="0.14" />
@@ -463,8 +468,9 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                   </radialGradient>
                 </defs>
 
-                {/* Base Grid */}
+                {/* Base Coordinate Grids */}
                 <rect width="100%" height="100%" fill="url(#topologyDiagGrid)" />
+                <rect width="100%" height="100%" fill="url(#dotGrid)" />
 
                 {/* Ambient Center Radar Glow */}
                 <circle cx="400" cy="230" r="220" fill="url(#centerRadarGlow)" />
@@ -490,6 +496,12 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                 <text x="406" y="172" fill="rgba(168,255,0,0.3)" fontSize="8" fontFamily="monospace">R: 50m</text>
                 <text x="406" y="108" fill="rgba(255,255,255,0.18)" fontSize="8" fontFamily="monospace">R: 100m</text>
                 <text x="406" y="42" fill="rgba(168,255,0,0.35)" fontSize="8" fontFamily="monospace">R: 200m GEOFENCE PERIMETER</text>
+
+                {/* Micro Technical Grid Labels (Fills Ambient Canvas Space) */}
+                <text x="210" y="44" fill="rgba(255,255,255,0.2)" fontSize="7" fontFamily="monospace">◇ FIX: 3D_GNSS_RTK</text>
+                <text x="530" y="44" fill="rgba(255,255,255,0.2)" fontSize="7" fontFamily="monospace">◇ ENCLAVE: VALIDATED</text>
+                <text x="175" y="426" fill="rgba(255,255,255,0.2)" fontSize="7" fontFamily="monospace">◇ ENGINE: GEMINI_2_5</text>
+                <text x="545" y="426" fill="rgba(255,255,255,0.2)" fontSize="7" fontFamily="monospace">◇ CPI: SPL_ESCROW</text>
 
                 {/* Degree Cardinal Ticks */}
                 <text x="396" y="24" fill="rgba(255,255,255,0.2)" fontSize="7" fontFamily="monospace">0° N</text>
@@ -558,6 +570,50 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                 <line x1="660" y1="380" x2="400" y2="230" stroke="rgba(168,255,0,0.15)" strokeWidth="1" />
                 <line x1="660" y1="380" x2="400" y2="230" stroke="#A8FF00" strokeWidth="1.5" strokeOpacity="0.65" className="animate-dash-stream" />
               </svg>
+
+              {/* Floating Low-Transparency Background Telemetry Badge: Left Flank */}
+              <div className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 z-10 hidden xl:flex flex-col space-y-1.5 pointer-events-none">
+                <div className="px-2.5 py-1 rounded-full bg-[#111111]/85 backdrop-blur-md border border-white/[0.08] flex items-center space-x-2 text-[10px] font-mono shadow-xl">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#A8FF00] animate-pulse" />
+                  <span className="text-zinc-400">GNSS:</span>
+                  <span className="text-white font-bold">0.8m ACC</span>
+                </div>
+                <div className="px-2 py-0.5 rounded bg-[#0D0D0D]/60 border border-white/[0.04] text-[9px] font-mono text-zinc-500 w-fit">
+                  SAT_32 • LOCKED
+                </div>
+              </div>
+
+              {/* Floating Low-Transparency Background Telemetry Badge: Right Flank */}
+              <div className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 z-10 hidden xl:flex flex-col items-end space-y-1.5 pointer-events-none">
+                <div className="px-2.5 py-1 rounded-full bg-[#111111]/85 backdrop-blur-md border border-white/[0.08] flex items-center space-x-2 text-[10px] font-mono shadow-xl">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="text-zinc-400">DEVNET:</span>
+                  <span className="text-emerald-400 font-bold">&lt;400ms</span>
+                </div>
+                <div className="px-2 py-0.5 rounded bg-[#0D0D0D]/60 border border-white/[0.04] text-[9px] font-mono text-zinc-500 w-fit">
+                  SLOT #{telemetrySlot.toLocaleString()}
+                </div>
+              </div>
+
+              {/* Floating Low-Transparency Background Telemetry Badge: Top Flank */}
+              <div className="absolute top-8 left-1/2 -translate-x-1/2 z-10 hidden lg:flex pointer-events-none">
+                <div className="px-3 py-1 rounded-full bg-[#0D0D0D]/80 backdrop-blur-md border border-[#A8FF00]/25 flex items-center space-x-2 text-[10px] font-mono text-zinc-300 shadow-lg">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#A8FF00]" />
+                  <span className="text-zinc-400">TEE ENCLAVE:</span>
+                  <span className="text-[#A8FF00] font-bold">Nonce #9102 Sealed</span>
+                  <span className="text-[9px] text-zinc-500 font-normal border-l border-white/10 pl-2">8.4 Hz RMS</span>
+                </div>
+              </div>
+
+              {/* Floating Low-Transparency Background Telemetry Badge: Bottom Flank */}
+              <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden lg:flex pointer-events-none">
+                <div className="px-3 py-1 rounded-full bg-[#0D0D0D]/80 backdrop-blur-md border border-cyan-500/25 flex items-center space-x-2 text-[10px] font-mono text-zinc-300 shadow-lg">
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                  <span className="text-zinc-400">ESCROW VAULT:</span>
+                  <span className="text-cyan-400 font-bold">0.35 SOL Settled</span>
+                  <span className="text-[9px] text-zinc-500 font-normal border-l border-white/10 pl-2">Anchor CPI</span>
+                </div>
+              </div>
 
               {/* Central Physical POI Headline Pill (Oracle Center) */}
               <div className="z-20 relative group cursor-default">
