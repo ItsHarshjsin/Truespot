@@ -205,6 +205,9 @@ export const ReceiverPortal: React.FC<ReceiverPortalProps> = ({
                               src={report.photo_url}
                               alt="Captured ground proof"
                               className="w-full h-full object-contain"
+                              onError={(e) => {
+                                (e.target as HTMLImageElement).src = '/evidence/ev_charger_stall.jpg';
+                              }}
                             />
                           </div>
                         )}

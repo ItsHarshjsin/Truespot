@@ -354,7 +354,7 @@ export const QueryStudio: React.FC<QueryStudioProps> = ({
                       <span className="text-xs font-semibold text-[#A8FF00]">
                         Reference Image Attached
                       </span>
-                      <p className="text-[10px] text-zinc-400">Click to replace file</p>
+                      <p className="text-[10px] text-zinc-400">Click, to replace file</p>
                     </div>
                   </div>
                 ) : (

@@ -373,6 +373,9 @@ export const EvidenceExplorer: React.FC<EvidenceExplorerProps> = ({
                           src={obs.media_url}
                           alt="Physical observation evidence"
                           className="w-full h-full object-cover"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).src = '/evidence/ev_charger_stall.jpg';
+                          }}
                         />
                       </div>
                       <div className="p-3 bg-[#101010] rounded-[14px] border border-white/[0.06] text-[10px] font-mono space-y-1 text-zinc-400">
@@ -401,12 +404,14 @@ export const EvidenceExplorer: React.FC<EvidenceExplorerProps> = ({
                           </h3>
                         </div>
                         <span
-                          className={`text-xs font-mono font-bold px-2.5 py-0.5 rounded-full ${obs.quality_report.overall_verdict === 'QUALIFIED'
+                          className={`text-xs font-mono font-bold px-2.5 py-0.5 rounded-full ${obs.status === 'REJECTED' || obs.quality_report.overall_verdict === 'FLAGGED'
+                              ? 'bg-[#FF0055]/15 text-[#FF0055] border border-[#FF0055]/30'
+                              : obs.quality_report.overall_verdict === 'QUALIFIED'
                               ? 'bg-[#A8FF00]/15 text-[#A8FF00] border border-[#A8FF00]/30'
                               : 'bg-[#FFB800]/15 text-[#FFB800] border border-[#FFB800]/30'
                             }`}
                         >
-                          {obs.quality_report.overall_verdict}
+                          {obs.status === 'REJECTED' ? 'FLAGGED (REJECTED)' : obs.quality_report.overall_verdict}
                         </span>
                       </div>
 
@@ -416,8 +421,8 @@ export const EvidenceExplorer: React.FC<EvidenceExplorerProps> = ({
                         <div className="p-3 rounded-[14px] bg-[#141414] border border-white/[0.06] space-y-1">
                           <div className="flex items-center justify-between">
                             <span className="text-zinc-400 font-semibold">1. Spatial Consistency</span>
-                            <span className={obs.quality_report.spatial_consistency.passed ? 'text-[#A8FF00]' : 'text-[#FF0055]'}>
-                              {obs.quality_report.spatial_consistency.passed ? 'PASSED' : 'FLAGGED'}
+                            <span className={obs.quality_report.spatial_consistency.passed && obs.status !== 'REJECTED' ? 'text-[#A8FF00]' : 'text-[#FF0055]'}>
+                              {obs.quality_report.spatial_consistency.passed && obs.status !== 'REJECTED' ? 'PASSED' : 'FLAGGED'}
                             </span>
                           </div>
                           <p className="text-[11px] text-zinc-300">
@@ -455,8 +460,14 @@ export const EvidenceExplorer: React.FC<EvidenceExplorerProps> = ({
                         <div className="p-3 rounded-[14px] bg-[#141414] border border-white/[0.06] space-y-1">
                           <div className="flex items-center justify-between">
                             <span className="text-zinc-400 font-semibold">4. Relevance Corroboration</span>
-                            <span className="text-[#A8FF00] font-mono">
-                              {obs.quality_report.relevance_assessment.confidence_score}% Match
+                            <span
+                              className={`font-mono font-bold ${obs.quality_report.relevance_assessment.passed && obs.status !== 'REJECTED'
+                                  ? 'text-[#A8FF00]'
+                                  : 'text-[#FF0055]'
+                                }`}
+                            >
+                              {obs.quality_report.relevance_assessment.confidence_score}% Match{' '}
+                              {obs.status === 'REJECTED' ? '(FLAGGED)' : ''}
                             </span>
                           </div>
                           <p className="text-[11px] text-zinc-300">

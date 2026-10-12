@@ -458,6 +458,9 @@ export const ThreeWalletsHub: React.FC<ThreeWalletsHubProps> = ({
                                   src={relatedReport.photo_url}
                                   alt="Worker proof"
                                   className="w-full h-full object-contain"
+                                  onError={(e) => {
+                                    (e.target as HTMLImageElement).src = '/evidence/ev_charger_stall.jpg';
+                                  }}
                                 />
                               </div>
                             )}

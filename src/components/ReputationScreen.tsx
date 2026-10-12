@@ -66,12 +66,18 @@ export const ReputationScreen: React.FC<ReputationScreenProps> = ({
     return Math.abs(hash % 1000) / 1000;
   }, [activeAccount?.address, entropySalt]);
 
-  const spotterReports = reports.filter(
-    (r) =>
-      !r.reporter_wallet ||
-      r.reporter_wallet.trim().toLowerCase() === activeAccount.address.trim().toLowerCase() ||
-      reports.length <= 4
-  );
+  const spotterReports = useMemo(() => {
+    const activeAddr = (activeAccount?.address || '').trim().toLowerCase();
+    const matched = reports.filter((r) => {
+      const rep = (r.reporter_wallet || '').trim().toLowerCase();
+      if (!rep) return true;
+      if (rep === activeAddr) return true;
+      if (activeAddr.startsWith('spot') && (rep.startsWith('spot') || rep.startsWith('fastblur') || rep.startsWith('spoof') || rep.startsWith('lazy'))) return true;
+      if (rep.startsWith('spot')) return true;
+      return false;
+    });
+    return matched.length > 0 ? matched : reports;
+  }, [reports, activeAccount?.address]);
 
   const acceptedCount = spotterReports.filter((r) => r.status === 'ACCEPTED').length;
   const pendingCount = spotterReports.filter((r) => r.status === 'PENDING').length;
@@ -384,6 +390,8 @@ export const ReputationScreen: React.FC<ReputationScreenProps> = ({
                           className={`px-2 py-0.5 rounded text-[10px] font-bold ${
                             r.status === 'ACCEPTED'
                               ? 'bg-[#A8FF00]/15 text-[#A8FF00] border border-[#A8FF00]/30'
+                              : r.status === 'REJECTED'
+                              ? 'bg-[#FF0055]/15 text-[#FF0055] border border-[#FF0055]/30'
                               : 'bg-amber-500/15 text-amber-300 border border-amber-500/30'
                           }`}
                         >

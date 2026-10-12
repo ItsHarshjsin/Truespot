@@ -27,14 +27,14 @@ const _oneDay = 24 * _oneHour;
 
 const DEFAULT_SEED_QUERIES: Query[] = [
   {
-    id: 'qry_8f4a1c920e8b31a57f620e184b299e41',
-    query_id_hex: '8f4a1c920e8b31a57f620e184b299e41',
-    creator_wallet: 'Ask3rX9kL2p1M4w7zVbNdqE5uT8yR3sF',
-    asker_wallet: 'Ask3rX9kL2p1M4w7zVbNdqE5uT8yR3sF',
-    question: 'Is EV High-Power Stall #4 free and charging cable undamaged?',
-    place_name: 'Downtown Supercharge Station • Stall 4',
-    lat: 37.7792,
-    lng: -122.4184,
+    id: 'b1111111-0001-4000-8000-000000000001',
+    query_id_hex: 'b1111111000140008000000000000001',
+    creator_wallet: 'Ask3r...4Wqz',
+    asker_wallet: 'Ask3r...4Wqz',
+    question: 'Is EV High-Power Stall #3 vacant with undamaged charging cable and active green indicator?',
+    place_name: 'SOMA EV Supercharge Station • Stall 3 (Mission & 8th)',
+    lat: 37.7785,
+    lng: -122.4112,
     radius_meters: 200,
     amount_sol: 0.35,
     escrow_lamports: 350000000,
@@ -43,205 +43,448 @@ const DEFAULT_SEED_QUERIES: Query[] = [
     status: 'PAID',
     bounty_type: 'AI_VISION',
     max_spotters: 1,
-    created_at: new Date(_now - 5 * _oneDay).toISOString(),
+    created_at: new Date(_now - 3 * _oneDay).toISOString(),
     expires_at: new Date(_now + 2 * _oneDay).toISOString(),
     escrow_tx: '5Kn7wVbN4p1m8r9Jm4DevnetXqZ2aBc7De9FgH1IjK',
     payout_tx: '4Vx8pL1m6k2q9r2Qz7SettledYw3eA1Cd4EfG7HiJ',
   },
   {
-    id: 'qry_3b99e71c04f826aa841c107e32d849b2',
-    query_id_hex: '3b99e71c04f826aa841c107e32d849b2',
-    creator_wallet: 'Ask3rX9kL2p1M4w7zVbNdqE5uT8yR3sF',
-    asker_wallet: 'Ask3rX9kL2p1M4w7zVbNdqE5uT8yR3sF',
-    question: 'Verify construction detour signage and pedestrian sidewalk clearance.',
-    place_name: '5th & Market St Pedestrian Corridor',
-    lat: 37.7841,
-    lng: -122.4068,
+    id: 'b1111111-0002-4000-8000-000000000002',
+    query_id_hex: 'b1111111000240008000000000000002',
+    creator_wallet: 'Ask3r...4Wqz',
+    asker_wallet: 'Ask3r...4Wqz',
+    question: 'Confirm street-level elevator is fully in-service with unblocked door entrance.',
+    place_name: 'Powell St Subway Station • Street Elevator North',
+    lat: 37.7844,
+    lng: -122.4080,
     radius_meters: 200,
     amount_sol: 0.45,
     escrow_lamports: 450000000,
     validity_seconds: 3600,
-    expiry_timestamp: new Date(_now + 3 * _oneDay).toISOString(),
+    expiry_timestamp: new Date(_now + 2 * _oneDay).toISOString(),
     status: 'PAID',
-    bounty_type: 'DATA_COLLECTION',
-    max_spotters: 3,
-    created_at: new Date(_now - 4 * _oneDay).toISOString(),
-    expires_at: new Date(_now + 3 * _oneDay).toISOString(),
+    bounty_type: 'BOOLEAN',
+    max_spotters: 2,
+    created_at: new Date(_now - 2 * _oneDay).toISOString(),
+    expires_at: new Date(_now + 2 * _oneDay).toISOString(),
     escrow_tx: '3Lm9zP2w8k1n5r7Rt5DevnetXy4aB2Cd6Ef8Gh0Ij',
     payout_tx: '2Np8xK3v7m9q4r4Wx1SettledZa5eB3Cd7Ef9Gh1Ij',
   },
   {
-    id: 'qry_6d22a84f90117bb34c519a28e4708c99',
-    query_id_hex: '6d22a84f90117bb34c519a28e4708c99',
-    creator_wallet: 'Ask3rX9kL2p1M4w7zVbNdqE5uT8yR3sF',
-    asker_wallet: 'Ask3rX9kL2p1M4w7zVbNdqE5uT8yR3sF',
-    question: 'Confirm outdoor parcel locker automated touchscreen and keypad response.',
-    place_name: 'SoMa Parcel Hub • Automated Locker Bay',
-    lat: 37.7765,
-    lng: -122.3991,
+    id: 'b1111111-0003-4000-8000-000000000003',
+    query_id_hex: 'b1111111000340008000000000000003',
+    creator_wallet: 'Ask3r...4Wqz',
+    asker_wallet: 'Ask3r...4Wqz',
+    question: 'Verify outdoor parcel delivery locker kiosk screen is powered on with functional keypad.',
+    place_name: 'Financial District Hub • Automated Locker Bay #14',
+    lat: 37.7915,
+    lng: -122.4005,
     radius_meters: 200,
     amount_sol: 0.30,
     escrow_lamports: 300000000,
     validity_seconds: 3600,
-    expiry_timestamp: new Date(_now + 4 * _oneDay).toISOString(),
-    status: 'RESOLVED',
+    expiry_timestamp: new Date(_now + 3 * _oneDay).toISOString(),
+    status: 'PAID',
     bounty_type: 'BOOLEAN',
     max_spotters: 1,
     created_at: new Date(_now - 2 * _oneDay).toISOString(),
-    expires_at: new Date(_now + 4 * _oneDay).toISOString(),
+    expires_at: new Date(_now + 3 * _oneDay).toISOString(),
     escrow_tx: '7Qw4vB8n2m9k3r3Nx9DevnetXz6aB4Cd8Ef0Gh2Ij',
     payout_tx: '5Rt1yM4p8q2w7r8Kp2SettledYb7eC5Cd9Ef1Gh3Ij',
   },
   {
-    id: 'qry_1e77f05a83bc48d29b31d04467aa51c8',
-    query_id_hex: '1e77f05a83bc48d29b31d04467aa51c8',
-    creator_wallet: 'Ask3rX9kL2p1M4w7zVbNdqE5uT8yR3sF',
-    asker_wallet: 'Ask3rX9kL2p1M4w7zVbNdqE5uT8yR3sF',
-    question: 'Check bayfront bike hub dock capacity and automated lock release.',
-    place_name: 'Calaroga Bayfront Bike Station',
-    lat: 37.7812,
-    lng: -122.4110,
+    id: 'b1111111-0004-4000-8000-000000000004',
+    query_id_hex: 'b1111111000440008000000000000004',
+    creator_wallet: 'Ask3r...4Wqz',
+    asker_wallet: 'Ask3r...4Wqz',
+    question: 'Audit storm drain canal spillway water level against painted flood indicator gauge.',
+    place_name: 'Mission Creek Storm Drain • Basin Spillway Gate 2',
+    lat: 37.7712,
+    lng: -122.3924,
     radius_meters: 200,
     amount_sol: 0.50,
     escrow_lamports: 500000000,
     validity_seconds: 3600,
-    expiry_timestamp: new Date(_now + 5 * _oneDay).toISOString(),
-    status: 'IN_REVIEW',
-    bounty_type: 'BOOLEAN',
-    max_spotters: 2,
+    expiry_timestamp: new Date(_now + 4 * _oneDay).toISOString(),
+    status: 'PAID',
+    bounty_type: 'AI_VISION',
+    max_spotters: 1,
     created_at: new Date(_now - 1 * _oneDay).toISOString(),
-    expires_at: new Date(_now + 5 * _oneDay).toISOString(),
+    expires_at: new Date(_now + 4 * _oneDay).toISOString(),
     escrow_tx: '8Yt2uP5w9k3m6r6Jk3DevnetXa8aB6Cd0Ef2Gh4Ij',
+    payout_tx: '6Yu2zK5m9w3q7r8Lp3SettledZa8eD6Cd0Ef2Gh4Ij',
+  },
+  {
+    id: 'b1111111-0005-4000-8000-000000000005',
+    query_id_hex: 'b1111111000540008000000000000005',
+    creator_wallet: 'Ask3r...4Wqz',
+    asker_wallet: 'Ask3r...4Wqz',
+    question: 'Confirm rapid COVID/antigen test kits and medical masks are in stock on retail shelf.',
+    place_name: 'Walgreens Pharmacy • Union Square Flagship',
+    lat: 37.7884,
+    lng: -122.4073,
+    radius_meters: 200,
+    amount_sol: 0.38,
+    escrow_lamports: 380000000,
+    validity_seconds: 3600,
+    expiry_timestamp: new Date(_now + 4 * _oneDay).toISOString(),
+    status: 'ANSWERED',
+    bounty_type: 'DATA_COLLECTION',
+    max_spotters: 2,
+    created_at: new Date(_now - 18 * _oneHour).toISOString(),
+    expires_at: new Date(_now + 4 * _oneDay).toISOString(),
+    escrow_tx: '9Po3vC7m1k5n8r1Lm8DevnetXb0aB8Cd2Ef4Gh6Ij',
     payout_tx: '',
   },
   {
-    id: 'qry_9c55b17e42d180fe219803bf714a8932',
-    query_id_hex: '9c55b17e42d180fe219803bf714a8932',
-    creator_wallet: 'Ask3rX9kL2p1M4w7zVbNdqE5uT8yR3sF',
-    asker_wallet: 'Ask3rX9kL2p1M4w7zVbNdqE5uT8yR3sF',
-    question: 'Verify crowd line density and entrance queue wait time right now.',
-    place_name: 'Yerba Buena Civic Pavilion',
-    lat: 37.7853,
-    lng: -122.4018,
+    id: 'b1111111-0006-4000-8000-000000000006',
+    query_id_hex: 'b1111111000640008000000000000006',
+    creator_wallet: 'Ask3r...4Wqz',
+    asker_wallet: 'Ask3r...4Wqz',
+    question: 'Check bayfront bike hub dock capacity, lock operability, and available e-bikes.',
+    place_name: 'Embarcadero Waterfront Promenade • Dock 300',
+    lat: 37.7942,
+    lng: -122.3951,
     radius_meters: 200,
-    amount_sol: 0.25,
-    escrow_lamports: 250000000,
+    amount_sol: 0.28,
+    escrow_lamports: 280000000,
+    validity_seconds: 3600,
+    expiry_timestamp: new Date(_now + 5 * _oneDay).toISOString(),
+    status: 'ANSWERED',
+    bounty_type: 'BOOLEAN',
+    max_spotters: 2,
+    created_at: new Date(_now - 12 * _oneHour).toISOString(),
+    expires_at: new Date(_now + 5 * _oneDay).toISOString(),
+    escrow_tx: '4Kl2wM8n1p5m9r3Qx7DevnetXb2aB0Cd4Ef6Gh8Ij',
+    payout_tx: '',
+  },
+  {
+    id: 'b1111111-0007-4000-8000-000000000007',
+    query_id_hex: 'b1111111000740008000000000000007',
+    creator_wallet: 'Ask3r...4Wqz',
+    asker_wallet: 'Ask3r...4Wqz',
+    question: 'Verify walk-up ATM terminal display is illuminated and card reader free of physical skimming attachments.',
+    place_name: 'Citizens Bank 2nd & Main Corner • Walk-Up Terminal',
+    lat: 37.7891,
+    lng: -122.4012,
+    radius_meters: 200,
+    amount_sol: 0.40,
+    escrow_lamports: 400000000,
     validity_seconds: 3600,
     expiry_timestamp: new Date(_now + 6 * _oneDay).toISOString(),
     status: 'OPEN',
     bounty_type: 'AI_VISION',
-    max_spotters: 0,
-    created_at: new Date(_now - 2 * _oneHour).toISOString(),
+    max_spotters: 1,
+    created_at: new Date(_now - 5 * _oneHour).toISOString(),
     expires_at: new Date(_now + 6 * _oneDay).toISOString(),
-    escrow_tx: '9Po3vC7m1k5n8r1Lm8DevnetXb0aB8Cd2Ef4Gh6Ij',
+    escrow_tx: '6Rt3yP7m2k6n0r2Lm9DevnetXc4aB2Cd6Ef8Gh0Ij',
+    payout_tx: '',
+  },
+  {
+    id: 'b1111111-0008-4000-8000-000000000008',
+    query_id_hex: 'b1111111000840008000000000000008',
+    creator_wallet: 'Ask3r...4Wqz',
+    asker_wallet: 'Ask3r...4Wqz',
+    question: 'Verify commute ferry terminal boarding queue density and turnstile pass clearance.',
+    place_name: 'San Francisco Ferry Building • Gate B Commute Pier',
+    lat: 37.7955,
+    lng: -122.3937,
+    radius_meters: 200,
+    amount_sol: 0.32,
+    escrow_lamports: 320000000,
+    validity_seconds: 3600,
+    expiry_timestamp: new Date(_now + 6 * _oneDay).toISOString(),
+    status: 'OPEN',
+    bounty_type: 'DATA_COLLECTION',
+    max_spotters: 3,
+    created_at: new Date(_now - 3 * _oneHour).toISOString(),
+    expires_at: new Date(_now + 6 * _oneDay).toISOString(),
+    escrow_tx: '8Yu5zQ9p4m8r2t4Nq1DevnetXe6aB4Cd8Ef0Gh2Ij',
+    payout_tx: '',
+  },
+  {
+    id: 'b1111111-0009-4000-8000-000000000009',
+    query_id_hex: 'b1111111000940008000000000000009',
+    creator_wallet: 'Ask3r...4Wqz',
+    asker_wallet: 'Ask3r...4Wqz',
+    question: 'Confirm pedestrian protected tunnel walkway clearance and flood prevention pump state.',
+    place_name: 'Stockton Tunnel & Sutter St Construction Zone',
+    lat: 37.7898,
+    lng: -122.4065,
+    radius_meters: 200,
+    amount_sol: 0.42,
+    escrow_lamports: 420000000,
+    validity_seconds: 3600,
+    expiry_timestamp: new Date(_now + 7 * _oneDay).toISOString(),
+    status: 'OPEN',
+    bounty_type: 'BOOLEAN',
+    max_spotters: 1,
+    created_at: new Date(_now - 2 * _oneHour).toISOString(),
+    expires_at: new Date(_now + 7 * _oneDay).toISOString(),
+    escrow_tx: '1Qw7eT1r6o0u4w6Sp3DevnetXg8aB6Cd0Ef2Gh4Ij',
+    payout_tx: '',
+  },
+  {
+    id: 'b1111111-0010-4000-8000-000000000010',
+    query_id_hex: 'b1111111001040008000000000000010',
+    creator_wallet: 'Ask3r...4Wqz',
+    asker_wallet: 'Ask3r...4Wqz',
+    question: 'Verify 4th floor rooftop transit park public entrance accessibility and security gate state.',
+    place_name: 'Salesforce Transit Center • Rooftop Botanical Park',
+    lat: 37.7897,
+    lng: -122.3969,
+    radius_meters: 200,
+    amount_sol: 0.25,
+    escrow_lamports: 250000000,
+    validity_seconds: 3600,
+    expiry_timestamp: new Date(_now + 7 * _oneDay).toISOString(),
+    status: 'OPEN',
+    bounty_type: 'AI_VISION',
+    max_spotters: 2,
+    created_at: new Date(_now - 45 * 60 * 1000).toISOString(),
+    expires_at: new Date(_now + 7 * _oneDay).toISOString(),
+    escrow_tx: '3Er9yU3t8q2w6y8Ur5DevnetXi0aB8Cd2Ef4Gh6Ij',
     payout_tx: '',
   },
 ];
 
 const DEFAULT_SEED_OBSERVATIONS: Observation[] = [
   {
-    id: 'obs_1a2b3c4d5e6f',
-    query_id_hex: '8f4a1c920e8b31a57f620e184b299e41',
+    id: 'c1111111-0001-4000-8000-000000000001',
+    query_id_hex: 'b1111111-0001-4000-8000-000000000001',
     contributor_wallet: 'Spot7rX9kL2p1M4w7zVbNdqE5uT8yR3sF',
-    media_url: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80',
-    sha256_hash: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
-    observed_lat: 37.7793,
-    observed_lng: -122.4183,
-    distance_meters: 14.2,
-    client_timestamp: new Date(_now - 5 * _oneDay + 110000).toISOString(),
-    created_at: new Date(_now - 5 * _oneDay + 110000).toISOString(),
+    media_url: '/evidence/ev_charger_stall.jpg',
+    sha256_hash: 'a7b8c9d0e1f200112233445566778899aabbccddeeff00112233445566778899',
+    observed_lat: 37.7786,
+    observed_lng: -122.4111,
+    distance_meters: 11.2,
+    client_timestamp: new Date(_now - 3 * _oneDay + 120000).toISOString(),
+    created_at: new Date(_now - 3 * _oneDay + 120000).toISOString(),
     quality_report: {
-      spatial_consistency: { passed: true, distance_meters: 14.2, details: 'Within 200m geofence' },
-      temporal_integrity: { passed: true, age_seconds: 110, details: 'Real-time camera feed' },
-      duplicate_check: { passed: true, hash: 'e3b0c442', is_unique: true },
-      relevance_assessment: { passed: true, confidence_score: 99.2, summary: 'Stall #4 clear and operational' },
+      spatial_consistency: { passed: true, distance_meters: 11.2, details: 'Within 200m geofence' },
+      temporal_integrity: { passed: true, age_seconds: 120, details: 'Fresh camera capture' },
+      duplicate_check: { passed: true, hash: 'a7b8c9d0', is_unique: true },
+      relevance_assessment: { passed: true, confidence_score: 99.4, summary: 'Stall #3 vacant, 150 kW ready indicator green, cable undamaged.' },
       overall_verdict: 'QUALIFIED',
     },
     ai_evaluation: {
       verified: true,
-      confidence: 0.992,
-      summary: 'Stall #4 unoccupied, green ready indicator active, cable intact.',
+      confidence: 0.994,
+      summary: 'Stall #3 vacant, 150 kW ready indicator green, cable undamaged.',
     },
     status: 'ACCEPTED',
-    gyro_variance: 0.042,
+    gyro_variance: 0.043,
   },
   {
-    id: 'obs_2b3c4d5e6f7a',
-    query_id_hex: '3b99e71c04f826aa841c107e32d849b2',
+    id: 'c1111111-0002-4000-8000-000000000002',
+    query_id_hex: 'b1111111-0002-4000-8000-000000000002',
     contributor_wallet: 'Spot7rX9kL2p1M4w7zVbNdqE5uT8yR3sF',
-    media_url: 'https://images.unsplash.com/photo-1541888946425-d0fbb186156f?auto=format&fit=crop&w=800&q=80',
-    sha256_hash: 'a591a6d40bf420404a011733cfb7b190d62c65bf0bcda32b57b277d9ad9f146e',
-    observed_lat: 37.7840,
-    observed_lng: -122.4069,
-    distance_meters: 18.5,
-    client_timestamp: new Date(_now - 4 * _oneDay + 95000).toISOString(),
-    created_at: new Date(_now - 4 * _oneDay + 95000).toISOString(),
+    media_url: '/evidence/metro_elevator.jpg',
+    sha256_hash: 'b8c9d0e1f200112233445566778899aabbccddeeff00112233445566778899aa',
+    observed_lat: 37.7845,
+    observed_lng: -122.4079,
+    distance_meters: 9.8,
+    client_timestamp: new Date(_now - 2 * _oneDay + 95000).toISOString(),
+    created_at: new Date(_now - 2 * _oneDay + 95000).toISOString(),
     quality_report: {
-      spatial_consistency: { passed: true, distance_meters: 18.5, details: 'Within 200m geofence' },
-      temporal_integrity: { passed: true, age_seconds: 95, details: 'Live captured' },
-      duplicate_check: { passed: true, hash: 'a591a6d4', is_unique: true },
-      relevance_assessment: { passed: true, confidence_score: 98.7, summary: 'Sidewalk detour signage verified' },
+      spatial_consistency: { passed: true, distance_meters: 9.8, details: 'Within 200m geofence' },
+      temporal_integrity: { passed: true, age_seconds: 95, details: 'Fresh camera capture' },
+      duplicate_check: { passed: true, hash: 'b8c9d0e1', is_unique: true },
+      relevance_assessment: { passed: true, confidence_score: 98.8, summary: 'Elevator in service signage illuminated, entrance fully accessible.' },
       overall_verdict: 'QUALIFIED',
     },
     ai_evaluation: {
       verified: true,
-      confidence: 0.987,
-      summary: 'Detour barrier present, high-visibility signs clearly posted.',
+      confidence: 0.988,
+      summary: 'Elevator in service signage illuminated, entrance fully accessible.',
     },
     status: 'ACCEPTED',
     gyro_variance: 0.045,
   },
   {
-    id: 'obs_3c4d5e6f7a8b',
-    query_id_hex: '6d22a84f90117bb34c519a28e4708c99',
-    contributor_wallet: 'Spot7rX9kL2p1M4w7zVbNdqE5uT8yR3sF',
-    media_url: 'https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?auto=format&fit=crop&w=800&q=80',
-    sha256_hash: '2c6a4659a47240fb93f2f45ea32ac52e874f73f971abea41f74429fb837c30f3',
-    observed_lat: 37.7766,
-    observed_lng: -122.3990,
-    distance_meters: 12.0,
-    client_timestamp: new Date(_now - 2 * _oneDay + 120000).toISOString(),
-    created_at: new Date(_now - 2 * _oneDay + 120000).toISOString(),
+    id: 'c1111111-0003-4000-8000-000000000003',
+    query_id_hex: 'b1111111-0002-4000-8000-000000000002',
+    contributor_wallet: 'Spoof8kL2p1M4w7zVbNdqE5uT8yR3sFDev',
+    media_url: '/evidence/indoor_desk_spoof.jpg',
+    sha256_hash: 'c9d0e1f200112233445566778899aabbccddeeff00112233445566778899aabb',
+    observed_lat: 37.7681,
+    observed_lng: -122.4215,
+    distance_meters: 1840.0,
+    client_timestamp: new Date(_now - 2 * _oneDay + 110000).toISOString(),
+    created_at: new Date(_now - 2 * _oneDay + 110000).toISOString(),
     quality_report: {
-      spatial_consistency: { passed: true, distance_meters: 12.0, details: 'Within 200m geofence' },
-      temporal_integrity: { passed: true, age_seconds: 120, details: 'Fresh submission' },
-      duplicate_check: { passed: true, hash: '2c6a4659', is_unique: true },
-      relevance_assessment: { passed: true, confidence_score: 99.5, summary: 'Locker screen responsive' },
-      overall_verdict: 'QUALIFIED',
+      spatial_consistency: { passed: false, distance_meters: 1840.0, details: 'Flagged out of bounds (1,840m delta)' },
+      temporal_integrity: { passed: true, age_seconds: 110, details: 'Live device submission' },
+      duplicate_check: { passed: true, hash: 'c9d0e1f2', is_unique: true },
+      relevance_assessment: { passed: false, confidence_score: 12.0, summary: 'Outside designated geofence (1,840m delta)' },
+      overall_verdict: 'FLAGGED',
     },
     ai_evaluation: {
-      verified: true,
-      confidence: 0.995,
-      summary: 'Screen illumination verified, barcode scanner active.',
+      verified: false,
+      confidence: 0.12,
+      summary: 'Rejected: Outside designated geofence (1,840m delta).',
     },
-    status: 'ACCEPTED',
-    gyro_variance: 0.039,
+    status: 'REJECTED',
+    rejection_reason: 'Outside designated geofence (1,840m delta)',
+    gyro_variance: 0.012,
   },
   {
-    id: 'obs_4d5e6f7a8b9c',
-    query_id_hex: '1e77f05a83bc48d29b31d04467aa51c8',
+    id: 'c1111111-0004-4000-8000-000000000004',
+    query_id_hex: 'b1111111-0003-4000-8000-000000000003',
     contributor_wallet: 'Spot7rX9kL2p1M4w7zVbNdqE5uT8yR3sF',
-    media_url: 'https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?auto=format&fit=crop&w=800&q=80',
-    sha256_hash: '4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a',
-    observed_lat: 37.7813,
-    observed_lng: -122.4111,
-    distance_meters: 16.8,
-    client_timestamp: new Date(_now - 1 * _oneDay + 80000).toISOString(),
-    created_at: new Date(_now - 1 * _oneDay + 80000).toISOString(),
+    media_url: '/evidence/parcel_locker.jpg',
+    sha256_hash: 'd0e1f200112233445566778899aabbccddeeff00112233445566778899aabbcc',
+    observed_lat: 37.7916,
+    observed_lng: -122.4004,
+    distance_meters: 14.5,
+    client_timestamp: new Date(_now - 2 * _oneDay + 140000).toISOString(),
+    created_at: new Date(_now - 2 * _oneDay + 140000).toISOString(),
     quality_report: {
-      spatial_consistency: { passed: true, distance_meters: 16.8, details: 'Within 200m geofence' },
-      temporal_integrity: { passed: true, age_seconds: 80, details: 'Fresh submission' },
-      duplicate_check: { passed: true, hash: '4b227777', is_unique: true },
-      relevance_assessment: { passed: true, confidence_score: 97.9, summary: 'Dock slots available' },
+      spatial_consistency: { passed: true, distance_meters: 14.5, details: 'Within 200m geofence' },
+      temporal_integrity: { passed: true, age_seconds: 140, details: 'Fresh camera capture' },
+      duplicate_check: { passed: true, hash: 'd0e1f200', is_unique: true },
+      relevance_assessment: { passed: true, confidence_score: 99.1, summary: 'Welcome screen lit up, barcode scanner active and responsive.' },
       overall_verdict: 'QUALIFIED',
     },
     ai_evaluation: {
       verified: true,
-      confidence: 0.979,
-      summary: '6 available bike slots confirmed, automated unlock functioning.',
+      confidence: 0.991,
+      summary: 'Welcome screen lit up, barcode scanner active and responsive.',
+    },
+    status: 'ACCEPTED',
+    gyro_variance: 0.041,
+  },
+  {
+    id: 'c1111111-0005-4000-8000-000000000005',
+    query_id_hex: 'b1111111-0004-4000-8000-000000000004',
+    contributor_wallet: 'Spot7rX9kL2p1M4w7zVbNdqE5uT8yR3sF',
+    media_url: '/evidence/flood_spillway.jpg',
+    sha256_hash: 'e1f200112233445566778899aabbccddeeff00112233445566778899aabbccdd',
+    observed_lat: 37.7713,
+    observed_lng: -122.3923,
+    distance_meters: 8.7,
+    client_timestamp: new Date(_now - 1 * _oneDay + 90000).toISOString(),
+    created_at: new Date(_now - 1 * _oneDay + 90000).toISOString(),
+    quality_report: {
+      spatial_consistency: { passed: true, distance_meters: 8.7, details: 'Within 200m geofence' },
+      temporal_integrity: { passed: true, age_seconds: 90, details: 'Fresh camera capture' },
+      duplicate_check: { passed: true, hash: 'e1f20011', is_unique: true },
+      relevance_assessment: { passed: true, confidence_score: 98.6, summary: 'Water level at 0.8m, well within safe margin on painted gauge.' },
+      overall_verdict: 'QUALIFIED',
+    },
+    ai_evaluation: {
+      verified: true,
+      confidence: 0.986,
+      summary: 'Water level at 0.8m, well within safe margin on painted gauge.',
+    },
+    status: 'ACCEPTED',
+    gyro_variance: 0.044,
+  },
+  {
+    id: 'c1111111-0006-4000-8000-000000000006',
+    query_id_hex: 'b1111111-0005-4000-8000-000000000005',
+    contributor_wallet: 'Spot3kL9m4w7zVbNdqE5uT8yR3sFDev1',
+    media_url: '/evidence/pharmacy_shelf.jpg',
+    sha256_hash: 'f200112233445566778899aabbccddeeff00112233445566778899aabbccddee',
+    observed_lat: 37.7885,
+    observed_lng: -122.4072,
+    distance_meters: 12.3,
+    client_timestamp: new Date(_now - 14 * _oneHour).toISOString(),
+    created_at: new Date(_now - 14 * _oneHour).toISOString(),
+    quality_report: {
+      spatial_consistency: { passed: true, distance_meters: 12.3, details: 'Within 200m geofence' },
+      temporal_integrity: { passed: true, age_seconds: 60, details: 'Fresh camera capture' },
+      duplicate_check: { passed: true, hash: 'f2001122', is_unique: true },
+      relevance_assessment: { passed: true, confidence_score: 97.5, summary: 'BinaxNOW and iHealth antigen test kits stocked on top shelves.' },
+      overall_verdict: 'QUALIFIED',
+    },
+    ai_evaluation: {
+      verified: true,
+      confidence: 0.975,
+      summary: 'BinaxNOW and iHealth antigen test kits stocked on top shelves.',
     },
     status: 'PENDING',
-    gyro_variance: 0.041,
+    gyro_variance: 0.046,
+  },
+  {
+    id: 'c1111111-0007-4000-8000-000000000007',
+    query_id_hex: 'b1111111-0005-4000-8000-000000000005',
+    contributor_wallet: 'LazySpotter2kL9m4w7zVbNdqE5uT8yR3',
+    media_url: '/evidence/indoor_desk_spoof.jpg',
+    sha256_hash: '00112233445566778899aabbccddeeff00112233445566778899aabbccddeeff',
+    observed_lat: 37.7884,
+    observed_lng: -122.4073,
+    distance_meters: 10.1,
+    client_timestamp: new Date(_now - 13 * _oneHour).toISOString(),
+    created_at: new Date(_now - 13 * _oneHour).toISOString(),
+    quality_report: {
+      spatial_consistency: { passed: true, distance_meters: 10.1, details: 'Within geofence' },
+      temporal_integrity: { passed: true, age_seconds: 75, details: 'Live capture' },
+      duplicate_check: { passed: true, hash: '00112233', is_unique: true },
+      relevance_assessment: { passed: false, confidence_score: 10.5, summary: 'Irrelevant content: indoor computer desk submitted instead of pharmacy shelf.' },
+      overall_verdict: 'FLAGGED',
+    },
+    ai_evaluation: {
+      verified: false,
+      confidence: 0.105,
+      summary: 'Rejected: Irrelevant content. Indoor computer desk submitted instead of pharmacy shelf.',
+    },
+    status: 'REJECTED',
+    rejection_reason: 'Irrelevant content. Indoor computer desk submitted instead of pharmacy shelf.',
+    gyro_variance: 0.035,
+  },
+  {
+    id: 'c1111111-0008-4000-8000-000000000008',
+    query_id_hex: 'b1111111-0006-4000-8000-000000000006',
+    contributor_wallet: 'Spot7rX9kL2p1M4w7zVbNdqE5uT8yR3sF',
+    media_url: '/evidence/bikeshare_dock.jpg',
+    sha256_hash: '112233445566778899aabbccddeeff00112233445566778899aabbccddeeff00',
+    observed_lat: 37.7943,
+    observed_lng: -122.3950,
+    distance_meters: 6.5,
+    client_timestamp: new Date(_now - 10 * _oneHour).toISOString(),
+    created_at: new Date(_now - 10 * _oneHour).toISOString(),
+    quality_report: {
+      spatial_consistency: { passed: true, distance_meters: 6.5, details: 'Within 200m geofence' },
+      temporal_integrity: { passed: true, age_seconds: 85, details: 'Fresh camera capture' },
+      duplicate_check: { passed: true, hash: '11223344', is_unique: true },
+      relevance_assessment: { passed: true, confidence_score: 99.2, summary: 'Mobi Dock 300 kiosk online, 12 e-bikes locked in dock slots.' },
+      overall_verdict: 'QUALIFIED',
+    },
+    ai_evaluation: {
+      verified: true,
+      confidence: 0.992,
+      summary: 'Mobi Dock 300 kiosk online, 12 e-bikes locked in dock slots.',
+    },
+    status: 'ACCEPTED',
+    gyro_variance: 0.042,
+  },
+  {
+    id: 'c1111111-0009-4000-8000-000000000009',
+    query_id_hex: 'b1111111-0006-4000-8000-000000000006',
+    contributor_wallet: 'FastBlurSpotter8kL2p1M4w7zVbNdqE',
+    media_url: '/evidence/blurry_motion_spoof.jpg',
+    sha256_hash: '2233445566778899aabbccddeeff00112233445566778899aabbccddeeff0011',
+    observed_lat: 37.7941,
+    observed_lng: -122.3953,
+    distance_meters: 15.2,
+    client_timestamp: new Date(_now - 9 * _oneHour).toISOString(),
+    created_at: new Date(_now - 9 * _oneHour).toISOString(),
+    quality_report: {
+      spatial_consistency: { passed: true, distance_meters: 15.2, details: 'Within geofence' },
+      temporal_integrity: { passed: true, age_seconds: 50, details: 'Fresh capture' },
+      duplicate_check: { passed: true, hash: '22334455', is_unique: true },
+      relevance_assessment: { passed: false, confidence_score: 14.2, summary: 'Severe motion blur and low lighting occludes scene.' },
+      overall_verdict: 'FLAGGED',
+    },
+    ai_evaluation: {
+      verified: false,
+      confidence: 0.142,
+      summary: 'Rejected: Severe motion blur and low lighting occludes scene.',
+    },
+    status: 'REJECTED',
+    rejection_reason: 'Severe motion blur and low lighting occludes scene.',
+    gyro_variance: 0.089,
   },
 ];
 
@@ -374,7 +617,7 @@ class HybridStore {
 
   private initLocalData() {
     try {
-      const STORAGE_VERSION = 'v2.1.0';
+      const STORAGE_VERSION = 'v2.3.0';
       const storedVersion = typeof window !== 'undefined' ? localStorage.getItem('truespot_version') : null;
       if (storedVersion !== STORAGE_VERSION) {
         // Upgrade / Clean slate: Purge old legacy keys and start fresh
@@ -689,87 +932,95 @@ class HybridStore {
         }
 
         let { data, error } = await queryBuilder;
-        if (error || !data || data.length === 0) {
-          let reportBuilder = this.supabase
-            .from('reports')
-            .select('*')
-            .order('created_at', { ascending: false });
-          if (queryIdHex) {
-            reportBuilder = reportBuilder.eq('bounty_id', queryIdHex);
-          }
-          const repRes = await reportBuilder;
-          if (!repRes.error && repRes.data && repRes.data.length > 0) {
-            const valid = repRes.data.filter((r: any) => r.answer_text !== 'EXPIRED');
-            data = valid.map((r: any) => {
-              const isRejected =
-                r.status === 'REJECTED' ||
-                r.answer_text?.toUpperCase().includes('REJECTED');
-              const isAccepted =
-                !isRejected &&
-                (r.status === 'ACCEPTED' ||
-                  r.answer_text?.toUpperCase().includes('VERIFIED') ||
-                  r.answer_text?.toUpperCase().includes('ILLUMINATED') ||
-                  r.answer_text?.toUpperCase().includes('VACANT'));
-              const finalStatus = isRejected
-                ? 'REJECTED'
-                : isAccepted
-                ? 'ACCEPTED'
-                : (r.status || 'PENDING');
+        let reportBuilder = this.supabase
+          .from('reports')
+          .select('*')
+          .order('observed_at', { ascending: false });
+        if (queryIdHex) {
+          reportBuilder = reportBuilder.eq('bounty_id', queryIdHex);
+        }
+        const repRes = await reportBuilder;
+        if (!repRes.error && repRes.data && repRes.data.length > 0) {
+          const valid = repRes.data.filter((r: any) => r.answer_text !== 'EXPIRED');
+          data = valid.map((r: any) => {
+            const answerUpper = (r.answer_text || '').toUpperCase();
+            const isRejected =
+              r.status === 'REJECTED' ||
+              answerUpper.includes('REJECTED') ||
+              answerUpper.includes('BLUR') ||
+              answerUpper.includes('SPOOF') ||
+              answerUpper.includes('IRRELEVANT') ||
+              (r.photo_url && (r.photo_url.includes('spoof') || r.photo_url.includes('blurry')));
+            const isAccepted =
+              !isRejected &&
+              (r.status === 'ACCEPTED' ||
+                answerUpper.includes('VERIFIED') ||
+                answerUpper.includes('ILLUMINATED') ||
+                answerUpper.includes('VACANT') ||
+                answerUpper.includes('ONLINE') ||
+                answerUpper.includes('SAFE'));
+            const finalStatus = isRejected
+              ? 'REJECTED'
+              : isAccepted
+              ? 'ACCEPTED'
+              : (r.status || 'PENDING');
 
-              return {
-                ...r,
-                id: r.id,
-                query_id_hex: r.bounty_id || r.query_id_hex,
-                contributor_wallet: r.reporter_wallet || r.contributor_wallet,
-                media_url: r.photo_url || r.media_url,
-                sha256_hash: r.fingerprint || r.sha256_hash,
-                observed_lat: r.gps_lat || r.observed_lat,
-                observed_lng: r.gps_lng || r.observed_lng,
-                status: finalStatus,
-                client_timestamp: r.observed_at || r.created_at,
-                quality_report: r.quality_report || {
-                  spatial_consistency: {
-                    passed: !isRejected,
-                    distance_meters: isRejected ? 1842 : 12.4,
-                    details: isRejected ? 'Flagged out of bounds (1,842m)' : 'Within 200m geofence',
-                  },
-                  temporal_integrity: {
-                    passed: !isRejected,
-                    age_seconds: 90,
-                    details: isRejected ? 'Suspicious stationary telemetry' : 'Real-time camera feed',
-                  },
-                  duplicate_check: {
-                    passed: true,
-                    hash: r.fingerprint?.slice(0, 8) || 'unique',
-                    is_unique: true,
-                  },
-                  relevance_assessment: {
-                    passed: !isRejected,
-                    confidence_score: isRejected ? 12.5 : 98.4,
-                    summary: r.answer_text || 'Observation corroborated',
-                  },
-                  overall_verdict: isRejected ? 'FLAGGED' : 'QUALIFIED',
+            return {
+              ...r,
+              id: r.id,
+              query_id_hex: r.bounty_id || r.query_id_hex,
+              contributor_wallet: r.reporter_wallet || r.contributor_wallet,
+              media_url: r.photo_url || r.media_url,
+              sha256_hash: r.fingerprint || r.sha256_hash,
+              observed_lat: r.gps_lat || r.observed_lat,
+              observed_lng: r.gps_lng || r.observed_lng,
+              status: finalStatus,
+              client_timestamp: r.observed_at || r.created_at,
+              quality_report: {
+                spatial_consistency: {
+                  passed: !isRejected && !answerUpper.includes('GEOFENCE'),
+                  distance_meters: isRejected && answerUpper.includes('GEOFENCE') ? 1840 : 11.2,
+                  details: isRejected && answerUpper.includes('GEOFENCE') ? 'Flagged out of bounds (1,840m delta)' : 'Within 200m geofence',
                 },
-                rejection_reason: isRejected
-                  ? (r.answer_text?.replace(/^REJECTED:\s*/i, '') || 'Telemetry Spoofing / Irrelevant Submission')
-                  : undefined,
-                ai_evaluation: r.ai_evaluation || {
-                  verified: !isRejected,
-                  confidence: isRejected ? 0.12 : 0.984,
+                temporal_integrity: {
+                  passed: true,
+                  age_seconds: 90,
+                  details: 'Live camera capture',
+                },
+                duplicate_check: {
+                  passed: true,
+                  hash: r.fingerprint?.slice(0, 8) || 'unique',
+                  is_unique: true,
+                },
+                relevance_assessment: {
+                  passed: !isRejected,
+                  confidence_score: isRejected ? 12.0 : 98.4,
                   summary: r.answer_text || (isRejected ? 'Observation rejected by protocol validation.' : 'Ground reality corroborated.'),
                 },
-              };
-            });
-            error = null;
-          }
+                overall_verdict: isRejected ? 'FLAGGED' : 'QUALIFIED',
+              },
+              rejection_reason: isRejected
+                ? (r.answer_text?.replace(/^REJECTED:\s*/i, '') || 'Telemetry Spoofing / Irrelevant Submission')
+                : undefined,
+              ai_evaluation: {
+                verified: !isRejected,
+                confidence: isRejected ? 0.12 : 0.984,
+                summary: r.answer_text || (isRejected ? 'Observation rejected by protocol validation.' : 'Ground reality corroborated.'),
+              },
+            };
+          });
+          error = null;
         }
 
         if (!error && data && data.length > 0) {
           const obsMap = new Map<string, Observation>();
-          this.observations.forEach((o) => obsMap.set(o.id, o));
           data.forEach((r: any) => {
-            const existing = obsMap.get(r.id);
-            obsMap.set(r.id, { ...(existing || {}), ...r });
+            obsMap.set(r.id, r);
+          });
+          this.observations.forEach((o) => {
+            if (!obsMap.has(o.id)) {
+              obsMap.set(o.id, o);
+            }
           });
           const all = Array.from(obsMap.values());
           if (queryIdHex) {
@@ -1247,35 +1498,79 @@ class HybridStore {
               d.answer_text !== 'EXPIRED' &&
               d.id !== '00000000-0000-0000-0000-000000000000'
           );
-          remoteReports = validReports.map((d: any) => ({
-            id: d.id,
-            bounty_id: d.bounty_id,
-            query_id_hex: d.bounty_id,
-            photo_url: d.photo_url,
-            media_url: d.photo_url,
-            fingerprint: d.fingerprint,
-            sha256_hash: d.fingerprint,
-            gps_lat: Number(d.gps_lat) || 27.7174,
-            observed_lat: Number(d.gps_lat) || 27.7174,
-            gps_lng: Number(d.gps_lng) || 85.3242,
-            observed_lng: Number(d.gps_lng) || 85.3242,
-            gps_accuracy: Number(d.gps_accuracy) || 5.0,
-            reporter_wallet: d.reporter_wallet,
-            contributor_wallet: d.reporter_wallet,
-            answer_text: d.answer_text,
-            memo_signature: d.memo_signature || null,
-            observed_at: d.observed_at || d.created_at || new Date().toISOString(),
-            client_timestamp: d.observed_at || d.created_at || new Date().toISOString(),
-            status: d.status || 'PENDING',
-            quality_report: {
-              spatial_consistency: { passed: true, distance_meters: 10, details: 'Within geofence' },
-              temporal_integrity: { passed: true, age_seconds: 10, details: 'Fresh submission' },
-              duplicate_check: { passed: true, hash: d.fingerprint || '', is_unique: true },
-              relevance_assessment: { passed: true, confidence_score: 95, summary: d.answer_text || 'Ground truth confirmed' },
-              overall_verdict: 'QUALIFIED',
-            },
-            ...d,
-          }));
+          remoteReports = validReports.map((d: any) => {
+            const answerUpper = (d.answer_text || '').toUpperCase();
+            const isRejected =
+              d.status === 'REJECTED' ||
+              answerUpper.includes('REJECTED') ||
+              answerUpper.includes('BLUR') ||
+              answerUpper.includes('SPOOF') ||
+              answerUpper.includes('IRRELEVANT') ||
+              (d.photo_url && (d.photo_url.includes('spoof') || d.photo_url.includes('blurry')));
+            const isAccepted =
+              !isRejected &&
+              (d.status === 'ACCEPTED' ||
+                answerUpper.includes('VERIFIED') ||
+                answerUpper.includes('ILLUMINATED') ||
+                answerUpper.includes('VACANT') ||
+                answerUpper.includes('ONLINE') ||
+                answerUpper.includes('SAFE'));
+            const finalStatus = isRejected ? 'REJECTED' : isAccepted ? 'ACCEPTED' : (d.status || 'PENDING');
+
+            return {
+              id: d.id,
+              bounty_id: d.bounty_id,
+              query_id_hex: d.bounty_id,
+              photo_url: d.photo_url,
+              media_url: d.photo_url,
+              fingerprint: d.fingerprint,
+              sha256_hash: d.fingerprint,
+              gps_lat: Number(d.gps_lat) || 27.7174,
+              observed_lat: Number(d.gps_lat) || 27.7174,
+              gps_lng: Number(d.gps_lng) || 85.3242,
+              observed_lng: Number(d.gps_lng) || 85.3242,
+              gps_accuracy: Number(d.gps_accuracy) || 5.0,
+              reporter_wallet: d.reporter_wallet,
+              contributor_wallet: d.reporter_wallet,
+              answer_text: d.answer_text,
+              memo_signature: d.memo_signature || null,
+              observed_at: d.observed_at || d.created_at || new Date().toISOString(),
+              client_timestamp: d.observed_at || d.created_at || new Date().toISOString(),
+              status: finalStatus,
+              quality_report: {
+                spatial_consistency: {
+                  passed: !isRejected && !answerUpper.includes('GEOFENCE'),
+                  distance_meters: isRejected && answerUpper.includes('GEOFENCE') ? 1840 : 10,
+                  details: isRejected && answerUpper.includes('GEOFENCE') ? 'Flagged out of bounds (1,840m delta)' : 'Within geofence',
+                },
+                temporal_integrity: {
+                  passed: true,
+                  age_seconds: 10,
+                  details: 'Fresh submission',
+                },
+                duplicate_check: {
+                  passed: true,
+                  hash: d.fingerprint || '',
+                  is_unique: true,
+                },
+                relevance_assessment: {
+                  passed: !isRejected,
+                  confidence_score: isRejected ? 12.0 : 98.4,
+                  summary: d.answer_text || (isRejected ? 'Observation rejected by protocol validation.' : 'Ground truth confirmed'),
+                },
+                overall_verdict: isRejected ? 'FLAGGED' : 'QUALIFIED',
+              },
+              rejection_reason: isRejected
+                ? (d.answer_text?.replace(/^REJECTED:\s*/i, '') || 'Telemetry Spoofing / Irrelevant Submission')
+                : undefined,
+              ai_evaluation: {
+                verified: !isRejected,
+                confidence: isRejected ? 0.12 : 0.984,
+                summary: d.answer_text || (isRejected ? 'Observation rejected by protocol validation.' : 'Ground reality corroborated.'),
+              },
+              ...d,
+            };
+          });
         }
       } catch (err) {
         console.warn('Supabase getReports error:', err);
