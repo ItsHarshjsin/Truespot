@@ -381,429 +381,445 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
         </section>
 
         {/* ========================================================================= */}
-        {/* 4. FOUR PILLARS OF PHYSICAL PROOF (Dense Architectural Grid, Zero Toy Animations) */}
+        {/* ========================================================================= */}
+        {/* 4. TACTICAL REALITY NETWORK DIAGRAM (Cyera-Inspired Map & Connected Nodes) */}
         {/* ========================================================================= */}
         <section id="simulator" className="py-10 sm:py-12 border-t border-white/[0.08]">
           {/* Centered Section Header */}
           <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-9">
             <div className="inline-flex items-center space-x-2 text-[10px] font-mono font-bold text-[#A8FF00] uppercase tracking-wider mb-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#A8FF00]" />
-              <span>Multi-Vector Physical Proof Engine</span>
+              <span>Oracle Topology Map</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-              Cryptographic Reality Verification
+              Cryptographic Reality Network
             </h2>
             <p className="text-xs text-zinc-400 mt-2 font-mono">
-              Four concurrent hardware and algorithmic checkpoints guaranteeing zero-hallucination ground truth on Solana.
+              Four hardware &amp; algorithmic proof nodes anchored deterministically to the physical coordinates on Solana.
             </p>
           </div>
 
-          {/* Dense 2x2 Bento Architectural Grid - No animations, pure high-impact engineering specs */}
-          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
-            {/* Pillar 01: Spatial Haversine Geofencing */}
-            <div className="rounded-2xl bg-[#090909] border border-white/[0.08] p-5 sm:p-6 flex flex-col justify-between hover:border-[#A8FF00]/40 transition-colors">
-              <div>
-                <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/[0.06]">
-                  <div className="flex items-center space-x-2.5">
-                    <span className="font-mono text-xs font-bold text-[#A8FF00]">01</span>
-                    <div className="w-7 h-7 rounded-lg bg-[#A8FF00]/10 border border-[#A8FF00]/30 flex items-center justify-center text-[#A8FF00]">
-                      <MapPin className="w-3.5 h-3.5" />
-                    </div>
-                    <span className="text-xs font-bold text-white uppercase tracking-wider">Spatial Geofence Lock</span>
-                  </div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/[0.04] text-zinc-300 border border-white/[0.08]">
-                    Haversine ≤ 200m
-                  </span>
-                </div>
+          {/* Connected Network Map Canvas */}
+          <div className="max-w-5xl mx-auto rounded-2xl bg-[#090909] border border-white/[0.08] relative overflow-hidden p-6 sm:p-10 shadow-2xl">
+            {/* Desktop & Tablet: Connected 2D Constellation Map Diagram */}
+            <div className="relative min-h-[460px] hidden md:flex items-center justify-center">
+              {/* Background Coordinate Grid, 200m Rings, Wireframe Shapes & Connector Lines */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <pattern id="diagGrid" width="28" height="28" patternUnits="userSpaceOnUse">
+                    <path d="M 28 0 L 0 0 0 28" fill="none" stroke="rgba(255,255,255,0.035)" strokeWidth="0.8" />
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#diagGrid)" />
 
-                <h3 className="text-sm font-bold text-white mb-1.5">
-                  Mathematical Perimeter Enforcement
-                </h3>
-                <p className="text-xs text-zinc-400 leading-relaxed mb-4">
-                  Computes great-circle trajectory distance using native dual-frequency GNSS. Rejects virtual mock locations, simulated coordinates, and developer-mode telemetry injection.
-                </p>
+                {/* Subtle Concentric Geofence Range Rings */}
+                <circle cx="50%" cy="50%" r="75" stroke="rgba(255,255,255,0.06)" strokeWidth="1" strokeDasharray="3 3" fill="none" />
+                <circle cx="50%" cy="50%" r="150" stroke="#A8FF00" strokeOpacity="0.22" strokeWidth="1.2" strokeDasharray="5 4" fill="none" />
+                <circle cx="50%" cy="50%" r="220" stroke="rgba(255,255,255,0.04)" strokeWidth="1" fill="none" />
+
+                {/* Dashed Connector Lines from Center POI to 4 Satellite Nodes */}
+                <line x1="50%" y1="50%" x2="22%" y2="20%" stroke="#A8FF00" strokeOpacity="0.45" strokeWidth="1.5" strokeDasharray="4 4" />
+                <line x1="50%" y1="50%" x2="78%" y2="20%" stroke="#A8FF00" strokeOpacity="0.45" strokeWidth="1.5" strokeDasharray="4 4" />
+                <line x1="50%" y1="50%" x2="22%" y2="80%" stroke="#A8FF00" strokeOpacity="0.45" strokeWidth="1.5" strokeDasharray="4 4" />
+                <line x1="50%" y1="50%" x2="78%" y2="80%" stroke="#A8FF00" strokeOpacity="0.45" strokeWidth="1.5" strokeDasharray="4 4" />
+
+                {/* Geometric Wireframe Polyhedrals (Inspired by Cyera node diagram aesthetic) */}
+                <g transform="translate(48, 200) scale(0.65)" stroke="rgba(255,255,255,0.18)" fill="none" strokeWidth="1">
+                  <polygon points="30,0 60,25 45,60 15,60 0,25" />
+                  <line x1="30" y1="0" x2="30" y2="40" />
+                  <line x1="60" y1="25" x2="30" y2="40" />
+                  <line x1="45" y1="60" x2="30" y2="40" />
+                  <line x1="15" y1="60" x2="30" y2="40" />
+                  <line x1="0" y1="25" x2="30" y2="40" />
+                </g>
+                <g transform="translate(850, 180) scale(0.65)" stroke="rgba(168,255,0,0.22)" fill="none" strokeWidth="1">
+                  <polygon points="30,0 60,25 45,60 15,60 0,25" />
+                  <line x1="30" y1="0" x2="30" y2="40" />
+                  <line x1="60" y1="25" x2="30" y2="40" />
+                  <line x1="45" y1="60" x2="30" y2="40" />
+                  <line x1="15" y1="60" x2="30" y2="40" />
+                  <line x1="0" y1="25" x2="30" y2="40" />
+                </g>
+              </svg>
+
+              {/* Central Physical POI Node Card */}
+              <div className="z-20 bg-[#111111] border-2 border-[#A8FF00] shadow-[0_0_35px_rgba(168,255,0,0.18)] rounded-2xl px-6 py-4 text-center max-w-[280px]">
+                <div className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full bg-[#A8FF00]/15 border border-[#A8FF00]/40 text-[#A8FF00] text-[10px] font-mono font-bold mb-1.5">
+                  <MapPin className="w-3 h-3 text-[#A8FF00]" />
+                  <span>Physical Reality Target</span>
+                </div>
+                <h4 className="text-sm font-black text-white tracking-tight">EV Supercharger Stall #4</h4>
+                <div className="text-[11px] font-mono text-zinc-400 mt-1">37.7792° N, -122.4184° W</div>
+                <div className="mt-2.5 inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded bg-[#0A0A0A] border border-white/10 text-[10px] font-mono text-emerald-400 font-bold">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  <span>Devnet Finality &lt;400ms</span>
+                </div>
               </div>
 
-              {/* Technical Specifications Panel */}
-              <div className="bg-[#050505] rounded-xl border border-white/[0.06] p-3 font-mono text-[11px] space-y-2">
-                <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.04]">
-                  <span className="text-zinc-500">Distance Formulation:</span>
-                  <span className="text-zinc-200">2R · arcsin(√[sin²(Δφ/2) + ...])</span>
+              {/* Node 01: Top-Left (Spatial Geofence) */}
+              <div className="absolute top-6 left-8 z-10 bg-[#0E0E0E] border border-white/[0.12] hover:border-[#A8FF00]/50 transition-all rounded-xl p-3.5 shadow-xl w-[220px]">
+                <div className="flex items-center justify-between mb-1.5">
+                  <div className="flex items-center space-x-1.5 text-[10px] font-mono font-bold text-[#A8FF00]">
+                    <Compass className="w-3.5 h-3.5 text-[#A8FF00]" />
+                    <span>01 • SPATIAL GEOFENCE</span>
+                  </div>
+                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-white/[0.05] text-zinc-300">≤ 200m</span>
                 </div>
-                <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.04]">
-                  <span className="text-zinc-500">Perimeter Tolerance:</span>
-                  <span className="text-[#A8FF00] font-bold">12.4m Actual (200m Max Barrier)</span>
+                <div className="text-xs font-bold text-white">Haversine Perimeter Lock</div>
+                <div className="text-[11px] font-mono text-zinc-400 mt-1 flex items-center justify-between">
+                  <span>Proximity:</span>
+                  <span className="text-[#A8FF00] font-bold">12.4m</span>
                 </div>
-                <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.04]">
-                  <span className="text-zinc-500">Mock Location Guard:</span>
-                  <span className="text-emerald-400 font-bold">HARDWARE_L1_L5_ONLY</span>
+                <div className="text-[10px] font-mono text-zinc-500 mt-0.5">Dual-Band L1/L5 GNSS</div>
+              </div>
+
+              {/* Node 02: Top-Right (Sensor Tremor) */}
+              <div className="absolute top-6 right-8 z-10 bg-[#0E0E0E] border border-white/[0.12] hover:border-[#A8FF00]/50 transition-all rounded-xl p-3.5 shadow-xl w-[220px]">
+                <div className="flex items-center justify-between mb-1.5">
+                  <div className="flex items-center space-x-1.5 text-[10px] font-mono font-bold text-[#A8FF00]">
+                    <Activity className="w-3.5 h-3.5 text-[#A8FF00]" />
+                    <span>02 • BIOMETRIC SENSOR</span>
+                  </div>
+                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-white/[0.05] text-zinc-300">8.4 Hz</span>
                 </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-zinc-500">Anchor CPI Check:</span>
-                  <span className="text-white font-bold">require!(distance &lt;= 200, OutOfRange)</span>
+                <div className="text-xs font-bold text-white">Human Micro-Tremor Nonce</div>
+                <div className="text-[11px] font-mono text-zinc-400 mt-1 flex items-center justify-between">
+                  <span>Oscillation:</span>
+                  <span className="text-[#A8FF00] font-bold">0.042g RMS</span>
+                </div>
+                <div className="text-[10px] font-mono text-zinc-500 mt-0.5">Secure Enclave Signed</div>
+              </div>
+
+              {/* Node 03: Bottom-Left (Vision AI Consensus) */}
+              <div className="absolute bottom-6 left-8 z-10 bg-[#0E0E0E] border border-white/[0.12] hover:border-[#A8FF00]/50 transition-all rounded-xl p-3.5 shadow-xl w-[220px]">
+                <div className="flex items-center justify-between mb-1.5">
+                  <div className="flex items-center space-x-1.5 text-[10px] font-mono font-bold text-[#A8FF00]">
+                    <Eye className="w-3.5 h-3.5 text-[#A8FF00]" />
+                    <span>03 • VISION CONSENSUS</span>
+                  </div>
+                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-white/[0.05] text-zinc-300">Gemini 2.5</span>
+                </div>
+                <div className="text-xs font-bold text-white">Multimodal Agreement</div>
+                <div className="text-[11px] font-mono text-zinc-400 mt-1 flex items-center justify-between">
+                  <span>Consensus:</span>
+                  <span className="text-emerald-400 font-bold">98.4% Match</span>
+                </div>
+                <div className="text-[10px] font-mono text-zinc-500 mt-0.5">SHA-256 RAW EXIF Seal</div>
+              </div>
+
+              {/* Node 04: Bottom-Right (Anchor PDA Escrow) */}
+              <div className="absolute bottom-6 right-8 z-10 bg-[#0E0E0E] border border-white/[0.12] hover:border-[#A8FF00]/50 transition-all rounded-xl p-3.5 shadow-xl w-[220px]">
+                <div className="flex items-center justify-between mb-1.5">
+                  <div className="flex items-center space-x-1.5 text-[10px] font-mono font-bold text-[#A8FF00]">
+                    <Coins className="w-3.5 h-3.5 text-[#A8FF00]" />
+                    <span>04 • ANCHOR PDA ESCROW</span>
+                  </div>
+                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-400 font-bold">97.5%</span>
+                </div>
+                <div className="text-xs font-bold text-white">Autonomous CPI Payout</div>
+                <div className="text-[11px] font-mono text-zinc-400 mt-1 flex items-center justify-between">
+                  <span>Settlement:</span>
+                  <span className="text-[#A8FF00] font-bold">0.34125 SOL</span>
+                </div>
+                <div className="text-[10px] font-mono text-zinc-500 mt-0.5">Instant Non-Custodial Vault</div>
+              </div>
+            </div>
+
+            {/* Mobile View: Vertical Connected Architecture Stream */}
+            <div className="md:hidden space-y-4">
+              <div className="bg-[#111111] border-2 border-[#A8FF00] rounded-xl p-4 text-center">
+                <div className="inline-flex items-center space-x-1.5 text-[#A8FF00] text-[10px] font-mono font-bold mb-1">
+                  <MapPin className="w-3 h-3" />
+                  <span>Physical Reality Target</span>
+                </div>
+                <h4 className="text-sm font-black text-white">EV Supercharger Stall #4</h4>
+                <div className="text-[11px] font-mono text-zinc-400 mt-0.5">37.7792° N, -122.4184° W</div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <div className="bg-[#0E0E0E] border border-white/10 rounded-xl p-3.5">
+                  <div className="text-[10px] font-mono text-[#A8FF00] font-bold">01 • SPATIAL GEOFENCE</div>
+                  <div className="text-xs font-bold text-white mt-0.5">Haversine ≤ 200m</div>
+                  <div className="text-[11px] font-mono text-zinc-400 mt-1">12.4m Proximity • L1/L5 GNSS</div>
+                </div>
+                <div className="bg-[#0E0E0E] border border-white/10 rounded-xl p-3.5">
+                  <div className="text-[10px] font-mono text-[#A8FF00] font-bold">02 • BIOMETRIC SENSOR</div>
+                  <div className="text-xs font-bold text-white mt-0.5">8.4 Hz Tremor Nonce</div>
+                  <div className="text-[11px] font-mono text-zinc-400 mt-1">0.042g RMS • Secure Enclave</div>
+                </div>
+                <div className="bg-[#0E0E0E] border border-white/10 rounded-xl p-3.5">
+                  <div className="text-[10px] font-mono text-[#A8FF00] font-bold">03 • VISION CONSENSUS</div>
+                  <div className="text-xs font-bold text-white mt-0.5">Gemini 2.5 Flash</div>
+                  <div className="text-[11px] font-mono text-emerald-400 mt-1 font-bold">98.4% Match • SHA-256 EXIF</div>
+                </div>
+                <div className="bg-[#0E0E0E] border border-white/10 rounded-xl p-3.5">
+                  <div className="text-[10px] font-mono text-[#A8FF00] font-bold">04 • ANCHOR PDA ESCROW</div>
+                  <div className="text-xs font-bold text-white mt-0.5">0.34125 SOL Release</div>
+                  <div className="text-[11px] font-mono text-[#A8FF00] mt-1 font-bold">97.5% Split • &lt;400ms CPI</div>
                 </div>
               </div>
             </div>
 
-            {/* Pillar 02: Hardware Accelerometer Tremor */}
-            <div className="rounded-2xl bg-[#090909] border border-white/[0.08] p-5 sm:p-6 flex flex-col justify-between hover:border-[#A8FF00]/40 transition-colors">
-              <div>
-                <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/[0.06]">
-                  <div className="flex items-center space-x-2.5">
-                    <span className="font-mono text-xs font-bold text-[#A8FF00]">02</span>
-                    <div className="w-7 h-7 rounded-lg bg-[#A8FF00]/10 border border-[#A8FF00]/30 flex items-center justify-center text-[#A8FF00]">
-                      <Activity className="w-3.5 h-3.5" />
-                    </div>
-                    <span className="text-xs font-bold text-white uppercase tracking-wider">Sensor Tremor Proof</span>
-                  </div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/[0.04] text-zinc-300 border border-white/[0.08]">
-                    8.4 Hz Micro-Nonce
-                  </span>
-                </div>
-
-                <h3 className="text-sm font-bold text-white mb-1.5">
-                  Biometric Physical Human Validation
-                </h3>
-                <p className="text-xs text-zinc-400 leading-relaxed mb-4">
-                  Analyzes 3-axis accelerometer and gyroscope vibrations at 100 Hz. Physiological human micro-tremors (8–12 Hz) cannot be spoofed by server racks, bot farms, or synthetic emulators.
-                </p>
+            {/* Bottom Real-Time Telemetry Bar */}
+            <div className="mt-5 pt-3.5 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-2 font-mono text-[11px] text-zinc-500">
+              <div className="flex items-center space-x-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#A8FF00]" />
+                <span className="text-zinc-400">Cluster: Solana Devnet • Slot #{telemetrySlot.toLocaleString()}</span>
               </div>
-
-              {/* Technical Specifications Panel */}
-              <div className="bg-[#050505] rounded-xl border border-white/[0.06] p-3 font-mono text-[11px] space-y-2">
-                <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.04]">
-                  <span className="text-zinc-500">Fourier Sampling Rate:</span>
-                  <span className="text-zinc-200">100 Hz 3-Axis IMU Stream</span>
-                </div>
-                <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.04]">
-                  <span className="text-zinc-500">Tremor Oscillation:</span>
-                  <span className="text-[#A8FF00] font-bold">8.4 Hz Peak (0.042g RMS)</span>
-                </div>
-                <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.04]">
-                  <span className="text-zinc-500">Secure Enclave Seal:</span>
-                  <span className="text-emerald-400 font-bold">ED25519_HARDWARE_KEYSTORE</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-zinc-500">Bot Emulation Test:</span>
-                  <span className="text-white font-bold">ZERO_VIRTUAL_SENSOR_DETECTED</span>
-                </div>
+              <div className="text-zinc-400">
+                PDA Vault: <span className="text-white">TrueSpotEscrow1111111111111</span>
               </div>
-            </div>
-
-            {/* Pillar 03: Multimodal AI Consensus */}
-            <div className="rounded-2xl bg-[#090909] border border-white/[0.08] p-5 sm:p-6 flex flex-col justify-between hover:border-[#A8FF00]/40 transition-colors">
-              <div>
-                <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/[0.06]">
-                  <div className="flex items-center space-x-2.5">
-                    <span className="font-mono text-xs font-bold text-[#A8FF00]">03</span>
-                    <div className="w-7 h-7 rounded-lg bg-[#A8FF00]/10 border border-[#A8FF00]/30 flex items-center justify-center text-[#A8FF00]">
-                      <Eye className="w-3.5 h-3.5" />
-                    </div>
-                    <span className="text-xs font-bold text-white uppercase tracking-wider">Multimodal Consensus</span>
-                  </div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/[0.04] text-zinc-300 border border-white/[0.08]">
-                    ≥ 95.0% Agreement
-                  </span>
-                </div>
-
-                <h3 className="text-sm font-bold text-white mb-1.5">
-                  Gemini 2.5 Vision &amp; EXIF Hash Enclave
-                </h3>
-                <p className="text-xs text-zinc-400 leading-relaxed mb-4">
-                  High-speed multimodal AI parses physical visual evidence against bounty conditions. Concurrently verifies lens focal depth, lighting coherence, and SHA-256 raw sensor headers.
-                </p>
-              </div>
-
-              {/* Technical Specifications Panel */}
-              <div className="bg-[#050505] rounded-xl border border-white/[0.06] p-3 font-mono text-[11px] space-y-2">
-                <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.04]">
-                  <span className="text-zinc-500">Inference Engine:</span>
-                  <span className="text-zinc-200">Gemini 2.5 Flash Vision (&lt;500ms)</span>
-                </div>
-                <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.04]">
-                  <span className="text-zinc-500">Consensus Threshold:</span>
-                  <span className="text-[#A8FF00] font-bold">98.4% Match (Floor: 95.0%)</span>
-                </div>
-                <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.04]">
-                  <span className="text-zinc-500">EXIF Integrity Digest:</span>
-                  <span className="text-emerald-400 font-bold">SHA-256 RAW_PAYLOAD_SEALED</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-zinc-500">Deepfake Probability:</span>
-                  <span className="text-white font-bold">0.00% (Optical Liveness Verified)</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Pillar 04: Autonomous Anchor PDA Settlement */}
-            <div className="rounded-2xl bg-[#090909] border border-white/[0.08] p-5 sm:p-6 flex flex-col justify-between hover:border-[#A8FF00]/40 transition-colors">
-              <div>
-                <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/[0.06]">
-                  <div className="flex items-center space-x-2.5">
-                    <span className="font-mono text-xs font-bold text-[#A8FF00]">04</span>
-                    <div className="w-7 h-7 rounded-lg bg-[#A8FF00]/10 border border-[#A8FF00]/30 flex items-center justify-center text-[#A8FF00]">
-                      <Coins className="w-3.5 h-3.5" />
-                    </div>
-                    <span className="text-xs font-bold text-white uppercase tracking-wider">Anchor PDA Escrow</span>
-                  </div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/[0.04] text-zinc-300 border border-white/[0.08]">
-                    97.5% SOL Payout
-                  </span>
-                </div>
-
-                <h3 className="text-sm font-bold text-white mb-1.5">
-                  Autonomous Zero-Custody Settlement
-                </h3>
-                <p className="text-xs text-zinc-400 leading-relaxed mb-4">
-                  Non-custodial Solana smart contracts hold deposits until physical truth is attested. Cross-Program Invocations (CPI) release funds instantly to workers with no human intermediaries.
-                </p>
-              </div>
-
-              {/* Technical Specifications Panel */}
-              <div className="bg-[#050505] rounded-xl border border-white/[0.06] p-3 font-mono text-[11px] space-y-2">
-                <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.04]">
-                  <span className="text-zinc-500">Program PDA Account:</span>
-                  <span className="text-zinc-200">TrueSpotEscrow1111111111111</span>
-                </div>
-                <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.04]">
-                  <span className="text-zinc-500">Fee Distribution:</span>
-                  <span className="text-[#A8FF00] font-bold">97.5% Worker / 2.5% Protocol</span>
-                </div>
-                <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.04]">
-                  <span className="text-zinc-500">Settlement Speed:</span>
-                  <span className="text-emerald-400 font-bold">&lt; 400ms Sub-Second Finality</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-zinc-500">Execution Mechanism:</span>
-                  <span className="text-white font-bold">CPI Vault Release (Zero Custody)</span>
-                </div>
-              </div>
+              <span className="text-emerald-400 font-bold">● CRYPTOGRAPHICALLY_SEALED</span>
             </div>
           </div>
         </section>
 
         {/* ========================================================================= */}
-        {/* 5. PROTOCOL BLUEPRINT & DEPIN INDUSTRY DEPLOYMENTS (No Toy Simulator)     */}
+        {/* 5. DEPIN INDUSTRY DEPLOYMENTS (Cyera-Inspired 2x2 Bento Cards)            */}
         {/* ========================================================================= */}
         <section id="automation" className="py-10 sm:py-12 border-t border-white/[0.08]">
           {/* Centered Section Header */}
           <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-9">
             <div className="inline-flex items-center space-x-2 text-[10px] font-mono font-bold text-[#A8FF00] uppercase tracking-wider mb-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#A8FF00]" />
-              <span>Production Integration Blueprint</span>
+              <span>Production Use Cases</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
               Deterministic Real-World Deployments
             </h2>
             <p className="text-xs text-zinc-400 mt-2 font-mono">
-              How decentralized physical networks, autonomous mobility fleets, and smart contracts consume TrueSpot ground truth.
+              Autonomous mobility, logistics, and infrastructure networks consuming verified physical truth.
             </p>
           </div>
 
           <div className="max-w-5xl mx-auto space-y-6">
-            {/* 3-Stage Architectural Pipeline Flow (Crisp horizontal progression card) */}
-            <div className="rounded-2xl bg-[#090909] border border-white/[0.08] p-5 sm:p-6">
-              <div className="flex items-center justify-between pb-4 border-b border-white/[0.06] mb-5 font-mono text-xs">
-                <div className="flex items-center space-x-2 text-white font-bold">
-                  <Shield className="w-4 h-4 text-[#A8FF00]" />
-                  <span>3-Stage Attestation Execution Flow</span>
-                </div>
-                <span className="text-[10px] text-[#A8FF00] font-semibold bg-[#A8FF00]/10 px-2.5 py-0.5 rounded-full border border-[#A8FF00]/30">
-                  Devnet Cluster Active • Slot #{telemetrySlot.toLocaleString()}
-                </span>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {/* Step 1 */}
-                <div className="bg-[#050505] rounded-xl border border-white/[0.06] p-4 flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-mono text-xs font-bold text-[#A8FF00]">STAGE 01</span>
-                      <span className="text-[10px] font-mono text-zinc-400">Anchor PDA</span>
-                    </div>
-                    <h4 className="text-xs font-bold text-white mb-1.5">On-Chain Escrow Lock</h4>
-                    <p className="text-[11px] text-zinc-400 leading-relaxed mb-3">
-                      Contract or AI agent specifies coordinates, bounty SOL, and radius. Funds lock in non-custodial PDA vault.
-                    </p>
-                  </div>
-                  <div className="pt-2 border-t border-white/[0.04] font-mono text-[10px] text-zinc-400 flex items-center justify-between">
-                    <span>Deposit: 0.35 SOL</span>
-                    <span className="text-emerald-400 font-bold">VAULT_LOCKED</span>
+            {/* Streamlined 3-Stage Progress Strip (Compact, High-Signal) */}
+            <div className="rounded-xl bg-[#090909] border border-white/[0.08] p-3 sm:p-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3 font-mono text-xs">
+                <div className="flex items-center space-x-2.5 px-3 py-2 rounded-lg bg-[#050505] border border-white/[0.04]">
+                  <span className="w-5 h-5 rounded-full bg-[#181818] border border-white/10 flex items-center justify-center text-[10px] text-[#A8FF00] font-bold">1</span>
+                  <div className="min-w-0">
+                    <span className="text-white font-bold block text-[11px] truncate">Escrow Vault Lock</span>
+                    <span className="text-[10px] text-zinc-400">0.35 SOL Anchor PDA</span>
                   </div>
                 </div>
 
-                {/* Step 2 */}
-                <div className="bg-[#050505] rounded-xl border border-white/[0.06] p-4 flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-mono text-xs font-bold text-[#A8FF00]">STAGE 02</span>
-                      <span className="text-[10px] font-mono text-zinc-400">Telemetry Proof</span>
-                    </div>
-                    <h4 className="text-xs font-bold text-white mb-1.5">Multi-Vector Attestation</h4>
-                    <p className="text-[11px] text-zinc-400 leading-relaxed mb-3">
-                      Field spotter submits signed payload. Hardware validates 200m Haversine, 8.4 Hz tremor, and multimodal AI consensus.
-                    </p>
-                  </div>
-                  <div className="pt-2 border-t border-white/[0.04] font-mono text-[10px] text-zinc-400 flex items-center justify-between">
-                    <span>Consensus: 98.4%</span>
-                    <span className="text-[#A8FF00] font-bold">VERIFIED_HARDWARE</span>
+                <div className="flex items-center space-x-2.5 px-3 py-2 rounded-lg bg-[#050505] border border-white/[0.04]">
+                  <span className="w-5 h-5 rounded-full bg-[#181818] border border-white/10 flex items-center justify-center text-[10px] text-[#A8FF00] font-bold">2</span>
+                  <div className="min-w-0">
+                    <span className="text-white font-bold block text-[11px] truncate">Telemetry Consensus</span>
+                    <span className="text-[10px] text-[#A8FF00]">98.4% AI + 8.4 Hz Tremor</span>
                   </div>
                 </div>
 
-                {/* Step 3 */}
-                <div className="bg-[#050505] rounded-xl border border-white/[0.06] p-4 flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-mono text-xs font-bold text-[#A8FF00]">STAGE 03</span>
-                      <span className="text-[10px] font-mono text-zinc-400">CPI Execution</span>
-                    </div>
-                    <h4 className="text-xs font-bold text-white mb-1.5">Instant Non-Custodial Payout</h4>
-                    <p className="text-[11px] text-zinc-400 leading-relaxed mb-3">
-                      Solana runtime verifies state and executes CPI release. 97.5% delivered to spotter in &lt;400ms finality.
-                    </p>
-                  </div>
-                  <div className="pt-2 border-t border-white/[0.04] font-mono text-[10px] text-zinc-400 flex items-center justify-between">
-                    <span>Payout: 0.34125 SOL</span>
-                    <span className="text-emerald-400 font-bold">RELEASED_ON_CHAIN</span>
+                <div className="flex items-center space-x-2.5 px-3 py-2 rounded-lg bg-[#050505] border border-white/[0.04]">
+                  <span className="w-5 h-5 rounded-full bg-[#181818] border border-white/10 flex items-center justify-center text-[10px] text-[#A8FF00] font-bold">3</span>
+                  <div className="min-w-0">
+                    <span className="text-white font-bold block text-[11px] truncate">Instant CPI Payout</span>
+                    <span className="text-[10px] text-emerald-400 font-bold">0.341 SOL Delivered</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* 4 Real-World DePIN Industry Deployment Use Cases */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* Use Case 1: EV Charging */}
-              <div className="rounded-2xl bg-[#090909] border border-white/[0.08] p-5 flex flex-col justify-between hover:border-white/20 transition-colors">
-                <div>
-                  <div className="flex items-center justify-between mb-2.5">
-                    <span className="text-[10px] font-mono text-[#A8FF00] font-bold uppercase tracking-wider">
-                      Smart Mobility • DePIN
-                    </span>
-                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-                      VERIFIED_ON_CHAIN
-                    </span>
+            {/* 2x2 Bento Cards Grid (Cyera Card Style: Visual Top Banner + Clean Tags + Punchy Specs) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              {/* Card 1: Smart Mobility */}
+              <div className="rounded-2xl bg-[#090909] border border-white/[0.08] hover:border-[#A8FF00]/40 transition-all overflow-hidden flex flex-col justify-between group shadow-xl">
+                {/* Visual Header Banner (Cyera Style) */}
+                <div className="h-28 bg-gradient-to-br from-emerald-950/40 via-[#0A1608] to-[#090909] border-b border-white/[0.06] p-4 flex items-start justify-between relative overflow-hidden">
+                  <div className="absolute right-3 -bottom-2 text-white/[0.03] group-hover:text-[#A8FF00]/[0.06] transition-colors pointer-events-none">
+                    <Zap className="w-24 h-24 stroke-[1]" />
                   </div>
-                  <h4 className="text-sm font-bold text-white mb-1.5">
-                    EV Supercharger Stall Clearance &amp; Plaque Status
-                  </h4>
-                  <p className="text-xs text-zinc-400 leading-relaxed mb-4">
-                    Autonomous navigation algorithms ingest physical stall availability to prevent electric vehicles from routing to ICE-blocked or inoperable charging bays.
-                  </p>
+                  <div className="w-9 h-9 rounded-xl bg-[#A8FF00]/10 border border-[#A8FF00]/30 flex items-center justify-center text-[#A8FF00]">
+                    <Zap className="w-4 h-4 text-[#A8FF00]" />
+                  </div>
+                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                    ● VERIFIED_ON_CHAIN
+                  </span>
                 </div>
-                <div className="bg-[#050505] rounded-xl border border-white/[0.06] p-3 font-mono text-[11px] grid grid-cols-3 gap-2 text-center">
+
+                {/* Card Body */}
+                <div className="p-5 flex-1 flex flex-col justify-between">
                   <div>
-                    <span className="text-[10px] text-zinc-500 block">Proximity</span>
-                    <span className="text-white font-bold">12.4m / 200m</span>
+                    <div className="flex items-center space-x-2 mb-2">
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/[0.05] text-zinc-300 border border-white/[0.08] font-semibold">
+                        Smart Mobility
+                      </span>
+                      <span className="text-[10px] font-mono text-zinc-500">DePIN Fleet</span>
+                    </div>
+                    <h3 className="text-base font-bold text-white tracking-tight mb-1.5">
+                      EV Supercharger Stall Clearance
+                    </h3>
+                    <p className="text-xs text-zinc-400 leading-relaxed mb-4">
+                      Autonomous navigation algorithms verify charger availability before dispatching electric vehicles to prevent stalled routing.
+                    </p>
                   </div>
-                  <div>
-                    <span className="text-[10px] text-zinc-500 block">Bounty</span>
-                    <span className="text-[#A8FF00] font-bold">0.35 SOL</span>
-                  </div>
-                  <div>
-                    <span className="text-[10px] text-zinc-500 block">Agreement</span>
-                    <span className="text-emerald-400 font-bold">98.4% Match</span>
+
+                  {/* Clean 3-Metric Chips Footer */}
+                  <div className="grid grid-cols-3 gap-2 bg-[#050505] p-2.5 rounded-xl border border-white/[0.05] font-mono text-[11px] text-center">
+                    <div>
+                      <span className="text-[9px] text-zinc-500 block uppercase">Bounty</span>
+                      <span className="text-[#A8FF00] font-bold">0.35 SOL</span>
+                    </div>
+                    <div>
+                      <span className="text-[9px] text-zinc-500 block uppercase">Proximity</span>
+                      <span className="text-white font-bold">12.4m</span>
+                    </div>
+                    <div>
+                      <span className="text-[9px] text-zinc-500 block uppercase">Agreement</span>
+                      <span className="text-emerald-400 font-bold">98.4%</span>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Use Case 2: Public Works */}
-              <div className="rounded-2xl bg-[#090909] border border-white/[0.08] p-5 flex flex-col justify-between hover:border-white/20 transition-colors">
-                <div>
-                  <div className="flex items-center justify-between mb-2.5">
-                    <span className="text-[10px] font-mono text-[#A8FF00] font-bold uppercase tracking-wider">
-                      Civic Infrastructure • DAO
-                    </span>
-                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-[#A8FF00]/10 text-[#A8FF00] border border-[#A8FF00]/30">
-                      ESCROW_SETTLED
-                    </span>
+              {/* Card 2: Civic Infrastructure */}
+              <div className="rounded-2xl bg-[#090909] border border-white/[0.08] hover:border-[#A8FF00]/40 transition-all overflow-hidden flex flex-col justify-between group shadow-xl">
+                {/* Visual Header Banner (Cyera Style) */}
+                <div className="h-28 bg-gradient-to-br from-amber-950/30 via-[#151206] to-[#090909] border-b border-white/[0.06] p-4 flex items-start justify-between relative overflow-hidden">
+                  <div className="absolute right-3 -bottom-2 text-white/[0.03] group-hover:text-amber-400/[0.06] transition-colors pointer-events-none">
+                    <AlertTriangle className="w-24 h-24 stroke-[1]" />
                   </div>
-                  <h4 className="text-sm font-bold text-white mb-1.5">
-                    Roadway Hazard Detour &amp; Lane Clearance Verification
-                  </h4>
-                  <p className="text-xs text-zinc-400 leading-relaxed mb-4">
-                    Municipal infrastructure DAOs automatically disburse maintenance treasury payouts upon cryptographic proof that road obstructions have been cleared.
-                  </p>
+                  <div className="w-9 h-9 rounded-xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center text-amber-400">
+                    <AlertTriangle className="w-4 h-4 text-amber-400" />
+                  </div>
+                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30">
+                    ● ESCROW_SETTLED
+                  </span>
                 </div>
-                <div className="bg-[#050505] rounded-xl border border-white/[0.06] p-3 font-mono text-[11px] grid grid-cols-3 gap-2 text-center">
+
+                {/* Card Body */}
+                <div className="p-5 flex-1 flex flex-col justify-between">
                   <div>
-                    <span className="text-[10px] text-zinc-500 block">Proximity</span>
-                    <span className="text-white font-bold">18.1m / 200m</span>
+                    <div className="flex items-center space-x-2 mb-2">
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/[0.05] text-zinc-300 border border-white/[0.08] font-semibold">
+                        Civic Infrastructure
+                      </span>
+                      <span className="text-[10px] font-mono text-zinc-500">Public DAO</span>
+                    </div>
+                    <h3 className="text-base font-bold text-white tracking-tight mb-1.5">
+                      Roadway Hazard Detour &amp; Clearance
+                    </h3>
+                    <p className="text-xs text-zinc-400 leading-relaxed mb-4">
+                      Municipal infrastructure DAOs automatically disburse maintenance treasury payouts once lane reopening is attested.
+                    </p>
                   </div>
-                  <div>
-                    <span className="text-[10px] text-zinc-500 block">Bounty</span>
-                    <span className="text-[#A8FF00] font-bold">0.45 SOL</span>
-                  </div>
-                  <div>
-                    <span className="text-[10px] text-zinc-500 block">Agreement</span>
-                    <span className="text-emerald-400 font-bold">99.1% Match</span>
+
+                  {/* Clean 3-Metric Chips Footer */}
+                  <div className="grid grid-cols-3 gap-2 bg-[#050505] p-2.5 rounded-xl border border-white/[0.05] font-mono text-[11px] text-center">
+                    <div>
+                      <span className="text-[9px] text-zinc-500 block uppercase">Bounty</span>
+                      <span className="text-[#A8FF00] font-bold">0.45 SOL</span>
+                    </div>
+                    <div>
+                      <span className="text-[9px] text-zinc-500 block uppercase">Proximity</span>
+                      <span className="text-white font-bold">18.1m</span>
+                    </div>
+                    <div>
+                      <span className="text-[9px] text-zinc-500 block uppercase">Agreement</span>
+                      <span className="text-emerald-400 font-bold">99.1%</span>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Use Case 3: Autonomous Logistics */}
-              <div className="rounded-2xl bg-[#090909] border border-white/[0.08] p-5 flex flex-col justify-between hover:border-white/20 transition-colors">
-                <div>
-                  <div className="flex items-center justify-between mb-2.5">
-                    <span className="text-[10px] font-mono text-[#A8FF00] font-bold uppercase tracking-wider">
-                      Autonomous Logistics • Retail
-                    </span>
-                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
-                      SEALED_PROOF
-                    </span>
+              {/* Card 3: Autonomous Logistics */}
+              <div className="rounded-2xl bg-[#090909] border border-white/[0.08] hover:border-[#A8FF00]/40 transition-all overflow-hidden flex flex-col justify-between group shadow-xl">
+                {/* Visual Header Banner (Cyera Style) */}
+                <div className="h-28 bg-gradient-to-br from-cyan-950/30 via-[#071317] to-[#090909] border-b border-white/[0.06] p-4 flex items-start justify-between relative overflow-hidden">
+                  <div className="absolute right-3 -bottom-2 text-white/[0.03] group-hover:text-cyan-400/[0.06] transition-colors pointer-events-none">
+                    <Lock className="w-24 h-24 stroke-[1]" />
                   </div>
-                  <h4 className="text-sm font-bold text-white mb-1.5">
-                    Parcel Locker Bay Physical Integrity &amp; Drop-Off
-                  </h4>
-                  <p className="text-xs text-zinc-400 leading-relaxed mb-4">
-                    Autonomous delivery networks confirm smart locker compartment seals and physical handoffs, triggering supply chain insurance release without manual audits.
-                  </p>
+                  <div className="w-9 h-9 rounded-xl bg-cyan-400/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400">
+                    <Lock className="w-4 h-4 text-cyan-400" />
+                  </div>
+                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-cyan-500/15 text-cyan-400 border border-cyan-500/30">
+                    ● SEALED_PROOF
+                  </span>
                 </div>
-                <div className="bg-[#050505] rounded-xl border border-white/[0.06] p-3 font-mono text-[11px] grid grid-cols-3 gap-2 text-center">
+
+                {/* Card Body */}
+                <div className="p-5 flex-1 flex flex-col justify-between">
                   <div>
-                    <span className="text-[10px] text-zinc-500 block">Proximity</span>
-                    <span className="text-white font-bold">8.6m / 200m</span>
+                    <div className="flex items-center space-x-2 mb-2">
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/[0.05] text-zinc-300 border border-white/[0.08] font-semibold">
+                        Autonomous Logistics
+                      </span>
+                      <span className="text-[10px] font-mono text-zinc-500">Retail Supply</span>
+                    </div>
+                    <h3 className="text-base font-bold text-white tracking-tight mb-1.5">
+                      Parcel Locker Bay Physical Integrity
+                    </h3>
+                    <p className="text-xs text-zinc-400 leading-relaxed mb-4">
+                      Supply chain smart contracts verify smart locker door seals and drop-off custody to trigger non-custodial insurance release.
+                    </p>
                   </div>
-                  <div>
-                    <span className="text-[10px] text-zinc-500 block">Bounty</span>
-                    <span className="text-[#A8FF00] font-bold">0.30 SOL</span>
-                  </div>
-                  <div>
-                    <span className="text-[10px] text-zinc-500 block">Agreement</span>
-                    <span className="text-emerald-400 font-bold">97.8% Match</span>
+
+                  {/* Clean 3-Metric Chips Footer */}
+                  <div className="grid grid-cols-3 gap-2 bg-[#050505] p-2.5 rounded-xl border border-white/[0.05] font-mono text-[11px] text-center">
+                    <div>
+                      <span className="text-[9px] text-zinc-500 block uppercase">Bounty</span>
+                      <span className="text-[#A8FF00] font-bold">0.30 SOL</span>
+                    </div>
+                    <div>
+                      <span className="text-[9px] text-zinc-500 block uppercase">Proximity</span>
+                      <span className="text-white font-bold">8.6m</span>
+                    </div>
+                    <div>
+                      <span className="text-[9px] text-zinc-500 block uppercase">Agreement</span>
+                      <span className="text-emerald-400 font-bold">97.8%</span>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Use Case 4: Micromobility */}
-              <div className="rounded-2xl bg-[#090909] border border-white/[0.08] p-5 flex flex-col justify-between hover:border-white/20 transition-colors">
-                <div>
-                  <div className="flex items-center justify-between mb-2.5">
-                    <span className="text-[10px] font-mono text-[#A8FF00] font-bold uppercase tracking-wider">
-                      Micromobility • Fleet
-                    </span>
-                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/30">
-                      DISPATCH_ACTIVE
-                    </span>
+              {/* Card 4: Micromobility */}
+              <div className="rounded-2xl bg-[#090909] border border-white/[0.08] hover:border-[#A8FF00]/40 transition-all overflow-hidden flex flex-col justify-between group shadow-xl">
+                {/* Visual Header Banner (Cyera Style) */}
+                <div className="h-28 bg-gradient-to-br from-indigo-950/30 via-[#0e0c1a] to-[#090909] border-b border-white/[0.06] p-4 flex items-start justify-between relative overflow-hidden">
+                  <div className="absolute right-3 -bottom-2 text-white/[0.03] group-hover:text-indigo-400/[0.06] transition-colors pointer-events-none">
+                    <Coins className="w-24 h-24 stroke-[1]" />
                   </div>
-                  <h4 className="text-sm font-bold text-white mb-1.5">
-                    Autonomous Bikeshare Hub Dock Availability
-                  </h4>
-                  <p className="text-xs text-zinc-400 leading-relaxed mb-4">
-                    Decentralized transit protocols verify real-world bike rack capacity and mechanical locks, dynamically incentivizing commuter rebalancing bounties in real time.
-                  </p>
+                  <div className="w-9 h-9 rounded-xl bg-indigo-400/10 border border-indigo-400/30 flex items-center justify-center text-indigo-400">
+                    <Coins className="w-4 h-4 text-indigo-400" />
+                  </div>
+                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-indigo-500/15 text-indigo-400 border border-indigo-500/30">
+                    ● DISPATCH_ACTIVE
+                  </span>
                 </div>
-                <div className="bg-[#050505] rounded-xl border border-white/[0.06] p-3 font-mono text-[11px] grid grid-cols-3 gap-2 text-center">
+
+                {/* Card Body */}
+                <div className="p-5 flex-1 flex flex-col justify-between">
                   <div>
-                    <span className="text-[10px] text-zinc-500 block">Proximity</span>
-                    <span className="text-white font-bold">15.2m / 200m</span>
+                    <div className="flex items-center space-x-2 mb-2">
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/[0.05] text-zinc-300 border border-white/[0.08] font-semibold">
+                        Micromobility
+                      </span>
+                      <span className="text-[10px] font-mono text-zinc-500">Transit Fleet</span>
+                    </div>
+                    <h3 className="text-base font-bold text-white tracking-tight mb-1.5">
+                      Bikeshare Hub Dock Availability
+                    </h3>
+                    <p className="text-xs text-zinc-400 leading-relaxed mb-4">
+                      Decentralized transit algorithms verify bike rack capacity and mechanical lock statuses to reward commuter rebalancing bounties.
+                    </p>
                   </div>
-                  <div>
-                    <span className="text-[10px] text-zinc-500 block">Bounty</span>
-                    <span className="text-[#A8FF00] font-bold">0.50 SOL</span>
-                  </div>
-                  <div>
-                    <span className="text-[10px] text-zinc-500 block">Agreement</span>
-                    <span className="text-emerald-400 font-bold">98.9% Match</span>
+
+                  {/* Clean 3-Metric Chips Footer */}
+                  <div className="grid grid-cols-3 gap-2 bg-[#050505] p-2.5 rounded-xl border border-white/[0.05] font-mono text-[11px] text-center">
+                    <div>
+                      <span className="text-[9px] text-zinc-500 block uppercase">Bounty</span>
+                      <span className="text-[#A8FF00] font-bold">0.50 SOL</span>
+                    </div>
+                    <div>
+                      <span className="text-[9px] text-zinc-500 block uppercase">Proximity</span>
+                      <span className="text-white font-bold">15.2m</span>
+                    </div>
+                    <div>
+                      <span className="text-[9px] text-zinc-500 block uppercase">Agreement</span>
+                      <span className="text-emerald-400 font-bold">98.9%</span>
+                    </div>
                   </div>
                 </div>
               </div>
