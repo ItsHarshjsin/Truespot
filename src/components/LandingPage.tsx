@@ -176,7 +176,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
       </header>
 
       {/* Main Container with Structured Section Padding (Offset for Floating Header) */}
-      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-16">
+      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-0">
         {/* ========================================================================= */}
         {/* 1. THE HERO SECTION                                                       */}
         {/* ========================================================================= */}
@@ -1016,13 +1016,14 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
             </div>
           </div>
         </section>
+      </main>
 
-        {/* ========================================================================= */}
-        {/* 8 & 9. CONNECTED LIVE TELEMETRY & ENTERPRISE FOOTER                       */}
-        {/* ========================================================================= */}
-        <footer className="max-w-5xl mx-auto pt-14 pb-12 border-t border-white/[0.08]">
-          {/* Integrated Live Telemetry Card (Seamless Connection) */}
-          <div className="mb-12 rounded-2xl bg-[#090909] border border-white/[0.08] p-3.5 sm:p-5 overflow-hidden shadow-xl">
+      {/* ========================================================================= */}
+      {/* 8 & 9. CONNECTED LIVE TELEMETRY & ENTERPRISE FOOTER                       */}
+      {/* ========================================================================= */}
+      <footer className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 mt-10 sm:mt-12 pt-8 sm:pt-9 pb-5 sm:pb-6 border-t border-white/[0.08]">
+        {/* Integrated Live Telemetry Card (Seamless Connection) */}
+        <div className="mb-7 sm:mb-8 rounded-2xl bg-[#090909] border border-white/[0.08] p-3.5 sm:p-5 overflow-hidden shadow-xl">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-3 px-1">
               <div className="flex items-center space-x-2.5">
                 <span className="w-2 h-2 rounded-full bg-[#A8FF00] animate-pulse" />
@@ -1065,7 +1066,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
           </div>
 
           {/* Connected Multi-Column Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-10 pb-12 border-b border-white/[0.06]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-10 pb-7 sm:pb-8 border-b border-white/[0.06]">
             {/* Brand & Devnet Status Column (Spans 2 columns on lg) */}
             <div className="lg:col-span-2 space-y-4">
               <div
@@ -1263,7 +1264,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
           </div>
 
           {/* Bottom Bar: Copyright & Back-to-Top */}
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-[11px] text-zinc-500">
+          <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-[11px] text-zinc-500">
             <div className="flex items-center space-x-2">
               <span>© 2026 TrueSpot Protocol.</span>
               <span className="text-zinc-600">•</span>
@@ -1282,7 +1283,6 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
             </div>
           </div>
         </footer>
-      </main>
     </div>
   );
 };
