@@ -421,38 +421,17 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                 </defs>
                 <rect width="100%" height="100%" fill="url(#diagGrid)" />
 
-                {/* THE ORACLE EYE: Iconic sweeping eyelid contours */}
-                <path d="M 100 230 C 260 90, 540 90, 700 230" fill="none" stroke="#A8FF00" strokeWidth="1.5" strokeOpacity="0.3" strokeDasharray="5 5" />
-                <path d="M 100 230 C 260 370, 540 370, 700 230" fill="none" stroke="#A8FF00" strokeWidth="1.5" strokeOpacity="0.3" strokeDasharray="5 5" />
+                {/* Minimalist Clean Network Connectors */}
+                <line x1="400" y1="230" x2="210" y2="90" stroke="#A8FF00" strokeOpacity="0.35" strokeWidth="1.2" strokeDasharray="4 4" />
+                <line x1="400" y1="230" x2="590" y2="90" stroke="#A8FF00" strokeOpacity="0.35" strokeWidth="1.2" strokeDasharray="4 4" />
+                <line x1="400" y1="230" x2="210" y2="370" stroke="#A8FF00" strokeOpacity="0.35" strokeWidth="1.2" strokeDasharray="4 4" />
+                <line x1="400" y1="230" x2="590" y2="370" stroke="#A8FF00" strokeOpacity="0.35" strokeWidth="1.2" strokeDasharray="4 4" />
 
-                {/* Concentric Oracle Iris & Range Rings */}
-                <circle cx="400" cy="230" r="140" stroke="rgba(255,255,255,0.05)" strokeWidth="1" strokeDasharray="4 4" fill="none" />
-                <circle cx="400" cy="230" r="85" stroke="#A8FF00" strokeOpacity="0.35" strokeWidth="1.5" strokeDasharray="4 4" fill="rgba(168,255,0,0.015)" />
-                <circle cx="400" cy="230" r="45" stroke="rgba(255,255,255,0.12)" strokeWidth="1" fill="none" />
-
-                {/* Dashed Connector Rays from Central POI to the 4 Satellite Headline Pills */}
-                <line x1="400" y1="230" x2="210" y2="90" stroke="#A8FF00" strokeOpacity="0.5" strokeWidth="1.5" strokeDasharray="4 4" />
-                <line x1="400" y1="230" x2="590" y2="90" stroke="#A8FF00" strokeOpacity="0.5" strokeWidth="1.5" strokeDasharray="4 4" />
-                <line x1="400" y1="230" x2="210" y2="370" stroke="#A8FF00" strokeOpacity="0.5" strokeWidth="1.5" strokeDasharray="4 4" />
-                <line x1="400" y1="230" x2="590" y2="370" stroke="#A8FF00" strokeOpacity="0.5" strokeWidth="1.5" strokeDasharray="4 4" />
-
-                {/* Geometric Wireframe Crystals (Inspired by Cyera diagram aesthetic) */}
-                <g transform="translate(45, 190) scale(0.65)" stroke="rgba(255,255,255,0.18)" fill="none" strokeWidth="1">
-                  <polygon points="30,0 60,25 45,60 15,60 0,25" />
-                  <line x1="30" y1="0" x2="30" y2="40" />
-                  <line x1="60" y1="25" x2="30" y2="40" />
-                  <line x1="45" y1="60" x2="30" y2="40" />
-                  <line x1="15" y1="60" x2="30" y2="40" />
-                  <line x1="0" y1="25" x2="30" y2="40" />
-                </g>
-                <g transform="translate(710, 175) scale(0.65)" stroke="rgba(168,255,0,0.22)" fill="none" strokeWidth="1">
-                  <polygon points="30,0 60,25 45,60 15,60 0,25" />
-                  <line x1="30" y1="0" x2="30" y2="40" />
-                  <line x1="60" y1="25" x2="30" y2="40" />
-                  <line x1="45" y1="60" x2="30" y2="40" />
-                  <line x1="15" y1="60" x2="30" y2="40" />
-                  <line x1="0" y1="25" x2="30" y2="40" />
-                </g>
+                {/* Subtle Connector Node Endpoints */}
+                <circle cx="210" cy="90" r="2.5" fill="#A8FF00" fillOpacity="0.6" />
+                <circle cx="590" cy="90" r="2.5" fill="#A8FF00" fillOpacity="0.6" />
+                <circle cx="210" cy="370" r="2.5" fill="#A8FF00" fillOpacity="0.6" />
+                <circle cx="590" cy="370" r="2.5" fill="#A8FF00" fillOpacity="0.6" />
               </svg>
 
               {/* Central Physical POI Headline Pill (Oracle Eye Center) */}
@@ -1112,7 +1091,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                   </li>
                   <li>
                     <a href="#simulator" className="hover:text-white transition-colors block">
-                      Oracle Eye Topology
+                      Network Topology
                     </a>
                   </li>
                 </ul>
