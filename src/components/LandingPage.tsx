@@ -118,66 +118,64 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
         <div className="absolute top-[1600px] left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-[#A8FF00]/[0.015] blur-[160px] rounded-full" />
       </div>
 
-      {/* Floating Header Navbar */}
-      <header className="sticky top-0 left-0 right-0 z-50 h-16 bg-[#050505]/90 backdrop-blur-2xl border-b border-white/[0.08]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
-          {/* Brand Logo - Navigates to Landing Page */}
-          <div
-            className="flex items-center space-x-3 cursor-pointer group"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            title="TrueSpot"
-          >
-            <div className="w-8 h-8 rounded-xl bg-[#A8FF00] text-black flex items-center justify-center font-black group-hover:scale-105 transition-transform shadow-[0_0_20px_rgba(168,255,0,0.3)]">
-              <Shield className="w-4.5 h-4.5 text-black stroke-[2.5]" />
-            </div>
-            <div className="flex items-center space-x-2">
-              <span className="font-extrabold text-base tracking-tight text-white">
-                TrueSpot
-              </span>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#111111] text-[#A8FF00] border border-[#A8FF00]/30 font-bold tracking-wider">
-                ORACLE
-              </span>
-            </div>
+      {/* Floating Sticky Header Capsule (Cyera-Inspired) */}
+      <header className="fixed top-3.5 sm:top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-1.5rem)] sm:w-[calc(100%-3rem)] max-w-5xl h-14 rounded-full bg-[#0A0A0A]/90 backdrop-blur-2xl border border-white/[0.12] shadow-[0_12px_40px_rgba(0,0,0,0.75)] px-4 sm:px-6 flex items-center justify-between transition-all">
+        {/* Brand Logo */}
+        <div
+          className="flex items-center space-x-2.5 cursor-pointer group shrink-0"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          title="TrueSpot"
+        >
+          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#A8FF00] text-black flex items-center justify-center font-black group-hover:scale-105 transition-transform shadow-[0_0_15px_rgba(168,255,0,0.3)]">
+            <Shield className="w-4 h-4 text-black stroke-[2.5]" />
           </div>
-
-          {/* Navigation Links */}
-          <nav className="hidden md:flex items-center space-x-8 text-xs font-semibold text-zinc-400">
-            <a href="#platform" className="hover:text-white transition-colors">
-              Pillars
-            </a>
-            <a href="#simulator" className="hover:text-white transition-colors">
-              Verification
-            </a>
-            <a href="#automation" className="hover:text-white transition-colors">
-              Deployments
-            </a>
-            <a href="#comparison" className="hover:text-white transition-colors">
-              Comparison
-            </a>
-            <a href="#developers" className="hover:text-white transition-colors">
-              Developers
-            </a>
-            <button
-              onClick={onOpenDocs}
-              className="hover:text-white transition-colors cursor-pointer text-xs font-semibold text-zinc-400"
-            >
-              Docs
-            </button>
-          </nav>
-
-          {/* Primary Action Button */}
-          <button
-            onClick={onLaunchProtocol}
-            className="h-9 px-5 rounded-full bg-[#A8FF00] hover:bg-[#b8ff24] text-black font-extrabold text-xs transition-all flex items-center space-x-1.5 shadow-[0_0_20px_rgba(168,255,0,0.25)] hover:shadow-[0_0_30px_rgba(168,255,0,0.4)] cursor-pointer"
-          >
-            <span>Launch App</span>
-            <ArrowRight className="w-3.5 h-3.5 text-black" />
-          </button>
+          <div className="flex items-center space-x-1.5">
+            <span className="font-extrabold text-sm sm:text-base tracking-tight text-white">
+              TrueSpot
+            </span>
+            <span className="hidden sm:inline-block text-[9px] font-mono px-2 py-0.5 rounded-full bg-white/[0.06] text-[#A8FF00] border border-[#A8FF00]/30 font-bold tracking-wider">
+              ORACLE
+            </span>
+          </div>
         </div>
+
+        {/* Navigation Links (Centered) */}
+        <nav className="hidden md:flex items-center space-x-6 text-xs font-semibold text-zinc-400">
+          <a href="#platform" className="hover:text-white transition-colors">
+            Pillars
+          </a>
+          <a href="#simulator" className="hover:text-white transition-colors">
+            Verification
+          </a>
+          <a href="#automation" className="hover:text-white transition-colors">
+            Deployments
+          </a>
+          <a href="#comparison" className="hover:text-white transition-colors">
+            Comparison
+          </a>
+          <a href="#developers" className="hover:text-white transition-colors">
+            Developers
+          </a>
+          <button
+            onClick={onOpenDocs}
+            className="hover:text-white transition-colors cursor-pointer text-xs font-semibold text-zinc-400"
+          >
+            Docs
+          </button>
+        </nav>
+
+        {/* Primary Action Button */}
+        <button
+          onClick={onLaunchProtocol}
+          className="h-8.5 sm:h-9 px-4 sm:px-5 rounded-full bg-[#A8FF00] hover:bg-[#b8ff24] text-black font-extrabold text-xs transition-all flex items-center space-x-1.5 shadow-[0_0_20px_rgba(168,255,0,0.25)] hover:shadow-[0_0_25px_rgba(168,255,0,0.4)] cursor-pointer shrink-0"
+        >
+          <span>Launch App</span>
+          <ArrowRight className="w-3.5 h-3.5 text-black" />
+        </button>
       </header>
 
-      {/* Main Container with Structured Section Padding */}
-      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 pb-16">
+      {/* Main Container with Structured Section Padding (Offset for Floating Header) */}
+      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-16">
         {/* ========================================================================= */}
         {/* 1. THE HERO SECTION                                                       */}
         {/* ========================================================================= */}
@@ -1019,10 +1017,10 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
         </section>
 
         {/* ========================================================================= */}
-        {/* 8. LIVE ATTESTATION MARQUEE SWIPE (Continuous Smooth Stream)              */}
+        {/* 8. LIVE ATTESTATION MARQUEE SWIPE (Connected Transition)                  */}
         {/* ========================================================================= */}
-        <section className="pt-10 pb-4 overflow-hidden border-t border-white/[0.08]">
-          <div className="marquee-mask overflow-hidden py-2">
+        <section className="pt-8 pb-4 max-w-5xl mx-auto overflow-hidden border-t border-white/[0.08]">
+          <div className="marquee-mask overflow-hidden py-1">
             <div className="animate-marquee-swipe flex items-center gap-3">
               {[...tickerItems, ...tickerItems].map((item, idx) => (
                 <div
@@ -1046,205 +1044,203 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
         </section>
 
         {/* ========================================================================= */}
-        {/* 9. DEFINED ENTERPRISE FOOTER                                              */}
+        {/* 9. CONNECTED ENTERPRISE FOOTER (Aligned to max-w-5xl)                     */}
         {/* ========================================================================= */}
-        <footer className="pt-10 pb-8 border-t border-white/[0.08]">
-          <div className="max-w-7xl mx-auto">
-            {/* Top Multi-Column Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 pb-10 border-b border-white/[0.06]">
-              {/* Brand & Devnet Status Column (Spans 2 columns on lg) */}
-              <div className="lg:col-span-2 space-y-4">
-                <div
-                  className="flex items-center space-x-3 cursor-pointer group w-fit"
-                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                >
-                  <div className="w-9 h-9 rounded-xl bg-[#A8FF00] text-black flex items-center justify-center font-bold shadow-[0_0_15px_rgba(168,255,0,0.3)] transition-transform group-hover:scale-105">
-                    <Shield className="w-5 h-5 text-black stroke-[2.5]" />
-                  </div>
-                  <div>
-                    <span className="font-black text-lg tracking-tight text-white block leading-none">
-                      TrueSpot
-                    </span>
-                    <span className="text-[10px] font-mono text-[#A8FF00] uppercase tracking-wider font-semibold">
-                      Physical DePIN Oracle
-                    </span>
-                  </div>
+        <footer className="max-w-5xl mx-auto pt-8 pb-12 border-t border-white/[0.08]">
+          {/* Top Multi-Column Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 pb-10 border-b border-white/[0.06]">
+            {/* Brand & Devnet Status Column (Spans 2 columns on lg) */}
+            <div className="lg:col-span-2 space-y-4">
+              <div
+                className="flex items-center space-x-3 cursor-pointer group w-fit"
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              >
+                <div className="w-9 h-9 rounded-xl bg-[#A8FF00] text-black flex items-center justify-center font-bold shadow-[0_0_15px_rgba(168,255,0,0.3)] transition-transform group-hover:scale-105">
+                  <Shield className="w-5 h-5 text-black stroke-[2.5]" />
                 </div>
-
-                <p className="text-xs text-zinc-400 leading-relaxed max-w-sm">
-                  Cryptographic verification bridging physical ground truth and autonomous onchain execution on Solana.
-                </p>
-
-                {/* Live Cluster Pill */}
-                <div className="inline-flex items-center space-x-2.5 px-3 py-1.5 rounded-lg bg-[#0C0C0C] border border-white/[0.08] text-[11px] font-mono">
-                  <span className="w-2 h-2 rounded-full bg-[#A8FF00] animate-pulse" />
-                  <span className="text-zinc-400">Solana Devnet:</span>
-                  <span className="text-white font-bold">Slot #{telemetrySlot.toLocaleString()}</span>
+                <div>
+                  <span className="font-black text-lg tracking-tight text-white block leading-none">
+                    TrueSpot
+                  </span>
+                  <span className="text-[10px] font-mono text-[#A8FF00] uppercase tracking-wider font-semibold">
+                    Physical DePIN Oracle
+                  </span>
                 </div>
               </div>
 
-              {/* Column 1: Verification Core */}
-              <div className="space-y-3">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-white font-mono">
-                  Verification Core
-                </h4>
-                <ul className="space-y-2 text-xs text-zinc-400">
-                  <li>
-                    <a href="#simulator" className="hover:text-white transition-colors block">
-                      Spatial Geofence
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#simulator" className="hover:text-white transition-colors block">
-                      Biometric Tremor
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#simulator" className="hover:text-white transition-colors block">
-                      Gemini 2.5 Vision
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#simulator" className="hover:text-white transition-colors block">
-                      Anchor Escrow PDA
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#simulator" className="hover:text-white transition-colors block">
-                      Network Topology
-                    </a>
-                  </li>
-                </ul>
-              </div>
+              <p className="text-xs text-zinc-400 leading-relaxed max-w-sm">
+                Cryptographic verification bridging physical ground truth and autonomous onchain execution on Solana.
+              </p>
 
-              {/* Column 2: Developers */}
-              <div className="space-y-3">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-white font-mono">
-                  Developers
-                </h4>
-                <ul className="space-y-2 text-xs text-zinc-400">
-                  <li>
-                    <button onClick={onOpenDocs} className="hover:text-white transition-colors text-left cursor-pointer block">
-                      Anchor CPI Program
-                    </button>
-                  </li>
-                  <li>
-                    <button onClick={onOpenDocs} className="hover:text-white transition-colors text-left cursor-pointer block">
-                      TypeScript SDK
-                    </button>
-                  </li>
-                  <li>
-                    <button onClick={onOpenDocs} className="hover:text-white transition-colors text-left cursor-pointer block">
-                      ElizaOS DePIN Action
-                    </button>
-                  </li>
-                  <li>
-                    <a
-                      href="https://github.com/ItsHarshjsin/Truespot"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="hover:text-white transition-colors flex items-center space-x-1"
-                    >
-                      <span>GitHub Repository</span>
-                      <ArrowUpRight className="w-3 h-3 text-zinc-500" />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://explorer.solana.com/?cluster=devnet"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="hover:text-white transition-colors flex items-center space-x-1"
-                    >
-                      <span>Devnet Explorer</span>
-                      <ArrowUpRight className="w-3 h-3 text-zinc-500" />
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Column 3: Deployments */}
-              <div className="space-y-3">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-white font-mono">
-                  Deployments
-                </h4>
-                <ul className="space-y-2 text-xs text-zinc-400">
-                  <li>
-                    <a href="#automation" className="hover:text-white transition-colors block">
-                      Autonomous EV Fleet
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#automation" className="hover:text-white transition-colors block">
-                      Cold-Chain Logistics
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#automation" className="hover:text-white transition-colors block">
-                      Drone Waypoints
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#automation" className="hover:text-white transition-colors block">
-                      Decentralized Compute
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Column 4: Ecosystem & Quick Action */}
-              <div className="space-y-3">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-white font-mono">
-                  Ecosystem
-                </h4>
-                <ul className="space-y-2 text-xs text-zinc-400">
-                  <li>
-                    <a
-                      href="https://x.com"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="hover:text-white transition-colors flex items-center space-x-1"
-                    >
-                      <span>X (Twitter)</span>
-                      <ArrowUpRight className="w-3 h-3 text-zinc-500" />
-                    </a>
-                  </li>
-                  <li>
-                    <button onClick={onOpenDocs} className="hover:text-white transition-colors text-left cursor-pointer block">
-                      Documentation
-                    </button>
-                  </li>
-                  <li className="pt-2">
-                    <button
-                      onClick={onLaunchProtocol}
-                      className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-lg bg-[#A8FF00] text-black font-bold text-xs hover:bg-[#b8ff24] transition-all cursor-pointer shadow-[0_0_12px_rgba(168,255,0,0.25)]"
-                    >
-                      <span>Launch App</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-                  </li>
-                </ul>
+              {/* Live Cluster Pill */}
+              <div className="inline-flex items-center space-x-2.5 px-3 py-1.5 rounded-lg bg-[#0C0C0C] border border-white/[0.08] text-[11px] font-mono">
+                <span className="w-2 h-2 rounded-full bg-[#A8FF00] animate-pulse" />
+                <span className="text-zinc-400">Solana Devnet:</span>
+                <span className="text-white font-bold">Slot #{telemetrySlot.toLocaleString()}</span>
               </div>
             </div>
 
-            {/* Bottom Bar: Copyright & Back-to-Top */}
-            <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-[11px] text-zinc-500">
-              <div className="flex items-center space-x-2">
-                <span>© 2026 TrueSpot Protocol.</span>
-                <span className="text-zinc-600">•</span>
-                <span className="text-zinc-400">Decentralized Physical Ground Truth Architecture.</span>
-              </div>
+            {/* Column 1: Verification Core */}
+            <div className="space-y-3">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-white font-mono">
+                Verification Core
+              </h4>
+              <ul className="space-y-2 text-xs text-zinc-400">
+                <li>
+                  <a href="#simulator" className="hover:text-white transition-colors block">
+                    Spatial Geofence
+                  </a>
+                </li>
+                <li>
+                  <a href="#simulator" className="hover:text-white transition-colors block">
+                    Biometric Tremor
+                  </a>
+                </li>
+                <li>
+                  <a href="#simulator" className="hover:text-white transition-colors block">
+                    Gemini 2.5 Vision
+                  </a>
+                </li>
+                <li>
+                  <a href="#simulator" className="hover:text-white transition-colors block">
+                    Anchor Escrow PDA
+                  </a>
+                </li>
+                <li>
+                  <a href="#simulator" className="hover:text-white transition-colors block">
+                    Network Topology
+                  </a>
+                </li>
+              </ul>
+            </div>
 
-              <div className="flex items-center space-x-6 text-zinc-400">
-                <span className="text-emerald-400 font-medium">● Devnet Operational</span>
-                <button
-                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                  className="hover:text-white transition-colors cursor-pointer flex items-center space-x-1 group"
-                >
-                  <span>Back to top</span>
-                  <span className="group-hover:-translate-y-0.5 transition-transform">↑</span>
-                </button>
-              </div>
+            {/* Column 2: Developers */}
+            <div className="space-y-3">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-white font-mono">
+                Developers
+              </h4>
+              <ul className="space-y-2 text-xs text-zinc-400">
+                <li>
+                  <button onClick={onOpenDocs} className="hover:text-white transition-colors text-left cursor-pointer block">
+                    Anchor CPI Program
+                  </button>
+                </li>
+                <li>
+                  <button onClick={onOpenDocs} className="hover:text-white transition-colors text-left cursor-pointer block">
+                    TypeScript SDK
+                  </button>
+                </li>
+                <li>
+                  <button onClick={onOpenDocs} className="hover:text-white transition-colors text-left cursor-pointer block">
+                    ElizaOS DePIN Action
+                  </button>
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/ItsHarshjsin/Truespot"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover:text-white transition-colors flex items-center space-x-1"
+                  >
+                    <span>GitHub Repository</span>
+                    <ArrowUpRight className="w-3 h-3 text-zinc-500" />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://explorer.solana.com/?cluster=devnet"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover:text-white transition-colors flex items-center space-x-1"
+                  >
+                    <span>Devnet Explorer</span>
+                    <ArrowUpRight className="w-3 h-3 text-zinc-500" />
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 3: Deployments */}
+            <div className="space-y-3">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-white font-mono">
+                Deployments
+              </h4>
+              <ul className="space-y-2 text-xs text-zinc-400">
+                <li>
+                  <a href="#automation" className="hover:text-white transition-colors block">
+                    Autonomous EV Fleet
+                  </a>
+                </li>
+                <li>
+                  <a href="#automation" className="hover:text-white transition-colors block">
+                    Cold-Chain Logistics
+                  </a>
+                </li>
+                <li>
+                  <a href="#automation" className="hover:text-white transition-colors block">
+                    Drone Waypoints
+                  </a>
+                </li>
+                <li>
+                  <a href="#automation" className="hover:text-white transition-colors block">
+                    Decentralized Compute
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 4: Ecosystem & Quick Action */}
+            <div className="space-y-3">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-white font-mono">
+                Ecosystem
+              </h4>
+              <ul className="space-y-2 text-xs text-zinc-400">
+                <li>
+                  <a
+                    href="https://x.com"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover:text-white transition-colors flex items-center space-x-1"
+                  >
+                    <span>X (Twitter)</span>
+                    <ArrowUpRight className="w-3 h-3 text-zinc-500" />
+                  </a>
+                </li>
+                <li>
+                  <button onClick={onOpenDocs} className="hover:text-white transition-colors text-left cursor-pointer block">
+                    Documentation
+                  </button>
+                </li>
+                <li className="pt-2">
+                  <button
+                    onClick={onLaunchProtocol}
+                    className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-lg bg-[#A8FF00] text-black font-bold text-xs hover:bg-[#b8ff24] transition-all cursor-pointer shadow-[0_0_12px_rgba(168,255,0,0.25)]"
+                  >
+                    <span>Launch App</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Bottom Bar: Copyright & Back-to-Top */}
+          <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-[11px] text-zinc-500">
+            <div className="flex items-center space-x-2">
+              <span>© 2026 TrueSpot Protocol.</span>
+              <span className="text-zinc-600">•</span>
+              <span className="text-zinc-400">Decentralized Physical Ground Truth Architecture.</span>
+            </div>
+
+            <div className="flex items-center space-x-6 text-zinc-400">
+              <span className="text-emerald-400 font-medium">● Devnet Operational</span>
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="hover:text-white transition-colors cursor-pointer flex items-center space-x-1 group"
+              >
+                <span>Back to top</span>
+                <span className="group-hover:-translate-y-0.5 transition-transform">↑</span>
+              </button>
             </div>
           </div>
         </footer>
