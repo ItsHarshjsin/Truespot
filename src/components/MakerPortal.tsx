@@ -236,11 +236,10 @@ export const MakerPortal: React.FC<MakerPortalProps> = ({
                             </div>
                             <div className="w-full bg-[#141414] h-2 rounded-full overflow-hidden flex">
                               <div
-                                className={`h-full rounded-full transition-all duration-500 ${
-                                  isConsensusReached
+                                className={`h-full rounded-full transition-all duration-500 ${isConsensusReached
                                     ? 'bg-[#A8FF00]'
                                     : 'bg-[#4285FF]'
-                                }`}
+                                  }`}
                                 style={{ width: `${Math.round(progressRatio * 100)}%` }}
                               />
                             </div>
@@ -344,8 +343,8 @@ export const MakerPortal: React.FC<MakerPortalProps> = ({
                             {approvingId === b.id
                               ? 'Executing Solana Batched Settlement...'
                               : requiredSpotters > 1
-                              ? `Confirm Truth & Release ${b.amount_sol} SOL Swarm Payout`
-                              : `Confirm Truth & Release ${b.amount_sol} SOL Payout`}
+                                ? `Confirm Truth & Release ${b.amount_sol} SOL Swarm Payout`
+                                : `Confirm Truth & Release ${b.amount_sol} SOL Payout`}
                           </span>
                         </button>
                       </div>
@@ -397,13 +396,12 @@ export const MakerPortal: React.FC<MakerPortalProps> = ({
                       </td>
                       <td className="py-3 px-3 font-sans">
                         <span
-                          className={`px-3 py-0.5 rounded-full text-[10px] font-bold border ${
-                            b.status === 'PAID'
+                          className={`px-3 py-0.5 rounded-full text-[10px] font-bold border ${b.status === 'PAID'
                               ? 'bg-[#A8FF00]/10 text-[#A8FF00] border-[#A8FF00]/30'
                               : b.status === 'ANSWERED'
-                              ? 'bg-[#8B4DFF]/10 text-purple-300 border-purple-500/30 animate-pulse'
-                              : 'bg-[#101010] text-[#858585] border-white/[0.07]'
-                          }`}
+                                ? 'bg-[#8B4DFF]/10 text-purple-300 border-purple-500/30 animate-pulse'
+                                : 'bg-[#101010] text-[#858585] border-white/[0.07]'
+                            }`}
                         >
                           {b.status === 'ANSWERED' ? 'PENDING APPROVAL' : b.status}
                         </span>

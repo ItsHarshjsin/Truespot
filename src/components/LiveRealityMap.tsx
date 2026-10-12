@@ -328,11 +328,10 @@ export const LiveRealityMap: React.FC<LiveRealityMapProps> = ({
             <button
               key={status}
               onClick={() => setFilterStatus(status)}
-              className={`px-3 py-1 rounded-full text-[11px] font-semibold transition-all cursor-pointer ${
-                filterStatus === status
+              className={`px-3 py-1 rounded-full text-[11px] font-semibold transition-all cursor-pointer ${filterStatus === status
                   ? 'bg-[#A8FF00] text-black font-black shadow-sm shadow-[#A8FF00]/20'
                   : 'text-zinc-400 hover:text-white'
-              }`}
+                }`}
             >
               {status}
             </button>
@@ -463,11 +462,10 @@ export const LiveRealityMap: React.FC<LiveRealityMapProps> = ({
                 <div className="flex items-center justify-between text-[11px]">
                   <span className="text-zinc-400">Quality Engine Verdict:</span>
                   <span
-                    className={`font-bold font-mono ${
-                      selectedObs.quality_report.overall_verdict === 'QUALIFIED'
+                    className={`font-bold font-mono ${selectedObs.quality_report.overall_verdict === 'QUALIFIED'
                         ? 'text-[#A8FF00]'
                         : 'text-[#FFB800]'
-                    }`}
+                      }`}
                   >
                     {selectedObs.quality_report.overall_verdict}
                   </span>

@@ -219,12 +219,12 @@ export const ReportScreen: React.FC<ReportScreenProps> = ({
         const bhPromise = getRecentDevnetBlockhash();
         const timeoutPromise = new Promise<string>((_, reject) => setTimeout(() => reject('timeout'), 800));
         devnetBlockhash = await Promise.race([bhPromise, timeoutPromise]);
-      } catch (e) {}
+      } catch (e) { }
 
       let tremor = { variance: 0.048, isHuman: true };
       try {
         tremor = await measureDeviceTremor(300);
-      } catch (e) {}
+      } catch (e) { }
 
       const hash = await generateFingerprint(
         photoBytesOrString,
@@ -565,7 +565,7 @@ export const ReportScreen: React.FC<ReportScreenProps> = ({
 
       {/* Main Grid View */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
-        
+
         {/* Left Column: Spot Details & Observed Truth Input */}
         <div className="lg:col-span-5 space-y-4">
           {/* Target Bounty Header Card */}
@@ -639,11 +639,10 @@ export const ReportScreen: React.FC<ReportScreenProps> = ({
                   type="button"
                   key={preset}
                   onClick={() => setAnswerText(preset)}
-                  className={`py-2 px-3 rounded-xl text-xs font-semibold border transition-all text-center cursor-pointer ${
-                    answerText === preset
+                  className={`py-2 px-3 rounded-xl text-xs font-semibold border transition-all text-center cursor-pointer ${answerText === preset
                       ? 'bg-[#A8FF00] text-black font-extrabold border-[#A8FF00] shadow-sm'
                       : 'bg-[#101010] border-white/[0.07] text-[#858585] hover:text-white'
-                  }`}
+                    }`}
                 >
                   {preset}
                 </button>

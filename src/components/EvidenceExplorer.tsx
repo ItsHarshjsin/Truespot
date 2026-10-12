@@ -225,11 +225,10 @@ export const EvidenceExplorer: React.FC<EvidenceExplorerProps> = ({
           <button
             key={tab.key}
             onClick={() => setFilterTab(tab.key as any)}
-            className={`px-4 py-2 rounded-full text-xs font-semibold transition-all whitespace-nowrap cursor-pointer flex items-center space-x-1.5 ${
-              filterTab === tab.key
+            className={`px-4 py-2 rounded-full text-xs font-semibold transition-all whitespace-nowrap cursor-pointer flex items-center space-x-1.5 ${filterTab === tab.key
                 ? 'bg-[#A8FF00] text-black font-black shadow-md shadow-[#A8FF00]/20'
                 : 'bg-[#0B0B0B] text-zinc-400 hover:text-white border border-white/[0.06]'
-            }`}
+              }`}
           >
             <span>{tab.label}</span>
             <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-black/20 font-mono">
@@ -402,11 +401,10 @@ export const EvidenceExplorer: React.FC<EvidenceExplorerProps> = ({
                           </h3>
                         </div>
                         <span
-                          className={`text-xs font-mono font-bold px-2.5 py-0.5 rounded-full ${
-                            obs.quality_report.overall_verdict === 'QUALIFIED'
+                          className={`text-xs font-mono font-bold px-2.5 py-0.5 rounded-full ${obs.quality_report.overall_verdict === 'QUALIFIED'
                               ? 'bg-[#A8FF00]/15 text-[#A8FF00] border border-[#A8FF00]/30'
                               : 'bg-[#FFB800]/15 text-[#FFB800] border border-[#FFB800]/30'
-                          }`}
+                            }`}
                         >
                           {obs.quality_report.overall_verdict}
                         </span>
@@ -538,11 +536,10 @@ export const EvidenceExplorer: React.FC<EvidenceExplorerProps> = ({
                   key={reason}
                   type="button"
                   onClick={() => setRejectionReason(reason)}
-                  className={`w-full text-left p-3 rounded-[14px] text-xs transition-colors cursor-pointer ${
-                    rejectionReason === reason
+                  className={`w-full text-left p-3 rounded-[14px] text-xs transition-colors cursor-pointer ${rejectionReason === reason
                       ? 'bg-[#A8FF00]/15 text-[#A8FF00] border border-[#A8FF00]/40 font-bold'
                       : 'bg-[#121212] text-zinc-300 hover:bg-[#181818] border border-white/[0.06]'
-                  }`}
+                    }`}
                 >
                   {reason}
                 </button>

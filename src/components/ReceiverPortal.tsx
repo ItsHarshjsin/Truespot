@@ -137,27 +137,24 @@ export const ReceiverPortal: React.FC<ReceiverPortalProps> = ({
                 <button
                   type="button"
                   onClick={() => setSubmissionsFilter('all')}
-                  className={`px-3 py-1 rounded-full font-semibold transition-colors cursor-pointer ${
-                    submissionsFilter === 'all' ? 'bg-[#A8FF00] text-black font-bold' : 'text-zinc-400 hover:text-white'
-                  }`}
+                  className={`px-3 py-1 rounded-full font-semibold transition-colors cursor-pointer ${submissionsFilter === 'all' ? 'bg-[#A8FF00] text-black font-bold' : 'text-zinc-400 hover:text-white'
+                    }`}
                 >
                   All ({reports.length})
                 </button>
                 <button
                   type="button"
                   onClick={() => setSubmissionsFilter('pending')}
-                  className={`px-3 py-1 rounded-full font-semibold transition-colors cursor-pointer ${
-                    submissionsFilter === 'pending' ? 'bg-[#A8FF00] text-black font-bold' : 'text-zinc-400 hover:text-white'
-                  }`}
+                  className={`px-3 py-1 rounded-full font-semibold transition-colors cursor-pointer ${submissionsFilter === 'pending' ? 'bg-[#A8FF00] text-black font-bold' : 'text-zinc-400 hover:text-white'
+                    }`}
                 >
                   Pending ({reports.filter((r) => bounties.find((b) => b.id === r.bounty_id)?.status !== 'PAID').length})
                 </button>
                 <button
                   type="button"
                   onClick={() => setSubmissionsFilter('paid')}
-                  className={`px-3 py-1 rounded-full font-semibold transition-colors cursor-pointer ${
-                    submissionsFilter === 'paid' ? 'bg-[#A8FF00] text-black font-bold' : 'text-zinc-400 hover:text-white'
-                  }`}
+                  className={`px-3 py-1 rounded-full font-semibold transition-colors cursor-pointer ${submissionsFilter === 'paid' ? 'bg-[#A8FF00] text-black font-bold' : 'text-zinc-400 hover:text-white'
+                    }`}
                 >
                   Paid & Settled ({reports.filter((r) => bounties.find((b) => b.id === r.bounty_id)?.status === 'PAID').length})
                 </button>
@@ -317,11 +314,10 @@ export const ReceiverPortal: React.FC<ReceiverPortalProps> = ({
                         </td>
                         <td className="py-3 px-3">
                           <span
-                            className={`px-2.5 py-0.5 rounded text-[10px] font-bold ${
-                              isPaid
+                            className={`px-2.5 py-0.5 rounded text-[10px] font-bold ${isPaid
                                 ? 'bg-[#A8FF00]/15 text-[#A8FF00] border border-[#A8FF00]/30'
                                 : 'bg-amber-500/15 text-amber-300 border border-amber-500/30'
-                            }`}
+                              }`}
                           >
                             {isPaid ? 'PAID ✓' : 'IN REVIEW'}
                           </span>
