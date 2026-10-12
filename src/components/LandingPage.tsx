@@ -41,72 +41,80 @@ export const LandingPage: React.FC<LandingPageProps> = ({
   onOpenDocs,
 }) => {
   // -------------------------------------------------------------
-  // SIMULATOR INTERACTIVE STATE (Refined, Balanced, Distinctive)
+  // SIMULATOR INTERACTIVE STATE (Map / Dynamic Sensor Visualizer)
   // -------------------------------------------------------------
   const [activeSimulatorTab, setActiveSimulatorTab] = useState<
     'truth' | 'hardware' | 'risk' | 'escrow' | 'agent'
   >('truth');
 
   // -------------------------------------------------------------
-  // BLUEPRINT AUTOMATION TABLE (Balanced Proportions)
+  // BLUEPRINT PIPELINE EXECUTION STATE
   // -------------------------------------------------------------
-  const [automationRules, setAutomationRules] = useState([
+  const [selectedBountyId, setSelectedBountyId] = useState<number>(1);
+  const [pipelineStep, setPipelineStep] = useState<number>(0);
+  const [isSimulatingPipeline, setIsSimulatingPipeline] = useState<boolean>(false);
+
+  const bountiesList = [
     {
       id: 1,
-      task: 'EV Supercharger Stall Clearance',
-      perimeter: '12.4m',
+      title: 'EV Supercharger Stall Clearance',
+      category: 'Smart Mobility',
+      coords: '37.7792° N, -122.4184° W',
+      perimeter: '12.4m / 200m',
       consensus: '98.4%',
-      bounty: '0.35 SOL',
-      active: true,
+      bountySol: '0.35 SOL',
+      status: 'VERIFIED_ON_CHAIN',
+      statusBadge: 'bg-[#A8FF00]/10 text-[#A8FF00] border-[#A8FF00]/30',
     },
     {
       id: 2,
-      task: 'Infrastructure Safety Detour',
-      perimeter: '18.1m',
+      title: 'Infrastructure Hazard Detour',
+      category: 'Public Works',
+      coords: '37.7833° N, -122.4167° W',
+      perimeter: '18.1m / 200m',
       consensus: '99.1%',
-      bounty: '0.45 SOL',
-      active: true,
+      bountySol: '0.45 SOL',
+      status: 'ESCROW_LOCKED',
+      statusBadge: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30',
     },
     {
       id: 3,
-      task: 'Parcel Locker Bay Operational',
-      perimeter: '8.6m',
+      title: 'Parcel Locker Bay Operational',
+      category: 'Autonomous Logistics',
+      coords: '37.7750° N, -122.4201° W',
+      perimeter: '8.6m / 200m',
       consensus: '97.8%',
-      bounty: '0.30 SOL',
-      active: true,
+      bountySol: '0.30 SOL',
+      status: 'CONSENSUS_PENDING',
+      statusBadge: 'bg-amber-500/10 text-amber-400 border-amber-500/30',
     },
     {
       id: 4,
-      task: 'Autonomous Bikeshare Dock',
-      perimeter: '15.2m',
+      title: 'Autonomous Bikeshare Dock Availability',
+      category: 'Micromobility',
+      coords: '37.7810° N, -122.4150° W',
+      perimeter: '15.2m / 200m',
       consensus: '98.9%',
-      bounty: '0.50 SOL',
-      active: false,
+      bountySol: '0.50 SOL',
+      status: 'DISPATCHED_ACTIVE',
+      statusBadge: 'bg-sky-500/10 text-sky-400 border-sky-500/30',
     },
-  ]);
+  ];
 
-  const toggleRule = (id: number) => {
-    setAutomationRules((prev) =>
-      prev.map((r) => (r.id === id ? { ...r, active: !r.active } : r))
-    );
-  };
-
-  // -------------------------------------------------------------
-  // ONE-CLICK ACTIONS STACK STATE
-  // -------------------------------------------------------------
-  const [actionStatus, setActionStatus] = useState<string | null>(null);
-
-  const handleTriggerAction = (name: string) => {
-    setActionStatus(name);
+  const handleRunPipelineSimulation = () => {
+    if (isSimulatingPipeline) return;
+    setIsSimulatingPipeline(true);
+    setPipelineStep(1);
     setTimeout(() => {
-      setActionStatus(null);
-    }, 2200);
+      setPipelineStep(2);
+      setTimeout(() => {
+        setPipelineStep(3);
+        setTimeout(() => {
+          setIsSimulatingPipeline(false);
+        }, 1500);
+      }, 900);
+    }, 900);
   };
-
-  // -------------------------------------------------------------
-  // SIDE-BY-SIDE COMPARISON TOGGLE
-  // -------------------------------------------------------------
-  const [isVerified, setIsVerified] = useState(true);
 
   // -------------------------------------------------------------
   // DEVELOPER QUICKSTART TABS
@@ -449,7 +457,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
         </section>
 
         {/* ========================================================================= */}
-        {/* 4. THE INTERACTIVE REALITY SIMULATOR                                      */}
+        {/* 4. THE INTERACTIVE REALITY SIMULATOR (Tactical Map & Sensor Attestation)  */}
         {/* ========================================================================= */}
         <section id="simulator" className="py-10 sm:py-12 border-t border-white/[0.08]">
           {/* Centered Section Header */}
@@ -462,14 +470,14 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
               Reality Verification Simulator
             </h2>
             <p className="text-xs text-zinc-400 mt-2 font-mono">
-              Click any verification pillar on the right to inspect real-time cryptographic attestation telemetry.
+              Toggle between verification vectors to inspect live tactical radar mapping, sensor waveforms, and Anchor PDA settlements.
             </p>
           </div>
 
           {/* Simulator Container */}
           <div className="rounded-2xl bg-[#090909] border border-white/[0.08] p-6 sm:p-8 shadow-2xl relative overflow-hidden">
             {/* Top Multi-Stage Indicator */}
-            <div className="w-full bg-[#141414] h-1.5 rounded-full overflow-hidden mb-8">
+            <div className="w-full bg-[#141414] h-1.5 rounded-full overflow-hidden mb-6">
               <div
                 className="h-full bg-gradient-to-r from-white via-[#A8FF00] to-emerald-400 transition-all duration-500 rounded-full"
                 style={{
@@ -488,312 +496,463 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              {/* Left Column: Visual Holographic Wireframe Engine */}
-              <div className="lg:col-span-6 bg-[#050505] border border-white/[0.06] rounded-xl p-6 flex flex-col items-center justify-between min-h-[340px]">
-                {/* 3D Wireframe Cube with Radar Attestation */}
-                <div className="relative w-44 h-44 flex items-center justify-center my-auto">
-                  <svg viewBox="0 0 200 200" className="w-full h-full stroke-white/40 fill-none" strokeWidth="1.2">
-                    {/* Isometric Cube Edges */}
-                    <polygon points="100,30 165,65 165,135 100,170 35,135 35,65" />
-                    <line x1="100" y1="100" x2="100" y2="170" />
-                    <line x1="100" y1="100" x2="35" y2="65" />
-                    <line x1="100" y1="100" x2="165" y2="65" />
-
-                    {/* Dashed Inner Edges */}
-                    <line x1="100" y1="30" x2="100" y2="100" strokeDasharray="3 3" />
-                    <line x1="35" y1="135" x2="100" y2="100" strokeDasharray="3 3" />
-                    <line x1="165" y1="135" x2="100" y2="100" strokeDasharray="3 3" />
-
-                    {/* Vertices */}
-                    <circle cx="100" cy="30" r="2" fill="white" />
-                    <circle cx="165" cy="65" r="2" fill="white" />
-                    <circle cx="165" cy="135" r="2" fill="white" />
-                    <circle cx="100" cy="170" r="2" fill="white" />
-                    <circle cx="35" cy="135" r="2" fill="white" />
-                    <circle cx="35" cy="65" r="2" fill="white" />
-                  </svg>
-
-                  {/* Dynamic Glowing Accent Inside Cube */}
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <svg viewBox="0 0 200 200" className="w-full h-full">
-                      <polygon
-                        points="95,85 110,80 115,115 100,120"
-                        fill="#A8FF00"
-                        className="animate-pulse opacity-85"
-                      />
-                      <polygon points="65,95 78,90 73,110 60,115" fill="#ffffff" className="opacity-75" />
-                      <polygon points="130,85 145,95 138,115 125,105" fill="#A8FF00" className="opacity-80" />
-                    </svg>
+              {/* Left Column: Dynamic Visual Engine (Map, Oscilloscope, Hash Shield, PDA Flow, Agent Pipeline) */}
+              <div className="lg:col-span-6 bg-[#050505] border border-white/[0.08] rounded-xl p-5 flex flex-col justify-between min-h-[360px] relative overflow-hidden">
+                {/* Visualizer Top Bar */}
+                <div className="flex items-center justify-between font-mono text-[11px] pb-3 border-b border-white/[0.06] z-10">
+                  <div className="flex items-center space-x-2">
+                    <span className="w-2 h-2 rounded-full bg-[#A8FF00] animate-pulse" />
+                    <span className="text-white font-bold uppercase tracking-wider">
+                      {activeSimulatorTab === 'truth' && 'Tactical Radar & Geofence Map'}
+                      {activeSimulatorTab === 'hardware' && 'Biometric Oscilloscope Tremor'}
+                      {activeSimulatorTab === 'risk' && 'Cryptographic Anti-Spoof Enclave'}
+                      {activeSimulatorTab === 'escrow' && 'Anchor Program PDA Vault Flow'}
+                      {activeSimulatorTab === 'agent' && 'Autonomous Agent Ground Feed'}
+                    </span>
                   </div>
+                  <span className="text-zinc-500">Live Telemetry</span>
+                </div>
+
+                {/* Dynamic Screen Content */}
+                <div className="relative my-4 flex-1 flex items-center justify-center min-h-[220px]">
+                  {/* TAB 1: TACTICAL RADAR GEOFENCE MAP */}
+                  {activeSimulatorTab === 'truth' && (
+                    <div className="relative w-full h-full flex items-center justify-center">
+                      <svg viewBox="0 0 320 220" className="w-full h-full">
+                        <defs>
+                          <radialGradient id="radarSweep" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stopColor="#A8FF00" stopOpacity="0.25" />
+                            <stop offset="100%" stopColor="#A8FF00" stopOpacity="0" />
+                          </radialGradient>
+                          <pattern id="tacticalGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+                            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="0.5" />
+                          </pattern>
+                        </defs>
+
+                        {/* Grid Background */}
+                        <rect width="100%" height="100%" fill="url(#tacticalGrid)" />
+
+                        {/* Simulated Map Streets / Sector Lines */}
+                        <path d="M 20 60 L 300 60 M 20 160 L 300 160 M 80 10 L 80 210 M 240 10 L 240 210" stroke="rgba(255,255,255,0.08)" strokeWidth="1" strokeDasharray="2 4" />
+
+                        {/* Concentric Radar Rings */}
+                        <circle cx="160" cy="110" r="30" stroke="rgba(255,255,255,0.15)" strokeWidth="1" fill="none" />
+                        <circle cx="160" cy="110" r="60" stroke="rgba(255,255,255,0.2)" strokeWidth="1" fill="none" strokeDasharray="3 3" />
+                        
+                        {/* 200m GEOFENCE RING */}
+                        <circle cx="160" cy="110" r="90" stroke="#A8FF00" strokeWidth="1.5" fill="none" className="animate-pulse" strokeDasharray="5 3" />
+                        <text x="165" y="28" fill="#A8FF00" fontSize="8" fontFamily="monospace" fontWeight="bold">
+                          200M GEOFENCE PERIMETER
+                        </text>
+
+                        {/* Rotating Radar Sweep Cone */}
+                        <g transform="rotate(45 160 110)">
+                          <path d="M 160 110 L 250 110 A 90 90 0 0 0 223 46 Z" fill="url(#radarSweep)" />
+                          <line x1="160" y1="110" x2="250" y2="110" stroke="#A8FF00" strokeWidth="1.2" strokeOpacity="0.8" />
+                        </g>
+
+                        {/* Target EV Charger Pin */}
+                        <circle cx="160" cy="110" r="5" fill="#A8FF00" />
+                        <circle cx="160" cy="110" r="10" stroke="#A8FF00" strokeWidth="1" fill="none" opacity="0.6" />
+                        <text x="160" y="128" fill="#FFFFFF" fontSize="8" fontFamily="monospace" textAnchor="middle" fontWeight="bold">
+                          EV STALL 4 [37.7792° N, -122.4184° W]
+                        </text>
+
+                        {/* Physical Spotter Node */}
+                        <g transform="translate(178, 98)">
+                          <circle cx="0" cy="0" r="3.5" fill="#38BDF8" className="animate-ping opacity-75" />
+                          <circle cx="0" cy="0" r="3.5" fill="#38BDF8" />
+                          <text x="6" y="-3" fill="#38BDF8" fontSize="7" fontFamily="monospace" fontWeight="bold">
+                            SPOTTER (12.4m)
+                          </text>
+                        </g>
+
+                        {/* Haversine Distance Line */}
+                        <line x1="160" y1="110" x2="178" y2="98" stroke="#38BDF8" strokeWidth="1" strokeDasharray="2 2" />
+                      </svg>
+                    </div>
+                  )}
+
+                  {/* TAB 2: HARDWARE ACCELEROMETER OSCILLOSCOPE */}
+                  {activeSimulatorTab === 'hardware' && (
+                    <div className="w-full h-full flex flex-col justify-center">
+                      <div className="relative w-full h-32 bg-[#090909] rounded-lg border border-white/[0.08] p-3 overflow-hidden">
+                        {/* Oscilloscope Grid */}
+                        <div className="absolute inset-0 opacity-15" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)', backgroundSize: '16px 16px' }} />
+
+                        {/* Sine Wave Curve */}
+                        <svg viewBox="0 0 300 100" className="w-full h-full relative z-10">
+                          <path
+                            d="M 0 50 Q 25 20, 50 50 T 100 50 T 150 50 T 200 50 T 250 50 T 300 50"
+                            fill="none"
+                            stroke="#A8FF00"
+                            strokeWidth="2.5"
+                          />
+                          <path
+                            d="M 0 50 Q 20 35, 40 50 T 80 50 T 120 50 T 160 50 T 200 50 T 240 50 T 280 50 T 300 50"
+                            fill="none"
+                            stroke="#38BDF8"
+                            strokeWidth="1.2"
+                            strokeOpacity="0.7"
+                          />
+                          <circle cx="200" cy="50" r="4" fill="#A8FF00" className="animate-ping" />
+                        </svg>
+
+                        <div className="absolute bottom-2 left-3 font-mono text-[9px] text-[#A8FF00] z-20 flex items-center space-x-3">
+                          <span>8.4 Hz Micro-Tremor</span>
+                          <span className="text-zinc-400">0.042g RMS</span>
+                          <span className="text-white">Human Biometric Nonce Verified</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* TAB 3: CRYPTOGRAPHIC ANTI-SPOOF ENCLAVE */}
+                  {activeSimulatorTab === 'risk' && (
+                    <div className="w-full h-full flex flex-col justify-center space-y-2">
+                      <div className="bg-[#090909] border border-white/[0.08] rounded-lg p-3 font-mono text-[11px] space-y-2">
+                        <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.05]">
+                          <span className="text-zinc-400">EXIF SHA-256 Seal:</span>
+                          <span className="text-[#A8FF00] font-bold truncate max-w-[180px]">e3b0c44298fc1c149afb...</span>
+                        </div>
+                        <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.05]">
+                          <span className="text-zinc-400">GPS Mock Provider Check:</span>
+                          <span className="text-emerald-400 font-bold">PASSED (Hardware GPS Only)</span>
+                        </div>
+                        <div className="flex items-center justify-between pb-1.5 border-b border-white/[0.05]">
+                          <span className="text-zinc-400">Synthetic Deepfake Score:</span>
+                          <span className="text-emerald-400 font-bold">0.00% (Raw Sensor Match)</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-zinc-400">Security Enclave Status:</span>
+                          <span className="text-[#A8FF00] font-bold">Hardware Keystore Signed</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* TAB 4: ANCHOR PDA ESCROW VAULT FLOW */}
+                  {activeSimulatorTab === 'escrow' && (
+                    <div className="w-full h-full flex flex-col justify-center">
+                      <div className="bg-[#090909] border border-[#A8FF00]/30 rounded-lg p-4 font-mono text-xs space-y-3">
+                        <div className="flex items-center justify-between text-[11px]">
+                          <span className="text-zinc-400">Solana Program PDA:</span>
+                          <span className="text-white font-bold">TrueSpotEscrow1111111111111</span>
+                        </div>
+                        <div className="grid grid-cols-2 gap-3 pt-2 border-t border-white/[0.06]">
+                          <div className="bg-[#050505] p-2.5 rounded border border-[#A8FF00]/40">
+                            <span className="text-[10px] text-zinc-400 block">Worker Settlement (97.5%)</span>
+                            <span className="text-[#A8FF00] text-sm font-black">0.34125 SOL</span>
+                            <span className="text-[9px] text-emerald-400 block mt-0.5">✓ Released Instantly</span>
+                          </div>
+                          <div className="bg-[#050505] p-2.5 rounded border border-white/[0.06]">
+                            <span className="text-[10px] text-zinc-400 block">Protocol Reserve (2.5%)</span>
+                            <span className="text-zinc-300 text-sm font-black">0.00875 SOL</span>
+                            <span className="text-[9px] text-zinc-500 block mt-0.5">Treasury Pool</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* TAB 5: AUTONOMOUS AGENT INTEGRATION */}
+                  {activeSimulatorTab === 'agent' && (
+                    <div className="w-full h-full flex flex-col justify-center">
+                      <div className="bg-[#090909] border border-white/[0.08] rounded-lg p-3 font-mono text-[11px] space-y-2">
+                        <div className="flex items-center justify-between text-zinc-400 pb-1.5 border-b border-white/[0.05]">
+                          <span>Agent Bus: ElizaOS / LangChain</span>
+                          <span className="text-[#A8FF00]">FEED_ACTIVE</span>
+                        </div>
+                        <pre className="text-zinc-300 text-[10px] bg-[#050505] p-2 rounded overflow-x-auto">
+{`{
+  "reality_event": "STALL_UNOCCUPIED",
+  "confidence": 0.984,
+  "geofence_meters": 12.4,
+  "decision": "DISPATCH_AUTONOMOUS_VEHICLE"
+}`}
+                        </pre>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Telemetry Output Bar */}
-                <div className="w-full bg-[#0E0E0E] border border-white/[0.05] rounded-lg p-3 font-mono text-xs space-y-1 mt-4">
-                  {activeSimulatorTab === 'truth' && (
-                    <div className="flex items-center justify-between">
-                      <span className="text-zinc-400">Observed Reality:</span>
-                      <strong className="text-[#A8FF00]">STALL_UNOCCUPIED • GREEN_LED</strong>
-                    </div>
-                  )}
-                  {activeSimulatorTab === 'hardware' && (
-                    <div className="flex items-center justify-between">
-                      <span className="text-zinc-400">Hardware Sensor Nonce:</span>
-                      <strong className="text-[#A8FF00]">0.042g Tremor (Human Hand Valid)</strong>
-                    </div>
-                  )}
-                  {activeSimulatorTab === 'risk' && (
-                    <div className="flex items-center justify-between">
-                      <span className="text-zinc-400">Anti-Spoofing Status:</span>
-                      <strong className="text-white">EXIF Hash &amp; Geofence Verified</strong>
-                    </div>
-                  )}
-                  {activeSimulatorTab === 'escrow' && (
-                    <div className="flex items-center justify-between">
-                      <span className="text-zinc-400">Anchor PDA Escrow:</span>
-                      <strong className="text-[#A8FF00]">0.35 SOL (97.5% Worker Settlement)</strong>
-                    </div>
-                  )}
-                  {activeSimulatorTab === 'agent' && (
-                    <div className="flex items-center justify-between">
-                      <span className="text-zinc-400">LangChain / ElizaOS:</span>
-                      <strong className="text-emerald-400">Ground Truth Injected Directly</strong>
-                    </div>
-                  )}
-
-                  <div className="flex items-center justify-between text-[11px] text-zinc-500 pt-1 border-t border-white/[0.05]">
-                    <span>Geofence: 12.4m (&lt;200m Valid)</span>
-                    <span className="text-zinc-400">Inference: Gemini 2.5 Flash</span>
+                <div className="w-full bg-[#0E0E0E] border border-white/[0.05] rounded-lg p-2.5 font-mono text-[11px] space-y-1 z-10">
+                  <div className="flex items-center justify-between">
+                    <span className="text-zinc-400">Oracle Attestation:</span>
+                    <strong className="text-[#A8FF00]">
+                      {activeSimulatorTab === 'truth' && 'Haversine 12.4m < 200m • Gemini 98.4% Match'}
+                      {activeSimulatorTab === 'hardware' && 'Physiological Hand Tremor Confirmed'}
+                      {activeSimulatorTab === 'risk' && 'Zero Emulation • Cryptographic Nonce Sealed'}
+                      {activeSimulatorTab === 'escrow' && 'Anchor CPI Vault Released (0.35 SOL)'}
+                      {activeSimulatorTab === 'agent' && 'Physical Ground Truth Injected into Agent'}
+                    </strong>
+                  </div>
+                  <div className="flex items-center justify-between text-[10px] text-zinc-500 pt-1 border-t border-white/[0.05]">
+                    <span>Slot: #{telemetrySlot.toLocaleString()}</span>
+                    <span>Devnet Finality: &lt;400ms</span>
                   </div>
                 </div>
               </div>
 
               {/* Right Column: Sleek Interactive Selector Stack */}
               <div className="lg:col-span-6 space-y-2.5">
-                <button
-                  onClick={() => setActiveSimulatorTab('truth')}
-                  className={`w-full p-3.5 rounded-xl flex items-center justify-between text-left transition-all cursor-pointer ${
-                    activeSimulatorTab === 'truth'
-                      ? 'bg-[#151515] border border-[#A8FF00]/50 text-white shadow-[0_0_15px_rgba(168,255,0,0.1)]'
-                      : 'bg-[#0E0E0E] text-zinc-400 hover:bg-[#121212] hover:text-white border border-white/[0.05]'
-                  }`}
-                >
-                  <div className="flex items-center space-x-3">
-                    <CheckCircle2
-                      className={`w-4 h-4 shrink-0 ${
-                        activeSimulatorTab === 'truth' ? 'text-[#A8FF00]' : 'text-zinc-500'
+                {[
+                  {
+                    id: 'truth',
+                    num: '01',
+                    title: 'Tactical Radar & Geofence Map',
+                    subtitle: '200m circular Haversine perimeter & live spotter location',
+                    icon: MapPin,
+                    tag: '200m Radius',
+                  },
+                  {
+                    id: 'hardware',
+                    num: '02',
+                    title: 'Hardware Sensor Tremor Proof',
+                    subtitle: 'Accelerometer micro-tremor biometric proof of physical human',
+                    icon: Activity,
+                    tag: '0.042g Nonce',
+                  },
+                  {
+                    id: 'risk',
+                    num: '03',
+                    title: 'Anti-Spoofing & EXIF Enclave',
+                    subtitle: 'Cryptographic hash sealing against synthetic media & GPS fakes',
+                    icon: Shield,
+                    tag: 'SHA-256',
+                  },
+                  {
+                    id: 'escrow',
+                    num: '04',
+                    title: 'Anchor PDA Escrow Settlement',
+                    subtitle: 'Autonomous CPI split: 97.5% contributor payout / 2.5% protocol',
+                    icon: Coins,
+                    tag: '97.5% SOL',
+                  },
+                  {
+                    id: 'agent',
+                    num: '05',
+                    title: 'Autonomous Agent Integration',
+                    subtitle: 'Direct ground truth ingestion for ElizaOS & LangChain agents',
+                    icon: Sparkles,
+                    tag: 'Zero-Hallucination',
+                  },
+                ].map((item) => {
+                  const Icon = item.icon;
+                  const isActive = activeSimulatorTab === item.id;
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => setActiveSimulatorTab(item.id as any)}
+                      className={`w-full p-3.5 rounded-xl flex items-center justify-between text-left transition-all cursor-pointer ${
+                        isActive
+                          ? 'bg-[#151515] border border-[#A8FF00]/60 text-white shadow-[0_0_15px_rgba(168,255,0,0.12)]'
+                          : 'bg-[#0E0E0E] text-zinc-400 hover:bg-[#121212] hover:text-white border border-white/[0.05]'
                       }`}
-                    />
-                    <div>
-                      <span className="text-xs font-bold block text-white">Ground Truth Observation</span>
-                      <span className="text-[10px] text-zinc-500 font-mono">Multimodal AI semantic confirmation</span>
-                    </div>
-                  </div>
-                  <ChevronRight className="w-3.5 h-3.5 text-zinc-500" />
-                </button>
-
-                <button
-                  onClick={() => setActiveSimulatorTab('hardware')}
-                  className={`w-full p-3.5 rounded-xl flex items-center justify-between text-left transition-all cursor-pointer ${
-                    activeSimulatorTab === 'hardware'
-                      ? 'bg-[#151515] border border-[#A8FF00]/50 text-white shadow-[0_0_15px_rgba(168,255,0,0.1)]'
-                      : 'bg-[#0E0E0E] text-zinc-400 hover:bg-[#121212] hover:text-white border border-white/[0.05]'
-                  }`}
-                >
-                  <div className="flex items-center space-x-3">
-                    <Shield
-                      className={`w-4 h-4 shrink-0 ${
-                        activeSimulatorTab === 'hardware' ? 'text-[#A8FF00]' : 'text-zinc-500'
-                      }`}
-                    />
-                    <div>
-                      <span className="text-xs font-bold block text-white">Hardware Sensor Proof</span>
-                      <span className="text-[10px] text-zinc-500 font-mono">Accelerometer micro-tremor nonces</span>
-                    </div>
-                  </div>
-                  <ChevronRight className="w-3.5 h-3.5 text-zinc-500" />
-                </button>
-
-                <button
-                  onClick={() => setActiveSimulatorTab('risk')}
-                  className={`w-full p-3.5 rounded-xl flex items-center justify-between text-left transition-all cursor-pointer ${
-                    activeSimulatorTab === 'risk'
-                      ? 'bg-[#151515] border border-[#A8FF00]/50 text-white shadow-[0_0_15px_rgba(168,255,0,0.1)]'
-                      : 'bg-[#0E0E0E] text-zinc-400 hover:bg-[#121212] hover:text-white border border-white/[0.05]'
-                  }`}
-                >
-                  <div className="flex items-center space-x-3">
-                    <Flag
-                      className={`w-4 h-4 shrink-0 ${
-                        activeSimulatorTab === 'risk' ? 'text-[#A8FF00]' : 'text-zinc-500'
-                      }`}
-                    />
-                    <div>
-                      <span className="text-xs font-bold block text-white">Anti-Spoofing &amp; Risk Guardrails</span>
-                      <span className="text-[10px] text-zinc-500 font-mono">Anti-virtual camera &amp; EXIF hashing</span>
-                    </div>
-                  </div>
-                  <ChevronRight className="w-3.5 h-3.5 text-zinc-500" />
-                </button>
-
-                <button
-                  onClick={() => setActiveSimulatorTab('escrow')}
-                  className={`w-full p-3.5 rounded-xl flex items-center justify-between text-left transition-all cursor-pointer ${
-                    activeSimulatorTab === 'escrow'
-                      ? 'bg-[#151515] border border-[#A8FF00]/50 text-white shadow-[0_0_15px_rgba(168,255,0,0.1)]'
-                      : 'bg-[#0E0E0E] text-zinc-400 hover:bg-[#121212] hover:text-white border border-white/[0.05]'
-                  }`}
-                >
-                  <div className="flex items-center space-x-3">
-                    <Coins
-                      className={`w-4 h-4 shrink-0 ${
-                        activeSimulatorTab === 'escrow' ? 'text-[#A8FF00]' : 'text-zinc-500'
-                      }`}
-                    />
-                    <div>
-                      <span className="text-xs font-bold block text-white">Anchor PDA Escrow Settlement</span>
-                      <span className="text-[10px] text-zinc-500 font-mono">97.5% worker / 2.5% treasury distribution</span>
-                    </div>
-                  </div>
-                  <ChevronRight className="w-3.5 h-3.5 text-zinc-500" />
-                </button>
-
-                <button
-                  onClick={() => setActiveSimulatorTab('agent')}
-                  className={`w-full p-3.5 rounded-xl flex items-center justify-between text-left transition-all cursor-pointer ${
-                    activeSimulatorTab === 'agent'
-                      ? 'bg-[#151515] border border-[#A8FF00]/50 text-white shadow-[0_0_15px_rgba(168,255,0,0.1)]'
-                      : 'bg-[#0E0E0E] text-zinc-400 hover:bg-[#121212] hover:text-white border border-white/[0.05]'
-                  }`}
-                >
-                  <div className="flex items-center space-x-3">
-                    <Sparkles
-                      className={`w-4 h-4 shrink-0 ${
-                        activeSimulatorTab === 'agent' ? 'text-[#A8FF00]' : 'text-zinc-500'
-                      }`}
-                    />
-                    <div>
-                      <span className="text-xs font-bold block text-white">Autonomous Agent Integration</span>
-                      <span className="text-[10px] text-zinc-500 font-mono">Zero-hallucination ground truth feed</span>
-                    </div>
-                  </div>
-                  <ChevronRight className="w-3.5 h-3.5 text-zinc-500" />
-                </button>
+                    >
+                      <div className="flex items-center space-x-3 min-w-0">
+                        <span
+                          className={`font-mono text-xs font-bold shrink-0 ${
+                            isActive ? 'text-[#A8FF00]' : 'text-zinc-600'
+                          }`}
+                        >
+                          {item.num}
+                        </span>
+                        <div
+                          className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${
+                            isActive
+                              ? 'bg-[#A8FF00]/10 text-[#A8FF00] border border-[#A8FF00]/30'
+                              : 'bg-white/[0.04] text-zinc-400 border border-white/[0.06]'
+                          }`}
+                        >
+                          <Icon className="w-4 h-4" />
+                        </div>
+                        <div className="min-w-0">
+                          <span className="text-xs font-bold block text-white truncate">
+                            {item.title}
+                          </span>
+                          <span className="text-[10px] text-zinc-500 font-mono truncate block">
+                            {item.subtitle}
+                          </span>
+                        </div>
+                      </div>
+                      <span
+                        className={`text-[10px] font-mono px-2 py-0.5 rounded shrink-0 ml-2 font-bold ${
+                          isActive
+                            ? 'bg-[#A8FF00] text-black'
+                            : 'bg-white/[0.04] text-zinc-400 border border-white/[0.06]'
+                        }`}
+                      >
+                        {item.tag}
+                      </span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
           </div>
         </section>
 
         {/* ========================================================================= */}
-        {/* 5. BLUEPRINT AUTOMATION & GUARDRAILS                                      */}
+        {/* 5. BLUEPRINT AUTOMATION & REAL-TIME PROTOCOL ATTESTATION MATRIX          */}
         {/* ========================================================================= */}
         <section id="automation" className="py-10 sm:py-12 border-t border-white/[0.08]">
           {/* Centered Section Header */}
           <div className="text-center max-w-2xl mx-auto mb-7 sm:mb-8">
             <div className="inline-flex items-center space-x-2 text-[10px] font-mono font-bold text-[#A8FF00] uppercase tracking-wider mb-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#A8FF00]" />
-              <span>Protocol Actions &amp; Guardrails</span>
+              <span>Protocol Automation Engine</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
               Deterministic Execution Blueprint
             </h2>
             <p className="text-xs text-zinc-400 mt-2 font-mono">
-              Predefined smart contract rules that release non-custodial SOL bounties upon verified consensus.
+              Autonomous smart contract rules that ingest physical ground truth and release non-custodial SOL bounties upon cryptographic consensus.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
-            {/* Card Left: Automation Table */}
-            <div className="rounded-2xl bg-[#090909] border border-white/[0.08] p-6 flex flex-col justify-between">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+            {/* Left Card: Active Attestation Stream */}
+            <div className="lg:col-span-5 rounded-2xl bg-[#090909] border border-white/[0.08] p-5 flex flex-col justify-between">
               <div>
-                <div className="flex items-center justify-between border-b border-white/[0.06] pb-3 mb-4">
-                  <div className="flex items-center space-x-2 font-mono text-xs text-white font-bold">
+                <div className="flex items-center justify-between border-b border-white/[0.06] pb-3 mb-3 font-mono text-xs">
+                  <div className="flex items-center space-x-2 text-white font-bold">
                     <Activity className="w-4 h-4 text-[#A8FF00]" />
-                    <span>Active Consensus Rules</span>
+                    <span>Live Attestation Bounties</span>
                   </div>
-                  <span className="text-[10px] font-mono text-zinc-500">Auto-Dispatch</span>
+                  <span className="text-[10px] text-zinc-500">Auto-Dispatched</span>
                 </div>
 
-                <div className="space-y-2">
-                  {automationRules.map((rule) => (
-                    <div
-                      key={rule.id}
-                      className="flex items-center justify-between text-xs py-2 px-3 rounded-lg bg-[#050505] border border-white/[0.05]"
-                    >
-                      <div className="flex items-center space-x-2.5 min-w-0">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#A8FF00] shrink-0" />
-                        <span className="text-zinc-200 font-medium truncate">{rule.task}</span>
+                <div className="space-y-2.5">
+                  {bountiesList.map((bounty) => {
+                    const isSelected = selectedBountyId === bounty.id;
+                    return (
+                      <div
+                        key={bounty.id}
+                        onClick={() => setSelectedBountyId(bounty.id)}
+                        className={`p-3 rounded-xl border transition-all cursor-pointer ${
+                          isSelected
+                            ? 'bg-[#121212] border-[#A8FF00]/50 shadow-[0_0_15px_rgba(168,255,0,0.08)]'
+                            : 'bg-[#050505] border-white/[0.05] hover:border-white/10'
+                        }`}
+                      >
+                        <div className="flex items-center justify-between mb-1.5">
+                          <span className="text-[10px] font-mono text-zinc-400">{bounty.category}</span>
+                          <span className={`text-[10px] font-mono font-bold px-1.5 py-0.5 rounded border ${bounty.statusBadge}`}>
+                            {bounty.status}
+                          </span>
+                        </div>
+                        <h4 className="text-xs font-bold text-white mb-2">{bounty.title}</h4>
+                        <div className="flex items-center justify-between font-mono text-[11px] pt-1.5 border-t border-white/[0.04]">
+                          <span className="text-zinc-400">{bounty.perimeter}</span>
+                          <span className="text-[#A8FF00] font-bold">{bounty.bountySol}</span>
+                          <span className="text-white font-semibold">{bounty.consensus}</span>
+                        </div>
                       </div>
-
-                      <div className="flex items-center space-x-3 shrink-0 ml-2 font-mono text-[11px]">
-                        <span className="text-zinc-500">{rule.perimeter}</span>
-                        <span className="text-white font-bold">{rule.consensus}</span>
-                        <button
-                          onClick={() => toggleRule(rule.id)}
-                          className={`w-7 h-4 rounded-full transition-colors relative cursor-pointer ${
-                            rule.active ? 'bg-[#A8FF00]' : 'bg-zinc-800'
-                          }`}
-                        >
-                          <span
-                            className={`w-3 h-3 rounded-full bg-black absolute top-0.5 transition-transform ${
-                              rule.active ? 'left-3.5' : 'left-0.5'
-                            }`}
-                          />
-                        </button>
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-white/[0.06] mt-4 flex items-center justify-between font-mono text-[11px]">
-                <span className="text-zinc-500">Settlement Vaults: Anchor Program PDA</span>
-                <span className="text-[#A8FF00] font-semibold">97.5% Contributor Release</span>
+              <div className="pt-3 border-t border-white/[0.06] mt-3 flex items-center justify-between font-mono text-[10px] text-zinc-500">
+                <span>Cluster: Solana Devnet</span>
+                <span className="text-[#A8FF00] font-bold">Autonomous Settlement</span>
               </div>
             </div>
 
-            {/* Card Right: Action Stack */}
-            <div className="rounded-2xl bg-[#090909] border border-white/[0.08] p-6 flex flex-col justify-between">
+            {/* Right Card: 3-Stage Deterministic Verification Engine */}
+            <div className="lg:col-span-7 rounded-2xl bg-[#090909] border border-white/[0.08] p-5 sm:p-6 flex flex-col justify-between">
               <div>
-                <div className="flex items-center justify-between border-b border-white/[0.06] pb-3 mb-4">
-                  <div className="flex items-center space-x-2 font-mono text-xs text-white font-bold">
+                <div className="flex items-center justify-between border-b border-white/[0.06] pb-3 mb-4 font-mono text-xs">
+                  <div className="flex items-center space-x-2 text-white font-bold">
                     <Shield className="w-4 h-4 text-[#A8FF00]" />
-                    <span>Cryptographic Guardrails</span>
+                    <span>3-Stage Attestation Pipeline</span>
                   </div>
-                  <span className="text-[10px] font-mono text-zinc-500">One-Click Validation</span>
+                  <span className="text-[10px] text-[#A8FF00] font-semibold">
+                    {isSimulatingPipeline ? `Executing Stage ${pipelineStep}/3...` : 'Ready to Attest'}
+                  </span>
                 </div>
 
-                <div className="space-y-2">
-                  {[
-                    'Lock 200m Geofence Perimeter',
-                    'Verify Gyroscopic Tremor Signature',
-                    'Execute Gemini Multimodal Inference',
-                    'Settle Anchor PDA Bounty (97.5%)',
-                    'Broadcast Attestation Nonce to Devnet',
-                  ].map((action, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => handleTriggerAction(action)}
-                      className="w-full py-2.5 px-3 rounded-lg bg-[#050505] hover:bg-[#121212] border border-white/[0.05] hover:border-[#A8FF00]/40 text-left text-xs text-zinc-300 hover:text-white flex items-center justify-between transition-all cursor-pointer group"
-                    >
-                      <span className="font-medium">{action}</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-zinc-500 group-hover:text-[#A8FF00] group-hover:translate-x-0.5 transition-transform" />
-                    </button>
-                  ))}
+                {/* 3 Pipeline Stages */}
+                <div className="space-y-3">
+                  {/* Stage 1: Geofence Lock */}
+                  <div className={`p-3.5 rounded-xl border transition-all ${
+                    pipelineStep >= 1 ? 'bg-[#121212] border-[#A8FF00]/50' : 'bg-[#050505] border-white/[0.05]'
+                  }`}>
+                    <div className="flex items-center justify-between font-mono text-xs mb-1">
+                      <div className="flex items-center space-x-2 font-bold text-white">
+                        <span className="w-5 h-5 rounded-full bg-[#181818] border border-white/10 flex items-center justify-center text-[10px] text-[#A8FF00]">1</span>
+                        <span>Perimeter Geofence Lock</span>
+                      </div>
+                      <span className="text-[10px] text-zinc-400 font-mono">Haversine 200m</span>
+                    </div>
+                    <p className="text-[11px] text-zinc-400 pl-7 leading-relaxed">
+                      Mathematical validation ensuring the spotter’s GPS sensor is within the 200m perimeter barrier.
+                    </p>
+                  </div>
+
+                  {/* Stage 2: Hardware Sensor & Gemini Consensus */}
+                  <div className={`p-3.5 rounded-xl border transition-all ${
+                    pipelineStep >= 2 ? 'bg-[#121212] border-[#A8FF00]/50' : 'bg-[#050505] border-white/[0.05]'
+                  }`}>
+                    <div className="flex items-center justify-between font-mono text-xs mb-1">
+                      <div className="flex items-center space-x-2 font-bold text-white">
+                        <span className="w-5 h-5 rounded-full bg-[#181818] border border-white/10 flex items-center justify-center text-[10px] text-[#A8FF00]">2</span>
+                        <span>Sensor Proof &amp; Gemini 2.5 Consensus</span>
+                      </div>
+                      <span className="text-[10px] text-zinc-400 font-mono">0.042g + Multimodal</span>
+                    </div>
+                    <p className="text-[11px] text-zinc-400 pl-7 leading-relaxed">
+                      Biometric accelerometer tremor confirms live human presence while Gemini vision AI confirms visual match.
+                    </p>
+                  </div>
+
+                  {/* Stage 3: Anchor PDA Escrow Settlement */}
+                  <div className={`p-3.5 rounded-xl border transition-all ${
+                    pipelineStep >= 3 ? 'bg-[#121212] border-[#A8FF00]/50' : 'bg-[#050505] border-white/[0.05]'
+                  }`}>
+                    <div className="flex items-center justify-between font-mono text-xs mb-1">
+                      <div className="flex items-center space-x-2 font-bold text-white">
+                        <span className="w-5 h-5 rounded-full bg-[#181818] border border-white/10 flex items-center justify-center text-[10px] text-[#A8FF00]">3</span>
+                        <span>Anchor PDA Bounty Settlement</span>
+                      </div>
+                      <span className="text-[10px] text-[#A8FF00] font-mono font-bold">97.5% Payout</span>
+                    </div>
+                    <p className="text-[11px] text-zinc-400 pl-7 leading-relaxed">
+                      Non-custodial smart contract CPI unseals escrow and delivers bounty directly to authenticated worker wallet.
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-white/[0.06] mt-4 flex items-center justify-between font-mono text-[11px]">
-                <span className="text-zinc-500">Pipeline State:</span>
-                <span className="text-[#A8FF00] font-bold">
-                  {actionStatus ? `✓ ${actionStatus}` : 'Consensus Pipeline Ready'}
-                </span>
+              {/* Action Button & Live Status */}
+              <div className="pt-4 border-t border-white/[0.06] mt-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <button
+                  onClick={handleRunPipelineSimulation}
+                  disabled={isSimulatingPipeline}
+                  className="w-full sm:w-auto h-10 px-5 rounded-full bg-[#A8FF00] hover:bg-[#b8ff24] text-black font-extrabold text-xs flex items-center justify-center space-x-2 shadow-[0_0_20px_rgba(168,255,0,0.25)] transition-all cursor-pointer disabled:opacity-60"
+                >
+                  <Zap className="w-3.5 h-3.5 fill-black" />
+                  <span>{isSimulatingPipeline ? 'Verifying Attestation...' : 'Simulate Protocol Attestation'}</span>
+                </button>
+
+                <div className="font-mono text-[11px] text-zinc-400 text-right">
+                  {pipelineStep === 3 ? (
+                    <span className="text-[#A8FF00] font-bold">✓ Attestation Sealed on Devnet</span>
+                  ) : isSimulatingPipeline ? (
+                    <span className="text-white font-semibold">Validating Stage {pipelineStep}...</span>
+                  ) : (
+                    <span>Ready for Attestation Dispatch</span>
+                  )}
+                </div>
               </div>
             </div>
           </div>
         </section>
 
         {/* ========================================================================= */}
-        {/* 6. SIDE-BY-SIDE REALITY COMPARISON                                        */}
+        {/* 6. SIDE-BY-SIDE REALITY COMPARISON (Constrained Breadth & Balanced)       */}
         {/* ========================================================================= */}
         <section id="comparison" className="py-10 sm:py-12 border-t border-white/[0.08]">
           <div className="text-center max-w-2xl mx-auto mb-7 sm:mb-8">
@@ -804,150 +963,82 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
               Smart Contracts Are Blind to Reality
             </h2>
             <p className="text-xs text-zinc-400 mt-2">
-              Toggle below to inspect the difference between blind execution and TrueSpot attestation.
+              Without physical attestations, on-chain execution relies on vulnerable off-chain trust assumptions.
             </p>
-
-            <div className="mt-4 inline-flex items-center p-1 rounded-full bg-[#0E0E0E] border border-white/[0.08]">
-              <button
-                onClick={() => setIsVerified(false)}
-                className={`px-4 py-1.5 rounded-full text-xs font-mono font-bold transition-all cursor-pointer ${
-                  !isVerified
-                    ? 'bg-[#1C1C1C] text-white border border-white/10 shadow-sm'
-                    : 'text-zinc-400 hover:text-white'
-                }`}
-              >
-                Blind Contract (Legacy)
-              </button>
-              <button
-                onClick={() => setIsVerified(true)}
-                className={`px-4 py-1.5 rounded-full text-xs font-mono font-bold transition-all cursor-pointer flex items-center space-x-1.5 ${
-                  isVerified
-                    ? 'bg-[#A8FF00] text-black shadow-[0_0_20px_rgba(168,255,0,0.3)]'
-                    : 'text-zinc-400 hover:text-[#A8FF00]'
-                }`}
-              >
-                <span>Verified by TrueSpot</span>
-              </button>
-            </div>
           </div>
 
-          <div
-            className={`rounded-2xl border transition-all duration-300 p-6 sm:p-8 ${
-              isVerified
-                ? 'bg-[#090909] border-[#A8FF00]/40 shadow-[0_0_35px_rgba(168,255,0,0.05)]'
-                : 'bg-[#070707] border-red-500/20'
-            }`}
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-              {/* Left Column: Settlement Outcome */}
-              <div className="bg-[#050505] p-5 rounded-xl border border-white/[0.06] space-y-3">
-                <div className="flex items-center justify-between text-xs font-mono">
-                  <span className="text-zinc-400 font-bold">SOLANA CONTRACT SETTLEMENT</span>
-                  <span
-                    className={`px-2 py-0.5 rounded text-[10px] font-bold ${
-                      isVerified
-                        ? 'bg-[#A8FF00]/10 text-[#A8FF00] border border-[#A8FF00]/30'
-                        : 'bg-red-500/10 text-red-400 border border-red-500/30'
-                    }`}
-                  >
-                    {isVerified ? 'SETTLED VIA CONSENSUS' : 'REVERTED / EXPOSED'}
+          {/* Balanced Side-by-Side Dual Card Grid - max-w-4xl eliminates awkward lengthy gaps */}
+          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">
+            {/* Left Card: Blind Contract (Legacy) */}
+            <div className="rounded-2xl bg-[#080808] border border-red-500/20 p-5 sm:p-6 flex flex-col justify-between shadow-xl">
+              <div>
+                <div className="flex items-center justify-between font-mono text-xs pb-3 border-b border-red-500/10 mb-4">
+                  <div className="flex items-center space-x-2 text-zinc-300 font-bold">
+                    <AlertTriangle className="w-4 h-4 text-red-400" />
+                    <span>Blind Smart Contract</span>
+                  </div>
+                  <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-red-500/10 text-red-400 border border-red-500/30">
+                    EXPOSED
                   </span>
                 </div>
 
-                <div className="space-y-2 text-xs">
-                  {isVerified ? (
-                    <>
-                      <div className="flex items-center space-x-2 text-zinc-200">
-                        <Check className="w-4 h-4 text-[#A8FF00] shrink-0" />
-                        <span>Anchor PDA vault automatically unlocked upon consensus</span>
-                      </div>
-                      <div className="flex items-center space-x-2 text-zinc-200">
-                        <Check className="w-4 h-4 text-[#A8FF00] shrink-0" />
-                        <span>97.5% SOL transferred directly to authenticated worker</span>
-                      </div>
-                      <div className="flex items-center space-x-2 text-zinc-200">
-                        <Check className="w-4 h-4 text-[#A8FF00] shrink-0" />
-                        <span>Cryptographic nonce permanently sealed on Solana Devnet</span>
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <div className="flex items-center space-x-2 text-red-400">
-                        <XCircle className="w-4 h-4 text-red-400 shrink-0" />
-                        <span>Contract has zero physical sensor or location awareness</span>
-                      </div>
-                      <div className="flex items-center space-x-2 text-zinc-400">
-                        <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0" />
-                        <span>Vulnerable to spoofed GPS, synthetic deepfakes, and claims</span>
-                      </div>
-                      <div className="flex items-center space-x-2 text-zinc-400">
-                        <AlertTriangle className="w-4 h-4 text-red-400 shrink-0" />
-                        <span>Bounty funds remain locked in dispute limbo indefinitely</span>
-                      </div>
-                    </>
-                  )}
+                <div className="space-y-3 text-xs">
+                  <div className="flex items-start space-x-2.5 text-zinc-300">
+                    <XCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+                    <span><strong>Zero Physical Awareness:</strong> Contracts cannot verify real-world hardware status or physical state.</span>
+                  </div>
+                  <div className="flex items-start space-x-2.5 text-zinc-300">
+                    <XCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+                    <span><strong>Vulnerable to Spoofing:</strong> Exploitable by virtual GPS simulators, AI deepfakes, and forged data.</span>
+                  </div>
+                  <div className="flex items-start space-x-2.5 text-zinc-300">
+                    <XCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+                    <span><strong>Dispute Limbo:</strong> Escrow deposits remain frozen in manual dispute arbitration indefinitely.</span>
+                  </div>
                 </div>
               </div>
 
-              {/* Right Column: AI Agent Status */}
-              <div className="bg-[#050505] p-5 rounded-xl border border-white/[0.06] space-y-3">
-                <div className="flex items-center justify-between text-xs font-mono">
-                  <span className="text-zinc-400 font-bold">AUTONOMOUS AI AGENT STATUS</span>
-                  <span className="text-[10px] text-zinc-500">LangChain / ElizaOS</span>
+              <div className="mt-5 pt-3 border-t border-red-500/10">
+                <div className="bg-red-950/20 border border-red-500/20 rounded-lg p-2.5 font-mono text-[11px] text-red-300">
+                  <span className="font-bold block text-red-400 mb-0.5">Autonomous AI Agent Failure:</span>
+                  Agent is blind to real-world status. Halting automated execution to prevent asset loss.
+                </div>
+              </div>
+            </div>
+
+            {/* Right Card: Verified by TrueSpot */}
+            <div className="rounded-2xl bg-[#090909] border border-[#A8FF00]/40 p-5 sm:p-6 flex flex-col justify-between shadow-[0_0_35px_rgba(168,255,0,0.06)]">
+              <div>
+                <div className="flex items-center justify-between font-mono text-xs pb-3 border-b border-[#A8FF00]/15 mb-4">
+                  <div className="flex items-center space-x-2 text-white font-bold">
+                    <Shield className="w-4 h-4 text-[#A8FF00]" />
+                    <span>Verified by TrueSpot</span>
+                  </div>
+                  <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#A8FF00]/10 text-[#A8FF00] border border-[#A8FF00]/30">
+                    ATTESTED ON-CHAIN
+                  </span>
                 </div>
 
-                <div
-                  className={`p-3.5 rounded-lg border text-xs leading-relaxed ${
-                    isVerified
-                      ? 'bg-[#A8FF00]/[0.04] border-[#A8FF00]/20 text-zinc-200'
-                      : 'bg-red-950/[0.1] border-red-500/20 text-zinc-400'
-                  }`}
-                >
-                  {isVerified ? (
-                    <div>
-                      <span className="text-[#A8FF00] font-bold block mb-1">
-                        Agent: Ground truth verified via hardware sensors &amp; Gemini 2.5
-                      </span>
-                      Task executed with confirmed physical telemetry. Zero hallucination risk.
-                    </div>
-                  ) : (
-                    <div>
-                      <span className="text-red-400 font-bold block mb-1">
-                        Agent: Cannot ascertain physical reality
-                      </span>
-                      Agent is blind to real-world status. Halting automated execution to prevent loss.
-                    </div>
-                  )}
+                <div className="space-y-3 text-xs">
+                  <div className="flex items-start space-x-2.5 text-zinc-200">
+                    <Check className="w-4 h-4 text-[#A8FF00] shrink-0 mt-0.5" />
+                    <span><strong>200m Mathematical Geofence:</strong> Haversine coordinate validation with sub-meter precision.</span>
+                  </div>
+                  <div className="flex items-start space-x-2.5 text-zinc-200">
+                    <Check className="w-4 h-4 text-[#A8FF00] shrink-0 mt-0.5" />
+                    <span><strong>Hardware Tremor Proof:</strong> Biometric accelerometer nonces guarantee physical human presence.</span>
+                  </div>
+                  <div className="flex items-start space-x-2.5 text-zinc-200">
+                    <Check className="w-4 h-4 text-[#A8FF00] shrink-0 mt-0.5" />
+                    <span><strong>Instant Anchor Settlement:</strong> 97.5% SOL bounties released autonomously upon 98.4% consensus.</span>
+                  </div>
                 </div>
+              </div>
 
-                <div className="flex items-center gap-2 flex-wrap pt-1 text-[10px] font-mono">
-                  <span
-                    className={`px-2 py-0.5 rounded font-bold border ${
-                      isVerified
-                        ? 'bg-[#A8FF00]/10 text-[#A8FF00] border-[#A8FF00]/30'
-                        : 'bg-white/[0.04] text-zinc-400 border-white/[0.06]'
-                    }`}
-                  >
-                    Geofence: {isVerified ? 'Valid (12.4m)' : 'None'}
-                  </span>
-                  <span
-                    className={`px-2 py-0.5 rounded font-bold border ${
-                      isVerified
-                        ? 'bg-[#A8FF00]/10 text-[#A8FF00] border-[#A8FF00]/30'
-                        : 'bg-white/[0.04] text-zinc-400 border-white/[0.06]'
-                    }`}
-                  >
-                    AI Vision: {isVerified ? '98.4%' : '0%'}
-                  </span>
-                  <span
-                    className={`px-2 py-0.5 rounded font-bold border ${
-                      isVerified
-                        ? 'bg-[#A8FF00]/10 text-[#A8FF00] border-[#A8FF00]/30'
-                        : 'bg-white/[0.04] text-zinc-400 border-white/[0.06]'
-                    }`}
-                  >
-                    Anchor PDA: {isVerified ? 'Settled' : 'Reverted'}
-                  </span>
+              <div className="mt-5 pt-3 border-t border-[#A8FF00]/15">
+                <div className="bg-[#A8FF00]/[0.05] border border-[#A8FF00]/25 rounded-lg p-2.5 font-mono text-[11px] text-zinc-200">
+                  <span className="font-bold block text-[#A8FF00] mb-0.5">Autonomous AI Agent Verified:</span>
+                  Task executed with confirmed physical telemetry. Zero hallucination risk.
                 </div>
               </div>
             </div>
@@ -955,7 +1046,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
         </section>
 
         {/* ========================================================================= */}
-        {/* 7. DEVELOPER QUICKSTART HUB                                               */}
+        {/* 7. DEVELOPER QUICKSTART HUB (Balanced Terminal Console)                  */}
         {/* ========================================================================= */}
         <section id="developers" className="py-10 sm:py-12 border-t border-white/[0.08]">
           <div className="text-center max-w-2xl mx-auto mb-7 sm:mb-8">
@@ -970,104 +1061,109 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Left Column: SDK Pitch & Setup */}
-            <div className="lg:col-span-5 space-y-4">
-              {/* Install Bar */}
-              <div className="bg-[#090909] border border-white/[0.08] rounded-xl p-3 flex items-center justify-between font-mono text-xs text-zinc-300">
-                <span className="text-[#A8FF00] font-semibold">$ npm i @truespot/sdk</span>
-                <span className="text-[10px] text-zinc-500">v2.1.0</span>
+          {/* Unified Terminal Console - max-w-4xl eliminates awkward lengthy gaps */}
+          <div className="max-w-4xl mx-auto bg-[#090909] border border-white/[0.08] rounded-2xl overflow-hidden shadow-2xl">
+            {/* Terminal Top Bar */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between bg-[#111111] border-b border-white/[0.06] px-4 py-2.5 gap-2.5">
+              <div className="flex items-center space-x-3">
+                {/* Window Dots */}
+                <div className="flex items-center space-x-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+                </div>
+
+                {/* Tabs */}
+                <div className="flex items-center space-x-1.5 pl-2">
+                  <button
+                    onClick={() => setActiveCodeTab('sdk')}
+                    className={`px-3 py-1 rounded-md text-xs font-mono transition-colors cursor-pointer ${
+                      activeCodeTab === 'sdk'
+                        ? 'bg-[#1C1C1C] text-white font-bold border border-white/10'
+                        : 'text-zinc-400 hover:text-white'
+                    }`}
+                  >
+                    TypeScript SDK
+                  </button>
+                  <button
+                    onClick={() => setActiveCodeTab('rust')}
+                    className={`px-3 py-1 rounded-md text-xs font-mono transition-colors cursor-pointer ${
+                      activeCodeTab === 'rust'
+                        ? 'bg-[#1C1C1C] text-white font-bold border border-white/10'
+                        : 'text-zinc-400 hover:text-white'
+                    }`}
+                  >
+                    Anchor CPI (Rust)
+                  </button>
+                  <button
+                    onClick={() => setActiveCodeTab('rest')}
+                    className={`px-3 py-1 rounded-md text-xs font-mono transition-colors cursor-pointer ${
+                      activeCodeTab === 'rest'
+                        ? 'bg-[#1C1C1C] text-white font-bold border border-white/10'
+                        : 'text-zinc-400 hover:text-white'
+                    }`}
+                  >
+                    REST API v2
+                  </button>
+                </div>
               </div>
 
-              <div className="space-y-2.5 font-mono text-xs text-zinc-300 pt-1">
-                <div className="flex items-center space-x-2">
-                  <CheckCheck className="w-3.5 h-3.5 text-[#A8FF00]" />
-                  <span>Lightweight TypeScript SDK (`@truespot/sdk`)</span>
+              {/* Install Command & Copy */}
+              <div className="flex items-center space-x-2">
+                <div className="bg-[#050505] border border-white/[0.06] rounded-lg px-2.5 py-1 font-mono text-[11px] text-zinc-300 flex items-center space-x-2">
+                  <span className="text-[#A8FF00]">$ npm i @truespot/sdk</span>
+                  <span className="text-zinc-600">v2.1.0</span>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCheck className="w-3.5 h-3.5 text-[#A8FF00]" />
-                  <span>Composable Anchor CPI program calls</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCheck className="w-3.5 h-3.5 text-[#A8FF00]" />
-                  <span>Open REST API v2 endpoints</span>
-                </div>
-              </div>
-
-              <div className="pt-2">
                 <button
-                  onClick={onOpenDocs}
-                  className="px-5 py-2.5 rounded-full bg-[#111111] hover:bg-[#181818] text-[#A8FF00] hover:text-white border border-white/[0.08] hover:border-[#A8FF00]/40 text-xs font-mono font-bold transition-all cursor-pointer flex items-center space-x-2"
+                  onClick={handleCopyCode}
+                  className="flex items-center space-x-1.5 text-[11px] font-mono text-zinc-400 hover:text-white px-2.5 py-1 rounded bg-[#181818] border border-white/[0.06] cursor-pointer transition-colors"
                 >
-                  <Terminal className="w-3.5 h-3.5" />
-                  <span>View Documentation</span>
+                  {codeCopied ? (
+                    <>
+                      <Check className="w-3 h-3 text-[#A8FF00]" />
+                      <span className="text-[#A8FF00]">Copied</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3 h-3" />
+                      <span>Copy</span>
+                    </>
+                  )}
                 </button>
               </div>
             </div>
 
-            {/* Right Column: Short Tabbed Terminal */}
-            <div className="lg:col-span-7">
-              <div className="bg-[#090909] border border-white/[0.08] rounded-2xl overflow-hidden shadow-2xl">
-                {/* Tabs Header */}
-                <div className="flex items-center justify-between bg-[#111111] border-b border-white/[0.06] px-4 py-2">
-                  <div className="flex items-center space-x-2">
-                    <button
-                      onClick={() => setActiveCodeTab('sdk')}
-                      className={`px-3 py-1 rounded-md text-xs font-mono transition-colors cursor-pointer ${
-                        activeCodeTab === 'sdk'
-                          ? 'bg-[#1C1C1C] text-white font-bold border border-white/10'
-                          : 'text-zinc-400 hover:text-white'
-                      }`}
-                    >
-                      TypeScript SDK
-                    </button>
-                    <button
-                      onClick={() => setActiveCodeTab('rust')}
-                      className={`px-3 py-1 rounded-md text-xs font-mono transition-colors cursor-pointer ${
-                        activeCodeTab === 'rust'
-                          ? 'bg-[#1C1C1C] text-white font-bold border border-white/10'
-                          : 'text-zinc-400 hover:text-white'
-                      }`}
-                    >
-                      Anchor (Rust)
-                    </button>
-                    <button
-                      onClick={() => setActiveCodeTab('rest')}
-                      className={`px-3 py-1 rounded-md text-xs font-mono transition-colors cursor-pointer ${
-                        activeCodeTab === 'rest'
-                          ? 'bg-[#1C1C1C] text-white font-bold border border-white/10'
-                          : 'text-zinc-400 hover:text-white'
-                      }`}
-                    >
-                      REST API
-                    </button>
-                  </div>
+            {/* Code Body */}
+            <div className="p-5 font-mono text-xs leading-relaxed text-zinc-300 bg-[#060606] overflow-x-auto">
+              <pre className="text-zinc-300 whitespace-pre font-mono">
+                {conciseSnippets[activeCodeTab]}
+              </pre>
+            </div>
 
-                  <button
-                    onClick={handleCopyCode}
-                    className="flex items-center space-x-1.5 text-[11px] font-mono text-zinc-400 hover:text-white px-2.5 py-1 rounded bg-[#181818] border border-white/[0.06] cursor-pointer transition-colors"
-                  >
-                    {codeCopied ? (
-                      <>
-                        <Check className="w-3 h-3 text-[#A8FF00]" />
-                        <span className="text-[#A8FF00]">Copied</span>
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="w-3 h-3" />
-                        <span>Copy</span>
-                      </>
-                    )}
-                  </button>
+            {/* Terminal Bottom Integration Specs Strip */}
+            <div className="flex flex-col sm:flex-row items-center justify-between bg-[#0C0C0C] border-t border-white/[0.06] px-5 py-3 gap-3 font-mono text-xs">
+              <div className="flex items-center space-x-4 text-[11px] text-zinc-400">
+                <div className="flex items-center space-x-1.5">
+                  <CheckCheck className="w-3.5 h-3.5 text-[#A8FF00]" />
+                  <span>&lt;400ms RPC</span>
                 </div>
-
-                {/* Short Code Body */}
-                <div className="p-4 font-mono text-xs leading-relaxed text-zinc-300">
-                  <pre className="text-zinc-300 whitespace-pre font-mono">
-                    {conciseSnippets[activeCodeTab]}
-                  </pre>
+                <div className="flex items-center space-x-1.5">
+                  <CheckCheck className="w-3.5 h-3.5 text-[#A8FF00]" />
+                  <span>Anchor CPI Composable</span>
+                </div>
+                <div className="flex items-center space-x-1.5">
+                  <CheckCheck className="w-3.5 h-3.5 text-[#A8FF00]" />
+                  <span>Zero-Hallucination Feed</span>
                 </div>
               </div>
+
+              <button
+                onClick={onOpenDocs}
+                className="text-[#A8FF00] hover:text-white font-mono text-xs font-bold flex items-center space-x-1.5 transition-colors cursor-pointer"
+              >
+                <span>Read Complete Documentation</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
             </div>
           </div>
         </section>
