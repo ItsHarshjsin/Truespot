@@ -427,120 +427,322 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
           </div>
 
           {/* Connected Network Map Canvas */}
-          <div className="max-w-5xl mx-auto rounded-2xl bg-[#090909] border border-white/[0.08] relative overflow-hidden p-6 sm:p-10 shadow-2xl">
-            {/* Desktop & Tablet: Connected Oracle Eye Constellation Diagram */}
-            <div className="relative min-h-[460px] hidden md:flex items-center justify-center">
-              {/* Background Coordinate Grid, Oracle Eye Iris & Radiating Dashed Connectors */}
+          <div className="max-w-5xl mx-auto rounded-2xl bg-[#080808] border border-white/[0.08] relative overflow-hidden p-6 sm:p-10 shadow-2xl">
+            {/* High-Tech Corner HUD Overlays (Low Transparency) */}
+            <div className="absolute top-3 left-4 text-[9px] font-mono text-zinc-600 tracking-wider hidden sm:flex items-center space-x-1.5 select-none pointer-events-none z-10">
+              <span className="text-[#A8FF00]/50 font-bold">┌</span>
+              <span>SYS.TOPOLOGY // LAT: 37.7792° N  LON: -122.4184° W</span>
+            </div>
+            <div className="absolute top-3 right-4 text-[9px] font-mono text-zinc-600 tracking-wider hidden sm:flex items-center space-x-1.5 select-none pointer-events-none z-10">
+              <span>CLUSTER: DEVNET-BETA // SLOT #{telemetrySlot.toLocaleString()}</span>
+              <span className="text-[#A8FF00]/50 font-bold">┐</span>
+            </div>
+            <div className="absolute bottom-3 left-4 text-[9px] font-mono text-zinc-600 tracking-wider hidden sm:flex items-center space-x-1.5 select-none pointer-events-none z-10">
+              <span className="text-[#A8FF00]/50 font-bold">└</span>
+              <span>ED25519 HARDWARE NONCE // SUB-METER ACCURACY</span>
+            </div>
+            <div className="absolute bottom-3 right-4 text-[9px] font-mono text-zinc-600 tracking-wider hidden sm:flex items-center space-x-1.5 select-none pointer-events-none z-10">
+              <span>ANCHOR PDA SETTLEMENT // FINALITY &lt;400ms</span>
+              <span className="text-[#A8FF00]/50 font-bold">┘</span>
+            </div>
+
+            {/* Desktop & Tablet: Connected Constellation Diagram */}
+            <div className="relative min-h-[480px] hidden md:flex items-center justify-center">
+              {/* Background Coordinate Grid, Geodetic Radar Circles, Ghost Satellites & Radiating Dashed Streams */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" preserveAspectRatio="xMidYMid meet">
                 <defs>
-                  <pattern id="diagGrid" width="28" height="28" patternUnits="userSpaceOnUse">
-                    <path d="M 28 0 L 0 0 0 28" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="0.8" />
+                  <pattern id="topologyDiagGrid" width="28" height="28" patternUnits="userSpaceOnUse">
+                    <path d="M 28 0 L 0 0 0 28" fill="none" stroke="rgba(255,255,255,0.035)" strokeWidth="0.8" />
                   </pattern>
+
+                  {/* Atmospheric Radar Glow Behind Center */}
+                  <radialGradient id="centerRadarGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stopColor="#A8FF00" stopOpacity="0.14" />
+                    <stop offset="50%" stopColor="#A8FF00" stopOpacity="0.03" />
+                    <stop offset="100%" stopColor="#A8FF00" stopOpacity="0" />
+                  </radialGradient>
                 </defs>
-                <rect width="100%" height="100%" fill="url(#diagGrid)" />
 
-                {/* Minimalist Clean Network Connectors */}
-                <line x1="400" y1="230" x2="210" y2="90" stroke="#A8FF00" strokeOpacity="0.35" strokeWidth="1.2" strokeDasharray="4 4" />
-                <line x1="400" y1="230" x2="590" y2="90" stroke="#A8FF00" strokeOpacity="0.35" strokeWidth="1.2" strokeDasharray="4 4" />
-                <line x1="400" y1="230" x2="210" y2="370" stroke="#A8FF00" strokeOpacity="0.35" strokeWidth="1.2" strokeDasharray="4 4" />
-                <line x1="400" y1="230" x2="590" y2="370" stroke="#A8FF00" strokeOpacity="0.35" strokeWidth="1.2" strokeDasharray="4 4" />
+                {/* Base Grid */}
+                <rect width="100%" height="100%" fill="url(#topologyDiagGrid)" />
 
-                {/* Subtle Connector Node Endpoints */}
-                <circle cx="210" cy="90" r="2.5" fill="#A8FF00" fillOpacity="0.6" />
-                <circle cx="590" cy="90" r="2.5" fill="#A8FF00" fillOpacity="0.6" />
-                <circle cx="210" cy="370" r="2.5" fill="#A8FF00" fillOpacity="0.6" />
-                <circle cx="590" cy="370" r="2.5" fill="#A8FF00" fillOpacity="0.6" />
+                {/* Ambient Center Radar Glow */}
+                <circle cx="400" cy="230" r="220" fill="url(#centerRadarGlow)" />
+
+                {/* Concentric Geodetic Range Rings (Centered at 400, 230) */}
+                <circle cx="400" cy="230" r="65" stroke="rgba(168,255,0,0.2)" strokeWidth="1" strokeDasharray="3 3" fill="none" />
+                <circle cx="400" cy="230" r="130" stroke="rgba(255,255,255,0.06)" strokeWidth="0.8" fill="none" />
+                <circle cx="400" cy="230" r="195" stroke="rgba(168,255,0,0.14)" strokeWidth="1" strokeDasharray="4 6" fill="none" />
+                <circle cx="400" cy="230" r="270" stroke="rgba(255,255,255,0.035)" strokeWidth="0.8" fill="none" />
+                <circle cx="400" cy="230" r="345" stroke="rgba(255,255,255,0.02)" strokeWidth="0.8" strokeDasharray="2 4" fill="none" />
+
+                {/* Radar Cross-Axes (Low Opacity) */}
+                <line x1="50" y1="230" x2="750" y2="230" stroke="rgba(255,255,255,0.05)" strokeWidth="0.8" strokeDasharray="2 6" />
+                <line x1="400" y1="20" x2="400" y2="440" stroke="rgba(255,255,255,0.05)" strokeWidth="0.8" strokeDasharray="2 6" />
+
+                {/* Diagonal Ray Guides (Low Opacity) */}
+                <line x1="400" y1="230" x2="70" y2="45" stroke="rgba(255,255,255,0.02)" strokeWidth="0.8" strokeDasharray="1 6" />
+                <line x1="400" y1="230" x2="730" y2="45" stroke="rgba(255,255,255,0.02)" strokeWidth="0.8" strokeDasharray="1 6" />
+                <line x1="400" y1="230" x2="70" y2="415" stroke="rgba(255,255,255,0.02)" strokeWidth="0.8" strokeDasharray="1 6" />
+                <line x1="400" y1="230" x2="730" y2="415" stroke="rgba(255,255,255,0.02)" strokeWidth="0.8" strokeDasharray="1 6" />
+
+                {/* Range Distance Monospace Markers (Low Opacity) */}
+                <text x="406" y="172" fill="rgba(168,255,0,0.3)" fontSize="8" fontFamily="monospace">R: 50m</text>
+                <text x="406" y="108" fill="rgba(255,255,255,0.18)" fontSize="8" fontFamily="monospace">R: 100m</text>
+                <text x="406" y="42" fill="rgba(168,255,0,0.35)" fontSize="8" fontFamily="monospace">R: 200m GEOFENCE PERIMETER</text>
+
+                {/* Degree Cardinal Ticks */}
+                <text x="396" y="24" fill="rgba(255,255,255,0.2)" fontSize="7" fontFamily="monospace">0° N</text>
+                <text x="752" y="233" fill="rgba(255,255,255,0.2)" fontSize="7" fontFamily="monospace">90° E</text>
+                <text x="396" y="442" fill="rgba(255,255,255,0.2)" fontSize="7" fontFamily="monospace">180° S</text>
+                <text x="30" y="233" fill="rgba(255,255,255,0.2)" fontSize="7" fontFamily="monospace">270° W</text>
+
+                {/* Coordinate Crosshairs (+) */}
+                <g stroke="rgba(255,255,255,0.15)" strokeWidth="0.8">
+                  <path d="M 147 100 h 6 M 150 97 v 6" />
+                  <path d="M 647 100 h 6 M 650 97 v 6" />
+                  <path d="M 147 360 h 6 M 150 357 v 6" />
+                  <path d="M 647 360 h 6 M 650 357 v 6" />
+                  <path d="M 277 230 h 6 M 280 227 v 6" />
+                  <path d="M 517 230 h 6 M 520 227 v 6" />
+                </g>
+
+                {/* Low-Opacity Ghost Satellite & Telemetry Nodes */}
+                {/* Ghost Satellite 1: GNSS */}
+                <circle cx="105" cy="215" r="2.5" fill="#A8FF00" fillOpacity="0.4" />
+                <circle cx="105" cy="215" r="5" stroke="#A8FF00" strokeOpacity="0.2" fill="none" />
+                <text x="115" y="218" fill="rgba(255,255,255,0.22)" fontSize="7.5" fontFamily="monospace">GNSS_SAT #32 (L1/L5) // 0.8m ACC</text>
+
+                {/* Ghost Node 2: Solana RPC Devnet */}
+                <circle cx="690" cy="215" r="2.5" fill="#38bdf8" fillOpacity="0.4" />
+                <circle cx="690" cy="215" r="5" stroke="#38bdf8" strokeOpacity="0.2" fill="none" />
+                <text x="590" y="218" fill="rgba(255,255,255,0.22)" fontSize="7.5" fontFamily="monospace">SOLANA_RPC // 394ms</text>
+
+                {/* Ghost Node 3: SGX Enclave */}
+                <circle cx="310" cy="65" r="2" fill="#c084fc" fillOpacity="0.35" />
+                <text x="320" y="68" fill="rgba(255,255,255,0.2)" fontSize="7.5" fontFamily="monospace">SGX_ENCLAVE // NONCE #9102</text>
+
+                {/* Ghost Node 4: Escrow Vault PDA */}
+                <circle cx="490" cy="395" r="2" fill="#34d399" fillOpacity="0.35" />
+                <text x="500" y="398" fill="rgba(255,255,255,0.2)" fontSize="7.5" fontFamily="monospace">ESCROW_PDA // V2_ANCHOR</text>
+
+                {/* Active Connection Streams (Base static line + Animated pulse flow) */}
+                {/* Path 1: Top-Left (210, 95) -> Center (400, 230) */}
+                <line x1="210" y1="95" x2="400" y2="230" stroke="rgba(168,255,0,0.15)" strokeWidth="1" />
+                <line x1="210" y1="95" x2="400" y2="230" stroke="#A8FF00" strokeWidth="1.5" strokeOpacity="0.65" className="animate-dash-stream" />
+
+                {/* Path 2: Top-Right (590, 95) -> Center (400, 230) */}
+                <line x1="590" y1="95" x2="400" y2="230" stroke="rgba(168,255,0,0.15)" strokeWidth="1" />
+                <line x1="590" y1="95" x2="400" y2="230" stroke="#A8FF00" strokeWidth="1.5" strokeOpacity="0.65" className="animate-dash-stream" />
+
+                {/* Path 3: Bottom-Left (210, 365) -> Center (400, 230) */}
+                <line x1="210" y1="365" x2="400" y2="230" stroke="rgba(168,255,0,0.15)" strokeWidth="1" />
+                <line x1="210" y1="365" x2="400" y2="230" stroke="#A8FF00" strokeWidth="1.5" strokeOpacity="0.65" className="animate-dash-stream" />
+
+                {/* Path 4: Bottom-Right (590, 365) -> Center (400, 230) */}
+                <line x1="590" y1="365" x2="400" y2="230" stroke="rgba(168,255,0,0.15)" strokeWidth="1" />
+                <line x1="590" y1="365" x2="400" y2="230" stroke="#A8FF00" strokeWidth="1.5" strokeOpacity="0.65" className="animate-dash-stream" />
+
+                {/* Glowing Node Anchors */}
+                <g fill="#A8FF00">
+                  <circle cx="210" cy="95" r="3.5" fillOpacity="0.9" />
+                  <circle cx="210" cy="95" r="7" stroke="#A8FF00" strokeOpacity="0.3" fill="none" />
+
+                  <circle cx="590" cy="95" r="3.5" fillOpacity="0.9" />
+                  <circle cx="590" cy="95" r="7" stroke="#A8FF00" strokeOpacity="0.3" fill="none" />
+
+                  <circle cx="210" cy="365" r="3.5" fillOpacity="0.9" />
+                  <circle cx="210" cy="365" r="7" stroke="#A8FF00" strokeOpacity="0.3" fill="none" />
+
+                  <circle cx="590" cy="365" r="3.5" fillOpacity="0.9" />
+                  <circle cx="590" cy="365" r="7" stroke="#A8FF00" strokeOpacity="0.3" fill="none" />
+                </g>
               </svg>
 
-              {/* Central Physical POI Headline Pill (Oracle Eye Center) */}
-              <div className="z-20 bg-[#0E0E0E] border-2 border-[#A8FF00] shadow-[0_0_35px_rgba(168,255,0,0.3)] rounded-full px-6 py-3.5 flex items-center space-x-3 cursor-default hover:scale-105 transition-transform">
-                <div className="w-2.5 h-2.5 rounded-full bg-[#A8FF00] shadow-[0_0_12px_#A8FF00] animate-pulse" />
-                <span className="text-sm md:text-base font-black text-white tracking-tight uppercase">
-                  Physical Ground Truth
-                </span>
-                <span className="text-[10px] font-mono font-bold text-zinc-300 bg-white/[0.08] px-2.5 py-0.5 rounded-full border border-white/10">
-                  37.7792° N, -122.4184° W
-                </span>
+              {/* Central Physical POI Headline Pill (Oracle Center) */}
+              <div className="z-20 relative group cursor-default">
+                {/* Ambient glow behind center */}
+                <div className="absolute -inset-4 bg-[#A8FF00]/15 blur-2xl rounded-full pointer-events-none group-hover:bg-[#A8FF00]/25 transition-all" />
+
+                <div className="relative bg-[#0C0C0C]/95 backdrop-blur-xl border-2 border-[#A8FF00] shadow-[0_0_35px_rgba(168,255,0,0.35)] rounded-full px-6 py-3.5 flex items-center space-x-3.5 group-hover:scale-105 transition-transform">
+                  {/* Live radar beacon indicator with ping */}
+                  <div className="relative flex items-center justify-center">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#A8FF00] shadow-[0_0_12px_#A8FF00]" />
+                    <span className="absolute w-5 h-5 rounded-full border border-[#A8FF00]/60 animate-ping" />
+                  </div>
+
+                  <div className="flex flex-col">
+                    <span className="text-[9px] font-mono font-bold text-[#A8FF00] uppercase tracking-widest leading-none mb-1">
+                      Oracle Verification Core
+                    </span>
+                    <span className="text-sm md:text-base font-black text-white tracking-tight uppercase leading-none">
+                      Physical Ground Truth
+                    </span>
+                  </div>
+
+                  <div className="hidden sm:flex items-center space-x-2 pl-3 border-l border-white/10">
+                    <span className="text-[10px] font-mono font-bold text-zinc-300 bg-white/[0.08] px-2.5 py-1 rounded-full border border-white/10">
+                      37.7792° N, -122.4184° W
+                    </span>
+                    <span className="text-[9px] font-mono font-extrabold text-[#A8FF00] bg-[#A8FF00]/10 px-2 py-1 rounded-full border border-[#A8FF00]/25">
+                      ±0.8m ACC
+                    </span>
+                  </div>
+                </div>
               </div>
 
-              {/* Node 01: Top-Left Headline Pill */}
-              <div className="absolute top-8 left-6 md:top-10 md:left-12 z-10 bg-[#0E0E0E]/95 backdrop-blur-md border border-white/20 hover:border-[#A8FF00] shadow-[0_4px_25px_rgba(0,0,0,0.8)] rounded-full px-5 py-2.5 flex items-center space-x-2.5 hover:scale-105 transition-all cursor-default group">
-                <div className="w-6 h-6 rounded-full bg-[#A8FF00]/15 flex items-center justify-center text-[#A8FF00] group-hover:bg-[#A8FF00] group-hover:text-black transition-colors">
-                  <MapPin className="w-3.5 h-3.5" />
+              {/* Node 01: Top-Left Card */}
+              <div className="absolute top-6 left-5 md:top-8 md:left-10 z-10 bg-[#0D0D0D]/95 backdrop-blur-md border border-white/15 hover:border-[#A8FF00] shadow-[0_6px_25px_rgba(0,0,0,0.85)] rounded-2xl px-4.5 py-2.5 transition-all hover:scale-105 cursor-default group">
+                <div className="flex items-center justify-between space-x-3 mb-1">
+                  <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest font-semibold">
+                    Vector 01 // Geodetic
+                  </span>
+                  <span className="text-[9px] font-mono text-[#A8FF00] font-bold bg-[#A8FF00]/10 px-1.5 py-0.5 rounded border border-[#A8FF00]/20">
+                    ≤ 200m
+                  </span>
                 </div>
-                <span className="text-xs md:text-sm font-bold text-white tracking-wide">
-                  200m Spatial Geofence
-                </span>
-                <span className="text-[10px] font-mono text-[#A8FF00] font-bold">≤ 200m</span>
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-6 h-6 rounded-lg bg-[#A8FF00]/15 flex items-center justify-center text-[#A8FF00] group-hover:bg-[#A8FF00] group-hover:text-black transition-colors">
+                    <MapPin className="w-3.5 h-3.5" />
+                  </div>
+                  <div>
+                    <span className="text-xs md:text-sm font-bold text-white tracking-wide block leading-none">
+                      200m Spatial Geofence
+                    </span>
+                    <span className="text-[9px] font-mono text-zinc-400 block mt-0.5">
+                      Haversine Radius Locked
+                    </span>
+                  </div>
+                </div>
               </div>
 
-              {/* Node 02: Top-Right Headline Pill */}
-              <div className="absolute top-8 right-6 md:top-10 md:right-12 z-10 bg-[#0E0E0E]/95 backdrop-blur-md border border-white/20 hover:border-[#A8FF00] shadow-[0_4px_25px_rgba(0,0,0,0.8)] rounded-full px-5 py-2.5 flex items-center space-x-2.5 hover:scale-105 transition-all cursor-default group">
-                <div className="w-6 h-6 rounded-full bg-[#A8FF00]/15 flex items-center justify-center text-[#A8FF00] group-hover:bg-[#A8FF00] group-hover:text-black transition-colors">
-                  <Activity className="w-3.5 h-3.5" />
+              {/* Node 02: Top-Right Card */}
+              <div className="absolute top-6 right-5 md:top-8 md:right-10 z-10 bg-[#0D0D0D]/95 backdrop-blur-md border border-white/15 hover:border-[#A8FF00] shadow-[0_6px_25px_rgba(0,0,0,0.85)] rounded-2xl px-4.5 py-2.5 transition-all hover:scale-105 cursor-default group">
+                <div className="flex items-center justify-between space-x-3 mb-1">
+                  <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest font-semibold">
+                    Vector 02 // Enclave Nonce
+                  </span>
+                  <span className="text-[9px] font-mono text-[#A8FF00] font-bold bg-[#A8FF00]/10 px-1.5 py-0.5 rounded border border-[#A8FF00]/20">
+                    0.042g RMS
+                  </span>
                 </div>
-                <span className="text-xs md:text-sm font-bold text-white tracking-wide">
-                  8.4 Hz Hardware Tremor
-                </span>
-                <span className="text-[10px] font-mono text-[#A8FF00] font-bold">0.042g</span>
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-6 h-6 rounded-lg bg-[#A8FF00]/15 flex items-center justify-center text-[#A8FF00] group-hover:bg-[#A8FF00] group-hover:text-black transition-colors">
+                    <Activity className="w-3.5 h-3.5" />
+                  </div>
+                  <div>
+                    <span className="text-xs md:text-sm font-bold text-white tracking-wide block leading-none">
+                      8.4 Hz Hardware Tremor
+                    </span>
+                    <span className="text-[9px] font-mono text-zinc-400 block mt-0.5">
+                      Biometric Anti-Spoofing
+                    </span>
+                  </div>
+                </div>
               </div>
 
-              {/* Node 03: Bottom-Left Headline Pill */}
-              <div className="absolute bottom-8 left-6 md:bottom-10 md:left-12 z-10 bg-[#0E0E0E]/95 backdrop-blur-md border border-white/20 hover:border-[#A8FF00] shadow-[0_4px_25px_rgba(0,0,0,0.8)] rounded-full px-5 py-2.5 flex items-center space-x-2.5 hover:scale-105 transition-all cursor-default group">
-                <div className="w-6 h-6 rounded-full bg-[#A8FF00]/15 flex items-center justify-center text-[#A8FF00] group-hover:bg-[#A8FF00] group-hover:text-black transition-colors">
-                  <Eye className="w-3.5 h-3.5" />
+              {/* Node 03: Bottom-Left Card */}
+              <div className="absolute bottom-6 left-5 md:bottom-8 md:left-10 z-10 bg-[#0D0D0D]/95 backdrop-blur-md border border-white/15 hover:border-[#A8FF00] shadow-[0_6px_25px_rgba(0,0,0,0.85)] rounded-2xl px-4.5 py-2.5 transition-all hover:scale-105 cursor-default group">
+                <div className="flex items-center justify-between space-x-3 mb-1">
+                  <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest font-semibold">
+                    Vector 03 // Vision Consensus
+                  </span>
+                  <span className="text-[9px] font-mono text-emerald-400 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20">
+                    98.4% Conf
+                  </span>
                 </div>
-                <span className="text-xs md:text-sm font-bold text-white tracking-wide">
-                  Gemini Vision Consensus
-                </span>
-                <span className="text-[10px] font-mono text-emerald-400 font-bold">98.4%</span>
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-6 h-6 rounded-lg bg-[#A8FF00]/15 flex items-center justify-center text-[#A8FF00] group-hover:bg-[#A8FF00] group-hover:text-black transition-colors">
+                    <Eye className="w-3.5 h-3.5" />
+                  </div>
+                  <div>
+                    <span className="text-xs md:text-sm font-bold text-white tracking-wide block leading-none">
+                      Gemini Vision Consensus
+                    </span>
+                    <span className="text-[9px] font-mono text-zinc-400 block mt-0.5">
+                      Multimodal Frame Inspection
+                    </span>
+                  </div>
+                </div>
               </div>
 
-              {/* Node 04: Bottom-Right Headline Pill */}
-              <div className="absolute bottom-8 right-6 md:bottom-10 md:right-12 z-10 bg-[#0E0E0E]/95 backdrop-blur-md border border-white/20 hover:border-[#A8FF00] shadow-[0_4px_25px_rgba(0,0,0,0.8)] rounded-full px-5 py-2.5 flex items-center space-x-2.5 hover:scale-105 transition-all cursor-default group">
-                <div className="w-6 h-6 rounded-full bg-[#A8FF00]/15 flex items-center justify-center text-[#A8FF00] group-hover:bg-[#A8FF00] group-hover:text-black transition-colors">
-                  <Coins className="w-3.5 h-3.5" />
+              {/* Node 04: Bottom-Right Card */}
+              <div className="absolute bottom-6 right-5 md:bottom-8 md:right-10 z-10 bg-[#0D0D0D]/95 backdrop-blur-md border border-white/15 hover:border-[#A8FF00] shadow-[0_6px_25px_rgba(0,0,0,0.85)] rounded-2xl px-4.5 py-2.5 transition-all hover:scale-105 cursor-default group">
+                <div className="flex items-center justify-between space-x-3 mb-1">
+                  <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest font-semibold">
+                    Vector 04 // Smart Escrow
+                  </span>
+                  <span className="text-[9px] font-mono text-[#A8FF00] font-bold bg-[#A8FF00]/10 px-1.5 py-0.5 rounded border border-[#A8FF00]/20">
+                    97.5% SOL
+                  </span>
                 </div>
-                <span className="text-xs md:text-sm font-bold text-white tracking-wide">
-                  Anchor PDA Settlement
-                </span>
-                <span className="text-[10px] font-mono text-[#A8FF00] font-bold">97.5%</span>
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-6 h-6 rounded-lg bg-[#A8FF00]/15 flex items-center justify-center text-[#A8FF00] group-hover:bg-[#A8FF00] group-hover:text-black transition-colors">
+                    <Coins className="w-3.5 h-3.5" />
+                  </div>
+                  <div>
+                    <span className="text-xs md:text-sm font-bold text-white tracking-wide block leading-none">
+                      Anchor PDA Settlement
+                    </span>
+                    <span className="text-[9px] font-mono text-zinc-400 block mt-0.5">
+                      Sub-Second CPI Finality
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Mobile View: Clean Connected Headline Stream */}
-            <div className="md:hidden space-y-3">
-              <div className="bg-[#111111] border-2 border-[#A8FF00] rounded-full px-5 py-3 text-center flex items-center justify-center space-x-2">
-                <span className="w-2 h-2 rounded-full bg-[#A8FF00]" />
-                <span className="text-xs font-black text-white uppercase">Physical Ground Truth</span>
+            {/* Mobile View: High-Signal Connected Stream */}
+            <div className="md:hidden space-y-3 pt-2">
+              <div className="bg-[#111111] border-2 border-[#A8FF00] rounded-xl px-4 py-3 text-center flex flex-col items-center justify-center space-y-1">
+                <div className="flex items-center space-x-2">
+                  <span className="w-2 h-2 rounded-full bg-[#A8FF00] animate-pulse" />
+                  <span className="text-xs font-black text-white uppercase">Physical Ground Truth</span>
+                </div>
+                <span className="text-[10px] font-mono text-zinc-400">37.7792° N, -122.4184° W • ±0.8m ACC</span>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
                 <div className="bg-[#0E0E0E] border border-white/10 rounded-xl p-3 flex items-center justify-between">
                   <div className="flex items-center space-x-2">
                     <MapPin className="w-4 h-4 text-[#A8FF00]" />
-                    <span className="text-xs font-bold text-white">200m Spatial Geofence</span>
+                    <div>
+                      <span className="text-xs font-bold text-white block">200m Spatial Geofence</span>
+                      <span className="text-[9px] font-mono text-zinc-500">Vector 01 // Geodetic</span>
+                    </div>
                   </div>
                   <span className="text-[10px] font-mono text-[#A8FF00] font-bold">≤ 200m</span>
                 </div>
+
                 <div className="bg-[#0E0E0E] border border-white/10 rounded-xl p-3 flex items-center justify-between">
                   <div className="flex items-center space-x-2">
                     <Activity className="w-4 h-4 text-[#A8FF00]" />
-                    <span className="text-xs font-bold text-white">8.4 Hz Hardware Tremor</span>
+                    <div>
+                      <span className="text-xs font-bold text-white block">8.4 Hz Hardware Tremor</span>
+                      <span className="text-[9px] font-mono text-zinc-500">Vector 02 // Enclave</span>
+                    </div>
                   </div>
                   <span className="text-[10px] font-mono text-[#A8FF00] font-bold">0.042g</span>
                 </div>
+
                 <div className="bg-[#0E0E0E] border border-white/10 rounded-xl p-3 flex items-center justify-between">
                   <div className="flex items-center space-x-2">
                     <Eye className="w-4 h-4 text-[#A8FF00]" />
-                    <span className="text-xs font-bold text-white">Gemini Vision Consensus</span>
+                    <div>
+                      <span className="text-xs font-bold text-white block">Gemini Vision Consensus</span>
+                      <span className="text-[9px] font-mono text-zinc-500">Vector 03 // Multimodal</span>
+                    </div>
                   </div>
                   <span className="text-[10px] font-mono text-emerald-400 font-bold">98.4%</span>
                 </div>
+
                 <div className="bg-[#0E0E0E] border border-white/10 rounded-xl p-3 flex items-center justify-between">
                   <div className="flex items-center space-x-2">
                     <Coins className="w-4 h-4 text-[#A8FF00]" />
-                    <span className="text-xs font-bold text-white">Anchor PDA Settlement</span>
+                    <div>
+                      <span className="text-xs font-bold text-white block">Anchor PDA Settlement</span>
+                      <span className="text-[9px] font-mono text-zinc-500">Vector 04 // Smart Escrow</span>
+                    </div>
                   </div>
                   <span className="text-[10px] font-mono text-[#A8FF00] font-bold">97.5%</span>
                 </div>

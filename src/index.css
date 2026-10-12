@@ -219,4 +219,16 @@
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
 }
 
+/* Animated Telemetry Dash Stream */
+@keyframes dash-stream {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.animate-dash-stream {
+  stroke-dasharray: 6 8;
+  animation: dash-stream 1.5s linear infinite;
+}
+
 
