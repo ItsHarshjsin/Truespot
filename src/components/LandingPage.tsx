@@ -130,7 +130,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
             <Shield className="w-4 h-4 text-black stroke-[2.5]" />
           </div>
           <div className="flex items-center space-x-1.5">
-            <span className="font-extrabold text-sm sm:text-base tracking-tight text-white">
+            <span className="font-extrabold text-sm sm:text-base tracking-tight text-white group-hover:text-[#A8FF00] transition-colors">
               TrueSpot
             </span>
             <span className="hidden sm:inline-block text-[9px] font-mono px-2 py-0.5 rounded-full bg-white/[0.06] text-[#A8FF00] border border-[#A8FF00]/30 font-bold tracking-wider">
@@ -140,37 +140,38 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
         </div>
 
         {/* Navigation Links (Centered) */}
-        <nav className="hidden md:flex items-center space-x-6 text-xs font-semibold text-zinc-400">
-          <a href="#platform" className="hover:text-white transition-colors">
+        <nav className="hidden md:flex items-center space-x-1 text-xs font-semibold text-zinc-400">
+          <a href="#platform" className="px-3 py-1.5 rounded-full hover:bg-white/[0.08] hover:text-white transition-all">
             Pillars
           </a>
-          <a href="#simulator" className="hover:text-white transition-colors">
+          <a href="#simulator" className="px-3 py-1.5 rounded-full hover:bg-white/[0.08] hover:text-white transition-all">
             Verification
           </a>
-          <a href="#automation" className="hover:text-white transition-colors">
+          <a href="#automation" className="px-3 py-1.5 rounded-full hover:bg-white/[0.08] hover:text-white transition-all">
             Deployments
           </a>
-          <a href="#comparison" className="hover:text-white transition-colors">
+          <a href="#comparison" className="px-3 py-1.5 rounded-full hover:bg-white/[0.08] hover:text-white transition-all">
             Comparison
           </a>
-          <a href="#developers" className="hover:text-white transition-colors">
+          <a href="#developers" className="px-3 py-1.5 rounded-full hover:bg-white/[0.08] hover:text-white transition-all">
             Developers
           </a>
           <button
             onClick={onOpenDocs}
-            className="hover:text-white transition-colors cursor-pointer text-xs font-semibold text-zinc-400"
+            className="px-3 py-1.5 rounded-full hover:bg-white/[0.08] hover:text-white transition-all cursor-pointer text-xs font-semibold text-zinc-400 flex items-center space-x-1"
           >
-            Docs
+            <span>Docs</span>
+            <ArrowUpRight className="w-3 h-3 text-zinc-500" />
           </button>
         </nav>
 
         {/* Primary Action Button */}
         <button
           onClick={onLaunchProtocol}
-          className="h-8.5 sm:h-9 px-4 sm:px-5 rounded-full bg-[#A8FF00] hover:bg-[#b8ff24] text-black font-extrabold text-xs transition-all flex items-center space-x-1.5 shadow-[0_0_20px_rgba(168,255,0,0.25)] hover:shadow-[0_0_25px_rgba(168,255,0,0.4)] cursor-pointer shrink-0"
+          className="h-8.5 sm:h-9 px-4 sm:px-5 rounded-full bg-[#A8FF00] hover:bg-[#b8ff24] text-black font-extrabold text-xs transition-all flex items-center space-x-1.5 shadow-[0_0_20px_rgba(168,255,0,0.25)] hover:shadow-[0_0_25px_rgba(168,255,0,0.4)] hover:scale-[1.02] active:scale-[0.98] cursor-pointer shrink-0"
         >
           <span>Launch App</span>
-          <ArrowRight className="w-3.5 h-3.5 text-black" />
+          <ArrowRight className="w-3.5 h-3.5 text-black stroke-[2.5]" />
         </button>
       </header>
 
@@ -1017,38 +1018,54 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
         </section>
 
         {/* ========================================================================= */}
-        {/* 8. LIVE ATTESTATION MARQUEE SWIPE (Connected Transition)                  */}
+        {/* 8 & 9. CONNECTED LIVE TELEMETRY & ENTERPRISE FOOTER                       */}
         {/* ========================================================================= */}
-        <section className="pt-8 pb-4 max-w-5xl mx-auto overflow-hidden border-t border-white/[0.08]">
-          <div className="marquee-mask overflow-hidden py-1">
-            <div className="animate-marquee-swipe flex items-center gap-3">
-              {[...tickerItems, ...tickerItems].map((item, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#0C0C0C] border border-white/[0.08] hover:border-[#A8FF00]/40 transition-colors shrink-0 group cursor-default"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#A8FF00] animate-pulse" />
-                  <span className="text-[11px] font-mono text-zinc-400 group-hover:text-zinc-300 transition-colors">
-                    {item.label}:
-                  </span>
-                  <span className="text-[11px] font-mono font-bold text-white">
-                    {item.val}
-                  </span>
-                  <span className={`text-[9px] font-mono font-extrabold px-1.5 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] ${item.color}`}>
-                    {item.status}
-                  </span>
-                </div>
-              ))}
+        <footer className="max-w-5xl mx-auto pt-14 pb-12 border-t border-white/[0.08]">
+          {/* Integrated Live Telemetry Card (Seamless Connection) */}
+          <div className="mb-12 rounded-2xl bg-[#090909] border border-white/[0.08] p-3.5 sm:p-5 overflow-hidden shadow-xl">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-3 px-1">
+              <div className="flex items-center space-x-2.5">
+                <span className="w-2 h-2 rounded-full bg-[#A8FF00] animate-pulse" />
+                <span className="text-[11px] font-mono font-bold tracking-wider text-white uppercase">
+                  Live Network Telemetry
+                </span>
+                <span className="text-[9px] font-mono font-bold text-[#A8FF00] bg-[#A8FF00]/10 border border-[#A8FF00]/30 px-2 py-0.5 rounded-full">
+                  Real-Time Attestations
+                </span>
+              </div>
+              <div className="text-[11px] font-mono text-zinc-500 flex items-center space-x-2">
+                <span>Cluster: <span className="text-zinc-300">Solana Devnet</span></span>
+                <span className="text-zinc-700">•</span>
+                <span>Slot: <span className="text-white font-bold">#{telemetrySlot.toLocaleString()}</span></span>
+              </div>
+            </div>
+
+            {/* Marquee Ticker with Smooth Gradient Masks */}
+            <div className="marquee-mask overflow-hidden py-1">
+              <div className="animate-marquee-swipe flex items-center gap-3">
+                {[...tickerItems, ...tickerItems].map((item, idx) => (
+                  <div
+                    key={idx}
+                    className="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-[#111111] border border-white/[0.06] hover:border-[#A8FF00]/40 transition-colors shrink-0 group cursor-default"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#A8FF00] animate-pulse" />
+                    <span className="text-[11px] font-mono text-zinc-400 group-hover:text-zinc-300 transition-colors">
+                      {item.label}:
+                    </span>
+                    <span className="text-[11px] font-mono font-bold text-white">
+                      {item.val}
+                    </span>
+                    <span className={`text-[9px] font-mono font-extrabold px-1.5 py-0.5 rounded bg-white/[0.04] border border-white/[0.06] ${item.color}`}>
+                      {item.status}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </section>
 
-        {/* ========================================================================= */}
-        {/* 9. CONNECTED ENTERPRISE FOOTER (Aligned to max-w-5xl)                     */}
-        {/* ========================================================================= */}
-        <footer className="max-w-5xl mx-auto pt-8 pb-12 border-t border-white/[0.08]">
-          {/* Top Multi-Column Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 pb-10 border-b border-white/[0.06]">
+          {/* Connected Multi-Column Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-10 pb-12 border-b border-white/[0.06]">
             {/* Brand & Devnet Status Column (Spans 2 columns on lg) */}
             <div className="lg:col-span-2 space-y-4">
               <div
@@ -1072,11 +1089,19 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                 Cryptographic verification bridging physical ground truth and autonomous onchain execution on Solana.
               </p>
 
-              {/* Live Cluster Pill */}
-              <div className="inline-flex items-center space-x-2.5 px-3 py-1.5 rounded-lg bg-[#0C0C0C] border border-white/[0.08] text-[11px] font-mono">
-                <span className="w-2 h-2 rounded-full bg-[#A8FF00] animate-pulse" />
-                <span className="text-zinc-400">Solana Devnet:</span>
-                <span className="text-white font-bold">Slot #{telemetrySlot.toLocaleString()}</span>
+              {/* Action & Cluster Status */}
+              <div className="flex flex-wrap items-center gap-3 pt-1">
+                <button
+                  onClick={onLaunchProtocol}
+                  className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-[#A8FF00] text-black font-extrabold text-xs hover:bg-[#b8ff24] transition-all cursor-pointer shadow-[0_0_15px_rgba(168,255,0,0.25)] hover:shadow-[0_0_20px_rgba(168,255,0,0.4)]"
+                >
+                  <span>Launch App</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+                <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-[#0C0C0C] border border-white/[0.08] text-[11px] font-mono text-zinc-400">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>Devnet Live</span>
+                </div>
               </div>
             </div>
 
@@ -1186,10 +1211,15 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                     Decentralized Compute
                   </a>
                 </li>
+                <li>
+                  <a href="#automation" className="hover:text-white transition-colors block">
+                    Hardware Enclaves
+                  </a>
+                </li>
               </ul>
             </div>
 
-            {/* Column 4: Ecosystem & Quick Action */}
+            {/* Column 4: Ecosystem & Resources */}
             <div className="space-y-3">
               <h4 className="text-xs font-bold uppercase tracking-wider text-white font-mono">
                 Ecosystem
@@ -1207,17 +1237,25 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                   </a>
                 </li>
                 <li>
-                  <button onClick={onOpenDocs} className="hover:text-white transition-colors text-left cursor-pointer block">
-                    Documentation
+                  <button onClick={onOpenDocs} className="hover:text-white transition-colors text-left cursor-pointer flex items-center space-x-1">
+                    <span>Documentation</span>
+                    <ArrowUpRight className="w-3 h-3 text-zinc-500" />
                   </button>
                 </li>
-                <li className="pt-2">
-                  <button
-                    onClick={onLaunchProtocol}
-                    className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-lg bg-[#A8FF00] text-black font-bold text-xs hover:bg-[#b8ff24] transition-all cursor-pointer shadow-[0_0_12px_rgba(168,255,0,0.25)]"
+                <li>
+                  <a
+                    href="https://solana.com"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover:text-white transition-colors flex items-center space-x-1"
                   >
-                    <span>Launch App</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <span>Solana Ecosystem</span>
+                    <ArrowUpRight className="w-3 h-3 text-zinc-500" />
+                  </a>
+                </li>
+                <li>
+                  <button onClick={onOpenDocs} className="hover:text-white transition-colors text-left cursor-pointer block">
+                    Security Audits
                   </button>
                 </li>
               </ul>
@@ -1225,7 +1263,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
           </div>
 
           {/* Bottom Bar: Copyright & Back-to-Top */}
-          <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-[11px] text-zinc-500">
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-[11px] text-zinc-500">
             <div className="flex items-center space-x-2">
               <span>© 2026 TrueSpot Protocol.</span>
               <span className="text-zinc-600">•</span>
