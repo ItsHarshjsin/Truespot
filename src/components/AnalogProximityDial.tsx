@@ -52,7 +52,7 @@ export const AnalogProximityDial: React.FC<AnalogProximityDialProps> = ({
       <div className="relative w-full max-w-[320px] bg-black rounded-3xl border border-[#A8FF00]/30 p-3.5 shadow-[0_0_35px_rgba(168,255,0,0.12)]">
         
         {/* Inner Gauge Bezel Face */}
-        <div className="relative rounded-2xl bg-[#050505] border border-white/[0.08] p-2.5 overflow-hidden shadow-inner flex flex-col items-center">
+        <div className="relative rounded-2xl bg-[#050505] border border-white/[0.08] pt-3.5 pb-2 px-3 overflow-hidden shadow-inner flex flex-col items-center">
           
           {/* Subtle Cyber Radar Ambient Sheen */}
           <div 
@@ -63,7 +63,7 @@ export const AnalogProximityDial: React.FC<AnalogProximityDialProps> = ({
           />
 
           {/* Top Status Bar Inside Gauge */}
-          <div className="w-full flex items-center justify-between px-2 pt-0.5 z-10">
+          <div className="w-full flex items-center justify-between px-2 pb-1 z-10">
             <div className="flex items-center space-x-1.5 text-[10px] font-mono text-[#A8FF00]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#A8FF00] animate-pulse shadow-[0_0_6px_#A8FF00]" />
               <span className="font-extrabold tracking-widest">PROXIMITY HUD</span>
@@ -74,7 +74,7 @@ export const AnalogProximityDial: React.FC<AnalogProximityDialProps> = ({
           </div>
 
           {/* SVG Semicircular Radial Tachometer Gauge */}
-          <div className="relative w-full flex items-center justify-center -mb-2 mt-1 z-10">
+          <div className="relative w-full flex items-center justify-center -mb-2 mt-0.5 z-10">
             <svg
               viewBox="0 0 280 168"
               className="w-full h-auto max-h-[165px] overflow-visible"
