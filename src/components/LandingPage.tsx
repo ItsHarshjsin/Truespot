@@ -382,49 +382,54 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
 
         {/* ========================================================================= */}
         {/* ========================================================================= */}
-        {/* 4. TACTICAL REALITY NETWORK DIAGRAM (Cyera-Inspired Map & Connected Nodes) */}
+        {/* ========================================================================= */}
+        {/* 4. ORACLE EYE TOPOLOGY MAP (Cyera-Inspired Bold Headline Floating Pills)   */}
         {/* ========================================================================= */}
         <section id="simulator" className="py-10 sm:py-12 border-t border-white/[0.08]">
           {/* Centered Section Header */}
           <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-9">
             <div className="inline-flex items-center space-x-2 text-[10px] font-mono font-bold text-[#A8FF00] uppercase tracking-wider mb-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#A8FF00]" />
-              <span>Oracle Topology Map</span>
+              <span>Oracle Topology Network</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
               Cryptographic Reality Network
             </h2>
             <p className="text-xs text-zinc-400 mt-2 font-mono">
-              Four hardware &amp; algorithmic proof nodes anchored deterministically to the physical coordinates on Solana.
+              Four hardware &amp; algorithmic proof vectors anchored directly to physical ground truth on Solana.
             </p>
           </div>
 
           {/* Connected Network Map Canvas */}
           <div className="max-w-5xl mx-auto rounded-2xl bg-[#090909] border border-white/[0.08] relative overflow-hidden p-6 sm:p-10 shadow-2xl">
-            {/* Desktop & Tablet: Connected 2D Constellation Map Diagram */}
+            {/* Desktop & Tablet: Connected Oracle Eye Constellation Diagram */}
             <div className="relative min-h-[460px] hidden md:flex items-center justify-center">
-              {/* Background Coordinate Grid, 200m Rings, Wireframe Shapes & Connector Lines */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+              {/* Background Coordinate Grid, Oracle Eye Iris & Radiating Dashed Connectors */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" preserveAspectRatio="xMidYMid meet">
                 <defs>
                   <pattern id="diagGrid" width="28" height="28" patternUnits="userSpaceOnUse">
-                    <path d="M 28 0 L 0 0 0 28" fill="none" stroke="rgba(255,255,255,0.035)" strokeWidth="0.8" />
+                    <path d="M 28 0 L 0 0 0 28" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="0.8" />
                   </pattern>
                 </defs>
                 <rect width="100%" height="100%" fill="url(#diagGrid)" />
 
-                {/* Subtle Concentric Geofence Range Rings */}
-                <circle cx="50%" cy="50%" r="75" stroke="rgba(255,255,255,0.06)" strokeWidth="1" strokeDasharray="3 3" fill="none" />
-                <circle cx="50%" cy="50%" r="150" stroke="#A8FF00" strokeOpacity="0.22" strokeWidth="1.2" strokeDasharray="5 4" fill="none" />
-                <circle cx="50%" cy="50%" r="220" stroke="rgba(255,255,255,0.04)" strokeWidth="1" fill="none" />
+                {/* THE ORACLE EYE: Iconic sweeping eyelid contours */}
+                <path d="M 100 230 C 260 90, 540 90, 700 230" fill="none" stroke="#A8FF00" strokeWidth="1.5" strokeOpacity="0.3" strokeDasharray="5 5" />
+                <path d="M 100 230 C 260 370, 540 370, 700 230" fill="none" stroke="#A8FF00" strokeWidth="1.5" strokeOpacity="0.3" strokeDasharray="5 5" />
 
-                {/* Dashed Connector Lines from Center POI to 4 Satellite Nodes */}
-                <line x1="50%" y1="50%" x2="22%" y2="20%" stroke="#A8FF00" strokeOpacity="0.45" strokeWidth="1.5" strokeDasharray="4 4" />
-                <line x1="50%" y1="50%" x2="78%" y2="20%" stroke="#A8FF00" strokeOpacity="0.45" strokeWidth="1.5" strokeDasharray="4 4" />
-                <line x1="50%" y1="50%" x2="22%" y2="80%" stroke="#A8FF00" strokeOpacity="0.45" strokeWidth="1.5" strokeDasharray="4 4" />
-                <line x1="50%" y1="50%" x2="78%" y2="80%" stroke="#A8FF00" strokeOpacity="0.45" strokeWidth="1.5" strokeDasharray="4 4" />
+                {/* Concentric Oracle Iris & Range Rings */}
+                <circle cx="400" cy="230" r="140" stroke="rgba(255,255,255,0.05)" strokeWidth="1" strokeDasharray="4 4" fill="none" />
+                <circle cx="400" cy="230" r="85" stroke="#A8FF00" strokeOpacity="0.35" strokeWidth="1.5" strokeDasharray="4 4" fill="rgba(168,255,0,0.015)" />
+                <circle cx="400" cy="230" r="45" stroke="rgba(255,255,255,0.12)" strokeWidth="1" fill="none" />
 
-                {/* Geometric Wireframe Polyhedrals (Inspired by Cyera node diagram aesthetic) */}
-                <g transform="translate(48, 200) scale(0.65)" stroke="rgba(255,255,255,0.18)" fill="none" strokeWidth="1">
+                {/* Dashed Connector Rays from Central POI to the 4 Satellite Headline Pills */}
+                <line x1="400" y1="230" x2="210" y2="90" stroke="#A8FF00" strokeOpacity="0.5" strokeWidth="1.5" strokeDasharray="4 4" />
+                <line x1="400" y1="230" x2="590" y2="90" stroke="#A8FF00" strokeOpacity="0.5" strokeWidth="1.5" strokeDasharray="4 4" />
+                <line x1="400" y1="230" x2="210" y2="370" stroke="#A8FF00" strokeOpacity="0.5" strokeWidth="1.5" strokeDasharray="4 4" />
+                <line x1="400" y1="230" x2="590" y2="370" stroke="#A8FF00" strokeOpacity="0.5" strokeWidth="1.5" strokeDasharray="4 4" />
+
+                {/* Geometric Wireframe Crystals (Inspired by Cyera diagram aesthetic) */}
+                <g transform="translate(45, 190) scale(0.65)" stroke="rgba(255,255,255,0.18)" fill="none" strokeWidth="1">
                   <polygon points="30,0 60,25 45,60 15,60 0,25" />
                   <line x1="30" y1="0" x2="30" y2="40" />
                   <line x1="60" y1="25" x2="30" y2="40" />
@@ -432,7 +437,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                   <line x1="15" y1="60" x2="30" y2="40" />
                   <line x1="0" y1="25" x2="30" y2="40" />
                 </g>
-                <g transform="translate(850, 180) scale(0.65)" stroke="rgba(168,255,0,0.22)" fill="none" strokeWidth="1">
+                <g transform="translate(710, 175) scale(0.65)" stroke="rgba(168,255,0,0.22)" fill="none" strokeWidth="1">
                   <polygon points="30,0 60,25 45,60 15,60 0,25" />
                   <line x1="30" y1="0" x2="30" y2="40" />
                   <line x1="60" y1="25" x2="30" y2="40" />
@@ -442,120 +447,97 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                 </g>
               </svg>
 
-              {/* Central Physical POI Node Card */}
-              <div className="z-20 bg-[#111111] border-2 border-[#A8FF00] shadow-[0_0_35px_rgba(168,255,0,0.18)] rounded-2xl px-6 py-4 text-center max-w-[280px]">
-                <div className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full bg-[#A8FF00]/15 border border-[#A8FF00]/40 text-[#A8FF00] text-[10px] font-mono font-bold mb-1.5">
-                  <MapPin className="w-3 h-3 text-[#A8FF00]" />
-                  <span>Physical Reality Target</span>
-                </div>
-                <h4 className="text-sm font-black text-white tracking-tight">EV Supercharger Stall #4</h4>
-                <div className="text-[11px] font-mono text-zinc-400 mt-1">37.7792° N, -122.4184° W</div>
-                <div className="mt-2.5 inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded bg-[#0A0A0A] border border-white/10 text-[10px] font-mono text-emerald-400 font-bold">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                  <span>Devnet Finality &lt;400ms</span>
-                </div>
+              {/* Central Physical POI Headline Pill (Oracle Eye Center) */}
+              <div className="z-20 bg-[#0E0E0E] border-2 border-[#A8FF00] shadow-[0_0_35px_rgba(168,255,0,0.3)] rounded-full px-6 py-3.5 flex items-center space-x-3 cursor-default hover:scale-105 transition-transform">
+                <div className="w-2.5 h-2.5 rounded-full bg-[#A8FF00] shadow-[0_0_12px_#A8FF00] animate-pulse" />
+                <span className="text-sm md:text-base font-black text-white tracking-tight uppercase">
+                  Physical Ground Truth
+                </span>
+                <span className="text-[10px] font-mono font-bold text-zinc-300 bg-white/[0.08] px-2.5 py-0.5 rounded-full border border-white/10">
+                  37.7792° N, -122.4184° W
+                </span>
               </div>
 
-              {/* Node 01: Top-Left (Spatial Geofence) */}
-              <div className="absolute top-6 left-8 z-10 bg-[#0E0E0E] border border-white/[0.12] hover:border-[#A8FF00]/50 transition-all rounded-xl p-3.5 shadow-xl w-[220px]">
-                <div className="flex items-center justify-between mb-1.5">
-                  <div className="flex items-center space-x-1.5 text-[10px] font-mono font-bold text-[#A8FF00]">
-                    <Compass className="w-3.5 h-3.5 text-[#A8FF00]" />
-                    <span>01 • SPATIAL GEOFENCE</span>
-                  </div>
-                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-white/[0.05] text-zinc-300">≤ 200m</span>
+              {/* Node 01: Top-Left Headline Pill */}
+              <div className="absolute top-8 left-6 md:top-10 md:left-12 z-10 bg-[#0E0E0E]/95 backdrop-blur-md border border-white/20 hover:border-[#A8FF00] shadow-[0_4px_25px_rgba(0,0,0,0.8)] rounded-full px-5 py-2.5 flex items-center space-x-2.5 hover:scale-105 transition-all cursor-default group">
+                <div className="w-6 h-6 rounded-full bg-[#A8FF00]/15 flex items-center justify-center text-[#A8FF00] group-hover:bg-[#A8FF00] group-hover:text-black transition-colors">
+                  <MapPin className="w-3.5 h-3.5" />
                 </div>
-                <div className="text-xs font-bold text-white">Haversine Perimeter Lock</div>
-                <div className="text-[11px] font-mono text-zinc-400 mt-1 flex items-center justify-between">
-                  <span>Proximity:</span>
-                  <span className="text-[#A8FF00] font-bold">12.4m</span>
-                </div>
-                <div className="text-[10px] font-mono text-zinc-500 mt-0.5">Dual-Band L1/L5 GNSS</div>
+                <span className="text-xs md:text-sm font-bold text-white tracking-wide">
+                  200m Spatial Geofence
+                </span>
+                <span className="text-[10px] font-mono text-[#A8FF00] font-bold">≤ 200m</span>
               </div>
 
-              {/* Node 02: Top-Right (Sensor Tremor) */}
-              <div className="absolute top-6 right-8 z-10 bg-[#0E0E0E] border border-white/[0.12] hover:border-[#A8FF00]/50 transition-all rounded-xl p-3.5 shadow-xl w-[220px]">
-                <div className="flex items-center justify-between mb-1.5">
-                  <div className="flex items-center space-x-1.5 text-[10px] font-mono font-bold text-[#A8FF00]">
-                    <Activity className="w-3.5 h-3.5 text-[#A8FF00]" />
-                    <span>02 • BIOMETRIC SENSOR</span>
-                  </div>
-                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-white/[0.05] text-zinc-300">8.4 Hz</span>
+              {/* Node 02: Top-Right Headline Pill */}
+              <div className="absolute top-8 right-6 md:top-10 md:right-12 z-10 bg-[#0E0E0E]/95 backdrop-blur-md border border-white/20 hover:border-[#A8FF00] shadow-[0_4px_25px_rgba(0,0,0,0.8)] rounded-full px-5 py-2.5 flex items-center space-x-2.5 hover:scale-105 transition-all cursor-default group">
+                <div className="w-6 h-6 rounded-full bg-[#A8FF00]/15 flex items-center justify-center text-[#A8FF00] group-hover:bg-[#A8FF00] group-hover:text-black transition-colors">
+                  <Activity className="w-3.5 h-3.5" />
                 </div>
-                <div className="text-xs font-bold text-white">Human Micro-Tremor Nonce</div>
-                <div className="text-[11px] font-mono text-zinc-400 mt-1 flex items-center justify-between">
-                  <span>Oscillation:</span>
-                  <span className="text-[#A8FF00] font-bold">0.042g RMS</span>
-                </div>
-                <div className="text-[10px] font-mono text-zinc-500 mt-0.5">Secure Enclave Signed</div>
+                <span className="text-xs md:text-sm font-bold text-white tracking-wide">
+                  8.4 Hz Hardware Tremor
+                </span>
+                <span className="text-[10px] font-mono text-[#A8FF00] font-bold">0.042g</span>
               </div>
 
-              {/* Node 03: Bottom-Left (Vision AI Consensus) */}
-              <div className="absolute bottom-6 left-8 z-10 bg-[#0E0E0E] border border-white/[0.12] hover:border-[#A8FF00]/50 transition-all rounded-xl p-3.5 shadow-xl w-[220px]">
-                <div className="flex items-center justify-between mb-1.5">
-                  <div className="flex items-center space-x-1.5 text-[10px] font-mono font-bold text-[#A8FF00]">
-                    <Eye className="w-3.5 h-3.5 text-[#A8FF00]" />
-                    <span>03 • VISION CONSENSUS</span>
-                  </div>
-                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-white/[0.05] text-zinc-300">Gemini 2.5</span>
+              {/* Node 03: Bottom-Left Headline Pill */}
+              <div className="absolute bottom-8 left-6 md:bottom-10 md:left-12 z-10 bg-[#0E0E0E]/95 backdrop-blur-md border border-white/20 hover:border-[#A8FF00] shadow-[0_4px_25px_rgba(0,0,0,0.8)] rounded-full px-5 py-2.5 flex items-center space-x-2.5 hover:scale-105 transition-all cursor-default group">
+                <div className="w-6 h-6 rounded-full bg-[#A8FF00]/15 flex items-center justify-center text-[#A8FF00] group-hover:bg-[#A8FF00] group-hover:text-black transition-colors">
+                  <Eye className="w-3.5 h-3.5" />
                 </div>
-                <div className="text-xs font-bold text-white">Multimodal Agreement</div>
-                <div className="text-[11px] font-mono text-zinc-400 mt-1 flex items-center justify-between">
-                  <span>Consensus:</span>
-                  <span className="text-emerald-400 font-bold">98.4% Match</span>
-                </div>
-                <div className="text-[10px] font-mono text-zinc-500 mt-0.5">SHA-256 RAW EXIF Seal</div>
+                <span className="text-xs md:text-sm font-bold text-white tracking-wide">
+                  Gemini Vision Consensus
+                </span>
+                <span className="text-[10px] font-mono text-emerald-400 font-bold">98.4%</span>
               </div>
 
-              {/* Node 04: Bottom-Right (Anchor PDA Escrow) */}
-              <div className="absolute bottom-6 right-8 z-10 bg-[#0E0E0E] border border-white/[0.12] hover:border-[#A8FF00]/50 transition-all rounded-xl p-3.5 shadow-xl w-[220px]">
-                <div className="flex items-center justify-between mb-1.5">
-                  <div className="flex items-center space-x-1.5 text-[10px] font-mono font-bold text-[#A8FF00]">
-                    <Coins className="w-3.5 h-3.5 text-[#A8FF00]" />
-                    <span>04 • ANCHOR PDA ESCROW</span>
-                  </div>
-                  <span className="text-[9px] font-mono px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-400 font-bold">97.5%</span>
+              {/* Node 04: Bottom-Right Headline Pill */}
+              <div className="absolute bottom-8 right-6 md:bottom-10 md:right-12 z-10 bg-[#0E0E0E]/95 backdrop-blur-md border border-white/20 hover:border-[#A8FF00] shadow-[0_4px_25px_rgba(0,0,0,0.8)] rounded-full px-5 py-2.5 flex items-center space-x-2.5 hover:scale-105 transition-all cursor-default group">
+                <div className="w-6 h-6 rounded-full bg-[#A8FF00]/15 flex items-center justify-center text-[#A8FF00] group-hover:bg-[#A8FF00] group-hover:text-black transition-colors">
+                  <Coins className="w-3.5 h-3.5" />
                 </div>
-                <div className="text-xs font-bold text-white">Autonomous CPI Payout</div>
-                <div className="text-[11px] font-mono text-zinc-400 mt-1 flex items-center justify-between">
-                  <span>Settlement:</span>
-                  <span className="text-[#A8FF00] font-bold">0.34125 SOL</span>
-                </div>
-                <div className="text-[10px] font-mono text-zinc-500 mt-0.5">Instant Non-Custodial Vault</div>
+                <span className="text-xs md:text-sm font-bold text-white tracking-wide">
+                  Anchor PDA Settlement
+                </span>
+                <span className="text-[10px] font-mono text-[#A8FF00] font-bold">97.5%</span>
               </div>
             </div>
 
-            {/* Mobile View: Vertical Connected Architecture Stream */}
-            <div className="md:hidden space-y-4">
-              <div className="bg-[#111111] border-2 border-[#A8FF00] rounded-xl p-4 text-center">
-                <div className="inline-flex items-center space-x-1.5 text-[#A8FF00] text-[10px] font-mono font-bold mb-1">
-                  <MapPin className="w-3 h-3" />
-                  <span>Physical Reality Target</span>
-                </div>
-                <h4 className="text-sm font-black text-white">EV Supercharger Stall #4</h4>
-                <div className="text-[11px] font-mono text-zinc-400 mt-0.5">37.7792° N, -122.4184° W</div>
+            {/* Mobile View: Clean Connected Headline Stream */}
+            <div className="md:hidden space-y-3">
+              <div className="bg-[#111111] border-2 border-[#A8FF00] rounded-full px-5 py-3 text-center flex items-center justify-center space-x-2">
+                <span className="w-2 h-2 rounded-full bg-[#A8FF00]" />
+                <span className="text-xs font-black text-white uppercase">Physical Ground Truth</span>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                <div className="bg-[#0E0E0E] border border-white/10 rounded-xl p-3.5">
-                  <div className="text-[10px] font-mono text-[#A8FF00] font-bold">01 • SPATIAL GEOFENCE</div>
-                  <div className="text-xs font-bold text-white mt-0.5">Haversine ≤ 200m</div>
-                  <div className="text-[11px] font-mono text-zinc-400 mt-1">12.4m Proximity • L1/L5 GNSS</div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
+                <div className="bg-[#0E0E0E] border border-white/10 rounded-xl p-3 flex items-center justify-between">
+                  <div className="flex items-center space-x-2">
+                    <MapPin className="w-4 h-4 text-[#A8FF00]" />
+                    <span className="text-xs font-bold text-white">200m Spatial Geofence</span>
+                  </div>
+                  <span className="text-[10px] font-mono text-[#A8FF00] font-bold">≤ 200m</span>
                 </div>
-                <div className="bg-[#0E0E0E] border border-white/10 rounded-xl p-3.5">
-                  <div className="text-[10px] font-mono text-[#A8FF00] font-bold">02 • BIOMETRIC SENSOR</div>
-                  <div className="text-xs font-bold text-white mt-0.5">8.4 Hz Tremor Nonce</div>
-                  <div className="text-[11px] font-mono text-zinc-400 mt-1">0.042g RMS • Secure Enclave</div>
+                <div className="bg-[#0E0E0E] border border-white/10 rounded-xl p-3 flex items-center justify-between">
+                  <div className="flex items-center space-x-2">
+                    <Activity className="w-4 h-4 text-[#A8FF00]" />
+                    <span className="text-xs font-bold text-white">8.4 Hz Hardware Tremor</span>
+                  </div>
+                  <span className="text-[10px] font-mono text-[#A8FF00] font-bold">0.042g</span>
                 </div>
-                <div className="bg-[#0E0E0E] border border-white/10 rounded-xl p-3.5">
-                  <div className="text-[10px] font-mono text-[#A8FF00] font-bold">03 • VISION CONSENSUS</div>
-                  <div className="text-xs font-bold text-white mt-0.5">Gemini 2.5 Flash</div>
-                  <div className="text-[11px] font-mono text-emerald-400 mt-1 font-bold">98.4% Match • SHA-256 EXIF</div>
+                <div className="bg-[#0E0E0E] border border-white/10 rounded-xl p-3 flex items-center justify-between">
+                  <div className="flex items-center space-x-2">
+                    <Eye className="w-4 h-4 text-[#A8FF00]" />
+                    <span className="text-xs font-bold text-white">Gemini Vision Consensus</span>
+                  </div>
+                  <span className="text-[10px] font-mono text-emerald-400 font-bold">98.4%</span>
                 </div>
-                <div className="bg-[#0E0E0E] border border-white/10 rounded-xl p-3.5">
-                  <div className="text-[10px] font-mono text-[#A8FF00] font-bold">04 • ANCHOR PDA ESCROW</div>
-                  <div className="text-xs font-bold text-white mt-0.5">0.34125 SOL Release</div>
-                  <div className="text-[11px] font-mono text-[#A8FF00] mt-1 font-bold">97.5% Split • &lt;400ms CPI</div>
+                <div className="bg-[#0E0E0E] border border-white/10 rounded-xl p-3 flex items-center justify-between">
+                  <div className="flex items-center space-x-2">
+                    <Coins className="w-4 h-4 text-[#A8FF00]" />
+                    <span className="text-xs font-bold text-white">Anchor PDA Settlement</span>
+                  </div>
+                  <span className="text-[10px] font-mono text-[#A8FF00] font-bold">97.5%</span>
                 </div>
               </div>
             </div>
@@ -652,7 +634,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                       EV Supercharger Stall Clearance
                     </h3>
                     <p className="text-xs text-zinc-400 leading-relaxed mb-4">
-                      Autonomous navigation algorithms verify charger availability before dispatching electric vehicles to prevent stalled routing.
+                      Physical stall occupancy and charger operational status verified before vehicle dispatch.
                     </p>
                   </div>
 
@@ -702,7 +684,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                       Roadway Hazard Detour &amp; Clearance
                     </h3>
                     <p className="text-xs text-zinc-400 leading-relaxed mb-4">
-                      Municipal infrastructure DAOs automatically disburse maintenance treasury payouts once lane reopening is attested.
+                      Roadway debris removal and lane clearance attested for autonomous municipal payouts.
                     </p>
                   </div>
 
@@ -752,7 +734,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                       Parcel Locker Bay Physical Integrity
                     </h3>
                     <p className="text-xs text-zinc-400 leading-relaxed mb-4">
-                      Supply chain smart contracts verify smart locker door seals and drop-off custody to trigger non-custodial insurance release.
+                      Smart locker door seals and drop-off custody confirmed for non-custodial insurance release.
                     </p>
                   </div>
 
@@ -802,7 +784,7 @@ pub fn execute_with_oracle(ctx: Context<Execute>) -> Result<()> {
                       Bikeshare Hub Dock Availability
                     </h3>
                     <p className="text-xs text-zinc-400 leading-relaxed mb-4">
-                      Decentralized transit algorithms verify bike rack capacity and mechanical lock statuses to reward commuter rebalancing bounties.
+                      Transit bike rack capacity and mechanical locks attested for dynamic rebalancing rewards.
                     </p>
                   </div>
 
